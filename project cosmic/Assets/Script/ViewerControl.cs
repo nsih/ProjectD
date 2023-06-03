@@ -6,23 +6,22 @@ using TMPro;
 public class ViewerControl : MonoBehaviour
 {
     GameObject txtViewer;
-    int viwerCount = 569000;
+    int viwerCount = 5695214;
     bool isCoroutineRunning = false;
     
     void Start()
     {
         txtViewer = GameObject.Find("txtViewer");
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (!isCoroutineRunning)
+        if (!isCoroutineRunning && viwerCount < 999999999)
         {
             ViewerChange();
         }
 
-        txtViewer.GetComponent<TextMeshProUGUI>().text = viwerCount.ToString();
+        txtViewer.GetComponent<TextMeshProUGUI>().text = "Live  " + viwerCount.ToString();
     }
 
     public void ViewerChange()
@@ -34,8 +33,6 @@ public class ViewerControl : MonoBehaviour
     {
         int changed = Random.Range(viwerCount-500,viwerCount+800);
         isCoroutineRunning = true;
-        Debug.Log("호출");
-
 
         if(changed == viwerCount)
         {
