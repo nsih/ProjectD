@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BtnAchievementController : MonoBehaviour
 {
-    GameObject PnlBackGround;
-    GameObject AchievementView;
+    GameObject pnlBackGround;
+    GameObject achievementView;
 
     private void Awake() 
     {
-        PnlBackGround = GameObject.Find("PnlBackGround");
-        AchievementView = PnlBackGround.transform.Find("AchievementView").gameObject;
+        pnlBackGround = GameObject.Find("PnlBackGround");
+        achievementView = pnlBackGround.transform.Find("AchievementView").gameObject;
     }
     public void OnClick()
     {
-        AchievementView.SetActive(true);
+        achievementView.SetActive(true);
     }
 }
