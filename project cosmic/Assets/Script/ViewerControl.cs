@@ -29,7 +29,7 @@ public class ViewerControl : MonoBehaviour
         StartCoroutine(ViewerChangeCoroutine());
     }
 
-    private System.Collections.IEnumerator ViewerChangeCoroutine()
+    private IEnumerator ViewerChangeCoroutine()
     {
         int changed = Random.Range(viwerCount-500,viwerCount+800);
         isCoroutineRunning = true;
