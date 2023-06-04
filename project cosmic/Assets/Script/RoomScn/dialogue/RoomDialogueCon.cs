@@ -23,6 +23,8 @@ public class RoomDialogueCon : MonoBehaviour
     GameObject playerTxt;
     GameObject niaTxt;
 
+    private bool isTyping = false;
+
 
 
     private void Awake()
@@ -45,6 +47,7 @@ public class RoomDialogueCon : MonoBehaviour
         {
             ProceedNextLine();
         }
+        
     }
 
 
@@ -119,8 +122,8 @@ public class RoomDialogueCon : MonoBehaviour
     void ShowDialogue(int currentFlag)
     {
         List<RoomScriptData> currentDialogueData = rsParsedData.FindAll(data => data.flag == currentFlag);
-
-
+        
+        
         if (currentIndex < currentDialogueData.Count)
         {
             RoomScriptData currentLine = currentDialogueData[currentIndex];
@@ -128,6 +131,15 @@ public class RoomDialogueCon : MonoBehaviour
             string currentTalker = currentLine.talker;
             string currnetText = currentLine.script;
             float currentTalkSpeed = currentLine.talkSpeed;
+
+            //skip
+            if(isTyping == true)
+            {
+                SkipLine(currentTalker,currnetText);
+                return;
+            }
+
+            
             
             // 대사 처리
             if (typingCoroutine != null)
@@ -144,8 +156,27 @@ public class RoomDialogueCon : MonoBehaviour
 
     void ProceedNextLine()
     {
-        currentIndex++;
         ShowDialogue(roomFlag);
+    }
+
+    void SkipLine(string _currentTalker,string _currentDialogue)
+    {
+        Debug.Log("skip");
+        StopCoroutine(typingCoroutine);
+
+        if(_currentTalker == "player")
+        {
+            playerTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
+        }
+
+        else if(_currentTalker == "nia")
+        {
+            niaTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
+        }
+
+        
+        isTyping = false;
+        currentIndex++;
     }
 
     void EndDialogue()  //대기화면 시작
@@ -167,6 +198,7 @@ public class RoomDialogueCon : MonoBehaviour
         Debug.Log("_currentSpeed : "+_currentSpeed);
         */
 
+        isTyping = true;
         if(_currentTalker == "player")
         {
             playerTxt.GetComponent<TextMeshProUGUI>().text = "";
@@ -179,7 +211,8 @@ public class RoomDialogueCon : MonoBehaviour
 
                 yield return new WaitForSeconds(_currentSpeed);
             }
-
+            isTyping = false;
+            currentIndex++;
             yield break;
         }
 
@@ -192,7 +225,8 @@ public class RoomDialogueCon : MonoBehaviour
                 niaTxt.GetComponent<TextMeshProUGUI>().text += c;
                 yield return new WaitForSeconds(_currentSpeed);
             }
-
+            isTyping = false;
+            currentIndex++;
             yield break;
         }
     }
