@@ -16,7 +16,7 @@ public class CameraCon : MonoBehaviour
     {
         player = GameObject.Find("player");
 
-        cameraSpeed = 2;
+        cameraSpeed = 5;
     }
 
     void FixedUpdate()
@@ -28,7 +28,7 @@ public class CameraCon : MonoBehaviour
     {
         Vector2 playerPos = player.transform.position;
         Vector2 cameraPos = this.transform.position;
-        Vector2 corPos = new Vector2(2.5f,0);
+        Vector2 corPos = new Vector2(2.37f,0);
 
         Vector2 targetPos = playerPos - cameraPos + corPos;
 

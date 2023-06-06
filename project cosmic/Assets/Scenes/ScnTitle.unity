@@ -366,12 +366,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1127828226616488579, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609473309938746, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609473309938746, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609473309938746, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4469609473344933291, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
       propertyPath: m_SizeDelta.y
       value: -0.0000000017462298
       objectReference: {fileID: 0}
     - target: {fileID: 4469609473344933291, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609473483417487, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469609473529524625, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
@@ -460,6 +480,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469609473529524637, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609474687574616, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609474687574616, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469609474687574616, guid: 5ec82632bd61bed46977cabd28353149, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

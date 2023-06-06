@@ -38,10 +38,12 @@ public class PlayerCon : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
+
+
     }
 
 
-    private void PlayerMovement() 
+    void PlayerMovement() 
     {
             if (Input.GetKey(playerUpKey))
             player.transform.Translate(Vector2.up * Time.deltaTime*speed);
@@ -54,5 +56,10 @@ public class PlayerCon : MonoBehaviour
 
             if (Input.GetKey(playerRightKey))
                 player.transform.Translate(Vector2.right * Time.deltaTime*speed);
+    }
+
+    void GetSpeed()
+    {
+        
     }
 }

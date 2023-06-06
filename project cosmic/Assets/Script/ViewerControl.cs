@@ -6,7 +6,7 @@ using TMPro;
 public class ViewerControl : MonoBehaviour
 {
     GameObject txtViewer;
-    int viwerCount = 5695214;
+    int viwerCount = 155246;
     bool isCoroutineRunning = false;
     
     void Start()
