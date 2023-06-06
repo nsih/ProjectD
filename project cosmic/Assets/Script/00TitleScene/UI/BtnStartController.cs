@@ -7,6 +7,6 @@ public class BtnStartController : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("ScnRoom");
+        SceneManager.LoadScene("ScnRoom1");
     }
 }
