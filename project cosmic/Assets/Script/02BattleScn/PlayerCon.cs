@@ -94,13 +94,13 @@ public class PlayerCon : MonoBehaviour
     {
         Quaternion startRotation = handPivot.transform.rotation;
 
-        Quaternion targetRotation0 = startRotation * Quaternion.Euler(0f, 0f, -90);
-        Quaternion targetRotation1 = startRotation * Quaternion.Euler(0f, 0f, 90);
+        Quaternion targetRotation0 = startRotation * Quaternion.Euler(0f, 0f, 90);
+        Quaternion targetRotation1 = startRotation * Quaternion.Euler(0f, 0f, -90);
 
 
         //
         float elapsedTime = 0f;
-        float rotationTime = Quaternion.Angle(startRotation, targetRotation0) / attackSpeed;
+        float rotationTime = Quaternion.Angle(startRotation, targetRotation0) / 1000;
         while (elapsedTime < rotationTime)
         {
             isAttack = true;
@@ -114,7 +114,7 @@ public class PlayerCon : MonoBehaviour
 
         //
         elapsedTime = 0f;
-        rotationTime = Quaternion.Angle(targetRotation0, targetRotation1) / attackSpeed;
+        rotationTime = Quaternion.Angle(targetRotation0, targetRotation1) / 1800;
         while (elapsedTime < rotationTime)
         {
             isAttack = true;
@@ -128,7 +128,7 @@ public class PlayerCon : MonoBehaviour
 
         //
         elapsedTime = 0f;
-        rotationTime = Quaternion.Angle(targetRotation1, startRotation) / attackSpeed;
+        rotationTime = Quaternion.Angle(targetRotation1, startRotation) / 1800;
         while (elapsedTime < rotationTime)
         {
             isAttack = true;

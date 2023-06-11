@@ -838,5 +838,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -13.42572
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063194760868592256, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59846b712aabc674ab262324a074ab85, type: 3}
