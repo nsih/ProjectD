@@ -20,6 +20,7 @@ public class RoomDialogueCon : MonoBehaviour
     private int roomFlag = 0;
     private int currentIndex;
 
+    GameObject talkerInfo;
     GameObject playerTxt;
     GameObject niaTxt;
 
@@ -29,6 +30,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     private void Awake()
     {
+        talkerInfo = GameObject.Find("Talker");
         playerTxt = GameObject.Find("PlayerText");
         niaTxt = GameObject.Find("NiaText");
 
@@ -166,6 +168,7 @@ public class RoomDialogueCon : MonoBehaviour
 
         if(_currentTalker == "player")
         {
+            talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
             playerTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
         }
 
@@ -181,6 +184,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     void EndDialogue()  //대기화면 시작
     {
+        talkerInfo.GetComponent<TextMeshProUGUI>().text = "";
         playerTxt.GetComponent<TextMeshProUGUI>().text = "";
         niaTxt.GetComponent<TextMeshProUGUI>().text = "";
 
@@ -201,6 +205,7 @@ public class RoomDialogueCon : MonoBehaviour
         isTyping = true;
         if(_currentTalker == "player")
         {
+            talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
             playerTxt.GetComponent<TextMeshProUGUI>().text = "";
 
             foreach (char c in _currentDialogue)

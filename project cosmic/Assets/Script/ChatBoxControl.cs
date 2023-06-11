@@ -74,7 +74,7 @@ public class ChatBoxControl : MonoBehaviour
     private IEnumerator ChatUpdating()
     {
         isWaitChat = false;
-        float uDelay = Random.Range(0.1f,1f);
+        float uDelay = Random.Range(0.5f,1.5f);
         yield return new WaitForSeconds(uDelay);
 
         ChatBoxUpdate();
