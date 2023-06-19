@@ -1,8 +1,25 @@
-*우측하단 UI 변경 및 통일
+*title scn
 
-	01 02
+*room scn
+
+*land scn
+
+GameManager	(스크립트 여러개 붙여버리)
+	게임 시작, 일시 정지, 종료
+	사운드
+	게임 규칙 및 로직
+	대화 관리
+
+
+PlayerInfo
+	UI에 쏴주기
+	Body
+	WillPower
+	intelligence
+	charm
+	
 	
 
-
-*채팅창
+채팅창
 	특수한 상황에 이름과 특수 플레그의 내용을 불러오는 식의 이벤트 (이름과 대사가 정해져있다.)
+	sound manager?
