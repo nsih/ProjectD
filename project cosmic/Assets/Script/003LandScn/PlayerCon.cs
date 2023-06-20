@@ -26,7 +26,7 @@ public class PlayerCon : MonoBehaviour
     float attackSpeed;  //초당회전각도
 
     float attackTimer;
-    float attackDelay;
+    float attackTerm;
 
 
     void Start()
@@ -42,12 +42,12 @@ public class PlayerCon : MonoBehaviour
         playerRightKey = KeyCode.D;
 
 
-        //PlayerInfo에서 가져오세요
+        //Game Manager의 PlayerInfo에서 가져오세요
         speed = 1f;
-        attackSpeed = 1200;   //초당회전각도
+        attackSpeed = 1200;   //초당회전각도 .. 인데 텀이 중요하지 휘두르는 속도가 중요할까? 검술에 따라서 바뀌는 경우는 있어도 능력치로 넣기는 좀
 
         canAttack = true;
-        attackDelay = 0.5f;
+        attackTerm = 0.5f;
         
         isAttack = false;
     }
@@ -227,7 +227,7 @@ public class PlayerCon : MonoBehaviour
     void AttackTimerStart()
     {
         canAttack = false;
-        attackTimer = attackDelay;
+        attackTimer = attackTerm;
     }    
     
     #endregion

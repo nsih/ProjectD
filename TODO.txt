@@ -4,11 +4,12 @@
 
 *land scn
 
-GameManager	(스크립트 여러개 붙여버리)
+GameManager
 	게임 시작, 일시 정지, 종료
 	사운드
 	게임 규칙 및 로직
 	대화 관리
+	PlayerInfo
 
 
 PlayerInfo
