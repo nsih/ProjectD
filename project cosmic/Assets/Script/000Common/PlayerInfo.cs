@@ -14,10 +14,10 @@ public class PlayerInfo : MonoBehaviour
 
 
     //보이는 것 2
-    public int Physical;
-    public int willPower;
-    public int knowledge;
-    public int charm;
+    public int physical;    //육체
+    public int willPower;   //의지
+    public int knowledge;   //지식
+    public int charm;       //매력
 
     //attack
     public int attackType;
@@ -53,7 +53,7 @@ public class PlayerInfo : MonoBehaviour
         bombGauge = maxBombGuage;
 
         //stat
-        Physical = 1;
+        physical = 1;
         willPower = 1;
         knowledge = 1;
         charm = 2;
@@ -65,9 +65,9 @@ public class PlayerInfo : MonoBehaviour
 
 
     //hp
-    void MaxHpModify(int maxHpModifier)//최대 hp
+    void MaxHpModify(int modifier)//최대 hp
     {
-        int changedMaxHp = maxHp = maxHpModifier;
+        int changedMaxHp = maxHp = modifier;
         if(changedMaxHp <= 0)
         {
             changedMaxHp = 1;
@@ -78,9 +78,9 @@ public class PlayerInfo : MonoBehaviour
             maxHp = changedMaxHp;
         }
     }
-    void HpModify(int hpModifier)//hp 변경시 호출
+    void HpModify(int modifier)//hp 변경시 호출
     {
-        int changedHp = hp+hpModifier;
+        int changedHp = hp+modifier;
 
         if(changedHp >= maxHp)
         {
@@ -97,24 +97,26 @@ public class PlayerInfo : MonoBehaviour
     }
     
     //bomb
-    void BombGuageModify(float bombGuageModifier)   //게이지 변화시 호출 (쓰거나 충전)
+    void BombGuageModify(float modifier)   //게이지 변화시 호출 (쓰거나 충전)
     {
-        if(bombGauge+bombGuageModifier > maxHp)
+        float changedBombGuage = bombGauge+modifier;
+
+        if(changedBombGuage > maxHp)
         {
             bombGauge  = maxBombGuage;
         }
-        else if (bombGauge+bombGuageModifier <= 0)
+        else if (changedBombGuage <= 0)
         {
             bombGauge = 0;
         }
         else
         {
-            bombGauge = bombGauge+bombGuageModifier;
+            bombGauge = changedBombGuage;
         }
     }
-    void BombRechargeModify(float BombRechargeModifier) //붐충효
+    void BombRechargeModify(float modifier) //붐충효
     {
-        float changedBombRecharge = bombRecharge + BombRechargeModifier;
+        float changedBombRecharge = bombRecharge + modifier;
 
         if(changedBombRecharge <= 0)
         {
@@ -127,7 +129,64 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    //stat
+    //status
+    void PhysicalModify(int modifier)
+    {
+        int changedPhisical = physical + modifier;
+
+        if(changedPhisical <= 0)
+        {
+            physical = 1;
+        }
+
+        else
+        {
+            physical = changedPhisical;
+        }
+    }
+    void WillPowerModify(int modifier)
+    {
+        int changedWillPower = willPower + modifier;
+
+        if(changedWillPower <= 0)
+        {
+            willPower = 1;
+        }
+
+        else
+        {
+            willPower = changedWillPower;
+        }
+    }
+    void KnowledgeModify(int modifier)
+    {
+        int changedKnowledge = knowledge + modifier;
+
+        if(changedKnowledge <= 0)
+        {
+            knowledge = 1;
+        }
+
+        else
+        {
+            knowledge = changedKnowledge;
+        }
+    }
+    void CharmModify(int modifier)
+    {
+        int changedCharm = charm + modifier;
+
+        if(changedCharm <= 0)
+        {
+            charm = 1;
+        }
+
+        else
+        {
+            charm = changedCharm;
+        }
+    }
+
 
     //battle cal
 }
