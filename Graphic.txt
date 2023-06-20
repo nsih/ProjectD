@@ -1,0 +1,11 @@
+*title scn
+	title image
+
+*room scn
+	stand image
+
+*land scn
+	player
+
+*common
+	UI

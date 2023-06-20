@@ -2334,7 +2334,7 @@ GameObject:
   - component: {fileID: 9063127591744568620}
   - component: {fileID: 3252205836758482050}
   m_Layer: 5
-  m_Name: PlayerText
+  m_Name: DialogueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6336,7 +6336,7 @@ GameObject:
   - component: {fileID: 63858548918593361}
   - component: {fileID: 4465134639210081458}
   m_Layer: 5
-  m_Name: PlayerTextBox
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,11 +17,11 @@ public class RoomDialogueCon : MonoBehaviour
     float slowTypeSpeed = 0.3f;
 
 
-    private int roomFlag = 0;
+    private static int roomFlag = 0;
     private int currentIndex;
 
     GameObject talkerInfo;
-    GameObject playerTxt;
+    GameObject dialogueTxt;
     GameObject niaTxt;
 
     private bool isTyping = false;
@@ -31,7 +31,7 @@ public class RoomDialogueCon : MonoBehaviour
     private void Awake()
     {
         talkerInfo = GameObject.Find("Talker");
-        playerTxt = GameObject.Find("PlayerText");
+        dialogueTxt = GameObject.Find("DialogueText");
         niaTxt = GameObject.Find("NiaText");
 
 
@@ -87,17 +87,6 @@ public class RoomDialogueCon : MonoBehaviour
 
         }
         reader.Close();
-        /*
-        foreach (RoomScriptData data in rsParsedData)
-        {
-            Debug.Log("Index: " + data.index +
-                      ", Talker: " + data.talker +
-                      ", Script: " + data.script +
-                      ", Talk Speed: " + data.talkSpeed +
-                      ", Stand Image: " + data.standImg +
-                      "\n");
-        }   
-        */
     }
     float talkSpeedCheck(string _talkSpeedS)
     {
@@ -169,7 +158,7 @@ public class RoomDialogueCon : MonoBehaviour
         if(_currentTalker == "player")
         {
             talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
-            playerTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
+            dialogueTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
         }
 
         else if(_currentTalker == "nia")
@@ -185,7 +174,7 @@ public class RoomDialogueCon : MonoBehaviour
     void EndDialogue()  //대기화면 시작
     {
         talkerInfo.GetComponent<TextMeshProUGUI>().text = "";
-        playerTxt.GetComponent<TextMeshProUGUI>().text = "";
+        dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
         niaTxt.GetComponent<TextMeshProUGUI>().text = "";
 
         roomFlag++;
@@ -206,13 +195,13 @@ public class RoomDialogueCon : MonoBehaviour
         if(_currentTalker == "player")
         {
             talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
-            playerTxt.GetComponent<TextMeshProUGUI>().text = "";
+            dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
 
             foreach (char c in _currentDialogue)
             {
-                playerTxt.GetComponent<TextMeshProUGUI>().text += c;
+                dialogueTxt.GetComponent<TextMeshProUGUI>().text += c;
 
-                //Debug.Log(playerTxt.GetComponent<TextMeshProUGUI>().text);
+                //Debug.Log(dialogueTxt.GetComponent<TextMeshProUGUI>().text);
 
                 yield return new WaitForSeconds(_currentSpeed);
             }
