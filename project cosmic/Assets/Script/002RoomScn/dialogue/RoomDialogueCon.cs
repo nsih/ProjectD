@@ -8,9 +8,8 @@ using TMPro;
 
 public class RoomDialogueCon : MonoBehaviour
 {
-    private string csvDir = "/Resource/CSV";
-    private string roomScriptFile = "ScnRoomScript.csv";
-    public static List<RoomScriptData> rsParsedData;   //room script parsed data
+    public GameObject gameManager;
+
 
     float fastTypeSpeed = 0.03f;
     float normarTypeSpeed = 0.07f;
@@ -20,6 +19,8 @@ public class RoomDialogueCon : MonoBehaviour
     private static int roomFlag = 0;
     private int currentIndex;
 
+
+    //
     GameObject talkerInfo;
     GameObject dialogueTxt;
     GameObject niaTxt;
@@ -30,12 +31,10 @@ public class RoomDialogueCon : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = GameObject.Find("GameManager");
         talkerInfo = GameObject.Find("Talker");
         dialogueTxt = GameObject.Find("DialogueText");
         niaTxt = GameObject.Find("NiaText");
-
-
-        Parser(roomScriptFile);
     }
 
     private void Start() 
@@ -54,55 +53,6 @@ public class RoomDialogueCon : MonoBehaviour
 
 
 
-
-
-
-    #region "parsing"
-    void Parser(string FileName)    //csv파일로 init
-    {
-        rsParsedData = new List<RoomScriptData>();
-        string filePath = Path.Combine(Application.dataPath + csvDir, FileName);
-//        Debug.Log(filePath);
-
-        StreamReader reader = new StreamReader(filePath);
-
-        string firstLine = reader.ReadLine();
-
-        while (!reader.EndOfStream)
-        {
-            string line = reader.ReadLine();
-            string[] data = line.Split(',');
-
-            // Parsing
-            int flag = int.Parse(data[0]);
-            int index = int.Parse(data[1]);
-            string talker = data[2];
-            string script = data[3];
-            float talkSpeed = talkSpeedCheck(data[4]);
-            string standImg = data[5];
-
-            // 파싱된 데이터를 객체로 생성하여 리스트에 추가
-            RoomScriptData csvData = new RoomScriptData(flag, index, talker, script, talkSpeed, standImg);
-            rsParsedData.Add(csvData);
-
-        }
-        reader.Close();
-    }
-    float talkSpeedCheck(string _talkSpeedS)
-    {
-        float tempSpeed = 0;
-
-        //delay time
-        if(_talkSpeedS == "FAST")
-            tempSpeed = fastTypeSpeed;
-        else if(_talkSpeedS == "NORMAL")
-            tempSpeed = normarTypeSpeed;
-        else if(_talkSpeedS == "SLOW")
-            tempSpeed = slowTypeSpeed;
-
-        return tempSpeed;
-    }
-    #endregion
     #region "dialogue control"
     void StartDialogue()
     {
@@ -112,7 +62,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     void ShowDialogue(int currentFlag)
     {
-        List<RoomScriptData> currentDialogueData = rsParsedData.FindAll(data => data.flag == currentFlag);
+        List<RoomScriptData> currentDialogueData = DialogueData.rsParsedData.FindAll(data => data.flag == currentFlag);
         
         
         if (currentIndex < currentDialogueData.Count)

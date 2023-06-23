@@ -28,9 +28,8 @@ public class CameraCon : MonoBehaviour
     {
         Vector2 playerPos = player.transform.position;
         Vector2 cameraPos = this.transform.position;
-        Vector2 corPos = new Vector2(2.37f,0);
 
-        Vector2 targetPos = playerPos - cameraPos + corPos;
+        Vector2 targetPos = playerPos - cameraPos;
 
         // 부드러운 이동을 위한 보간
         Vector2 smoothPos = Vector2.Lerp(Vector2.zero, targetPos, cameraSpeed * Time.deltaTime);

@@ -21,13 +21,11 @@ PlayerInfo
 
 DialogueData, ScnDialogueManager 3개
 	씬마다 다른 UI로 인한 각각의 Dialogue Manager가 있고, 그에 필요한 Index 정보같은 것들만 GameManager에서 관리.
-	파싱은 DialogueManager에서 다 해놓고 UI로 쏴주고, 불러오기만 각 씬의 Dialogue Manager에서 하는 것.
+	파싱은 DialogueManager에서 다 해놓고 UI로 쏴주고, 불러오기만 각 씬의 Dialogue Manager에서 수행
 	요약)
 	GameManager의 DialogueData 컴포넌트가 파싱해서 모든 data를 가지고 있는다. (index flag등 저장.)
-	각씬의 ???ScnDialogueManager에서 GameManager의 data 가져와서 쓰기만 하게 분리
+	각씬의 ScnDialogueManager에서 GameManager의 data 가져와서 쓰기만 하게 분리
 
-	기존의 RoomDialogueCon의 기능중 Parsing 기능을 Manager로 넘긴다 (Data 클래스 까지)
-	이후 다른 씬에서도 해당 방법으로 참조를 Manager에서 할수 있게 확장하는 것이 목표.
 		
 
 	이미지 변경기능
