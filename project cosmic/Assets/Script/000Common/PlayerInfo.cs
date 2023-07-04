@@ -9,8 +9,8 @@ public class PlayerInfo : MonoBehaviour
     public int maxHp;
     public int hp;
 
-    public float maxBombGuage;
-    public float bombGauge;
+    public float maxSpellGuage;
+    public float spellGauge;
 
 
     //기초 스탯 + (곱연산자, 합연산자)
@@ -20,7 +20,7 @@ public class PlayerInfo : MonoBehaviour
     //보이는 것 2
     public static int physical;    //육체      공격력
     public static int willPower;   //의지      방어력
-    public static int knowledge;   //지식      bomb recharge
+    public static int knowledge;   //지식      spell recharge
     public static int charm;       //매력      주사위 가중치
 
     //attack
@@ -28,10 +28,10 @@ public class PlayerInfo : MonoBehaviour
     public static float attackSpeed;   //휘두르는 속도
     public static float attackTerm;   //휘두르는 텀
 
-    //bomb
-    public static int bombType;
-    public static float bombPower;     //폭탄 계수 (not 개수)
-    public static float bombRecharge;  //원충효
+    //spell
+    public static int spellType;
+    public static float spellPower;     //폭탄 계수 (not 개수)
+    public static float spellRecharge;  //원충효
 
 
     //etc
@@ -48,9 +48,9 @@ public class PlayerInfo : MonoBehaviour
         //hp
         maxHp = 10;
         hp = maxHp;
-        //bomb
-        maxBombGuage = 100;
-        bombGauge = maxBombGuage;
+        //Spell
+        maxSpellGuage = 100;
+        spellGauge = maxSpellGuage;
 
         //stat
         physical = 1;
@@ -174,37 +174,37 @@ public class PlayerInfo : MonoBehaviour
         }
     }
     
-    //bomb
-    void BombGuageModify(float modifier)   //게이지 변화시 호출 (쓰거나 충전)
+    //Spell
+    void SpellGuageModify(float modifier)   //게이지 변화시 호출 (쓰거나 충전)
     {
-        float changedBombGuage = bombGauge+modifier;
+        float changedSpellGuage = spellGauge+modifier;
 
-        if(changedBombGuage > maxBombGuage)
+        if(changedSpellGuage > maxSpellGuage)
         {
-            bombGauge  = maxBombGuage;
+            spellGauge  = maxSpellGuage;
         }
-        else if (changedBombGuage <= 0)
+        else if (changedSpellGuage <= 0)
         {
-            bombGauge = 0;
+            spellGauge = 0;
         }
         else
         {
-            bombGauge = changedBombGuage;
+            spellGauge = changedSpellGuage;
         }
     }
     
-    void BombRechargeModify(float modifier) //붐충효
+    void SpellRechargeModify(float modifier) //붐충효
     {
-        float changedBombRecharge = bombRecharge + modifier;
+        float changedSpellRecharge = spellRecharge + modifier;
 
-        if(changedBombRecharge <= 0)
+        if(changedSpellRecharge <= 0)
         {
-            bombRecharge = 1;
+            spellRecharge = 1;
         }
 
         else
         {
-            bombRecharge = changedBombRecharge;
+            spellRecharge = changedSpellRecharge;
         }
     }
 
@@ -217,7 +217,6 @@ public class PlayerInfo : MonoBehaviour
         {
             physical = 1;
         }
-
         else
         {
             physical = changedPhisical;

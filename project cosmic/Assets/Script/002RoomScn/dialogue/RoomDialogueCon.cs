@@ -10,12 +10,6 @@ public class RoomDialogueCon : MonoBehaviour
 {
     public GameObject gameManager;
 
-
-    float fastTypeSpeed = 0.03f;
-    float normarTypeSpeed = 0.07f;
-    float slowTypeSpeed = 0.3f;
-
-
     private static int roomFlag = 0;
     private int currentIndex;
 
@@ -102,7 +96,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     void SkipLine(string _currentTalker,string _currentDialogue)
     {
-        Debug.Log("skip");
+        //Debug.Log("skip");
         StopCoroutine(typingCoroutine);
 
         if(_currentTalker == "player")
@@ -135,12 +129,6 @@ public class RoomDialogueCon : MonoBehaviour
     private Coroutine typingCoroutine;
     private IEnumerator TypeText(string _currentTalker,string _currentDialogue,float _currentSpeed)
     {
-        /*
-        Debug.Log("_currentTalker : "+_currentTalker);
-        Debug.Log("_currentDialogue : "+_currentDialogue);
-        Debug.Log("_currentSpeed : "+_currentSpeed);
-        */
-
         isTyping = true;
         if(_currentTalker == "player")
         {
