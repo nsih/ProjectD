@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276275098}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.62, y: 0, z: 0}
+  m_LocalPosition: {x: 0.64, y: -0, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 743198305}
   - component: {fileID: 743198303}
   - component: {fileID: 743198306}
+  - component: {fileID: 743198307}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -305,7 +306,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5646f4101f286c8459416aaf4040e7ce, type: 3}
+  m_Sprite: {fileID: -1658151008, guid: d9a14011ee5a8674ea38dfd55ca5b92b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,7 +392,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.088, y: 1.296}
+    oldSize: {x: 1.95, y: 3.56}
     newSize: {x: 5.44, y: 6.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -495,6 +496,27 @@ PolygonCollider2D:
       - {x: 0.034, y: -0.402}
       - {x: 0.030000001, y: -0.36800003}
   m_UseDelaunayMesh: 0
+--- !u!95 &743198307
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743198299}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d98b2497b72f8e04eb02547565e0eeb4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &976250467
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +611,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.1698427
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -725,8 +747,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872786224}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.238, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.22, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 276275099}
@@ -896,6 +918,22 @@ PrefabInstance:
     - target: {fileID: 5983543741223012485, guid: 59846b712aabc674ab262324a074ab85, type: 3}
       propertyPath: m_Name
       value: LandUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216816992771134934, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_Color.b
+      value: 0.40392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216816992771134934, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_Color.g
+      value: 0.29411766
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216816992771134934, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_Color.r
+      value: 0.33823046
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315472870221238799, guid: 59846b712aabc674ab262324a074ab85, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -423.1328
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

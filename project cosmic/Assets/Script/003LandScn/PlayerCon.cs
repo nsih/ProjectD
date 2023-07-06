@@ -9,6 +9,7 @@ public class PlayerCon : MonoBehaviour
     GameObject player;
     GameObject handPivot;
 
+    Animator playerAnimator;
 
 
     KeyCode playerUpKey;
@@ -17,6 +18,7 @@ public class PlayerCon : MonoBehaviour
     KeyCode playerRightKey;
 
 
+    bool isWalk;
     bool canAttack;
     bool isAttack;
     bool isMouseLeft;
@@ -33,6 +35,8 @@ public class PlayerCon : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("player");
+        playerAnimator = this.gameObject.GetComponent<Animator>();
+
         handPivot = GameObject.Find("handPivot");
 
         //나중에 gameGanager에서 설정된 키 설정을 가져오란 말입니다.
@@ -62,6 +66,12 @@ public class PlayerCon : MonoBehaviour
             AttackTimerStart();
             StartCoroutine(BasicAttack());
         }
+
+
+        //animating
+        
+        CheckWalk();
+    
     }
     void FixedUpdate()
     {
@@ -77,20 +87,37 @@ public class PlayerCon : MonoBehaviour
     }
 
     
-    void PlayerMovement() 
+    void PlayerMovement()
+{
+    if (Input.GetKey(playerUpKey) || Input.GetKey(playerLeftKey) || Input.GetKey(playerDownKey) || Input.GetKey(playerRightKey))
     {
-            if (Input.GetKey(playerUpKey))
-            player.transform.Translate(Vector2.up * Time.deltaTime*speed);
+        isWalk = true;
 
-            if (Input.GetKey(playerLeftKey))
-                player.transform.Translate(Vector2.left * Time.deltaTime*speed);
+        if (Input.GetKey(playerUpKey))
+        {
+            player.transform.Translate(Vector2.up * Time.deltaTime * speed);
+        }
 
-            if (Input.GetKey(playerDownKey))
-                player.transform.Translate(Vector2.down * Time.deltaTime *speed);
+        if (Input.GetKey(playerLeftKey))
+        {
+            player.transform.Translate(Vector2.left * Time.deltaTime * speed);
+        }
 
-            if (Input.GetKey(playerRightKey))
-                player.transform.Translate(Vector2.right * Time.deltaTime*speed);
+        if (Input.GetKey(playerDownKey))
+        {
+            player.transform.Translate(Vector2.down * Time.deltaTime * speed);
+        }
+
+        if (Input.GetKey(playerRightKey))
+        {
+            player.transform.Translate(Vector2.right * Time.deltaTime * speed);
+        }
     }
+    else
+    {
+        isWalk = false;
+    }
+}
 
 
 
@@ -231,4 +258,20 @@ public class PlayerCon : MonoBehaviour
     }    
     
     #endregion
+
+
+    #region "animation"
+
+
+    void CheckWalk()
+    {
+        
+        if(isWalk == true)
+            playerAnimator.SetBool("isWalking", true);
+
+        else
+            playerAnimator.SetBool("isWalking", false);
+    }
+    #endregion
+
 }
