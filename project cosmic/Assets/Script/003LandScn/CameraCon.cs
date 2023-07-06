@@ -24,17 +24,18 @@ public class CameraCon : MonoBehaviour
         Chasing();
     }
 
+
     void Chasing()
     {
-        Vector2 playerPos = player.transform.position;
-        Vector2 cameraPos = this.transform.position;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        Vector3 playerPosition = player.transform.position;
 
-        Vector2 targetPos = playerPos - cameraPos;
+        Vector3 targetPosition = (mousePosition + playerPosition) / 10f;
+        targetPosition.z = transform.position.z;
 
         // 부드러운 이동을 위한 보간
-        Vector2 smoothPos = Vector2.Lerp(Vector2.zero, targetPos, cameraSpeed * Time.deltaTime);
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
 
-        this.gameObject.transform.Translate(smoothPos);
-
+        transform.position = smoothPosition;
     }
 }
