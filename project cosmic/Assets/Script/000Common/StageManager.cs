@@ -13,17 +13,17 @@ public class StageManager : MonoBehaviour
     {
         if(GameManager.currentStage == 0 )
         {
-            Genator0();
+            GenateStage0();
         }
 
         else if(GameManager.currentStage == 1)
         {
-            Genator1();
+            GenateStage1();
         }
     }
 
-    #region "map 0~0 Generate"
-    void Genator0()
+    #region "map Generator, "
+    void GenateStage0()
     {
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 5 ; i++)
@@ -41,33 +41,30 @@ public class StageManager : MonoBehaviour
 
             if(key == 0)
             {
-                node.type = RoomType.Null;
+                node.type = RoomType.Null;      //룸 타입 결정
+
+                node.AddConnectedNode(map[1]);  //연결
             }
         }
-
-        //map.clear();
-
     }
-    void Genator1()
+    void GenateStage1()
     {
 
     }
     #endregion
 
-
     #endregion
 
 
-    public List<RoomData> FindNodeByKey(int key)
+    public List<RoomData> FindAttached(int key)
     {
-        // 주어진 key에 해당하는 노드를 찾습니다.
+        // find node (use key)
         RoomData targetNode = null;
         if (map.ContainsKey(key))
         {
             targetNode = map[key];
         }
 
-        // targetNode와 연결된 엣지로 연결된 노드들을 찾습니다.
         List<RoomData> connectedNodes = new List<RoomData>();
         if (targetNode != null)
         {
@@ -80,6 +77,28 @@ public class StageManager : MonoBehaviour
         return connectedNodes;
     }
 
+    /* key 반환
+    public List<int> FindAttached(int key)
+    {
+        // key에 해당하는 node
+        RoomData targetNode = null;
+        if (map.ContainsKey(key))
+        {
+            targetNode = map[key];
+        }
+
+        // targetNode와 연결된 노드의 key
+        List<int> connectedNodeKeys = new List<int>();
+        if (targetNode != null)
+        {
+            foreach (RoomData connectedNode in targetNode.GetConnectedNodes())
+            {
+                connectedNodeKeys.Add(connectedNode.roomNum);
+            }
+        }
+        return connectedNodeKeys;
+    }
+    */
 }
 
 public class RoomData
