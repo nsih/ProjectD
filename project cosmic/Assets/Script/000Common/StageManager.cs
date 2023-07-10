@@ -55,7 +55,7 @@ public class StageManager : MonoBehaviour
 
     #endregion
 
-
+    //옆 맵 찾기
     public List<RoomData> FindAttached(int key)
     {
         // find node (use key)
@@ -138,5 +138,7 @@ public enum RoomType : int
     Battle = 2,
     Shop = 3,
     Test = 4,
-    Boss = 5
+    Event = 5,
+    Boss = 6
+
 }
