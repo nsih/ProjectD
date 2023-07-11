@@ -30,9 +30,6 @@ DialogueData, ScnDialogueManager 3개
 	이미지 변경기능
 	특수한 상황에 이름과 특수 플레그의 내용을 불러오는 식의 이벤트 (이름과 대사가 정해져있다.)
 
-ChatData (올라가는채팅창)
-	ChatBoxControl 어떻게 할지 고민
-
 
 Bgm Manager
 
