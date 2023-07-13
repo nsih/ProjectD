@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {    
-    private Dictionary<int, RoomData> map;
+    public static Dictionary<int, RoomData> map;
 
 
 
@@ -28,7 +28,15 @@ public class StageManager : MonoBehaviour
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 7 ; i++)
         {
-            map.Add(i, new RoomData(i, RoomType.Null, false, false));
+            if(i == 0)
+            {
+                map.Add(i, new RoomData(i, RoomType.Null, false, false,true));
+            }
+
+            else
+            {
+                map.Add(i, new RoomData(i, RoomType.Null, false, false,false));
+            }
         }
 
 
@@ -164,16 +172,18 @@ public class RoomData
     public int roomNum;     //graph Number
     public RoomType roomType;   //type
     public bool isRevealed;   //revealed
-    public bool isDone;     //clear
+    public bool isClear;     //clear
+    public bool isCurrent;  //is player here?
 
     private List<RoomData> connectedNodes;  //connected nodes
 
-    public RoomData(int roomNum, RoomType type, bool isRevealed, bool isDone)
+    public RoomData(int roomNum, RoomType type, bool isRevealed, bool isClear,bool isCurrent)
     {
         this.roomNum = roomNum;
         this.roomType = type;
         this.isRevealed = isRevealed;
-        this.isDone = isDone;
+        this.isClear = isClear;
+        this.isCurrent = isCurrent;
 
         connectedNodes = new List<RoomData>();
     }
@@ -188,7 +198,6 @@ public class RoomData
         return connectedNodes;
     }
 }
-
 public enum RoomType : int
 {
     Null = 0,

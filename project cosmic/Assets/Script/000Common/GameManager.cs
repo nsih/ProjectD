@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     void GameInitialize()
     {
-
+        //겜오버 or 끝낼떄?
     }
     void StageInitialize()
     {
