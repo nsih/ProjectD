@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 8447290313460657587}
   - component: {fileID: 484357251254030797}
   m_Layer: 5
-  m_Name: Room6
+  m_Name: S0R6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3759,7 +3759,7 @@ GameObject:
   - component: {fileID: 3631836028595228202}
   - component: {fileID: 5255261317734659527}
   m_Layer: 5
-  m_Name: Room5
+  m_Name: S0R5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4066,7 +4066,7 @@ GameObject:
   - component: {fileID: 8419714059543630526}
   - component: {fileID: 3522189933524506327}
   m_Layer: 5
-  m_Name: Room3
+  m_Name: S0R3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4252,7 +4252,7 @@ GameObject:
   - component: {fileID: 7252137594218695871}
   - component: {fileID: 7252137594218695872}
   m_Layer: 5
-  m_Name: MiniMap
+  m_Name: Stage0MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4606,7 +4606,7 @@ GameObject:
   - component: {fileID: 3725857391904269243}
   - component: {fileID: 3235466841799300699}
   m_Layer: 5
-  m_Name: Room2
+  m_Name: S0R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6123,7 +6123,7 @@ GameObject:
   - component: {fileID: 2479949996643353555}
   - component: {fileID: 7193793872869502109}
   m_Layer: 5
-  m_Name: Room4
+  m_Name: S0R4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7498,7 +7498,7 @@ GameObject:
   - component: {fileID: 6654286107010945157}
   - component: {fileID: 685937295650514900}
   m_Layer: 5
-  m_Name: Room0
+  m_Name: S0R0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7884,7 +7884,7 @@ GameObject:
   - component: {fileID: 983251017372852060}
   - component: {fileID: 8483180445268590579}
   m_Layer: 5
-  m_Name: Room1
+  m_Name: S0R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7932,7 +7932,7 @@ GameObject:
   - component: {fileID: 1870806648504559305}
   - component: {fileID: 328838434063508102}
   m_Layer: 5
-  m_Name: Room7
+  m_Name: S0R7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

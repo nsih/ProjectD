@@ -40,6 +40,8 @@ public class MiniMapCon : MonoBehaviour
     {
         miniMapContent.anchoredPosition = Vector2.zero;
 
+
+        
         currentRoom = GameObject.Find("Room2").GetComponent<Image>();
         //currentRoom = FindCurrentRoom(); <-
 
