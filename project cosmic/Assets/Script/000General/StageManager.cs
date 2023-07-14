@@ -11,10 +11,11 @@ public class StageManager : MonoBehaviour
         GenerateRoom();
     }
 
-
     #region "map Generate"
-    void GenerateRoom()    //기본 외형은 정해져 있음. Search는 false로 함
+    public void GenerateRoom()    //기본 외형은 정해져 있음. Search는 false로 함
     {
+        map.Clear();
+
         if(GameManager.currentStage == 0 )
         {
             GenateStage0();
@@ -29,6 +30,8 @@ public class StageManager : MonoBehaviour
     #region "map Generator, "
     void GenateStage0()
     {
+
+
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 8 ; i++)
         {
