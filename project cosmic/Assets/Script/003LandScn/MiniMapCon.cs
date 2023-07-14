@@ -15,12 +15,16 @@ public class MiniMapCon : MonoBehaviour
 
     public Image currentRoom;
 
+    public Sprite[] roomTypeSprite = new Sprite[6];
+
     void Start()
     {
         miniMapViewPort = GameObject.Find("MiniMapViewport").GetComponent<RectTransform>();
         miniMapContent = GameObject.Find("MiniMapContent").GetComponent<RectTransform>();
 
         SetCurrentRoomLocation();
+
+        FindRevealedRoom();
     }
 
 
@@ -58,36 +62,36 @@ public class MiniMapCon : MonoBehaviour
             int key = kvp.Key;
 
             GameObject tempRoomObject = GameObject.Find("S"+GameManager.currentStage+"R"+key);
-
+            
             if(node.isRevealed)
             {
                 if(node.roomType == RoomType.Null)
                 {
-
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
                 }
                 else if(node.roomType == RoomType.Altar)
                 {
-
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
                 }
                 else if(node.roomType == RoomType.Battle)
                 {
-
-                }
-                else if(node.roomType == RoomType.Shop)
-                {
-
-                }
-                else if(node.roomType == RoomType.Test)
-                {
-
-                }
-                else if(node.roomType == RoomType.Event)
-                {
-
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[1];
                 }
                 else if(node.roomType == RoomType.Boss)
                 {
-
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[2];
+                }
+                else if(node.roomType == RoomType.Event)
+                {
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[3];
+                }
+                else if(node.roomType == RoomType.Shop)
+                {
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[4];
+                }
+                else if(node.roomType == RoomType.Test)
+                {
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[5];
                 }
             }
         }

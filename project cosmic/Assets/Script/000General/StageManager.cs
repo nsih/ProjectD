@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {    
-    public static Dictionary<int, RoomData> map;
+    public static Dictionary<int, RoomData> map = new Dictionary<int, RoomData>();
 
+    void Start() 
+    {
+        GenerateRoom();
+    }
 
 
     #region "map Generate"
@@ -26,16 +30,16 @@ public class StageManager : MonoBehaviour
     void GenateStage0()
     {
         //add nodes to dictionary(roomNode)
-        for(int i = 0 ; i < 7 ; i++)
+        for(int i = 0 ; i < 8 ; i++)
         {
             if(i == 0)
             {
-                map.Add(i, new RoomData(i, RoomType.Null, false, false,true));
+                map.Add(i, new RoomData(i, RoomType.Null, true, false,true));
             }
 
             else
             {
-                map.Add(i, new RoomData(i, RoomType.Null, false, false,false));
+                map.Add(i, new RoomData(i, RoomType.Null, true, false,false));
             }
         }
 
