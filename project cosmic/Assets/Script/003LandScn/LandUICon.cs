@@ -1,22 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class LandUICon : MonoBehaviour
 {
     GameObject pnlBackGround;
+    GameObject roomType;
 
     void Start()
     {
         pnlBackGround = GameObject.Find("PnlBackGround");
+        roomType = pnlBackGround.transform.Find("RoomType").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         ShowMiniMap();
+        ShowRoomType();
     }
 
+
+    void ShowRoomType()
+    {
+        roomType.GetComponent<TextMeshProUGUI>().text = StageManager.map[GameManager.currentRoom].roomType.ToString();
+    }
     void ShowMiniMap()
     {
         GameObject miniMap;

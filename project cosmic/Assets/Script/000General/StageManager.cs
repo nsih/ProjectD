@@ -126,7 +126,7 @@ public class StageManager : MonoBehaviour
     //current Room 찾기
     public RoomData FindCurrentRoon()
     {
-        
+
 
         return null;
     }
@@ -174,7 +174,85 @@ public class StageManager : MonoBehaviour
         return connectedNodeKeys;
     }
     
+
+
+
+    //
+    void StartRoomEventPhase(RoomType roomType)
+    {        
+        if(roomType == RoomType.Null)
+        {
+            GameManager.isRoomEventPhase = false;
+            GameManager.isActionPhase = true;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            //아래 UI Text 변경
+            Debug.Log(roomType);
+
+            StartRoomEventPhase(GameManager.doomCount);
+        }
+
+        else if(roomType == RoomType.Battle)
+        {
+            GameManager.isRoomEventPhase = true;
+            GameManager.isActionPhase = false;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            //몹젠 함수
+            Debug.Log(roomType);
+        }
+
+        else if(roomType == RoomType.Test)
+        {
+            GameManager.isRoomEventPhase = true;
+            GameManager.isActionPhase = false;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            //LandUICon에서 시련 창 쓰는 함수 받아오기.
+            Debug.Log(roomType);
+        }
+
+        else if(roomType == RoomType.Altar)
+        {
+            GameManager.isRoomEventPhase = false;
+            GameManager.isActionPhase = true;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            Debug.Log(roomType);
+
+            StartRoomEventPhase(GameManager.doomCount);
+        }
+
+        else if(roomType == RoomType.Shop)
+        {
+            GameManager.isRoomEventPhase = false;
+            GameManager.isActionPhase = true;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            Debug.Log(roomType);
+
+            StartRoomEventPhase(GameManager.doomCount);
+        }
+
+        else if(roomType == RoomType.Event)
+        {
+            GameManager.isRoomEventPhase = false;
+            GameManager.isActionPhase = true;
+            //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
+            Debug.Log(roomType);
+        }
+
+        else if(roomType == RoomType.Boss)
+        {
+            GameManager.isRoomEventPhase = true;
+            GameManager.isActionPhase = false;
+            //LandUICon에서 보스 이름이랑 현제 페이즈 알려주는 UI
+            Debug.Log(roomType);
+        }
+    }
+
+    void StartRoomEventPhase(int doomCount)
+    {
+        //
+    }
+
 }
+
 
 public class RoomData
 {
