@@ -1,3 +1,10 @@
+HomeEvent Action Moving Phase
+
+-> Movie UI
+
+
+------------------------
+
 *title scn
 
 *room scn

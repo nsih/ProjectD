@@ -8,11 +8,11 @@ public class StageManager : MonoBehaviour
 
     void Start() 
     {
-        GenerateRoom();
+        GenerateStage();
     }
 
     #region "map Generate"
-    public void GenerateRoom()    //기본 외형은 정해져 있음. Search는 false로 함
+    public void GenerateStage()    //기본 외형은 정해져 있음. Search는 false로 함
     {
         map.Clear();
 
@@ -27,11 +27,8 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    #region "map Generator, "
     void GenateStage0()
     {
-
-
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 8 ; i++)
         {
@@ -45,7 +42,6 @@ public class StageManager : MonoBehaviour
                 map.Add(i, new RoomData(i, RoomType.Null, true, false,false));
             }
         }
-
 
         //initialize dictionary's node value
         foreach (var kvp in map)   //key-value pair
@@ -124,10 +120,17 @@ public class StageManager : MonoBehaviour
 
     }
     
-    
     #endregion
 
-    #endregion
+
+    //current Room 찾기
+    public RoomData FindCurrentRoon()
+    {
+        
+
+        return null;
+    }
+
 
     //옆 맵 찾기
     public List<RoomData> FindAttachedNode(int key)
@@ -150,7 +153,6 @@ public class StageManager : MonoBehaviour
 
         return connectedNodes;
     }
-
     public List<int> FindAttachedKey(int key)
     {
         // key에 해당하는 node
