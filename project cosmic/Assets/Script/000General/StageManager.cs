@@ -123,16 +123,9 @@ public class StageManager : MonoBehaviour
     #endregion
 
 
-    //current Room 찾기
-    public RoomData FindCurrentRoon()
-    {
 
 
-        return null;
-    }
-
-
-    //옆 맵 찾기
+    //인접 맵 찾기
     public List<RoomData> FindAttachedNode(int key)
     {
         // find node (use key)
@@ -187,8 +180,6 @@ public class StageManager : MonoBehaviour
             //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
             //아래 UI Text 변경
             Debug.Log(roomType);
-
-            StartRoomEventPhase(GameManager.doomCount);
         }
 
         else if(roomType == RoomType.Battle)
@@ -215,8 +206,6 @@ public class StageManager : MonoBehaviour
             GameManager.isActionPhase = true;
             //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
             Debug.Log(roomType);
-
-            StartRoomEventPhase(GameManager.doomCount);
         }
 
         else if(roomType == RoomType.Shop)
@@ -225,8 +214,6 @@ public class StageManager : MonoBehaviour
             GameManager.isActionPhase = true;
             //LandUICon에서 방 타입이랑 현제 페이즈 알려주는 UI
             Debug.Log(roomType);
-
-            StartRoomEventPhase(GameManager.doomCount);
         }
 
         else if(roomType == RoomType.Event)
@@ -244,11 +231,6 @@ public class StageManager : MonoBehaviour
             //LandUICon에서 보스 이름이랑 현제 페이즈 알려주는 UI
             Debug.Log(roomType);
         }
-    }
-
-    void StartRoomEventPhase(int doomCount)
-    {
-        //
     }
 
 }
