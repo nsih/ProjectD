@@ -172,13 +172,13 @@ public class StageManager : MonoBehaviour
 
     //
 
-    void MoveRoom(int roomNum)
+    public void MoveRoom(int roomNum)
     {
         StartRoomEventPhase(map[roomNum].roomType);
     }
 
-    
-    void StartRoomEventPhase(RoomType roomType)
+
+    public void StartRoomEventPhase(RoomType roomType)
     {
         //1. 땅 로드. 플레이어 이동.
 
@@ -186,6 +186,7 @@ public class StageManager : MonoBehaviour
         {
             GameManager.isEncounterPhase = false;
             GameManager.isActionPhase = true;
+            
             Debug.Log(roomType);
         }
 

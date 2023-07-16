@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class BtnScnController : MonoBehaviour
 {
+    GameObject GameManagerObj;
     GameObject pnlBackGround;
     GameObject pnlTitleCheck;
 
 
     private void Start() 
     {
+        GameManagerObj = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
         pnlTitleCheck = pnlBackGround.transform.Find("PnlTitleCheck").gameObject;
     }
@@ -27,6 +29,8 @@ public class BtnScnController : MonoBehaviour
     public void LandScnChange()
     {
         SceneManager.LoadScene("ScnLand");
+
+        GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
     }
 
     public void EnableTitleScnCheck()
