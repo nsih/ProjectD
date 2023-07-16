@@ -14,15 +14,13 @@ public class GameManager : MonoBehaviour
     public static int actionStack;
     public static int doomCount;
 
-    public static bool isRoomEventPhase;
+    public static bool isEncounterPhase;
     public static bool isActionPhase;
 
     void Start()
     {
         currentStage = 0;
         currentRoom = 0;
-
-
     }
 
 
@@ -30,7 +28,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         //singleton
         if (instance != null)
         {

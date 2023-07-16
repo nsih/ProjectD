@@ -8,11 +8,13 @@ public class LandUICon : MonoBehaviour
 {
     GameObject pnlBackGround;
     GameObject roomType;
+    GameObject phaseType;
 
     void Start()
     {
         pnlBackGround = GameObject.Find("PnlBackGround");
-        roomType = pnlBackGround.transform.Find("RoomType").gameObject;
+        roomType = GameObject.Find("RoomType");
+        phaseType = GameObject.Find("PhaseType");
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class LandUICon : MonoBehaviour
     {
         ShowMiniMap();
         ShowRoomType();
+        ShowPhaseType();
     }
 
 
@@ -27,6 +30,21 @@ public class LandUICon : MonoBehaviour
     {
         roomType.GetComponent<TextMeshProUGUI>().text = StageManager.map[GameManager.currentRoom].roomType.ToString();
     }
+
+    void ShowPhaseType()
+    {
+        if(GameManager.isEncounterPhase)
+        {
+            phaseType.GetComponent<TextMeshProUGUI>().text = "Encounter Phase";
+        }
+        else if(GameManager.isActionPhase)
+        {
+            phaseType.GetComponent<TextMeshProUGUI>().text = "Action Phase ( "+GameManager.actionStack+ " )";
+        }
+    }
+
+
+
     void ShowMiniMap()
     {
         GameObject miniMap;
