@@ -45,11 +45,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-
-
-
-
     void CheckStageQuest()
     {
         //스테이지 마다 다른 퀘스트 진행도 체크. 

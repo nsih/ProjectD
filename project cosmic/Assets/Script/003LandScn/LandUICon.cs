@@ -10,17 +10,27 @@ public class LandUICon : MonoBehaviour
     GameObject roomType;
     GameObject phaseType;
 
+
+    bool isMapOpen;
+
     void Start()
     {
         pnlBackGround = GameObject.Find("PnlBackGround");
         roomType = GameObject.Find("RoomType");
         phaseType = GameObject.Find("PhaseType");
+
+        isMapOpen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShowMiniMap();
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            MiniMapCon();
+        }
+
+
         ShowRoomType();
         ShowPhaseType();
     }
@@ -44,46 +54,55 @@ public class LandUICon : MonoBehaviour
     }
 
 
+    void MiniMapCon()
+    {
+        if(isMapOpen)
+        {
+            CloseMiniMap();
+        }
+        else
+        {
+            ShowMiniMap();
+        }
+    }
+
 
     void ShowMiniMap()
     {
         GameObject miniMap;
 
-        if(Input.GetKey(KeyCode.Tab))
+        if(GameManager.currentStage == 0)
         {
-            if(GameManager.currentStage == 0)
-            {
-                miniMap = pnlBackGround.transform.Find("Stage0MiniMap").gameObject;
+            miniMap = pnlBackGround.transform.Find("Stage0MiniMap").gameObject;
 
-                if(miniMap != null)
-                    miniMap.SetActive(true);
-            }
-
-            else
+            if(miniMap != null)
             {
-                Debug.Log(GameManager.currentStage);
+                isMapOpen = true;
+                miniMap.SetActive(true);
             }
         }
 
-
-
-
-
-        if(Input.GetKeyUp(KeyCode.Tab))
+        else
         {
-            if(GameManager.currentStage == 0)
-            {
-                miniMap = GameObject.Find("Stage0MiniMap");
+            Debug.Log(GameManager.currentStage);
+        }      
+    }
 
-                miniMap.SetActive(false);
-            }
+    public void CloseMiniMap()
+    {
+        GameObject miniMap;
 
-            else
-            {
-                Debug.Log(GameManager.currentStage);
-            }
+        if(GameManager.currentStage == 0)
+        {
+            miniMap = GameObject.Find("Stage0MiniMap");
+
+            isMapOpen = false;
+            miniMap.SetActive(false);
         }
 
-        
+        else
+        {
+            Debug.Log(GameManager.currentStage);
+        }
     }
 }

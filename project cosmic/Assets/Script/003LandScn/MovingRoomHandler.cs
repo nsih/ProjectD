@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -5,21 +7,42 @@ using UnityEngine.UI;
 public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 {
     GameObject GameManagerObj;
-    void Start ()
+    GameObject LandCanvus;
+
+    int thisKey;
+    bool isConnect; //current Room이랑 붙어 있는가?
+
+
+    void Awake ()
     {
         GameManagerObj = GameObject.Find("GameManager");
+        LandCanvus = GameObject.Find("LandUICanvas");
+        thisKey = GetLastCharacterAsInt(this.gameObject);
     }
 
-
-    public void OnPointerClick(PointerEventData eventData)
+    void OnEnable() 
     {
-        GameManager.currentRoom = GetLastCharacterAsInt(this.gameObject);
-        
-        GameManagerObj.GetComponent<StageManager>().MoveRoom( GetLastCharacterAsInt(this.gameObject) );
-        //Debug.Log(this.gameObject);
+        CheckConnect();
+        ShowRoomConnect();
     }
 
 
+    public void OnPointerClick(PointerEventData eventData)  //사실상 이동함수
+    {
+        if(GameManager.isActionPhase && isConnect)
+        {
+            GameManager.currentRoom = thisKey;
+
+            GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
+
+
+
+            LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
+        }
+    }
+
+
+    //room key
     public int GetLastCharacterAsInt(GameObject obj)
     {
         string objectName = obj.name;
@@ -34,5 +57,32 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
         }
 
         return 0; // 기본값 반환 또는 오류 처리
+    }
+
+    //인접 키 리스트 받아서 이 오브젝트가 해당 리스트안의 키중에서 해당 사항 있는오브젝트인지 판별
+    void CheckConnect()
+    {
+        isConnect = GameManagerObj.GetComponent<StageManager>().FindAttachedKey(GameManager.currentRoom).Contains(thisKey);
+    }
+
+    //visualization
+    void ShowRoomConnect()
+    {
+        if(thisKey == GameManager.currentRoom)
+        {
+            this.gameObject.GetComponent<Image>().color = Color.white;
+        }
+
+        else
+        {
+            if(isConnect)
+            {
+                this.gameObject.GetComponent<Image>().color = Color.grey;
+            }
+            else if(!isConnect)
+            {
+                this.gameObject.GetComponent<Image>().color = Color.black;
+            }
+        }
     }
 }

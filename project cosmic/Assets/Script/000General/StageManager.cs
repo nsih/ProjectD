@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {    
@@ -126,26 +127,6 @@ public class StageManager : MonoBehaviour
 
 
     //인접 맵 찾기
-    public List<RoomData> FindAttachedNode(int key)
-    {
-        // find node (use key)
-        RoomData targetNode = null;
-        if (map.ContainsKey(key))
-        {
-            targetNode = map[key];
-        }
-
-        List<RoomData> connectedNodes = new List<RoomData>();
-        if (targetNode != null)
-        {
-            foreach (RoomData connectedNode in targetNode.GetConnectedNodes())
-            {
-                connectedNodes.Add(connectedNode);
-            }
-        }
-
-        return connectedNodes;
-    }
     public List<int> FindAttachedKey(int key)
     {
         // key에 해당하는 node
@@ -170,13 +151,7 @@ public class StageManager : MonoBehaviour
 
 
 
-    //
-
-    public void MoveRoom(int roomNum)
-    {
-        StartRoomEventPhase(map[roomNum].roomType);
-    }
-
+    //방 움직이면 방 이벤트 시작(시작안하면 안하는)
 
     public void StartRoomEventPhase(RoomType roomType)
     {
