@@ -8,11 +8,11 @@ public class StageManager : MonoBehaviour
 
     void Start() 
     {
-        GenerateStage();
+        GenerateNewStage();
     }
 
     #region "map Generate"
-    public void GenerateStage()    //기본 외형은 정해져 있음. Search는 false로 함
+    public void GenerateNewStage()    //기본 외형은 정해져 있음. Search는 false로 함
     {
         map.Clear();
 
@@ -171,8 +171,17 @@ public class StageManager : MonoBehaviour
 
 
     //
+
+    void MoveRoom(int roomNum)
+    {
+        StartRoomEventPhase(map[roomNum].roomType);
+    }
+
+    
     void StartRoomEventPhase(RoomType roomType)
-    {        
+    {
+        //1. 땅 로드. 플레이어 이동.
+
         if(roomType == RoomType.Null)
         {
             GameManager.isEncounterPhase = false;
@@ -237,6 +246,9 @@ public class StageManager : MonoBehaviour
             Debug.Log(roomType);
         }
     }
+
+
+
 
 }
 
