@@ -12,7 +12,8 @@ public class MiniMapCon : MonoBehaviour
 
     public Image currentRoom;
 
-    public Sprite[] roomTypeSprite = new Sprite[6];
+    public Sprite[] roomTypeSprite = new Sprite[7];
+    public Sprite isTpSprite;
 
     void Awake()
     {
@@ -60,7 +61,8 @@ public class MiniMapCon : MonoBehaviour
         miniMapContent.anchoredPosition = contentOffset;
     }
 
-    void FindRevealedRoom()//탐색된 방 미니맵에서 타입 보여주기
+    ////탐색된 방 미니맵에서 타입 보여주기
+    void FindRevealedRoom()
     {
         foreach (var kvp in StageManager.map)
         {
@@ -73,35 +75,57 @@ public class MiniMapCon : MonoBehaviour
             {
                 if(node.roomType == RoomType.Null)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
                 }
                 else if(node.roomType == RoomType.Altar)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[1];
                 }
                 else if(node.roomType == RoomType.Battle)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[1];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[2];
                 }
                 else if(node.roomType == RoomType.Boss)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[2];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[3];
                 }
                 else if(node.roomType == RoomType.Event)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[3];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[4];
                 }
                 else if(node.roomType == RoomType.Shop)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[4];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[5];
                 }
                 else if(node.roomType == RoomType.Test)
                 {
-                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[5];
+                    tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[6];
                 }
+
+
+
+
+
+                if(node.isTp == true)
+                {
+                    tempRoomObject.transform.GetChild(1).GetComponentInChildren<Image>().sprite = isTpSprite;
+                    Debug.Log(node);
+                }
+                else
+                {
+                    tempRoomObject.transform.GetChild(1).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
+                }
+            }
+
+            else
+            {
+                //roomtype
+                tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
+                tempRoomObject.transform.GetChild(1).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
             }
         }
     }
+
 
     private Image FindConnectedRoom()
     {

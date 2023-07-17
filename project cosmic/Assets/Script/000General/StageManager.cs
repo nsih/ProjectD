@@ -33,15 +33,7 @@ public class StageManager : MonoBehaviour
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 8 ; i++)
         {
-            if(i == 0)
-            {
-                map.Add(i, new RoomData(i, RoomType.Null, true, false,true));
-            }
-
-            else
-            {
-                map.Add(i, new RoomData(i, RoomType.Null, true, false,false));
-            }
+            map.Add(i, new RoomData(i, RoomType.Null, false, false,false));
         }
 
         //initialize dictionary's node value
@@ -55,6 +47,8 @@ public class StageManager : MonoBehaviour
             if(key == 0)
             {
                 node.roomType = RoomType.Null;      //룸 타입 결정
+
+                node.isRevealed = true; //0은 시작노드
 
                 node.AddConnectedNode(map[1]);  //연결
             }
@@ -70,6 +64,9 @@ public class StageManager : MonoBehaviour
             else if(key == 2)
             {
                 node.roomType = RoomType.Battle;
+
+                //여기만 텔이 이썽요
+                node.isTp = true;
 
                 node.AddConnectedNode(map[1]);
                 node.AddConnectedNode(map[3]);
@@ -234,18 +231,18 @@ public class RoomData
     public int roomNum;     //graph Number
     public RoomType roomType;   //type
     public bool isRevealed;   //revealed
+    public bool isTp;  //is Tp exist?
     public bool isClear;     //clear
-    public bool isCurrent;  //is player here?
 
     private List<RoomData> connectedNodes;  //connected nodes
 
-    public RoomData(int roomNum, RoomType type, bool isRevealed, bool isClear,bool isCurrent)
+    public RoomData(int roomNum, RoomType type, bool isRevealed, bool isTp,bool isClear)
     {
         this.roomNum = roomNum;
         this.roomType = type;
         this.isRevealed = isRevealed;
+        this.isTp = isTp;
         this.isClear = isClear;
-        this.isCurrent = isCurrent;
 
         connectedNodes = new List<RoomData>();
     }

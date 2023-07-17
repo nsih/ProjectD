@@ -31,12 +31,15 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     {
         if(GameManager.isActionPhase && isConnect)
         {
-            GameManager.currentRoom = thisKey;
+            GameManager.currentRoom = thisKey;  //current room Update
 
+            StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
+
+
+            //Start current StartRoomEventPhase
             GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
 
-
-
+            //move-> closeTap
             LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
         }
     }
