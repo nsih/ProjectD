@@ -49,7 +49,17 @@ public class LandUICon : MonoBehaviour
         }
         else if(GameManager.isActionPhase)
         {
-            phaseType.GetComponent<TextMeshProUGUI>().text = "Action Phase ( "+GameManager.actionStack+ " )";
+            TextMeshProUGUI textComponent = phaseType.GetComponent<TextMeshProUGUI>();
+            if(GameManager.actionStack == 0)
+            {
+                textComponent.text = "Action Phase ( <color=#FF0000>" + GameManager.actionStack + "</color> )";
+            }
+            else
+            {
+                textComponent.text = "Action Phase ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";
+            }
+            
+            phaseType.GetComponent<TextMeshProUGUI>().text = textComponent.text;
         }
     }
 

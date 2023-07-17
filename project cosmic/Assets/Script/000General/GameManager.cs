@@ -17,14 +17,6 @@ public class GameManager : MonoBehaviour
     public static bool isEncounterPhase;
     public static bool isActionPhase;
 
-    void Start()
-    {
-        currentStage = 0;
-        currentRoom = 0;
-    }
-
-
-
 
     private void Awake()
     {
@@ -39,6 +31,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+
+    void Start()
+    {
+        currentStage = 0;
+        currentRoom = 0;
+
+        actionStack = 1;
+    }
+
+
     public static GameManager Instance
     {
         get { return instance; }
@@ -52,7 +54,19 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void ActionStackModify(int modifier)
+    public void ActionStackInitialize()
+    {
+        GameObject player;
+
+        if(GameObject.Find("player") != null)
+        {
+            player = GameObject.Find("player");
+
+            actionStack = player.GetComponent<PlayerInfo>().actionLimit;
+        }
+    }
+
+    public void ActionStackModify(int modifier)
     {
         int changedActionStack = actionStack+modifier;
 
@@ -66,7 +80,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void DoomCountModify(int modifier)
+
+
+
+    public void DoomCountInitialize()
+    {
+        if(currentStage == 0)
+        {
+            doomCount = 7;
+        }
+
+        else
+        {
+            Debug.Log(currentStage);
+        }
+    }
+
+    public void DoomCountModify(int modifier)
     {
         int changedDoomCount = doomCount+modifier;
 

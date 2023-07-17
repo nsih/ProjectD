@@ -7,14 +7,12 @@ public class BtnScnController : MonoBehaviour
 {
     GameObject GameManagerObj;
     GameObject pnlBackGround;
-    GameObject pnlTitleCheck;
 
 
     private void Start() 
     {
         GameManagerObj = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        pnlTitleCheck = pnlBackGround.transform.Find("PnlTitleCheck").gameObject;
     }
 
     //Scene Change
@@ -33,12 +31,4 @@ public class BtnScnController : MonoBehaviour
         GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
     }
 
-    public void EnableTitleScnCheck()
-    {
-        pnlTitleCheck.SetActive(true);
-    }
-    public void DisableTitleScnCheck()
-    {
-        pnlTitleCheck.SetActive(false);
-    }
 }

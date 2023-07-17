@@ -9,6 +9,8 @@ public class PlayerInfo : MonoBehaviour
     public int maxHp;
     public int hp;
 
+    public int actionLimit; //최대 액션스택
+
     public float maxSpellGuage;
     public float spellGauge;
 
@@ -51,6 +53,9 @@ public class PlayerInfo : MonoBehaviour
         //Spell
         maxSpellGuage = 100;
         spellGauge = maxSpellGuage;
+
+        //action Stack
+        actionLimit = 2;
 
         //stat
         physical = 1;
