@@ -10,7 +10,7 @@ public class BtnArtifactController : MonoBehaviour
     private void Awake() 
     {
         pnlBackGround = GameObject.Find("PnlBackGround");
-        ArtifactView = pnlBackGround.transform.Find("ArtifactPopup").gameObject;
+        ArtifactView = pnlBackGround.transform.Find("RitualPopup").gameObject;
     }
     public void EnableClick()
     {
