@@ -20,8 +20,8 @@ public class MiniMapCon : MonoBehaviour
         miniMapViewPort = GameObject.Find("MiniMapViewport").GetComponent<RectTransform>();
         miniMapContent = GameObject.Find("MiniMapContent").GetComponent<RectTransform>();
 
-        SetCurrentRoomLocation();
 
+        SetCurrentRoomLocation();
         FindRevealedRoom();
     }
 

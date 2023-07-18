@@ -13,6 +13,8 @@ public class RecoverBtnCon : MonoBehaviour
 
     GameObject doubleCheckText;
 
+
+    GameObject ButtonText;
     GameObject ButtonImage;
 
     Button btnYes;
@@ -24,6 +26,8 @@ public class RecoverBtnCon : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
         doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
+
+        ButtonText = this.gameObject.transform.GetChild(0).gameObject;
         ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
 
         doubleCheckText = doubleCheckPopup.transform.GetChild(0).gameObject;
@@ -52,10 +56,12 @@ public class RecoverBtnCon : MonoBehaviour
         if(GameManager.isActionPhase && GameManager.actionStack != 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "회복";
         }
         else
         {
             ButtonImage.GetComponent<Image>().color = Color.clear;
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>회복</color>";
         }
     }
 
