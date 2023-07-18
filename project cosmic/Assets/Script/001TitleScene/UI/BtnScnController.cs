@@ -24,11 +24,5 @@ public class BtnScnController : MonoBehaviour
     {
         SceneManager.LoadScene("ScnRoom");
     }
-    public void LandScnChange()
-    {
-        SceneManager.LoadScene("ScnLand");
-
-        GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
-    }
 
 }

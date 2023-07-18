@@ -1,0 +1,84 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
+
+public class MoveDBtnCon : MonoBehaviour
+{
+    GameObject gameManager;
+    GameObject roomUICanvas;
+    GameObject doubleCheckPopup;
+
+    GameObject doubleCheckText;
+
+
+    GameObject ButtonText;
+    GameObject ButtonImage;
+
+    Button btnYes;
+    Button btnNo;
+
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+        roomUICanvas = GameObject.Find("RoomUICanvas");
+        doubleCheckPopup = roomUICanvas.transform.Find("DoubleCheckPopup").gameObject;
+
+        ButtonText = this.gameObject.transform.GetChild(0).gameObject;
+        ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
+
+        doubleCheckText = doubleCheckPopup.transform.GetChild(0).gameObject;
+        btnYes = doubleCheckPopup.transform.GetChild(1).GetComponent<Button>();
+        btnNo = doubleCheckPopup.transform.GetChild(2).GetComponent<Button>();
+    }
+
+    //
+    public void OnclickMovingD()
+    {
+        if(true)
+        {
+            OpenPopup();
+        
+            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "방을 떠나 드림랜드로 이동할거야?";
+
+            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
+            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";
+        }
+    }
+
+
+    ///////////////// YES or NO
+    public void OnClickYes()
+    {
+        ClosePopup();
+
+        SceneManager.LoadScene("ScnLand");
+        gameManager.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
+    }
+
+    public void OnClickNo()
+    {
+        ClosePopup();
+    }
+
+
+    ///////////////
+    void OpenPopup()
+    {
+        doubleCheckPopup.SetActive(true);
+
+        btnYes.onClick.AddListener(OnClickYes);
+        btnNo.onClick.AddListener(OnClickNo);
+    }
+
+    void ClosePopup()
+    {
+        doubleCheckPopup.SetActive(false);
+
+        btnYes.onClick.RemoveAllListeners();
+        btnNo.onClick.RemoveAllListeners();
+    }
+}

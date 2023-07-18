@@ -10,8 +10,10 @@ public class RoomDialogueCon : MonoBehaviour
 {
     public GameObject gameManager;
 
-    private static int roomFlag = 0;
-    private int currentIndex;
+    bool isTalking = false;
+
+    public static int roomFlag = 0;
+    public int currentIndex;
 
 
     //
@@ -38,17 +40,13 @@ public class RoomDialogueCon : MonoBehaviour
 
     private void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ProceedNextLine();
-        }
-        
+        ProceedNextLine();        
     }
 
 
 
     #region "dialogue control"
-    void StartDialogue()
+    public void StartDialogue()
     {
         currentIndex = 0;
         ShowDialogue(roomFlag);
@@ -91,7 +89,10 @@ public class RoomDialogueCon : MonoBehaviour
 
     void ProceedNextLine()
     {
-        ShowDialogue(roomFlag);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ShowDialogue(roomFlag);
+        }
     }
 
     void SkipLine(string _currentTalker,string _currentDialogue)
@@ -121,7 +122,7 @@ public class RoomDialogueCon : MonoBehaviour
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
         niaTxt.GetComponent<TextMeshProUGUI>().text = "";
 
-        roomFlag++;
+        //roomFlag++;   플레그 자동 조종도 좋지만. 그냥 일일히 이벤트에 따라 플레그 설정하는것도 고려중.
     }
 
 

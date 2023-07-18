@@ -4652,7 +4652,7 @@ GameObject:
   - component: {fileID: 8906282989308418300}
   - component: {fileID: 2814375279742152755}
   - component: {fileID: 6574241205841078972}
-  - component: {fileID: 6384634042451980351}
+  - component: {fileID: 7425309463597972203}
   m_Layer: 5
   m_Name: btnSceneChange
   m_TagString: Untagged
@@ -4764,9 +4764,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6384634042451980351}
-        m_TargetAssemblyTypeName: BtnScnController, Assembly-CSharp
-        m_MethodName: LandScnChange
+      - m_Target: {fileID: 7425309463597972203}
+        m_TargetAssemblyTypeName: MoveDBtnCon, Assembly-CSharp
+        m_MethodName: OnclickMovingD
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4776,7 +4776,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6384634042451980351
+--- !u!114 &7425309463597972203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4785,7 +4785,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4352908433654369558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1772709db9a25a94bbe7b7181f5038f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e705a18fd3044c4f9b89b3cef517c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4454516064456433686
