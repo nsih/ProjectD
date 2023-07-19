@@ -5,16 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-
-public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    GameObject gameManager;
     GameObject roomUICanvas;
-
     GameObject doubleCheckPopup;
     GameObject doubleCheckText;
     Button btnYes;
     Button btnNo;
+
 
     private Color normalColor;
     private Color hoverColor;
@@ -22,7 +20,6 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
         doubleCheckPopup = roomUICanvas.transform.Find("DoubleCheckPopup").gameObject;
 
@@ -47,18 +44,21 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         GetComponent<Image>().color = normalColor;
     }
 
-    public void OnclickMovingD()
+
+
+    public void OnclickRoomTitle()
     {
         if(true)
         {
             OpenPopup();
-        
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "방을 떠나 드림랜드로 이동할거야?";
 
-            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
-            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";
+            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "방송을 끄고 \n타이틀 화면으로 가려고?";
+
+            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "방종할레..";
+            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "지금은 아니";
         }
     }
+
 
 
     ///////////////// YES or NO
@@ -66,8 +66,7 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         ClosePopup();
 
-        SceneManager.LoadScene("ScnLand");
-        gameManager.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
+        SceneManager.LoadScene("ScnTitle");
     }
 
     void OnClickNo()

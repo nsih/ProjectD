@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -53,7 +54,17 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnClickMove()
     {
-        landUiCanvas.GetComponent<LandUICon>().ShowMiniMap();
+        if(GameManager.doomCount != 0)
+        {
+            landUiCanvas.GetComponent<LandUICon>().ShowMiniMap();
+        }
+
+        else
+        {
+            Debug.Log("씬 이동 했다 칩시다.");
+            //SceneManager.LoadScene("ScnLand");
+        }
+        
     }
 
 
@@ -61,14 +72,26 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if(GameManager.isActionPhase)
         {
-            ButtonImage.GetComponent<Image>().color = Color.white;
-            ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
+            if(GameManager.doomCount >0)
+            {
+                ButtonImage.GetComponent<Image>().color = Color.white;
+                ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
+            }
+
+            else
+            {
+                ButtonImage.GetComponent<Image>().color = Color.white;
+                ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=##8258FA>운명</color>";
+            }
         }
         else
         {
             ButtonImage.GetComponent<Image>().color = Color.clear;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>이동</color>";
         }
+
+
+
     }
 
     //textComponent.text = "Action Phase ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";

@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public static bool isActionPhase;
 
 
+    public static bool isQuestDone;
+
+
     private void Awake()
     {
         //singleton
@@ -51,6 +54,15 @@ public class GameManager : MonoBehaviour
     {
         //스테이지 마다 다른 퀘스트 진행도 체크. 
         //완료했으면 이동버튼 변경.
+    }
+
+    void CheckDoomCount()
+    {
+        if(doomCount == 0 && actionStack == 0 && isActionPhase) //&&퀘스트 완료 여부
+        {
+            Debug.Log("GameOver");
+            
+        }
     }
 
 

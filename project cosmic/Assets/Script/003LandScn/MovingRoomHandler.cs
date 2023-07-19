@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 {
-    GameObject GameManagerObj;
+    GameObject gameManager;
     GameObject LandCanvus;
 
     int thisKey;
@@ -15,7 +15,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
     void Awake ()
     {
-        GameManagerObj = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager");
         LandCanvus = GameObject.Find("LandUICanvas");
         thisKey = GetLastCharacterAsInt(this.gameObject);
     }
@@ -33,11 +33,15 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
         {
             GameManager.currentRoom = thisKey;  //current room Update
 
-            StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
+            if(StageManager.map[thisKey].isRevealed == false)
+            {
+                StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
+                gameManager.GetComponent<GameManager>().DoomCountModify(-1);    //깨림찍하다.
+            }
 
 
             //Start current StartRoomEventPhase
-            GameManagerObj.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
+            gameManager.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
 
             //move-> closeTap
             LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
@@ -65,7 +69,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     //인접 키 리스트 받아서 이 오브젝트가 해당 리스트안의 키중에서 해당 사항 있는오브젝트인지 판별
     void CheckConnect()
     {
-        isConnect = GameManagerObj.GetComponent<StageManager>().FindAttachedKey(GameManager.currentRoom).Contains(thisKey);
+        isConnect = gameManager.GetComponent<StageManager>().FindAttachedKey(GameManager.currentRoom).Contains(thisKey);
     }
 
     //visualization
