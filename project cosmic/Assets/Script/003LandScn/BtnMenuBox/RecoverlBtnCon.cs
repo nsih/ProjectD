@@ -63,7 +63,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //
     public void OnclickRecover()
     {
-        gameManager.GetComponent<StageManager>().CheckStageQuest(GameManager.currentStage); //퀘스트 체크
+        gameManager.GetComponent<StageManager>().CheckStageQuest(); //퀘스트 체크
 
 
         if(GameManager.isActionPhase && GameManager.actionStack != 0)
