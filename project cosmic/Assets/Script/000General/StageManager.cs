@@ -10,10 +10,65 @@ public class StageManager : MonoBehaviour
     public static Dictionary<int, RoomData> map = new Dictionary<int, RoomData>();
 
 
+
+
     void Start ()
     {
         gameManager = GameObject.Find("GameManager");
     }
+
+    public void CheckStageQuest()
+    {
+        if(GameManager.currentStage == 0)
+        {
+            CheckisRevealed();
+        }
+
+        else if(GameManager.currentStage == 1)
+        {
+            CheckDoomCount();
+        }
+
+
+        else
+        {
+            Debug.Log("stage : "+ GameManager.currentStage );
+        }
+    }
+
+
+    public int CheckisRevealed()  //모든 방을 탐험
+    {
+        int count = 0;
+        foreach (var kvp in map)
+        {
+            RoomData node = kvp.Value;
+            int key = kvp.Key;
+
+            if (map[key].isRevealed == true)
+            {
+                count++;
+            }
+        }
+
+        if (count == map.Count)
+        {
+            GameManager.isQuestDone = true;
+        }
+
+        return count;
+    }
+
+
+    void CheckDoomCount()
+    {
+        if(GameManager.doomCount == 0)
+        {
+            GameManager.isQuestDone = true;
+        }
+    }
+
+
 
     #region "map Generate"
     public void GenerateNewStage()    //기본 외형은 정해져 있음. Search는 false로 함
@@ -124,8 +179,6 @@ public class StageManager : MonoBehaviour
     #endregion
 
 
-
-
     //인접 맵 찾기
     public List<int> FindAttachedKey(int key)
     {
@@ -149,10 +202,7 @@ public class StageManager : MonoBehaviour
     }
     
 
-
-
     //방 움직이면 방 이벤트 시작(시작안하면 안하는)
-
     public void StartRoomEventPhase(RoomType roomType)
     {
         //땅 로드 없음.
@@ -216,10 +266,6 @@ public class StageManager : MonoBehaviour
             Debug.Log(roomType);
         }
     }
-
-
-
-
 }
 
 

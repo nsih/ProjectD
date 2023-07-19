@@ -29,6 +29,9 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)  //사실상 이동함수
     {
+        gameManager.GetComponent<StageManager>().CheckStageQuest(GameManager.currentStage); //퀘스트 체크
+
+
         if(GameManager.isActionPhase && isConnect && GameManager.doomCount != 0)
         {
             GameManager.currentRoom = thisKey;  //current room Update
