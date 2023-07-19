@@ -37,16 +37,53 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        currentStage = 0;
-        currentRoom = 0;
-
-        actionStack = 1;
+        currentStage = -1;
     }
 
 
     public static GameManager Instance
     {
         get { return instance; }
+    }
+
+
+
+    public void OpenNewStage()
+    {
+        //initialize Stage
+
+        currentStage++;
+        currentRoom = 0;
+
+        GetComponent<StageManager>().GenerateNewStage();
+
+        DoomCountInitialize();
+        PlayerLocationReset();
+        ActionStackReset();
+
+
+    }
+
+    public void OpenNewRoom()
+    {
+        //initialize Room
+
+        PlayerLocationReset();
+        ActionStackReset();
+        DoomCountModify(-1);
+    }
+
+
+    public void SetEncounterPhase()
+    {
+        isEncounterPhase = true;
+        isActionPhase = false;
+    }
+
+    public void SetActionPhase()
+    {
+        isEncounterPhase = false;
+        isActionPhase = true;
     }
 
 
@@ -58,24 +95,26 @@ public class GameManager : MonoBehaviour
 
     void CheckDoomCount()
     {
-        if(doomCount == 0 && actionStack == 0 && isActionPhase) //&&퀘스트 완료 여부
+        if(doomCount == 0 && isActionPhase && actionStack == 0) //&&퀘스트 완료 여부
         {
             Debug.Log("GameOver");
-            
         }
     }
 
 
-    public void ActionStackInitialize()
+    public void ActionStackReset()
     {
+        /*
         GameObject player;
 
         if(GameObject.Find("player") != null)
         {
-            player = GameObject.Find("player");
+            player = player.GameObject.Find("player");
 
-            actionStack = player.GetComponent<PlayerInfo>().actionLimit;
+            actionStack = GetComponent<PlayerInfo>().actionLimit;
         }
+        */
+        actionStack = GetComponent<PlayerInfo>().actionLimit;
     }
 
     public void ActionStackModify(int modifier)
@@ -120,5 +159,21 @@ public class GameManager : MonoBehaviour
         {
             doomCount = changedDoomCount;
         }
+    }
+
+
+
+    void PlayerLocationReset()
+    {
+        GameObject player;
+
+        if(GameObject.Find("player") != null)
+        {
+            player = GameObject.Find("player");
+
+            player.transform.position = new Vector3 (0,0,0);
+        }
+
+
     }
 }

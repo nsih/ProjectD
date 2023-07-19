@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {    
+    GameObject gameManager;
+
     public static Dictionary<int, RoomData> map = new Dictionary<int, RoomData>();
 
-    void Start() 
+
+    void Start ()
     {
-        GenerateNewStage();
+        gameManager = GameObject.Find("GameManager");
     }
 
     #region "map Generate"
@@ -152,20 +155,19 @@ public class StageManager : MonoBehaviour
 
     public void StartRoomEventPhase(RoomType roomType)
     {
-        //1. 땅 로드. 플레이어 이동.
+        //땅 로드 없음.
+        //일단 다 actionphase로 고정해뒀음
 
         if(roomType == RoomType.Null)
         {
-            GameManager.isEncounterPhase = false;
-            GameManager.isActionPhase = true;
-            
+            gameManager.GetComponent<GameManager>().SetActionPhase();
+
             Debug.Log(roomType);
         }
 
         else if(roomType == RoomType.Battle)
         {
-            GameManager.isEncounterPhase = true;
-            GameManager.isActionPhase = false;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
 
 
             //몹젠 함수
@@ -176,8 +178,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Test)
         {
-            GameManager.isEncounterPhase = true;
-            GameManager.isActionPhase = false;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
             
 
             Debug.Log(roomType);
@@ -185,8 +186,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Altar)
         {
-            GameManager.isEncounterPhase = false;
-            GameManager.isActionPhase = true;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
 
 
             Debug.Log(roomType);
@@ -194,8 +194,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Shop)
         {
-            GameManager.isEncounterPhase = false;
-            GameManager.isActionPhase = true;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
 
 
             Debug.Log(roomType);
@@ -203,8 +202,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Event)
         {
-            GameManager.isEncounterPhase = false;
-            GameManager.isActionPhase = true;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
             
 
             Debug.Log(roomType);
@@ -212,8 +210,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Boss)
         {
-            GameManager.isEncounterPhase = true;
-            GameManager.isActionPhase = false;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
             
 
             Debug.Log(roomType);

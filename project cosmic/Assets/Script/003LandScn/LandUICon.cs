@@ -10,6 +10,8 @@ public class LandUICon : MonoBehaviour
     GameObject roomType;
     GameObject phaseType;
 
+    GameObject DoomCounter;
+
 
     bool isMapOpen;
 
@@ -18,6 +20,7 @@ public class LandUICon : MonoBehaviour
         pnlBackGround = GameObject.Find("PnlBackGround");
         roomType = GameObject.Find("RoomType");
         phaseType = GameObject.Find("PhaseType");
+        DoomCounter = GameObject.Find("DoomCounter");
 
         isMapOpen = false;
     }
@@ -33,6 +36,13 @@ public class LandUICon : MonoBehaviour
 
         ShowRoomType();
         ShowPhaseType();
+        ShowDoomCounter();
+    }
+
+
+    void ShowDoomCounter()
+    {
+        DoomCounter.GetComponent<TextMeshProUGUI>().text = GameManager.doomCount.ToString();
     }
 
 
@@ -64,7 +74,7 @@ public class LandUICon : MonoBehaviour
     }
 
 
-    void MiniMapCon()
+    public void MiniMapCon()
     {
         if(isMapOpen)
         {

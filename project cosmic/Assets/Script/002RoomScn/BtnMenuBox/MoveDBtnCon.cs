@@ -53,7 +53,7 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             OpenPopup();
         
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "방을 떠나 드림랜드로 이동할거야?";
+            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "지금 드림랜드로 이동할거야?";
 
             btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
             btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";
@@ -67,6 +67,12 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         ClosePopup();
 
         SceneManager.LoadScene("ScnLand");
+
+        //스테이지 0 초기화 ㄱ
+
+        
+        gameManager.GetComponent<GameManager>().OpenNewStage();
+
         gameManager.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
     }
 

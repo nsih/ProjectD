@@ -54,17 +54,23 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnClickMove()
     {
-        if(GameManager.doomCount != 0)
+        if(GameManager.isQuestDone)
         {
-            landUiCanvas.GetComponent<LandUICon>().ShowMiniMap();
-        }
-
-        else
-        {
-            Debug.Log("씬 이동 했다 칩시다.");
+            Debug.Log("보스 씬으로 이동 했다 칩시다.");
             //SceneManager.LoadScene("ScnLand");
         }
-        
+        else
+        {
+            if(GameManager.doomCount > 0 )
+            {
+                landUiCanvas.GetComponent<LandUICon>().MiniMapCon();
+            }
+
+            else if(GameManager.doomCount == 0)
+            {
+                Debug.Log("아 게임오바에요.");
+            }
+        }        
     }
 
 
@@ -72,16 +78,25 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if(GameManager.isActionPhase)
         {
-            if(GameManager.doomCount >0)
+            if(GameManager.isQuestDone)
             {
                 ButtonImage.GetComponent<Image>().color = Color.white;
-                ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
+                ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=##8258FA>운명</color>";
             }
 
             else
             {
-                ButtonImage.GetComponent<Image>().color = Color.white;
-                ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=##8258FA>운명</color>";
+                if(GameManager.doomCount > 0 )
+                {
+                    ButtonImage.GetComponent<Image>().color = Color.white;
+                    ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
+                }
+
+                else if(GameManager.doomCount == 0)
+                {
+                    ButtonImage.GetComponent<Image>().color = Color.white;
+                    ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FA5858>운명</color>";  //벌건 운명
+                }
             }
         }
         else
@@ -89,8 +104,6 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             ButtonImage.GetComponent<Image>().color = Color.clear;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>이동</color>";
         }
-
-
 
     }
 

@@ -29,15 +29,16 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)  //사실상 이동함수
     {
-        if(GameManager.isActionPhase && isConnect)
+        if(GameManager.isActionPhase && isConnect && GameManager.doomCount != 0)
         {
             GameManager.currentRoom = thisKey;  //current room Update
 
             if(StageManager.map[thisKey].isRevealed == false)
             {
                 StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
-                gameManager.GetComponent<GameManager>().DoomCountModify(-1);    //깨림찍하다.
             }
+
+            gameManager.GetComponent<GameManager>().OpenNewRoom();
 
 
             //Start current StartRoomEventPhase
