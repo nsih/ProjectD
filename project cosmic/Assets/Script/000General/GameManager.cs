@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
         ActionStackReset();
         DoomCountModify(-1);
         GetComponent<StageManager>().AddTpConnect();
+
+        GetComponent<StageManager>().CheckStageQuest();
     }
 
 
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
     {
         if(currentStage == 0)
         {
-            doomCount = 7;
+            doomCount = 8;
         }
 
         else

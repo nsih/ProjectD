@@ -6,6 +6,7 @@ using TMPro;
 
 public class LandUICon : MonoBehaviour
 {
+    GameObject gameManager;
     GameObject pnlBackGround;
     GameObject roomType;
     GameObject phaseType;
@@ -21,6 +22,7 @@ public class LandUICon : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
         roomType = GameObject.Find("RoomType");
         phaseType = GameObject.Find("PhaseType");
@@ -44,6 +46,9 @@ public class LandUICon : MonoBehaviour
         ShowRoomType();
         ShowPhaseType();
         ShowDoomCounter();
+
+        ShowQuestName();
+        ShowQuestValue();
     }
 
 
@@ -105,20 +110,22 @@ public class LandUICon : MonoBehaviour
             if(GameManager.isQuestDone)
             {
                 questValue.GetComponent<TextMeshProUGUI>().text = 
-                "탐험한 방 : ("+
-                gameObject.GetComponent<StageManager>().CheckisRevealed()+
+                "탐험한 방\n("+
+                gameManager.GetComponent<StageManager>().CheckisRevealed()+
                 " / "+
                 StageManager.map.Count+
-                ") "+  "완료";
+                ")    "+  
+                "<color=#5882FA>완료!</color>";
             }
             else
             {
                 questValue.GetComponent<TextMeshProUGUI>().text = 
-                "탐험한 방 : ("+
-                gameObject.GetComponent<StageManager>().CheckisRevealed()+
-                " / "+
-                StageManager.map.Count+
-                ")";
+                "탐험한 방\n(" +
+                gameManager.GetComponent<StageManager>().CheckisRevealed() +
+                " / " +
+                StageManager.map.Count +
+                ")    " + 
+                "<color=#FA5858>진행중</color>";
             }
         }
 

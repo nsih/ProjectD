@@ -23,7 +23,11 @@ public class StageManager : MonoBehaviour
     {
         if(GameManager.currentStage == 0)
         {
-            CheckisRevealed();
+            if(map.Count == CheckisRevealed())
+            {
+                GameManager.isQuestDone = true;
+                Debug.Log("asd");
+            }
         }
 
         else if(GameManager.currentStage == 1)
@@ -50,11 +54,6 @@ public class StageManager : MonoBehaviour
             {
                 count++;
             }
-        }
-
-        if (count == map.Count)
-        {
-            GameManager.isQuestDone = true;
         }
 
         return count;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCon : MonoBehaviour
 {
@@ -8,8 +9,17 @@ public class PlayerCon : MonoBehaviour
     GameObject playerInfo;  //player status
     GameObject player;
     GameObject handPivot;
+    GameObject sword;
 
     Animator playerAnimator;
+
+
+
+    public Sprite sword0;
+    public Sprite sword1;
+
+
+    
 
 
     KeyCode playerUpKey;
@@ -38,6 +48,7 @@ public class PlayerCon : MonoBehaviour
         playerAnimator = this.gameObject.GetComponent<Animator>();
 
         handPivot = GameObject.Find("handPivot");
+        sword = GameObject.Find("sword");
 
         //나중에 gameGanager에서 설정된 키 설정을 가져오란 말입니다.
         playerUpKey = KeyCode.W;
@@ -48,7 +59,7 @@ public class PlayerCon : MonoBehaviour
 
         //Game Manager의 PlayerInfo에서 가져오세요
         speed = 10f;
-        attackSpeed = 1200;   //초당회전각도 .. 인데 텀이 중요하지 휘두르는 속도가 중요할까? 검술에 따라서 바뀌는 경우는 있어도 능력치로 넣기는 좀
+        attackSpeed = 1000;   //초당회전각도 .. 인데 텀이 중요하지 휘두르는 속도가 중요할까? 검술에 따라서 바뀌는 경우는 있어도 능력치로 넣기는 좀
 
         canAttack = true;
         attackTerm = 0.5f;
@@ -153,14 +164,49 @@ public class PlayerCon : MonoBehaviour
     IEnumerator BasicAttack()
     {
         Quaternion startRotation = handPivot.transform.rotation;
+        
 
-        Quaternion targetRotation0 = startRotation * Quaternion.Euler(0f, 0f, 60);
-        Quaternion targetRotation1 = startRotation * Quaternion.Euler(0f, 0f, -60);
+
+        Quaternion targetRotation0 = startRotation * Quaternion.Euler(0f, 0f, -85);
+        Quaternion targetRotation1 = startRotation * Quaternion.Euler(0f, 0f, 70);
+        Quaternion targetRotation2 = startRotation * Quaternion.Euler(0f, 0f, 85);
+
+
+        Quaternion targetRotation3 = startRotation * Quaternion.Euler(0f, 0f, 85);
+        Quaternion targetRotation4 = startRotation * Quaternion.Euler(0f, 0f, -70);
+        Quaternion targetRotation5 = startRotation * Quaternion.Euler(0f, 0f, -85);
 
         CheckMousePosition();
 
         if(isMouseLeft)
         {
+            isAttack = true;
+            
+            handPivot.transform.rotation = targetRotation0;
+            yield return new WaitForSeconds(0.1f);
+
+            handPivot.transform.rotation = targetRotation1;
+
+            float elapsedTime = 0f;
+            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (attackSpeed/2);
+            while (elapsedTime < rotationTime)
+            {
+                isAttack = true;
+
+                float t = elapsedTime / rotationTime;
+                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation1, t);
+
+                sword.GetComponent<SpriteRenderer>().sprite = sword1;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            sword.GetComponent<SpriteRenderer>().sprite = sword0;
+            yield return new WaitForSeconds(0.15f);
+
+            isAttack = false;
+            /*
             float elapsedTime = 0f;
             float rotationTime = Quaternion.Angle(startRotation, targetRotation1) / (attackSpeed/2);
             while (elapsedTime < rotationTime)
@@ -202,10 +248,70 @@ public class PlayerCon : MonoBehaviour
                 yield return null;
             }
             isAttack = false;
+            */
             
         }
+        
+
         else
         {
+            isAttack = true;
+            
+            handPivot.transform.rotation = targetRotation0;
+            yield return new WaitForSeconds(0.1f);
+
+            handPivot.transform.rotation = targetRotation1;
+
+            float elapsedTime = 0f;
+            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (attackSpeed/2);
+            while (elapsedTime < rotationTime)
+            {
+                isAttack = true;
+
+                float t = elapsedTime / rotationTime;
+                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation1, t);
+
+                sword.GetComponent<SpriteRenderer>().sprite = sword1;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            sword.GetComponent<SpriteRenderer>().sprite = sword0;
+            yield return new WaitForSeconds(0.15f);
+
+            isAttack = false;
+
+            /*
+            isAttack = true;
+            
+            handPivot.transform.rotation = targetRotation3;
+            yield return new WaitForSeconds(0.1f);
+
+            handPivot.transform.rotation = targetRotation4;
+
+            float elapsedTime = 0f;
+            float rotationTime = Quaternion.Angle(targetRotation4, targetRotation5) / (attackSpeed/2);
+            while (elapsedTime < rotationTime)
+            {
+                isAttack = true;
+
+                float t = elapsedTime / rotationTime;
+                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation4, t);
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+
+            yield return new WaitForSeconds(0.15f);
+
+            isAttack = false;
+            */
+
+
+
+            /*
             float elapsedTime = 0f;
             float rotationTime = Quaternion.Angle(startRotation, targetRotation0) / (attackSpeed/2);
             while (elapsedTime < rotationTime)
@@ -248,6 +354,7 @@ public class PlayerCon : MonoBehaviour
             }
             
             isAttack = false;
+            */
         }
     }
 
