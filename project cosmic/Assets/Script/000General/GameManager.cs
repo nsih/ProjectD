@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         PlayerLocationReset();
         ActionStackReset();
         DoomCountModify(-1);
+        GetComponent<StageManager>().AddTpConnect();
     }
 
 

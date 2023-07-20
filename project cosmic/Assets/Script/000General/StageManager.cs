@@ -17,6 +17,8 @@ public class StageManager : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
     }
 
+    #region "Quest"
+
     public void CheckStageQuest()
     {
         if(GameManager.currentStage == 0)
@@ -35,7 +37,6 @@ public class StageManager : MonoBehaviour
             Debug.Log("stage : "+ GameManager.currentStage );
         }
     }
-
 
     public int CheckisRevealed()  //모든 방을 탐험
     {
@@ -59,7 +60,6 @@ public class StageManager : MonoBehaviour
         return count;
     }
 
-
     void CheckDoomCount()
     {
         if(GameManager.doomCount == 0)
@@ -67,6 +67,8 @@ public class StageManager : MonoBehaviour
             GameManager.isQuestDone = true;
         }
     }
+
+    #endregion
 
 
 
@@ -143,9 +145,8 @@ public class StageManager : MonoBehaviour
             {
                 node.roomType = RoomType.Shop;
 
-                node.AddConnectedNode(map[1]);
                 node.AddConnectedNode(map[3]);
-                node.AddConnectedNode(map[6]);
+                node.AddConnectedNode(map[5]);
             }
 
             else if(key == 5)
@@ -201,7 +202,23 @@ public class StageManager : MonoBehaviour
         return connectedNodeKeys;
     }
     
+    public void AddTpConnect()  //isTp 보고 연결
+    {
+        if(map[GameManager.currentRoom].isTp)
+        {
+            foreach (var kvp in map)   //key-value pair
+            {
+                RoomData node = kvp.Value;
+                int key = kvp.Key;
 
+                //이미 연결 안돼있는 방에 연결 추가 (체크는 미니맵 열면 해줌)
+                if(key != GameManager.currentRoom && !FindAttachedKey(key).Contains(GameManager.currentRoom))
+                {
+                    node.AddConnectedNode(map[GameManager.currentRoom]); 
+                }
+            }
+        }
+    }
     //방 움직이면 방 이벤트 시작(시작안하면 안하는)
     public void StartRoomEventPhase(RoomType roomType)
     {
@@ -266,6 +283,7 @@ public class StageManager : MonoBehaviour
             Debug.Log(roomType);
         }
     }
+
 }
 
 
