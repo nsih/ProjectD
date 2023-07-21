@@ -10,6 +10,8 @@ public class PlayerCon : MonoBehaviour
     GameObject player;
     GameObject handPivot;
     GameObject sword;
+    GameObject strikePivot;
+    GameObject strike;
 
     Animator playerAnimator;
 
@@ -47,8 +49,11 @@ public class PlayerCon : MonoBehaviour
         player = GameObject.Find("player");
         playerAnimator = this.gameObject.GetComponent<Animator>();
 
-        handPivot = GameObject.Find("handPivot");
+        handPivot = GameObject.Find("HandPivot");
         sword = GameObject.Find("sword");
+
+        strikePivot = GameObject.Find("StrikePivot");
+        strike = strikePivot.transform.Find("Strike").gameObject;
 
         //나중에 gameGanager에서 설정된 키 설정을 가져오란 말입니다.
         playerUpKey = KeyCode.W;
@@ -87,7 +92,8 @@ public class PlayerCon : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
-        RotatingPivot();
+        HandPivotCon();
+        StrikePivotCon();
     }
     void LateUpdate()
     {
@@ -134,7 +140,7 @@ public class PlayerCon : MonoBehaviour
 
     #region "attacking"
 
-    void RotatingPivot()    //
+    void HandPivotCon()    //
     {
         if(!isAttack)
         {
@@ -148,6 +154,37 @@ public class PlayerCon : MonoBehaviour
             handPivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
+
+    void StrikePivotCon()
+    {
+        if(!isAttack)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f;
+
+            Vector3 direction = mousePosition - strikePivot.transform.position;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            strikePivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
+    void StrikeCon()
+    {
+        if(isAttack && !strike.activeSelf)
+        {
+            strike.SetActive(true);
+        }
+
+        if(!isAttack && strike.activeSelf)
+        {
+            strike.SetActive(false);
+        }
+
+
+    }
+
 
 
     void CheckMousePosition()
@@ -182,6 +219,9 @@ public class PlayerCon : MonoBehaviour
         {
             isAttack = true;
             
+            StrikeCon();
+
+
             handPivot.transform.rotation = targetRotation0;
             yield return new WaitForSeconds(0.1f);
 
@@ -206,6 +246,7 @@ public class PlayerCon : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
 
             isAttack = false;
+            StrikeCon();
             /*
             float elapsedTime = 0f;
             float rotationTime = Quaternion.Angle(startRotation, targetRotation1) / (attackSpeed/2);
@@ -257,6 +298,9 @@ public class PlayerCon : MonoBehaviour
         {
             isAttack = true;
             
+            StrikeCon();
+
+
             handPivot.transform.rotation = targetRotation0;
             yield return new WaitForSeconds(0.1f);
 
@@ -279,8 +323,9 @@ public class PlayerCon : MonoBehaviour
 
             sword.GetComponent<SpriteRenderer>().sprite = sword0;
             yield return new WaitForSeconds(0.15f);
-
+            
             isAttack = false;
+            StrikeCon();
 
             /*
             isAttack = true;
