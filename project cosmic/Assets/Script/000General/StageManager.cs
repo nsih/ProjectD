@@ -201,9 +201,10 @@ public class StageManager : MonoBehaviour
         return connectedNodeKeys;
     }
     
-    public void AddTpConnect()  //isTp 보고 연결
+    public void AddTpConnect()  ////is TP는 is clear 보고 연결. 
     {
-        if(map[GameManager.currentRoom].isTp)
+
+        if(map[GameManager.currentRoom].isTp && map[GameManager.currentRoom].isClear) 
         {
             foreach (var kvp in map)   //key-value pair
             {
@@ -226,9 +227,85 @@ public class StageManager : MonoBehaviour
 
         if(roomType == RoomType.Null)
         {
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            EndRoomEventPhase(roomType);
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Battle)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            //this.gameObject.GetComponent<BattleEventManager>().BattleEvent();
+
+            EndRoomEventPhase(roomType);
+
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Test)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            
+            EndRoomEventPhase(roomType);
+
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Altar)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            EndRoomEventPhase(roomType);
+
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Shop)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            EndRoomEventPhase(roomType);
+
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Event)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            EndRoomEventPhase(roomType);
+            
+
+            Debug.Log("Start"+roomType);
+        }
+
+        else if(roomType == RoomType.Boss)
+        {
+            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+
+            EndRoomEventPhase(roomType);
+            
 
             Debug.Log(roomType);
+        }
+    }
+
+
+    public void EndRoomEventPhase(RoomType roomType)    //보상도 주고 마 다했어.
+    {
+        if(roomType == RoomType.Null)
+        {
+            map[GameManager.currentRoom].isClear = true;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
+
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Battle)
@@ -236,50 +313,56 @@ public class StageManager : MonoBehaviour
             gameManager.GetComponent<GameManager>().SetActionPhase();
 
 
-            //몹젠 함수
-
-
-            Debug.Log(roomType);
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Test)
         {
+            map[GameManager.currentRoom].isClear = true;
             gameManager.GetComponent<GameManager>().SetActionPhase();
             
-
-            Debug.Log(roomType);
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Altar)
         {
+            map[GameManager.currentRoom].isClear = true;
             gameManager.GetComponent<GameManager>().SetActionPhase();
-
-
-            Debug.Log(roomType);
+            
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Shop)
         {
+            map[GameManager.currentRoom].isClear = true;
             gameManager.GetComponent<GameManager>().SetActionPhase();
-
-
-            Debug.Log(roomType);
+            
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Event)
         {
+            map[GameManager.currentRoom].isClear = true;
             gameManager.GetComponent<GameManager>().SetActionPhase();
             
-
-            Debug.Log(roomType);
+            Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Boss)
         {
+            map[GameManager.currentRoom].isClear = true;
             gameManager.GetComponent<GameManager>().SetActionPhase();
             
+            Debug.Log("End"+roomType);
+        }
+        
 
-            Debug.Log(roomType);
+        else
+        {
+            map[GameManager.currentRoom].isClear = true;
+            gameManager.GetComponent<GameManager>().SetActionPhase();
+            
+            Debug.Log("End Error : "+roomType);
         }
     }
 
