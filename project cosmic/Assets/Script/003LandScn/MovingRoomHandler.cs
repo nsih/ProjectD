@@ -39,8 +39,6 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
             }
 
             gameManager.GetComponent<GameManager>().OpenNewRoom();
-            
-            gameManager.GetComponent<StageManager>().CheckStageQuest(); //퀘스트 체크
 
 
             //Start current StartRoomEventPhase

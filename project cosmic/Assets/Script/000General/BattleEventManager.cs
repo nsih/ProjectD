@@ -4,33 +4,27 @@ using UnityEngine;
 
 public class BattleEventManager : MonoBehaviour
 {
+    
+    public GameObject[] battleRoomArray = new GameObject[3];
+
+
+
+    public EnemyData[] enemyDatas = new EnemyData[3];
     public GameObject[] enemyArray = new GameObject[3];
-    public GameObject[] battleRoomArray = new GameObject[1];
-
-
     public List<GameObject> enemyPool = new List<GameObject>(); 
 
 
 
-
-
-
-    int generateFlag;
-
-    void Start()
+    void InitializeEnemyPool()    //비어있는 풀에 몹을 잰하는.. feat enemy data
     {
-        
-    }
-
-
-
-    void GenerateEnemyPool()
-    {
-        for (int i = 0; i < enemyArray.Length; i++)
+        for (int i = 0; i < enemyDatas.Length; i++)
         {
             for (int j = 0; j < 10; j++)
             {
                 GameObject enemy = Instantiate(enemyArray[i]);
+
+                enemy.GetComponent<EnemyCon>().enemyData = enemyDatas[i];
+
                 enemy.SetActive(false);
                 enemyPool.Add(enemy);
             }
@@ -55,24 +49,20 @@ public class BattleEventManager : MonoBehaviour
     }
 
 
-}
-
-
-public class BattleData
-{
-    public int battleNum;     //index
-
-    public BattleData(int battleNum,  bool isRevealed, bool isTp,bool isClear)
-    {
-        this.battleNum = battleNum;
-    }
-
-
     public void GenMob(int stage)
     {
         if(stage == 0)
         {
-            
+
+
+        }
+
+        else if(stage == 1)
+        {
+
+
         }
     }
+
+
 }
