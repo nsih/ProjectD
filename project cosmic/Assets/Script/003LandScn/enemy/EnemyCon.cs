@@ -10,24 +10,51 @@ public class EnemyCon : MonoBehaviour
 
     public EnemyData enemyData;
 
-    private CircleCollider2D circleCollider;
+    CircleCollider2D circleCollider;
+
+
+    Animator enemyAnimator;
+
+    public int mobNum;
+
+    public int hp;
+    public int damage;
+    public float moveSpeed;
+    public float attackDelay;
+    public float bulletSpeed;
+    public MovingType movingType;
+    public AttackType attackType;
+    
 
 
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-        player = GameObject.Find("player");        
+        player = GameObject.Find("player");
+
+        mobNum = enemyData.mobNum;
+        enemyAnimator = enemyData.enemyAnimator;
     }
 
-    void OnEnable()
+    void Update ()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.enemySprite;
+
+    }
+
+    void FixedUpdate() 
+    {
+        Moving();
+    }
+
+    void OnEnable() 
+    {
+        InitializeEnemyStatus();
     }
 
     void OnDisable() 
     {
-        if(gameManager.GetComponent<BattleEventManager>().isPoolAllDisable() == true)
+        if(gameManager.GetComponent<BattleEventManager>().isPoolAllDone() == true)
         {
             gameManager.GetComponent<StageManager>().EndRoomEventPhase(StageManager.map[ GameManager.currentRoom ].roomType);
         }
@@ -42,27 +69,52 @@ public class EnemyCon : MonoBehaviour
     }
 
 
-    void AddCircleColliderToGameObject(float radius, Vector2 offset)
+    ///
+
+    void InitializeEnemyStatus()
     {
-        circleCollider = gameObject.AddComponent<CircleCollider2D>();
+        hp = enemyData.hp;
+        damage = enemyData.damage;
+        moveSpeed = enemyData.moveSpeed;
 
-        circleCollider.radius = radius;
+        attackDelay = enemyData.attackDelay;
+        bulletSpeed = enemyData.bulletSpeed;
 
-        circleCollider.offset = offset;
-    }
-
-    void RemoveCircleColliderFromGameObject()
-    {
-        // 원 콜라이더 컴포넌트 제거
-        if (circleCollider != null)
-        {
-            Destroy(circleCollider);
-        }
+        movingType = enemyData.movingType;
+        attackType = enemyData.attackType;  
     }
 
 
     void Moving() 
     {
+        if(movingType == MovingType.none)
+        {
 
+        }
+        else if(movingType == MovingType.chase)
+        {
+
+        }
+        else if(movingType == MovingType.rush)
+        {
+
+        }
+        else if(movingType == MovingType.run)
+        {
+
+        }
+    }
+
+    void Attack()
+    {
+        if(attackType == AttackType.none)
+        {
+
+        }
+
+        else if(attackType == AttackType.aimShot)
+        {
+
+        }
     }
 }

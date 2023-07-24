@@ -10,7 +10,7 @@ public class RoomDialogueCon : MonoBehaviour
 {
     public GameObject gameManager;
 
-    bool isTalking = false;
+    //bool isTalking = false;
 
     public static int roomFlag = 0;
     public int currentIndex;

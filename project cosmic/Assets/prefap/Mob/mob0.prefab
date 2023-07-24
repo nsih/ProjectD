@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6237333865565945000
 Transform:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &420326022643682654
 SpriteRenderer:
@@ -266,3 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40d3d585e914904c8537a7aefed8bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 0}
+  hp: 0
+  damage: 0
+  moveSpeed: 0
+  attackDelay: 0
+  bulletSpeed: 0
+  movingType: 0
+  attackType: 0

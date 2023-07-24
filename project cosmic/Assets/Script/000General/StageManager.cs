@@ -238,9 +238,7 @@ public class StageManager : MonoBehaviour
         {
             gameManager.GetComponent<GameManager>().SetEncounterPhase();
 
-            //this.gameObject.GetComponent<BattleEventManager>().BattleEvent();
-
-            EndRoomEventPhase(roomType);
+            this.gameObject.GetComponent<BattleEventManager>().GenBattleRoom(GameManager.currentStage);
 
 
             Debug.Log("Start"+roomType);
