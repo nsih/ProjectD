@@ -8,6 +8,7 @@ public class PlayerCon : MonoBehaviour
     GameObject gameManager; //키정보
     GameObject playerInfo;  //player status
     GameObject player;
+    GameObject playerHit;
     GameObject handPivot;
     GameObject sword;
     GameObject strikePivot;
@@ -31,6 +32,7 @@ public class PlayerCon : MonoBehaviour
 
 
     bool isWalk;
+    bool isDash;
     bool canAttack;
     bool isAttack;
     bool isMouseLeft;
@@ -41,6 +43,9 @@ public class PlayerCon : MonoBehaviour
     float attackTimer;
     float attackTerm;
 
+    float dashCooldown = 0.5f;
+    float lastDashTime = 0f;
+
 
     void Start()
     {
@@ -48,6 +53,8 @@ public class PlayerCon : MonoBehaviour
         player = GameObject.Find("player");
         playerAnimator = this.gameObject.GetComponent<Animator>();
 
+
+        playerHit = GameObject.Find("PlayerHit");
         handPivot = GameObject.Find("HandPivot");
         sword = GameObject.Find("sword");
 
@@ -61,8 +68,8 @@ public class PlayerCon : MonoBehaviour
         playerRightKey = KeyCode.D;
 
 
-
-        speed = 10f;
+        isDash = false;
+        speed = 15f;
 
         canAttack = true;
         attackTerm = 0.5f;
@@ -79,6 +86,11 @@ public class PlayerCon : MonoBehaviour
         {
             AttackTimerStart();
             StartCoroutine(BasicAttack());
+        }
+
+        if(Input.GetMouseButtonDown(1) && !isAttack && !isDash)
+        {
+            Dash();
         }
 
 
@@ -103,36 +115,73 @@ public class PlayerCon : MonoBehaviour
 
     
     void PlayerMovement()
-{
-    if (Input.GetKey(playerUpKey) || Input.GetKey(playerLeftKey) || Input.GetKey(playerDownKey) || Input.GetKey(playerRightKey))
     {
-        isWalk = true;
-
-        if (Input.GetKey(playerUpKey))
+        if(!isDash)
         {
-            player.transform.Translate(Vector2.up * Time.deltaTime * speed);
+
+
+        if (Input.GetKey(playerUpKey) || Input.GetKey(playerLeftKey) || Input.GetKey(playerDownKey) || Input.GetKey(playerRightKey))
+        {
+            isWalk = true;
+
+            if (Input.GetKey(playerUpKey))
+            {
+                player.transform.Translate(Vector2.up * Time.deltaTime * speed);
+            }
+
+            if (Input.GetKey(playerLeftKey))
+            {
+                player.transform.Translate(Vector2.left * Time.deltaTime * speed);
+            }
+
+            if (Input.GetKey(playerDownKey))
+            {
+                player.transform.Translate(Vector2.down * Time.deltaTime * speed);
+            }
+
+            if (Input.GetKey(playerRightKey))
+            {
+                player.transform.Translate(Vector2.right * Time.deltaTime * speed);
+            }
+        }
+        else
+        {
+            isWalk = false;
         }
 
-        if (Input.GetKey(playerLeftKey))
-        {
-            player.transform.Translate(Vector2.left * Time.deltaTime * speed);
-        }
 
-        if (Input.GetKey(playerDownKey))
-        {
-            player.transform.Translate(Vector2.down * Time.deltaTime * speed);
-        }
-
-        if (Input.GetKey(playerRightKey))
-        {
-            player.transform.Translate(Vector2.right * Time.deltaTime * speed);
         }
     }
-    else
+
+    void Dash()
     {
-        isWalk = false;
+        if (!isDash && Time.time - lastDashTime >= dashCooldown)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f;
+
+            Vector3 direction = mousePosition - player.transform.position;
+
+            StartCoroutine(DoDash(direction.normalized));
+        }
     }
-}
+
+    IEnumerator DoDash(Vector3 Direction)
+    {
+        playerHit.GetComponent<CircleCollider2D>().enabled = false;
+        
+        float timer = 0f;
+        while (timer < 0.15f)
+        {
+            isDash = true;
+            timer += Time.deltaTime;
+            transform.position += Direction * speed * 5.0f * Time.deltaTime;
+            yield return null;
+        }
+        isDash = false;
+        playerHit.GetComponent<CircleCollider2D>().enabled = true;
+        lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록합니다.
+    }
 
 
 
@@ -168,18 +217,17 @@ public class PlayerCon : MonoBehaviour
         }
     }
 
-    void StrikeCon()
+    public void StrikeCon()
     {
         if(isAttack && !strike.activeSelf)
         {
             strike.SetActive(true);
         }
 
-        if(!isAttack && strike.activeSelf)
+        else if(strike.activeSelf)
         {
             strike.SetActive(false);
         }
-
 
     }
 
@@ -216,9 +264,7 @@ public class PlayerCon : MonoBehaviour
         if(isMouseLeft)
         {
             isAttack = true;
-            
             StrikeCon();
-
 
             handPivot.transform.rotation = targetRotation0;
             yield return new WaitForSeconds(0.1f);
@@ -242,9 +288,11 @@ public class PlayerCon : MonoBehaviour
 
             sword.GetComponent<SpriteRenderer>().sprite = sword0;
             yield return new WaitForSeconds(0.15f);
-
             isAttack = false;
             StrikeCon();
+
+
+            
             /*
             float elapsedTime = 0f;
             float rotationTime = Quaternion.Angle(startRotation, targetRotation1) / (attackSpeed/2);
@@ -295,9 +343,7 @@ public class PlayerCon : MonoBehaviour
         else
         {
             isAttack = true;
-            
             StrikeCon();
-
 
             handPivot.transform.rotation = targetRotation0;
             yield return new WaitForSeconds(0.1f);
@@ -317,14 +363,12 @@ public class PlayerCon : MonoBehaviour
 
                 elapsedTime += Time.deltaTime;
                 yield return null;
-            }
+            }   
 
             sword.GetComponent<SpriteRenderer>().sprite = sword0;
             yield return new WaitForSeconds(0.15f);
-            
             isAttack = false;
             StrikeCon();
-
             /*
             isAttack = true;
             

@@ -77,12 +77,21 @@ public class EnemyCon : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.collider == playerHit.GetComponent<Collider2D>() )
+        {
+            Debug.Log("asd");
+            HandlePlayerStrike();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other) 
     {
         if(other == playerStrike.GetComponent<Collider2D>() )
         {
-            Debug.Log("asd");
             HandlePlayerStrike();
+            player.GetComponent<PlayerCon>().StrikeCon();
         }
     }
 
