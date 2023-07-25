@@ -21,6 +21,8 @@ public class EnemyData : ScriptableObject
     public float attackDelay;
     public float bulletSpeed;
 
+    public bool knockBackable;
+
 
     public MovingType movingType;
     public AttackType attackType;

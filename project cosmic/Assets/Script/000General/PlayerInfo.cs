@@ -11,9 +11,6 @@ public class PlayerInfo : MonoBehaviour
 
     public int actionLimit; //최대 액션스택
 
-    public float maxSpellGuage;
-    public float spellGauge;
-
 
     //기초 스탯 + (곱연산자, 합연산자)
     
@@ -26,22 +23,19 @@ public class PlayerInfo : MonoBehaviour
     public static int charm;       //매력      주사위 가중치
 
     //attack
+    public static int attackDamage;
     public static int attackType;
-    public static float attackSpeed;   //휘두르는 속도
-    public static float attackTerm;   //휘두르는 텀
 
-    //spell
-    public static int spellType;
-    public static float spellPower;     //폭탄 계수 (not 개수)
-    public static float spellRecharge;  //원충효
 
 
     //etc
-    public static float invincibilityTime; //무적시간
+    public static float invincibilityTime; //피격시 무적시간
     
     void Start()
     {
         PlayerStatusInitialize();
+
+        attackDamage = 5;
     }
 
 
@@ -51,9 +45,6 @@ public class PlayerInfo : MonoBehaviour
         maxHp = 10;
         hp = maxHp;
         //Spell
-        maxSpellGuage = 100;
-        spellGauge = maxSpellGuage;
-
         //action Stack
         actionLimit = 2;
 
@@ -179,39 +170,10 @@ public class PlayerInfo : MonoBehaviour
         }
     }
     
-    //Spell
-    void SpellGuageModify(float modifier)   //게이지 변화시 호출 (쓰거나 충전)
-    {
-        float changedSpellGuage = spellGauge+modifier;
 
-        if(changedSpellGuage > maxSpellGuage)
-        {
-            spellGauge  = maxSpellGuage;
-        }
-        else if (changedSpellGuage <= 0)
-        {
-            spellGauge = 0;
-        }
-        else
-        {
-            spellGauge = changedSpellGuage;
-        }
-    }
-    
-    void SpellRechargeModify(float modifier) //붐충효
-    {
-        float changedSpellRecharge = spellRecharge + modifier;
 
-        if(changedSpellRecharge <= 0)
-        {
-            spellRecharge = 1;
-        }
 
-        else
-        {
-            spellRecharge = changedSpellRecharge;
-        }
-    }
+
 
     //status
     void PhysicalModify(int modifier)

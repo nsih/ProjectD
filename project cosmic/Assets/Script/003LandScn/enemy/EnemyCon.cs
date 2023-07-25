@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemyCon : MonoBehaviour
 {
     GameObject gameManager;
+
     GameObject player;
+    GameObject playerHit;
+    GameObject playerStrike;
 
 
     public EnemyData enemyData;
@@ -24,6 +27,14 @@ public class EnemyCon : MonoBehaviour
     public float bulletSpeed;
     public MovingType movingType;
     public AttackType attackType;
+    public bool knockBackable;
+
+
+
+
+    bool isKnockBack;
+    float knockBackDuration = 0.05f;
+    float knockBackSpeed = 15f;
     
 
 
@@ -31,10 +42,16 @@ public class EnemyCon : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+
         player = GameObject.Find("player");
+        playerHit = GameObject.Find("playerHit");
+        playerStrike = GameObject.Find("StrikePivot").transform.GetChild(0).gameObject;
 
         mobNum = enemyData.mobNum;
         enemyAnimator = enemyData.enemyAnimator;
+
+
+        isKnockBack = false;
     }
 
     void Update ()
@@ -60,11 +77,12 @@ public class EnemyCon : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.collider == player.GetComponent<Collider2D>() )
+        if(other == playerStrike.GetComponent<Collider2D>() )
         {
-            this.gameObject.SetActive(false);
+            Debug.Log("asd");
+            HandlePlayerStrike();
         }
     }
 
@@ -82,6 +100,8 @@ public class EnemyCon : MonoBehaviour
 
         movingType = enemyData.movingType;
         attackType = enemyData.attackType;  
+
+        knockBackable = enemyData.knockBackable;
     }
 
 
@@ -116,5 +136,46 @@ public class EnemyCon : MonoBehaviour
         {
 
         }
+    }
+
+
+
+
+    ////
+    void HandlePlayerStrike()   //공격받았을때
+    {
+        KnockBack();
+        if( (hp - PlayerInfo.attackDamage) > 0)
+        {
+            hp = hp - PlayerInfo.attackDamage;
+        }
+        
+        else
+        {
+            hp = 0;
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    void KnockBack()
+    {
+        if (knockBackable && !isKnockBack)
+        {
+            isKnockBack = true;
+            Vector3 knockBackDirection = -(player.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
+            StartCoroutine(DoKnockBack(knockBackDirection));
+        }
+    }
+
+    IEnumerator DoKnockBack(Vector3 knockBackDirection)
+    {
+        float timer = 0f;
+        while (timer < knockBackDuration)
+        {
+            timer += Time.deltaTime;
+            transform.position += knockBackDirection * knockBackSpeed * Time.deltaTime;
+            yield return null;
+        }
+        isKnockBack = false;
     }
 }
