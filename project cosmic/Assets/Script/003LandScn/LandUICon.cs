@@ -8,14 +8,15 @@ public class LandUICon : MonoBehaviour
 {
     GameObject gameManager;
     GameObject pnlBackGround;
-    GameObject roomType;
     GameObject phaseType;
 
+
+    GameObject cameraCanvas;
+    GameObject roomType;
     GameObject doomCounter;
-
-
-    GameObject questName;
-    GameObject questValue;
+    GameObject questTitle;
+    GameObject questContent;
+    GameObject questDetail;
 
 
     bool isMapOpen;
@@ -24,12 +25,15 @@ public class LandUICon : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        roomType = GameObject.Find("RoomType");
         phaseType = GameObject.Find("PhaseType");
         doomCounter = GameObject.Find("DoomCounter");
 
-        questName = GameObject.Find("QuestName");
-        questValue = GameObject.Find("QuestValue");
+        cameraCanvas = GameObject.Find("CameraCanvas");
+        roomType = GameObject.Find("RoomType");
+
+        questTitle = GameObject.Find("QuestTitle");
+        questContent = GameObject.Find("QuestContent");
+        questDetail = GameObject.Find("QuestDetail");
 
         isMapOpen = false;
     }
@@ -87,14 +91,15 @@ public class LandUICon : MonoBehaviour
 
     void ShowQuestName()
     {
+        questTitle.GetComponent<TextMeshProUGUI>().text = "Stage "+GameManager.currentStage;
         if(GameManager.currentStage == 0)
         {
-            questName.GetComponent<TextMeshProUGUI>().text = "모든 방을 탐험하기!";
+            questContent.GetComponent<TextMeshProUGUI>().text = "모든 방을 탐험하기!";
         }
 
         else if(GameManager.currentStage == 1)
         {
-            questName.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
+            questContent.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
         }
 
         else
@@ -109,7 +114,7 @@ public class LandUICon : MonoBehaviour
         {
             if(GameManager.isQuestDone)
             {
-                questValue.GetComponent<TextMeshProUGUI>().text = 
+                questDetail.GetComponent<TextMeshProUGUI>().text = 
                 "탐험한 방\n("+
                 gameManager.GetComponent<StageManager>().CheckisRevealed()+
                 " / "+
@@ -119,7 +124,7 @@ public class LandUICon : MonoBehaviour
             }
             else
             {
-                questValue.GetComponent<TextMeshProUGUI>().text = 
+                questDetail.GetComponent<TextMeshProUGUI>().text = 
                 "탐험한 방\n(" +
                 gameManager.GetComponent<StageManager>().CheckisRevealed() +
                 " / " +
@@ -131,7 +136,7 @@ public class LandUICon : MonoBehaviour
 
         else if(GameManager.currentStage == 1)
         {
-            questValue.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
+            questDetail.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
         }
 
         else
