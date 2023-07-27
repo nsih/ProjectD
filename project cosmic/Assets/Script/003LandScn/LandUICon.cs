@@ -18,6 +18,11 @@ public class LandUICon : MonoBehaviour
     GameObject questContent;
     GameObject questDetail;
 
+    GameObject roomIntroPanel;
+
+
+    public Sprite[] roomTypePanelImg = new Sprite[7];
+
 
     bool isMapOpen;
 
@@ -34,6 +39,8 @@ public class LandUICon : MonoBehaviour
         questTitle = GameObject.Find("QuestTitle");
         questContent = GameObject.Find("QuestContent");
         questDetail = GameObject.Find("QuestDetail");
+
+        roomIntroPanel  = pnlBackGround.transform.Find("RoomIntroPanel").gameObject;
 
         isMapOpen = false;
     }
@@ -147,8 +154,6 @@ public class LandUICon : MonoBehaviour
 
 
 
-
-
     public void MiniMapCon()
     {
         if(isMapOpen)
@@ -160,8 +165,6 @@ public class LandUICon : MonoBehaviour
             ShowMiniMap();
         }
     }
-
-
     public void ShowMiniMap() 
     {
         GameObject miniMap;
@@ -187,7 +190,6 @@ public class LandUICon : MonoBehaviour
             Debug.Log(GameManager.currentStage);
         }      
     }
-
     public void CloseMiniMap()
     {
         GameObject miniMap;
@@ -204,6 +206,8 @@ public class LandUICon : MonoBehaviour
 
             isMapOpen = false;
             miniMap.SetActive(false);
+
+            StartCoroutine("ShowRoomIntroPanel");
         }
 
         else
@@ -212,5 +216,61 @@ public class LandUICon : MonoBehaviour
         }
     }
 
-    
+
+
+    public void StartShowRoomIntroPanel()
+    {
+        StartCoroutine("ShowRoomIntroPanel");
+    }
+
+    IEnumerator ShowRoomIntroPanel()
+    { 
+        roomIntroPanel.SetActive(true);
+
+        if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Null)
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[0];
+        }
+
+        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Altar)
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[1];
+        }
+
+        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Battle)
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[2];
+        }
+
+        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Shop)
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[3];
+        }
+
+        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Test)
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[4];
+        }
+
+        else
+        {
+            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[5];
+        }
+
+        gameManager.GetComponent<GameManager>().PauseGame();
+
+
+
+
+
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null; // 다음 프레임까지 기다림
+        }
+
+        roomIntroPanel.SetActive(false);
+        gameManager.GetComponent<GameManager>().ResumeGame();
+
+        
+    }
 }

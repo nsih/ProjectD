@@ -9,8 +9,14 @@ public class GameManager : MonoBehaviour
     GameObject managerCanvas;
     GameObject loadingScreen;
 
+    private bool isPaused = false;
+    private float previousTimeScale;
+
 
     
+    public static float loadingTime;
+
+
     public static int currentStage;
     public static int currentRoom;
 
@@ -42,9 +48,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentStage = -1;
-        
-        loadingScreen = GameObject.Find("LoadingScreen");
-        loadingScreen.SetActive(false);
+        loadingTime = 1.0f;
     }
 
 
@@ -54,12 +58,26 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void PauseGame()
+    {
+        isPaused = true;
+        previousTimeScale = Time.timeScale;
+        Time.timeScale = 0f; // 게임 일시정지
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = previousTimeScale; // 이전 속도로 복구
+    }
+
+
 
     public void OpenNewStage()
     {
         //initialize Stage
 
-        ShowLoadingScreen();
+        Start();
 
         currentStage++;
         currentRoom = 0;
@@ -188,23 +206,47 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-    public void ShowLoadingScreen()
+    public void StartLoading()
     {
-        StartCoroutine(LoadingScreen());
-    }
+        loadingScreen = GameObject.Find("ManagerCanvas").gameObject.transform.GetChild(0).gameObject;
 
-    private IEnumerator LoadingScreen()
-    {
-        Debug.Log("Start activating the object");
         loadingScreen.SetActive(true); // 오브젝트를 활성화시킵니다.
         isLoading = true;
 
-        yield return new WaitForSeconds(1.0f);
+        Debug.Log("부켜조");
+    }
+
+    public void EndLoading()
+    {
+        loadingScreen = GameObject.Find("ManagerCanvas").gameObject.transform.GetChild(0).gameObject;
 
         loadingScreen.SetActive(false); // 오브젝트를 비활성화시킵니다.
         isLoading = false;
 
-        Debug.Log("Object activation finished");
+        Debug.Log("부꺼조");
     }
+
+    /*
+    public void GoLoading()
+    {
+        StartCoroutine("Loading");
+    }
+
+
+    IEnumerator Loading()
+    {
+        
+
+        StartLoading();
+        PauseGame();
+
+        yield return new WaitForSeconds(2.0f);
+
+
+        EndLoading();
+        ResumeGame();
+
+        yield return null;
+    }
+    */
 }
