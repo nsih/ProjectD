@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 
     GameObject managerCanvas;
     GameObject loadingScreen;
-
-    private bool isPaused = false;
+    
     private float previousTimeScale;
 
 
@@ -60,14 +59,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
         previousTimeScale = Time.timeScale;
         Time.timeScale = 0f; // 게임 일시정지
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
         Time.timeScale = previousTimeScale; // 이전 속도로 복구
     }
 
