@@ -162,7 +162,7 @@ public class LandUICon : MonoBehaviour
     }
 
 
-    public void ShowMiniMap()   
+    public void ShowMiniMap() 
     {
         GameObject miniMap;
 
@@ -175,7 +175,7 @@ public class LandUICon : MonoBehaviour
             closeMapBtn = miniMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
             closeMapBtn.onClick.AddListener( CloseMiniMap );
 
-            if(miniMap != null)
+            if(miniMap != null && !GameManager.isLoading)
             {
                 isMapOpen = true;
                 miniMap.SetActive(true);
@@ -211,4 +211,6 @@ public class LandUICon : MonoBehaviour
             Debug.Log(GameManager.currentStage);
         }
     }
+
+    
 }

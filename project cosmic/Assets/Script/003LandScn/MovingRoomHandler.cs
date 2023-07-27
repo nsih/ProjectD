@@ -27,10 +27,37 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     }
 
 
-    public void OnPointerClick(PointerEventData eventData)  //사실상 이동함수
-    {        
-        if(GameManager.isActionPhase && isConnect && GameManager.doomCount != 0)
+
+    private IEnumerator MovingRoom()//사실상 이동함수
+    {
+        gameManager.GetComponent<GameManager>().ShowLoadingScreen();
+
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.currentRoom = thisKey;  //current room Update
+
+        if(StageManager.map[thisKey].isRevealed == false)
         {
+            StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
+        }
+
+        gameManager.GetComponent<GameManager>().OpenNewRoom();
+
+
+        //Start current StartRoomEventPhase
+        gameManager.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
+
+        //move-> closeTap
+        LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
+    }
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {        
+        if(GameManager.isActionPhase && isConnect && GameManager.doomCount != 0 && !GameManager.isLoading)
+        {
+            gameManager.GetComponent<GameManager>().ShowLoadingScreen();
+
             GameManager.currentRoom = thisKey;  //current room Update
 
             if(StageManager.map[thisKey].isRevealed == false)
@@ -48,6 +75,8 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
             LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
         }
     }
+
+
 
 
     //room key

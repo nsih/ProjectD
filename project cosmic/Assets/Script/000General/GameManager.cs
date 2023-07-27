@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;    //돌릴 인스턴스
 
+    GameObject managerCanvas;
+    GameObject loadingScreen;
+
 
     
     public static int currentStage;
@@ -16,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public static bool isEncounterPhase;
     public static bool isActionPhase;
+    public static bool isLoading;
 
 
     public static bool isQuestDone;
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentStage = -1;
+        
+        loadingScreen = GameObject.Find("LoadingScreen");
+        loadingScreen.SetActive(false);
     }
 
 
@@ -51,6 +58,8 @@ public class GameManager : MonoBehaviour
     public void OpenNewStage()
     {
         //initialize Stage
+
+        ShowLoadingScreen();
 
         currentStage++;
         currentRoom = 0;
@@ -176,7 +185,26 @@ public class GameManager : MonoBehaviour
 
             player.transform.position = new Vector3 (0,0,0);
         }
+    }
 
 
+
+    public void ShowLoadingScreen()
+    {
+        StartCoroutine(LoadingScreen());
+    }
+
+    private IEnumerator LoadingScreen()
+    {
+        Debug.Log("Start activating the object");
+        loadingScreen.SetActive(true); // 오브젝트를 활성화시킵니다.
+        isLoading = true;
+
+        yield return new WaitForSeconds(1.0f);
+
+        loadingScreen.SetActive(false); // 오브젝트를 비활성화시킵니다.
+        isLoading = false;
+
+        Debug.Log("Object activation finished");
     }
 }

@@ -34,7 +34,7 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
         float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
         float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a);  
+        hoverColor = new Color(r, g, b, normalColor.a);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -49,7 +49,7 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnclickMovingD()
     {
-        if(true)
+        if(true)// !isTalking
         {
             OpenPopup();
         
