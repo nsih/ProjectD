@@ -154,17 +154,32 @@ public class PlayerCon : MonoBehaviour
     }
 
     void Dash()
+{
+    if (!isDash && Time.time - lastDashTime >= dashCooldown)
     {
-        if (!isDash && Time.time - lastDashTime >= dashCooldown)
+        Vector3 direction = Vector3.zero;
+
+        // WASD 키 입력을 확인하여 대시 방향을 설정합니다.
+        if (Input.GetKey(KeyCode.W))
+            direction += Vector3.up;
+        if (Input.GetKey(KeyCode.S))
+            direction += Vector3.down;
+        if (Input.GetKey(KeyCode.A))
+            direction += Vector3.left;
+        if (Input.GetKey(KeyCode.D))
+            direction += Vector3.right;
+
+        // 대각선 방향일 경우, 정규화된 벡터를 사용합니다.
+        if (direction.magnitude > 1f)
+            direction = direction.normalized;
+
+        // 대시 방향이 설정되었을 때에만 대시를 수행합니다.
+        if (direction != Vector3.zero)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0f;
-
-            Vector3 direction = mousePosition - player.transform.position;
-
             StartCoroutine(DoDash(direction.normalized));
         }
     }
+}
 
     IEnumerator DoDash(Vector3 Direction)
     {
