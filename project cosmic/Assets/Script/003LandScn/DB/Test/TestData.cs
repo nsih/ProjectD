@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewEnemyData", menuName = "TestData")]
+[CreateAssetMenu(fileName = "NewTestData", menuName = "TestData")]
 public class TestData : ScriptableObject
 {
+    public int testID;
     public string testName;
 
     public Sprite testSprite;
@@ -35,18 +36,26 @@ public class ResultsData
     public int rRitualID;
 
 
+
+
+
+
     //status
-    public int rPhysicalStat;
-    public int rWillPowerStat;
-    public int rKnowledgeStat;
-    public int rCharmStat;
+    public int physicalOffset;
+    public int willPowerOffset;
+    public int knowledgeOffset;
+    public int charmOffset;
 
 
     //system
-    public int rDoomCount;
+    public int doomCountOffset;
+    public int actionStackOffset;
+    public int maxActionStackOffset;
 
-    public int rActionStack;
-    public int rRecover;
+    public int maxHpOffset;
+    public int hpOffset;
+
+    public int coinOffset;
     
 
 }
@@ -57,6 +66,7 @@ public enum TestType  //~~test!
     physical,
     willPower,
     knowledge,
-    charm
+    charm,
+    random
 }
 

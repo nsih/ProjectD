@@ -38,13 +38,9 @@ public class PlayerCon : MonoBehaviour
     bool isMouseLeft;
 
 
-    float speed;    //이동속도
-
+    //for con
     float attackTimer;
     float attackTerm;
-
-    float dashCooldown = 0.5f;
-    float lastDashTime = 0f;
 
 
     void Start()
@@ -69,7 +65,6 @@ public class PlayerCon : MonoBehaviour
 
 
         isDash = false;
-        speed = 15f;
 
         canAttack = true;
         attackTerm = 0.5f;
@@ -126,22 +121,22 @@ public class PlayerCon : MonoBehaviour
 
             if (Input.GetKey(playerUpKey))
             {
-                player.transform.Translate(Vector2.up * Time.deltaTime * speed);
+                player.transform.Translate(Vector2.up * Time.deltaTime * PlayerInfo.speed);
             }
 
             if (Input.GetKey(playerLeftKey))
             {
-                player.transform.Translate(Vector2.left * Time.deltaTime * speed);
+                player.transform.Translate(Vector2.left * Time.deltaTime * PlayerInfo.speed);
             }
 
             if (Input.GetKey(playerDownKey))
             {
-                player.transform.Translate(Vector2.down * Time.deltaTime * speed);
+                player.transform.Translate(Vector2.down * Time.deltaTime * PlayerInfo.speed);
             }
 
             if (Input.GetKey(playerRightKey))
             {
-                player.transform.Translate(Vector2.right * Time.deltaTime * speed);
+                player.transform.Translate(Vector2.right * Time.deltaTime * PlayerInfo.speed);
             }
         }
         else
@@ -155,7 +150,7 @@ public class PlayerCon : MonoBehaviour
 
     void Dash()
 {
-    if (!isDash && Time.time - lastDashTime >= dashCooldown)
+    if (!isDash && Time.time - PlayerInfo.lastDashTime >= PlayerInfo.dashCooldown)
     {
         Vector3 direction = Vector3.zero;
 
@@ -190,12 +185,12 @@ public class PlayerCon : MonoBehaviour
         {
             isDash = true;
             timer += Time.deltaTime;
-            transform.position += Direction * speed * 5.0f * Time.deltaTime;
+            transform.position += Direction * PlayerInfo.speed * 5.0f * Time.deltaTime;
             yield return null;
         }
         isDash = false;
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
-        lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록합니다.
+        PlayerInfo.lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }
 
 

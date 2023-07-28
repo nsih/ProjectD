@@ -1,30 +1,38 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class PlayerInfo : MonoBehaviour
 {
-    //보이는 것
-    public int maxHp;
-    public int hp;
+    //HP
+    public static float maxHp;
+    public static float hp;
 
-    public int actionLimit; //최대 액션스택
-
-
-    //기초 스탯 + (곱연산자, 합연산자)
-    
+    public int actionStackLimit; //최대 액션스택
 
 
-    //보이는 것 2
+    //이동
+    public static float speed;
+
+    public static float dashCooldown;
+    public static float lastDashTime;
+
+
+
+    //status
     public static int physical;    //육체      공격력
-    public static int willPower;   //의지      방어력
-    public static int knowledge;   //지식      spell recharge
+    public static int willPower;   //의지      HP
+    public static int knowledge;   //지식      의식 사용
     public static int charm;       //매력      주사위 가중치
 
     //attack
-    public static int attackDamage;
-    public static int attackType;
+    public static float attackDamage;
+    public static float attackDamagePlusOffset;
+    public static float attackDamageMultiplyOffset;
+
+
+    public static int attackID;
 
 
 
@@ -34,19 +42,35 @@ public class PlayerInfo : MonoBehaviour
     void Start()
     {
         PlayerStatusInitialize();
-
-        attackDamage = 5;
+        DamageCal();
     }
 
+    void Update ()
+    {
+
+    }
+
+    void DamageCal()
+    {
+        attackDamage = (physical*attackDamageMultiplyOffset)+attackDamagePlusOffset;
+    }
 
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
     {
+        //move
+        speed = 15;
+        dashCooldown = 0.75f;
+        lastDashTime = 0;
+
+
+
+
         //hp
-        maxHp = 10;
+        maxHp = 20;
         hp = maxHp;
         //Spell
         //action Stack
-        actionLimit = 2;
+        actionStackLimit = 1;
 
         //stat
         physical = 1;
@@ -54,16 +78,19 @@ public class PlayerInfo : MonoBehaviour
         knowledge = 1;
         charm = 1;
 
-        //
+        //offse
+        attackDamageMultiplyOffset = 1;
+        attackDamagePlusOffset = 0;
+
     }
 
 
 
 
     //hp, maxhp
-    void MaxHpModify(int modifier)//최대 hp 변경 (+-)
+    void MaxHpPlus(int offset)//최대 hp 변경 (+-)
     {
-        int changedMaxHp = maxHp + modifier;
+        float changedMaxHp = maxHp + offset;
         if(changedMaxHp <= 0)
         {
             changedMaxHp = 1;
@@ -74,89 +101,73 @@ public class PlayerInfo : MonoBehaviour
         else
         {
             maxHp = changedMaxHp;
-            hp = hp + modifier;
+            hp = hp + offset;
         }
     }
-    void MaxHpModify(float modifierP,bool inc)//최대체력이 최대체력 퍼센트 오르락내리락
-    {
-        int modifier = (int)Math.Floor(maxHp * (modifierP/100) );
 
-        int changedMaxHp;
-        if(inc == true)
-        {
-            changedMaxHp = maxHp+modifier;
-        }
-        else
-        {
-            changedMaxHp = maxHp-modifier;
-        }
+    void MaxHpMultiply(float offset)//최대체력이 최대체력 퍼센트 오르락내리락
+    {
+        float changedMaxHp = maxHp*offset;
 
         if(changedMaxHp <= 0)
         {
             changedMaxHp = 1;
-            hp = changedMaxHp;
         }
 
         else
         {
-            maxHp = changedMaxHp;
-            hp = hp + modifier;
+            changedMaxHp = offset;
         }
+
+        maxHp = changedMaxHp;
     }
     
-    void HpModify(int modifier)//hp 변경시 호출 (+-)
+    void HpPlus(float offset)//hp 변경시 호출 (+-)
     {
-        int changedHp = hp+modifier;
+        float changedHp = hp+offset;
 
-        if(changedHp >= maxHp)
+        if(changedHp <= 0)
         {
-            hp  = maxHp;
+            Debug.Log("겜 오버");
         }
-        else if (changedHp <= 0)
+        else if(changedHp >= maxHp)
         {
-            Debug.Log("game over");
+            hp = maxHp;
         }
         else
         {
             hp = changedHp;
         }
     }
-    void HpModify(double percentHP,bool max,bool inc)  //체력이 퍼센트 오르락내리락
+
+    void HpMultiplyPlus(float offset)  //체력이 퍼센트 오르락내리락
     {
-        int modifier;
-        if(max == true)
-        {
-            modifier = (int)Math.Floor(maxHp * (percentHP/100) );
-        }
-        else
-        {
-            modifier = (int)Math.Floor(hp * (percentHP/100) );
-        }
-
-        int changedHp;
-        if(inc == true)
-        {
-            changedHp = hp+modifier;
-        }
-        else
-        {
-            changedHp = hp-modifier;
-        }
-
+        float changedHp = hp + (maxHp*offset);
 
         if(changedHp >= maxHp)
         {
-            hp  = maxHp;
-        }
-        else if (changedHp <= 0)
-        {
-            hp = 0;
+            hp = maxHp;
         }
         else
         {
             hp = changedHp;
         }
     }
+
+    void HpMultiplyMinus(float offset)  //체력이 퍼센트 오르락내리락
+    {
+        float changedHp = hp - (hp*offset);
+
+        if(changedHp <= 0)
+        {
+            Debug.Log("겜 오버");
+        }
+        else
+        {
+            hp = changedHp;
+        }
+    }
+
     void HpModify(bool life)    //풀회복or끝
     {
         if(life)
@@ -170,8 +181,6 @@ public class PlayerInfo : MonoBehaviour
         }
     }
     
-
-
 
 
 

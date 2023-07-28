@@ -13,7 +13,7 @@ public class EnemyData : ScriptableObject
 
     public int mobNum;
 
-    public int hp;
+    public float hp;
     public int damage;
     public float moveSpeed;
 

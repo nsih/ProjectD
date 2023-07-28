@@ -131,17 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void ActionStackReset()
     {
-        /*
-        GameObject player;
-
-        if(GameObject.Find("player") != null)
-        {
-            player = player.GameObject.Find("player");
-
-            actionStack = GetComponent<PlayerInfo>().actionLimit;
-        }
-        */
-        actionStack = GetComponent<PlayerInfo>().actionLimit;
+        actionStack = GetComponent<PlayerInfo>().actionStackLimit;
     }
 
     public void ActionStackModify(int modifier)
@@ -207,20 +197,16 @@ public class GameManager : MonoBehaviour
     {
         loadingScreen = GameObject.Find("ManagerCanvas").gameObject.transform.GetChild(0).gameObject;
 
-        loadingScreen.SetActive(true); // 오브젝트를 활성화시킵니다.
+        loadingScreen.SetActive(true); 
         isLoading = true;
-
-        Debug.Log("부켜조");
     }
 
     public void EndLoading()
     {
         loadingScreen = GameObject.Find("ManagerCanvas").gameObject.transform.GetChild(0).gameObject;
 
-        loadingScreen.SetActive(false); // 오브젝트를 비활성화시킵니다.
+        loadingScreen.SetActive(false);         
         isLoading = false;
-
-        Debug.Log("부꺼조");
     }
 
     /*
