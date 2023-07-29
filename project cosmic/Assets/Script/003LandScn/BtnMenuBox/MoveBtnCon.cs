@@ -54,7 +54,7 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnClickMove()
     {
-        if(!GameManager.isLoading)
+        if(!GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
         {
             if(GameManager.isQuestDone)
             {

@@ -30,7 +30,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
     //////////
     public void OnPointerClick(PointerEventData eventData)
-    {        
+    {
         if(!GameManager.isLoading)
         {
             if(GameManager.isActionPhase && isConnect && GameManager.mentality != 0)
@@ -64,6 +64,8 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
         gameManager.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
 
         LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
+
+        LandCanvus.GetComponent<LandUICon>().StartShowRoomIntroPanel();
 
         yield return null;
     }

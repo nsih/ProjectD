@@ -209,14 +209,17 @@ public class LandUICon : MonoBehaviour
 
             isMapOpen = false;
             miniMap.SetActive(false);
-
-            StartCoroutine("ShowRoomIntroPanel");
         }
 
         else
         {
             Debug.Log(GameManager.currentStage);
         }
+    }
+
+    public void StartShowRoomIntroPanel()
+    {
+        StartCoroutine("ShowRoomIntroPanel");
     }
 
     IEnumerator ShowRoomIntroPanel()
