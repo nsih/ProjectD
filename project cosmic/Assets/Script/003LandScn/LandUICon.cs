@@ -13,7 +13,7 @@ public class LandUICon : MonoBehaviour
 
     GameObject cameraCanvas;
     GameObject roomType;
-    GameObject doomCounter;
+    GameObject mentalityCounter;
     GameObject questTitle;
     GameObject questContent;
     GameObject questDetail;
@@ -31,7 +31,7 @@ public class LandUICon : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         pnlBackGround = GameObject.Find("PnlBackGround");
         phaseType = GameObject.Find("PhaseType");
-        doomCounter = GameObject.Find("DoomCounter");
+        mentalityCounter = GameObject.Find("MentalityCounter");
 
         cameraCanvas = GameObject.Find("CameraCanvas");
         roomType = GameObject.Find("RoomType");
@@ -48,24 +48,27 @@ public class LandUICon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(!GameManager.isLoading)
         {
-            MiniMapCon();
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                MiniMapCon();
+            }
+
+
+            ShowRoomType();
+            ShowPhaseType();
+            ShowMentalCounter();
+
+            ShowQuestName();
+            ShowQuestValue();
         }
-
-
-        ShowRoomType();
-        ShowPhaseType();
-        ShowDoomCounter();
-
-        ShowQuestName();
-        ShowQuestValue();
     }
 
 
-    void ShowDoomCounter()
+    void ShowMentalCounter()
     {
-        doomCounter.GetComponent<TextMeshProUGUI>().text = GameManager.doomCount.ToString();
+        mentalityCounter.GetComponent<TextMeshProUGUI>().text = GameManager.mentality.ToString();
     }
 
 
@@ -76,20 +79,20 @@ public class LandUICon : MonoBehaviour
 
     void ShowPhaseType()
     {
-        if(GameManager.isEncounterPhase)
+        if(!GameManager.isActionPhase)
         {
-            phaseType.GetComponent<TextMeshProUGUI>().text = "Encounter Phase";
+            phaseType.GetComponent<TextMeshProUGUI>().text = "행동단계가 아닙니다.";
         }
         else if(GameManager.isActionPhase)
         {
             TextMeshProUGUI textComponent = phaseType.GetComponent<TextMeshProUGUI>();
             if(GameManager.actionStack == 0)
             {
-                textComponent.text = "Action Phase ( <color=#FF0000>" + GameManager.actionStack + "</color> )";
+                textComponent.text = "행동단계! ( <color=#FF0000>" + GameManager.actionStack + "</color> )";
             }
             else
             {
-                textComponent.text = "Action Phase ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";
+                textComponent.text = "행동단계! ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";
             }
             
             phaseType.GetComponent<TextMeshProUGUI>().text = textComponent.text;

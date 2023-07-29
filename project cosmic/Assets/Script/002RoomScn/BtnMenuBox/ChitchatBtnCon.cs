@@ -42,9 +42,12 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnClickChitchat()
     {
-        RoomDialogueCon.roomFlag = 0;   //잡담중 랜덤 플레그
-        roomUICanvas.GetComponent<RoomDialogueCon>().currentIndex = 0;
-        roomUICanvas.GetComponent<RoomDialogueCon>().StartDialogue();
+        if(!GameManager.isLoading)
+        {
+            RoomDialogueCon.roomFlag = 0;   //잡담중 랜덤 플레그
+            roomUICanvas.GetComponent<RoomDialogueCon>().currentIndex = 0;
+            roomUICanvas.GetComponent<RoomDialogueCon>().StartDialogue();
+        }
     }
 
     /*

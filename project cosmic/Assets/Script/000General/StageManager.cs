@@ -32,7 +32,7 @@ public class StageManager : MonoBehaviour
 
         else if(GameManager.currentStage == 1)
         {
-            CheckDoomCount();
+            CheckMental();
         }
 
 
@@ -59,9 +59,9 @@ public class StageManager : MonoBehaviour
         return count;
     }
 
-    void CheckDoomCount()
+    void CheckMental()
     {
-        if(GameManager.doomCount == 0)
+        if(GameManager.mentality == 0)
         {
             GameManager.isQuestDone = true;
         }
@@ -227,7 +227,7 @@ public class StageManager : MonoBehaviour
 
         if(roomType == RoomType.Null)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             EndRoomEventPhase(roomType);
 
@@ -236,7 +236,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Battle)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             this.gameObject.GetComponent<BattleEventManager>().GenBattleRoom(GameManager.currentStage);
 
@@ -246,7 +246,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Test)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
             
             EndRoomEventPhase(roomType);
 
@@ -256,7 +256,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Altar)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             EndRoomEventPhase(roomType);
 
@@ -266,7 +266,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Shop)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             EndRoomEventPhase(roomType);
 
@@ -276,7 +276,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Event)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             EndRoomEventPhase(roomType);
             
@@ -286,7 +286,7 @@ public class StageManager : MonoBehaviour
 
         else if(roomType == RoomType.Boss)
         {
-            gameManager.GetComponent<GameManager>().SetEncounterPhase();
+            GameManager.isActionPhase = false;
 
             EndRoomEventPhase(roomType);
             
@@ -301,14 +301,14 @@ public class StageManager : MonoBehaviour
         if(roomType == RoomType.Null)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
 
             Debug.Log("End"+roomType);
         }
 
         else if(roomType == RoomType.Battle)
         {
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
 
 
             Debug.Log("End"+roomType);
@@ -317,7 +317,7 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Test)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End"+roomType);
         }
@@ -325,7 +325,7 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Altar)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End"+roomType);
         }
@@ -333,7 +333,7 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Shop)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End"+roomType);
         }
@@ -341,7 +341,7 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Event)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End"+roomType);
         }
@@ -349,7 +349,7 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Boss)
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End"+roomType);
         }
@@ -358,7 +358,7 @@ public class StageManager : MonoBehaviour
         else
         {
             map[GameManager.currentRoom].isClear = true;
-            gameManager.GetComponent<GameManager>().SetActionPhase();
+            GameManager.isActionPhase = true;
             
             Debug.Log("End Error : "+roomType);
         }

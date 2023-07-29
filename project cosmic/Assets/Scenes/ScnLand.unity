@@ -7546,7 +7546,7 @@ GameObject:
   - component: {fileID: 1763858818}
   - component: {fileID: 1763858817}
   m_Layer: 5
-  m_Name: DoomCounter
+  m_Name: MentalityCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9700,7 +9700,7 @@ GameObject:
   - component: {fileID: 2117385824}
   - component: {fileID: 2117385823}
   m_Layer: 5
-  m_Name: DoomCountPanel
+  m_Name: MentalityCounterPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -28,7 +28,18 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
 
 
-    private IEnumerator MovingRoom()//사실상 이동함수
+    //////////
+    public void OnPointerClick(PointerEventData eventData)
+    {        
+        if(GameManager.isActionPhase && isConnect && GameManager.mentality != 0)
+        {
+            StartCoroutine("MovingRoom");
+        }
+    }
+
+
+    //사실상 이동함수
+    private IEnumerator MovingRoom()
     {        
         gameManager.GetComponent<GameManager>().StartLoading();
 
@@ -53,38 +64,6 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
         yield return null;
     }
-
-    //////////
-    public void OnPointerClick(PointerEventData eventData)
-    {        
-        if(GameManager.isActionPhase && isConnect && GameManager.doomCount != 0)
-        {
-
-            StartCoroutine("MovingRoom");
-            /*
-            gameManager.GetComponent<GameManager>().ShowLoadingScreen();
-
-            GameManager.currentRoom = thisKey;  //current room Update
-
-            if(StageManager.map[thisKey].isRevealed == false)
-            {
-                StageManager.map[thisKey].isRevealed = true;    //is Revealed Update
-            }
-
-            gameManager.GetComponent<GameManager>().OpenNewRoom();
-
-
-            //Start current StartRoomEventPhase
-            gameManager.GetComponent<StageManager>().StartRoomEventPhase( StageManager.map[ thisKey ].roomType );
-
-            //move-> closeTap
-            LandCanvus.GetComponent<LandUICon>().CloseMiniMap();
-            */
-        }
-    }
-
-
-
 
     //room key
     public int GetLastCharacterAsInt(GameObject obj)

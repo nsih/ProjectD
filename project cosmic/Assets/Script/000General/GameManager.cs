@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     public static int currentRoom;
 
     public static int actionStack;
-    public static int doomCount;
+    public static int mentality;
 
-    public static bool isEncounterPhase;
+
     public static bool isActionPhase;
+
+    
     public static bool isLoading;
 
 
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         GetComponent<StageManager>().GenerateNewStage();
 
-        DoomCountInitialize();
+        mentalityInitialize();
         PlayerLocationReset();
         ActionStackReset();
 
@@ -94,23 +96,10 @@ public class GameManager : MonoBehaviour
 
         PlayerLocationReset();
         ActionStackReset();
-        DoomCountModify(-1);
+        mentalityModify(-1);
         GetComponent<StageManager>().AddTpConnect();
 
         GetComponent<StageManager>().CheckStageQuest();
-    }
-
-
-    public void SetEncounterPhase()
-    {
-        isEncounterPhase = true;
-        isActionPhase = false;
-    }
-
-    public void SetActionPhase()
-    {
-        isEncounterPhase = false;
-        isActionPhase = true;
     }
 
 
@@ -120,9 +109,9 @@ public class GameManager : MonoBehaviour
         //완료했으면 이동버튼 변경.
     }
 
-    void CheckDoomCount()
+    void Checkmentality()
     {
-        if(doomCount == 0 && isActionPhase && actionStack == 0) //&&퀘스트 완료 여부
+        if(mentality == 0 && isActionPhase && actionStack == 0) //&&퀘스트 완료 여부
         {
             Debug.Log("GameOver");
         }
@@ -151,11 +140,11 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void DoomCountInitialize()
+    public void mentalityInitialize()
     {
         if(currentStage == 0)
         {
-            doomCount = 8;
+            mentality = 8;
         }
 
         else
@@ -164,17 +153,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DoomCountModify(int modifier)
+    public void mentalityModify(int modifier)
     {
-        int changedDoomCount = doomCount+modifier;
+        int changedmentality = mentality+modifier;
 
-        if (changedDoomCount <= 0)
+        if (changedmentality <= 0)
         {
-            doomCount = 0;
+            mentality = 0;
         }
         else
         {
-            doomCount = changedDoomCount;
+            mentality = changedmentality;
         }
     }
 

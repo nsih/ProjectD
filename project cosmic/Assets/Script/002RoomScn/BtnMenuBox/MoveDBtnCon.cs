@@ -49,14 +49,17 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnclickMovingD()
     {
-        if(true)// !isTalking
+        if(!GameManager.isLoading)
         {
-            OpenPopup();
-        
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "지금 드림랜드로 이동할거야?";
+            if(true)// !isTalking
+            {
+                OpenPopup();
+            
+                doubleCheckText.GetComponent<TextMeshProUGUI>().text = "지금 드림랜드로 이동할거야?";
 
-            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
-            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";
+                btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
+                btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";
+            }
         }
     }
 

@@ -59,7 +59,10 @@ public class RitualBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnClickRitual()
     {
-        OpenPopup();
+        if(!GameManager.isLoading)
+        {
+            OpenPopup();
+        }
     }
 
 

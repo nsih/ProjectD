@@ -62,7 +62,10 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnClickArtifact()
     {
-        OpenPopup();
+        if(!GameManager.isLoading)
+        {
+            OpenPopup();
+        }
     }
     
 

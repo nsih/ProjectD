@@ -48,7 +48,7 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnclickRoomTitle()
     {
-        if(true)
+        if(GameManager.isLoading)
         {
             OpenPopup();
 

@@ -44,7 +44,10 @@ public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnclickRecord()
     {
-        OpenPopup();
+        if(GameManager.isLoading)
+        {
+            OpenPopup();
+        }
     }
 
     /////////////// f

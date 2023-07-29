@@ -54,23 +54,26 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnClickMove()
     {
-        if(GameManager.isQuestDone)
+        if(!GameManager.isLoading)
         {
-            Debug.Log("보스 씬으로 이동 했다 칩시다.");
-            //SceneManager.LoadScene("ScnLand");
-        }
-        else
-        {
-            if(GameManager.doomCount > 0 )
+            if(GameManager.isQuestDone)
             {
-                landUiCanvas.GetComponent<LandUICon>().MiniMapCon();
+                Debug.Log("보스 씬으로 이동 했다 칩시다.");
+                //SceneManager.LoadScene("ScnLand");
             }
+            else
+            {
+                if(GameManager.mentality > 0 )
+                {
+                    landUiCanvas.GetComponent<LandUICon>().MiniMapCon();
+                }
 
-            else if(GameManager.doomCount == 0)
-            {
-                Debug.Log("아 게임오바에요.");
-            }
-        }        
+                else if(GameManager.mentality == 0)
+                {
+                    Debug.Log("아 게임오바에요.");
+                }
+            } 
+        } 
     }
 
 
@@ -86,13 +89,13 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
             else
             {
-                if(GameManager.doomCount > 0 )
+                if(GameManager.mentality > 0 )
                 {
                     ButtonImage.GetComponent<Image>().color = Color.white;
                     ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
                 }
 
-                else if(GameManager.doomCount == 0)
+                else if(GameManager.mentality == 0)
                 {
                     ButtonImage.GetComponent<Image>().color = Color.white;
                     ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FA5858>운명</color>";  //벌건 운명

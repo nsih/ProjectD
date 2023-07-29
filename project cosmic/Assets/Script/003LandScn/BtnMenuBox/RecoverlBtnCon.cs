@@ -66,7 +66,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         gameManager.GetComponent<StageManager>().CheckStageQuest(); //퀘스트 체크
 
 
-        if(GameManager.isActionPhase && GameManager.actionStack != 0)
+        if(GameManager.isActionPhase && GameManager.actionStack != 0 && !GameManager.isLoading)
         {
             OpenPopup();
         
