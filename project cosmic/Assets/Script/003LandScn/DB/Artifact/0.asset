@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   artifactID: 0
-  artifactName: "\uAC1C\uCA4C\uB294 \uC54C\uD280\uD4B1\uD2B8"
+  artifactName: Name
   artifactSprite: {fileID: 0}
-  plusMaxHPOffset: 0
-  plusMultiplyHPOffset: 0
-  minusMultiplyHPOffset: 0
+  maxHPOffset: 0
+  hPOffset: 0
   plusPlayerDamageOffset: 0
   multiplyPlayerDamageOffset: 0
   speedOffset: 0

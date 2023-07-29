@@ -229,6 +229,7 @@ public class PlayerCon : MonoBehaviour
 
     public void StrikeCon()
     {
+        
         if(isAttack && !strike.activeSelf)
         {
             strike.SetActive(true);
@@ -253,6 +254,10 @@ public class PlayerCon : MonoBehaviour
         else
             isMouseLeft = false;
     }
+
+
+
+
     
     IEnumerator BasicAttack()
     {

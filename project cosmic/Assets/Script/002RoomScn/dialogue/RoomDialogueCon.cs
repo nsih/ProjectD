@@ -40,7 +40,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     private void Update() 
     {
-        ProceedNextLine();        
+        ProceedNextLine();
     }
 
 
@@ -72,13 +72,13 @@ public class RoomDialogueCon : MonoBehaviour
                 return;
             }
 
-            
-            
-            // 대사 처리
+            //코루틴 정지
             if (typingCoroutine != null)
             {
-                StopCoroutine(typingCoroutine);
+                StopCoroutine(typingCoroutine); // 다 됐거나 스킵된 이후일것.
             }
+
+            // 대사 처리
             typingCoroutine = StartCoroutine(TypeText(currentTalker,currnetText,currentTalkSpeed));
         }
         else
