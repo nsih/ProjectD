@@ -13,9 +13,8 @@ public class ArtifactData : ScriptableObject
 
 
     //Hp
-    public int plusMaxHPOffset;
-    public int plusMultiplyHPOffset;
-    public int minusMultiplyHPOffset;
+    public int maxHPOffset;
+    public int hPOffset;
 
 
     //damage

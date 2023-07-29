@@ -48,7 +48,7 @@ public class LandUICon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameManager.isLoading && !roomIntroPanel.activeSelf)
+        if(!GameManager.isLoading && !isRoomIntroPanel())
         {
             if(Input.GetKeyDown(KeyCode.Tab))
             {

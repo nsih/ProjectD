@@ -77,7 +77,7 @@ public class BattleEventManager : MonoBehaviour
 
     public void GenBattleRoom(int stage)
     {
-        int roomFlag = Random.Range(0,1);
+        int roomFlag = Random.Range(0,1);   //0만나옴
 
         switch (stage)
         {

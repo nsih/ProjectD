@@ -27,10 +27,9 @@ public class PlayerInfo : MonoBehaviour
     public static int charm;       //매력      주사위 가중치
 
     //attack
+    public static float basicAttackDamage;
     public static float attackDamage;
-    public static float attackDamagePlusOffset;
-    public static float attackDamageMultiplyOffset;
-
+    
 
     public static int attackID;
 
@@ -52,7 +51,7 @@ public class PlayerInfo : MonoBehaviour
 
     void DamageCal()
     {
-        attackDamage = (physical*attackDamageMultiplyOffset)+attackDamagePlusOffset;
+        basicAttackDamage = physical * 2;
     }
 
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
@@ -77,10 +76,6 @@ public class PlayerInfo : MonoBehaviour
         willPower = 1;
         knowledge = 1;
         charm = 1;
-
-        //offse
-        attackDamageMultiplyOffset = 1;
-        attackDamagePlusOffset = 0;
 
     }
 

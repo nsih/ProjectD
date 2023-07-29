@@ -56,8 +56,6 @@ public class ResultsData
     public int hpOffset;
 
     public int coinOffset;
-    
-
 }
 
 
@@ -66,7 +64,6 @@ public enum TestType  //~~test!
     physical,
     willPower,
     knowledge,
-    charm,
-    random
+    charm
 }
 
