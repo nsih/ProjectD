@@ -31,9 +31,12 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     //////////
     public void OnPointerClick(PointerEventData eventData)
     {        
-        if(GameManager.isActionPhase && isConnect && GameManager.mentality != 0)
+        if(!GameManager.isLoading)
         {
-            StartCoroutine("MovingRoom");
+            if(GameManager.isActionPhase && isConnect && GameManager.mentality != 0)
+            {
+                StartCoroutine("MovingRoom");
+            }
         }
     }
 

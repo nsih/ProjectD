@@ -59,7 +59,7 @@ public class RitualBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnClickRitual()
     {
-        if(!GameManager.isLoading)
+        if(!GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
         {
             OpenPopup();
         }

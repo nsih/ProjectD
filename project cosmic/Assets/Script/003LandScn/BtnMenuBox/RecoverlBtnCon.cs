@@ -10,6 +10,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     GameObject gameManager;
     GameObject pnlBackGround;
+    GameObject landUiCanvas;
     GameObject doubleCheckPopup;
 
     GameObject doubleCheckText;
@@ -28,6 +29,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        landUiCanvas = GameObject.Find("LandUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
         doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
 
@@ -66,7 +68,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         gameManager.GetComponent<StageManager>().CheckStageQuest(); //퀘스트 체크
 
 
-        if(GameManager.isActionPhase && GameManager.actionStack != 0 && !GameManager.isLoading)
+        if(GameManager.isActionPhase && GameManager.actionStack != 0 && !GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
         {
             OpenPopup();
         

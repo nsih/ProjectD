@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenNewRoom()
     {
-        //initialize Room
+        //플레이어위치, 액션 스택, 정신력 , 퀘스트 확인
 
-        PlayerLocationReset();
+        PlayerLocationReset();                
         ActionStackReset();
         mentalityModify(-1);
         GetComponent<StageManager>().AddTpConnect();

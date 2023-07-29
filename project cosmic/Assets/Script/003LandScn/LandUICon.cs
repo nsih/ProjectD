@@ -48,7 +48,7 @@ public class LandUICon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameManager.isLoading)
+        if(!GameManager.isLoading && !roomIntroPanel.activeSelf)
         {
             if(Input.GetKeyDown(KeyCode.Tab))
             {
@@ -219,13 +219,6 @@ public class LandUICon : MonoBehaviour
         }
     }
 
-
-
-    public void StartShowRoomIntroPanel()
-    {
-        StartCoroutine("ShowRoomIntroPanel");
-    }
-
     IEnumerator ShowRoomIntroPanel()
     { 
         roomIntroPanel.SetActive(true);
@@ -268,12 +261,15 @@ public class LandUICon : MonoBehaviour
 
         while (!Input.GetMouseButtonDown(0))
         {
+            gameManager.GetComponent<GameManager>().ResumeGame();
             yield return null; // 다음 프레임까지 기다림
         }
 
-        roomIntroPanel.SetActive(false);
-        gameManager.GetComponent<GameManager>().ResumeGame();
+        roomIntroPanel.SetActive(false);        
+    }
 
-        
+    public bool isRoomIntroPanel()
+    {
+        return roomIntroPanel.activeSelf;
     }
 }
