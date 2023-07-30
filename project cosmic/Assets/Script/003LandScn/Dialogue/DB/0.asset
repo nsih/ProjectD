@@ -16,9 +16,14 @@ MonoBehaviour:
   dialogueName: 1234
   dialogues:
   - speaker: 0
-    speakerName: 
-    playerEmotion: 0
-    opponentEmotion: 0
-    volume: 0
-    speakSpeed: 0
-    text: 
+    speakerName: "\uD50C\uB808\uC774\uC5B4"
+    Emotion: 0
+    volume: 1
+    speakSpeed: 1
+    text: "\uB09C \uC774 \uC52C\uC758 \uCE71 \uD50C\uB808\uC774\uC57C"
+  - speaker: 2
+    speakerName: "\uC544\uC2A4\uD1A0\uB9AC\uC544"
+    Emotion: 0
+    volume: 1
+    speakSpeed: 1
+    text: "\uB204\uAD6C\uB3C4 \uBC94\uC811 \uBABB\uD55C \uBE5D \uC704\uC758 \uC57C\uC0DD\uB9C8"

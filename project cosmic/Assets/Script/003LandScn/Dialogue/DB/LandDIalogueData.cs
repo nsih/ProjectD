@@ -19,10 +19,9 @@ public class LandDialogueData : ScriptableObject
         
         
         //보여줄 Img
-        public Emotion playerEmotion;
-        public Emotion opponentEmotion;
+        public Emotion emotion;
 
-        public Volume volume;
+        public Volume volume;   //안씀
         public SpeakSpeed speakSpeed;
 
 
