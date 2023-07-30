@@ -19,6 +19,7 @@ public class RoomDialogueManager : MonoBehaviour
     public static int currentDialogueID;
     public int currentIndex;
     bool isTyping = false;
+    public bool isRoomTalking = false;
 
     private bool isSpeaking = false;
 
@@ -109,6 +110,8 @@ public class RoomDialogueManager : MonoBehaviour
     {
         speaker.GetComponent<TextMeshProUGUI>().text = "";
         text.GetComponent<TextMeshProUGUI>().text = "";
+
+        isRoomTalking = false;
     }
 
 
@@ -121,6 +124,7 @@ public class RoomDialogueManager : MonoBehaviour
     private IEnumerator TypingText( Speaker _speaker ,string _speakerName, SpeakSpeed _speakSpeed, string _text,
                                     Emotion _playerEmotion,Emotion _niaEmotion)
     {
+        isRoomTalking = true;
         isTyping = true;
 
         speaker.GetComponent<TextMeshProUGUI>().text = _speakerName;
