@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   dialogueID: 1
-  dialogueName: "\uC7A1\uB2F4"
+  dialogueName: "\uC7A1\uB2F4 1"
   dialogues:
   - speaker: 0
     speakerName: "\uD50C\uB808\uC774\uC5B4"
@@ -40,7 +40,7 @@ MonoBehaviour:
   - speaker: 0
     speakerName: "\uB2C8\uC544"
     playerEmotion: 0
-    niaEmotion: 0
+    niaEmotion: 5
     volume: 1
     speakSpeed: 1
     text: "\uAE00\uC384, \uBD84\uBA85 \uC778\uAC04\uC740 \uD558\uB4F1\uC0DD\uBB3C\uC774\uAE34

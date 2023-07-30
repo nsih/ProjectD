@@ -21,6 +21,13 @@ public class LandUICon : MonoBehaviour
     GameObject roomIntroPanel;
 
 
+
+    public GameObject statusPhysical;
+    public GameObject statusWillPower;
+    public GameObject statusKnowledge;
+    public GameObject statusCharm;
+
+
     public Sprite[] roomTypePanelImg = new Sprite[7];
 
 
@@ -40,6 +47,15 @@ public class LandUICon : MonoBehaviour
         questContent = GameObject.Find("QuestContent");
         questDetail = GameObject.Find("QuestDetail");
 
+
+
+        statusPhysical = GameObject.Find("Physical");
+        statusWillPower = GameObject.Find("WillPower");
+        statusKnowledge = GameObject.Find("Knowledge");
+        statusCharm = GameObject.Find("Charm");
+
+
+
         roomIntroPanel  = pnlBackGround.transform.Find("RoomIntroPanel").gameObject;
 
         isMapOpen = false;
@@ -56,9 +72,8 @@ public class LandUICon : MonoBehaviour
             }
 
 
-            ShowRoomType();
-            ShowPhaseType();
-            ShowMentalCounter();
+            UpdateMentalCounterUI();
+            UpdateStatusValueUI();
 
             ShowQuestName();
             ShowQuestValue();
@@ -66,13 +81,22 @@ public class LandUICon : MonoBehaviour
     }
 
 
-    void ShowMentalCounter()
+    void UpdateStatusValueUI()
+    {
+        statusPhysical.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.physical.ToString();
+        statusWillPower.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.willPower.ToString();
+        statusKnowledge.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.knowledge.ToString();
+        statusCharm.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.charm.ToString();
+    }
+
+
+    void UpdateMentalCounterUI()
     {
         mentalityCounter.GetComponent<TextMeshProUGUI>().text = GameManager.mentality.ToString();
     }
 
 
-    void ShowRoomType()
+    public void UpdateRoomTypeUI()
     {
         roomType.GetComponent<TextMeshProUGUI>().text = StageManager.map[GameManager.currentRoom].roomType.ToString();
     }
@@ -273,6 +297,10 @@ public class LandUICon : MonoBehaviour
 
     public bool isRoomIntroPanel()
     {
+        if(roomIntroPanel != null)
+        {
+            return roomIntroPanel.activeSelf;
+        }
         return roomIntroPanel.activeSelf;
     }
 }

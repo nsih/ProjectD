@@ -67,6 +67,8 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
         LandCanvus.GetComponent<LandUICon>().StartShowRoomIntroPanel();
 
+        LandCanvus.GetComponent<LandUICon>().UpdateRoomTypeUI();
+
         yield return null;
     }
 

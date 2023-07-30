@@ -720,7 +720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uD654 \uC911~"
+  m_text: ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
@@ -4157,6 +4157,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb61fcaa6d379064098d068193d9338e, type: 2}
   - {fileID: 11400000, guid: aab81ed6e1b5c914091c882d824cb733, type: 2}
   gameManager: {fileID: 0}
+  currentDialogueID: 0
   currentIndex: 0
   isRoomTalking: 0
 --- !u!114 &2401173681386392504
