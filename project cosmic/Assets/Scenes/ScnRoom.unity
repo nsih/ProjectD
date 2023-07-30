@@ -3296,6 +3296,7 @@ GameObject:
   - component: {fileID: 1869845674270010736}
   - component: {fileID: 1869845674270010737}
   - component: {fileID: 2401173681386392502}
+  - component: {fileID: 2401173681386392503}
   m_Layer: 5
   m_Name: RoomUICanvas
   m_TagString: Untagged
@@ -4152,6 +4153,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b4b5bc182b2444084167c2c365abad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  currentIndex: 0
+--- !u!114 &2401173681386392503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869845674270010738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25223419e6cb1d4da5509c7cf173513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomDialogueDatas:
+  - {fileID: 11400000, guid: eb61fcaa6d379064098d068193d9338e, type: 2}
   gameManager: {fileID: 0}
   currentIndex: 0
 --- !u!222 &2507899277199860646

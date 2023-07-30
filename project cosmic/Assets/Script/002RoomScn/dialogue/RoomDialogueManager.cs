@@ -16,7 +16,7 @@ public class RoomDialogueManager : MonoBehaviour
     GameObject niaCG;
 
 
-    public static int dialogueID = 0;
+    public static int currentDialogueID;
     public int currentIndex;
     bool isTyping = false;
 
@@ -28,45 +28,87 @@ public class RoomDialogueManager : MonoBehaviour
         niaCG = GameObject.Find("NiaCG");
 
         gameManager = GameObject.Find("GameManager");
-        speaker = GameObject.Find("Talker");
+        speaker = GameObject.Find("Speaker");
         text = GameObject.Find("DialogueText");
+
+        currentDialogueID = 0;
+
+
+        StartDialogue();
+    }
+
+    void Update ()
+    {
+        ProceedNextLine();
     }
 
 
     public void StartDialogue()
     {
         currentIndex = 0;
-        ShowDialogue(dialogueID);
+        ShowDialogue(currentDialogueID);
     }
 
     void ShowDialogue(int _dialogueID)
     {
-        RoomDialogueData.DialogueLine currentRoomDialogueData = roomDialogueDatas[_dialogueID].dialogues[currentIndex];
-
-        Speaker speaker = currentRoomDialogueData.speaker;
-        string speakerName = currentRoomDialogueData.speakerName;
-        SpeakSpeed speakSpeed = currentRoomDialogueData.speakSpeed;
-        string text = currentRoomDialogueData.text;
-        Emotion playerEmotion = currentRoomDialogueData.playerEmotion;
-        Emotion niaEmotion = currentRoomDialogueData.niaEmotion;
-
-        if(isTyping == true)
+        if (currentIndex < roomDialogueDatas[_dialogueID].dialogues.Length)
         {
-            //SkipLine(currentTalker,currnetText);
-            return;
+            RoomDialogueData.DialogueLine currentRoomDialogueData = roomDialogueDatas[_dialogueID].dialogues[currentIndex];
+
+            Speaker speaker = currentRoomDialogueData.speaker;
+            string speakerName = currentRoomDialogueData.speakerName;
+            SpeakSpeed speakSpeed = currentRoomDialogueData.speakSpeed;
+            string text = currentRoomDialogueData.text;
+            Emotion playerEmotion = currentRoomDialogueData.playerEmotion;
+            Emotion niaEmotion = currentRoomDialogueData.niaEmotion;
+            
+
+            //skipping
+            if(isTyping == true)
+            {
+                SkipLine(speakerName,text);
+                return;
+            }
+
+            //코루틴 정지
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine); // 다 됐거나 스킵된 이후일것.
+            }
+
+            typingCoroutine = StartCoroutine(TypingText(speaker,speakerName,speakSpeed,text,playerEmotion,niaEmotion));
         }
 
-        typingCoroutine = StartCoroutine(TypeText(speaker,speakerName,speakSpeed,text,playerEmotion,niaEmotion));
-
+        else
+        {
+            EndDialogue();
+        }
     }
 
-    void SkipLine()
+    void SkipLine(string _speaker,string _text)
     {
-        isTyping = true;
+        //Debug.Log("skip");
+        StopCoroutine(typingCoroutine);
+
+        text.GetComponent<TextMeshProUGUI>().text = _text;
+
+        isTyping = false;
+        currentIndex++;
+    }
+
+    void ProceedNextLine()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && currentIndex != 0 )  //e를 눌렀는데 대화중일때.(index 0아닐때)
+        {
+            ShowDialogue(currentDialogueID);
+        }
+    }
 
 
-
-
+    void EndDialogue()  //대기화면 시작
+    {
+        speaker.GetComponent<TextMeshProUGUI>().text = "";
+        text.GetComponent<TextMeshProUGUI>().text = "";
     }
 
 
@@ -76,9 +118,11 @@ public class RoomDialogueManager : MonoBehaviour
     /////
 
     private Coroutine typingCoroutine;
-    private IEnumerator TypeText( Speaker _speaker ,string _speakerName, SpeakSpeed _speakSpeed, string _text,
+    private IEnumerator TypingText( Speaker _speaker ,string _speakerName, SpeakSpeed _speakSpeed, string _text,
                                     Emotion _playerEmotion,Emotion _niaEmotion)
     {
+        isTyping = true;
+
         speaker.GetComponent<TextMeshProUGUI>().text = _speakerName;
 
         text.GetComponent<TextMeshProUGUI>().text = "";
@@ -101,11 +145,11 @@ public class RoomDialogueManager : MonoBehaviour
     float GetSpeakSpeed(SpeakSpeed speakSpeed)  //이건 번역 아니라 괜찮아
     {
         if(speakSpeed == SpeakSpeed.slow)
-            return 0.6f;
+            return 0.2f;
         else if(speakSpeed == SpeakSpeed.normal)
-            return 0.3f;
+            return 0.07f;
         else if(speakSpeed == SpeakSpeed.fast)
-            return 0.1f;
+            return 0.03f;
 
         return 0;
     }
