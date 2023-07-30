@@ -44,7 +44,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if(!GameManager.isLoading && !roomUICanvas.GetComponent<RoomDialogueManager>().isRoomTalking)
         {
-            RoomDialogueCon.roomFlag = 0;   //잡담중 랜덤 플레그
+            RoomDialogueCon.roomFlag = 1;   //잡담중 랜덤 플레그
             roomUICanvas.GetComponent<RoomDialogueManager>().currentIndex = 0;
             roomUICanvas.GetComponent<RoomDialogueManager>().StartDialogue();
         }

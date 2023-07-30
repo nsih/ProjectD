@@ -3295,7 +3295,7 @@ GameObject:
   - component: {fileID: 1869845674270010743}
   - component: {fileID: 1869845674270010736}
   - component: {fileID: 1869845674270010737}
-  - component: {fileID: 2401173681386392502}
+  - component: {fileID: 2401173681386392504}
   - component: {fileID: 2401173681386392503}
   m_Layer: 5
   m_Name: RoomUICanvas
@@ -4141,20 +4141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd57d68c2bed4a45a9a5ee23c24f762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2401173681386392502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869845674270010738}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b4b5bc182b2444084167c2c365abad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  currentIndex: 0
 --- !u!114 &2401173681386392503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4169,8 +4155,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomDialogueDatas:
   - {fileID: 11400000, guid: eb61fcaa6d379064098d068193d9338e, type: 2}
+  - {fileID: 11400000, guid: aab81ed6e1b5c914091c882d824cb733, type: 2}
   gameManager: {fileID: 0}
   currentIndex: 0
+  isRoomTalking: 0
+--- !u!114 &2401173681386392504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869845674270010738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859e640f751ae8f45bf6273dde421070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &2507899277199860646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6106,7 +6106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uB3D9"
+  m_text: "\uBC16\uC73C\uB85C.."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
