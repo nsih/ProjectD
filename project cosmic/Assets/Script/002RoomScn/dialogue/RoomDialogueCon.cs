@@ -12,7 +12,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     //bool isTalking = false;
 
-    public static int roomFlag = 0;
+    public static int roomFlag;
     public int currentIndex;
 
 
@@ -52,7 +52,7 @@ public class RoomDialogueCon : MonoBehaviour
         ShowDialogue(roomFlag);
     }
 
-    void ShowDialogue(int currentFlag)
+    public void ShowDialogue(int currentFlag)
     {
         List<RoomScriptData> currentDialogueData = DialogueData.rsParsedData.FindAll(data => data.flag == currentFlag);
         

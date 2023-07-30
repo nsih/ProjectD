@@ -20,7 +20,7 @@ MonoBehaviour:
     playerEmotion: 5
     niaEmotion: 0
     volume: 1
-    speakSpeed: 0
+    speakSpeed: 1
     text: "\uB2C8\uC544.\n\uD55C\uAC00\uC9C0 \uBB3B\uACE0 \uC2F6\uC740\uAC8C \uC788\uB294\uB370"
   - speaker: 1
     speakerName: "\uB2C8\uC544"

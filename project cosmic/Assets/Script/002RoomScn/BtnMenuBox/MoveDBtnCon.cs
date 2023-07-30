@@ -51,11 +51,11 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if(!GameManager.isLoading)
         {
-            if(true)// !isTalking
+            if(!roomUICanvas.GetComponent<RoomDialogueManager>().isRoomTalking)// !isTalking
             {
                 OpenPopup();
             
-                doubleCheckText.GetComponent<TextMeshProUGUI>().text = "지금 드림랜드로 이동할거야?";
+                doubleCheckText.GetComponent<TextMeshProUGUI>().text = "그래, 소나닐으로 나가려고?";
 
                 btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "그래";
                 btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "아직";

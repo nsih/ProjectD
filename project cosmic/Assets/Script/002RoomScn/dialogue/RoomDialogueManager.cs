@@ -16,7 +16,7 @@ public class RoomDialogueManager : MonoBehaviour
     GameObject niaCG;
 
 
-    public static int currentDialogueID;
+    public int currentDialogueID;
     public int currentIndex;
     bool isTyping = false;
     public bool isRoomTalking = false;
@@ -50,7 +50,7 @@ public class RoomDialogueManager : MonoBehaviour
         ShowDialogue(currentDialogueID);
     }
 
-    void ShowDialogue(int _dialogueID)
+    public void ShowDialogue(int _dialogueID)
     {
         if (currentIndex < roomDialogueDatas[_dialogueID].dialogues.Length)
         {
