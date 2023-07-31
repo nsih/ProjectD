@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewArtifactData", menuName = "ArtifactData")]
 public class ArtifactData : ScriptableObject
 {
+    //
     public int artifactID;
     public string artifactName;
     public Sprite artifactSprite;
@@ -17,11 +18,13 @@ public class ArtifactData : ScriptableObject
     public int hPOffset;
 
 
-    //damage
+    //attack damage
     public int plusPlayerDamageOffset;
     public float multiplyPlayerDamageOffset;
 
-    //speed
+    //attack delay (speed)
+
+    //Move speed
     public float speedOffset;
 
     //status
@@ -31,14 +34,14 @@ public class ArtifactData : ScriptableObject
     public int charmOffset;
 
 
-    //system
+    //system    액션스택, 최대 액션스택
     public int actionStackOffset;
-    public int actionLimitOffset;  //매턴 얻는 스택
+    public int actionLimitOffset;
 
 
     //얻는 무기가 있다면
     public int weaponID;
 
-
+    //coin
     public int coinMod;
 }
