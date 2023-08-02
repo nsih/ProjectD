@@ -17,10 +17,10 @@ public class ArtifactData : ScriptableObject
 
 
     ///////
-    public bool isWeapon;//무기 바뀜?
+    public bool isWeaponChange;//무기 바뀜?
     public int weaponID;
 
-    public bool isAction;//얻는 액션 있음?
+    public bool isActionReword;//얻는 액션 있음?
     public int actionID;
 
 
@@ -30,7 +30,7 @@ public class ArtifactData : ScriptableObject
     public int hPOffset;
 
     //Mentality
-    public int mental;
+    public int mentalOffset;
 
 
     //attack damage

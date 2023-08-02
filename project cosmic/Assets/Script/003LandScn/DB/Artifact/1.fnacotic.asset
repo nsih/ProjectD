@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
-  m_Name: 1
+  m_Name: 1.fnacotic
   m_EditorClassIdentifier: 
   artifactID: 1
   artifactName: "\uD504\uB098\uCF54\uD2F1 \uC0AC\uBCF8"
-  benefitText: "\uC9C0\uC2DD +2"
+  benefitText: "\uC704\uB300\uD55C \uC885\uC871\uC758 \uC9C0\uC2DD"
   penaltyText: "\uADF9\uB3C4\uC758 \uC2A4\uD2B8\uB808\uC2A4"
   commentText: "\uC2DC\uAC04\uC774\uB77C\uB294\uAC8C \uC0AC\uC2E4\uC740 \uB9D0\uC785\uB2C8\uB2E4.."
   artifactSprite: {fileID: 0}
-  isWeapon: 0
+  isWeaponChange: 0
   weaponID: 0
-  isAction: 0
+  isActionReword: 0
   actionID: 0
   maxHPOffset: 0
   hPOffset: 0
-  mental: -10
+  mentalOffset: -10
   plusPlayerDamageOffset: 0
   multiplyPlayerDamageOffset: 0
   attackDelay: 0
