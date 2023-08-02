@@ -9,7 +9,19 @@ public class ArtifactData : ScriptableObject
     //
     public int artifactID;
     public string artifactName;
+    public string benefitText;
+    public string penaltyText;
+    public string commentText;
     public Sprite artifactSprite;
+
+
+
+    ///////
+    public bool isWeapon;//무기 바뀜?
+    public int weaponID;
+
+    public bool isAction;//얻는 액션 있음?
+    public int actionID;
 
 
 
@@ -17,12 +29,17 @@ public class ArtifactData : ScriptableObject
     public int maxHPOffset;
     public int hPOffset;
 
+    //Mentality
+    public int mental;
+
 
     //attack damage
     public int plusPlayerDamageOffset;
     public float multiplyPlayerDamageOffset;
 
     //attack delay (speed)
+
+    public int attackDelay;
 
     //Move speed
     public float speedOffset;
@@ -39,9 +56,7 @@ public class ArtifactData : ScriptableObject
     public int actionLimitOffset;
 
 
-    //얻는 무기가 있다면
-    public int weaponID;
-
     //coin
     public int coinMod;
+
 }
