@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
-  m_Name: 6
+  m_Name: 35
   m_EditorClassIdentifier: 
-  artifactID: 6
-  artifactName: "\uC774\uC138\uACC4\uC5D0\uC11C \uC804\uC0DD\uD588\uB354\uB2C8 \uB9C8\uBC95\uC18C\uB140\uAC00
-    \uB418\uC5B4\uBC84\uB838\uC2B5\uB2C8\uB2E4."
-  benefitText: "\uD050\uD2F0 \uB7EC\uBE14\uB9AC \uB9E4\uC9C1 \uD30C\uC6CC"
-  penaltyText: "\uD558\uC9C0\uB9CC \uC758\uC9C0\uAC00 \uAEBD\uC778\uB2E4."
-  commentText: "\uB9C8\uB3C4\uC11C?"
+  artifactID: 35
+  artifactName: "???\uC758 \uC2EC\uC7A5"
+  benefitText: "\uCD5C\uB300\uCCB4\uB825"
+  penaltyText: 
+  commentText: "\uBBF8\uC57D\uD558\uAC8C \uB9E5\uB3D9\uD558\uB294 \uAC80\uC740 \uAC83"
   artifactSprite: {fileID: 0}
-  isWeaponChange: 1
-  weaponID: 2
+  isWeaponChange: 0
+  weaponID: 0
   isActionReword: 0
   actionID: 0
   isCompanion: 0
   conmanionID: 0
-  maxHPOffset: 0
-  hpFullHeal: 0
+  maxHPOffset: 20
+  hpFullHeal: 1
   hPOffset: 0
   mentalOffset: 0
   plusPlayerDamageOffset: 0
-  multiplyPlayerDamageOffset: 1.5
+  multiplyPlayerDamageOffset: 0
   attackDelay: 0
   speedOffset: 0
   physicalOffset: 0

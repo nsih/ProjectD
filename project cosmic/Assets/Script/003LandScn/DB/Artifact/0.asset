@@ -22,13 +22,16 @@ MonoBehaviour:
   artifactSprite: {fileID: 0}
   isWeaponChange: 0
   weaponID: 0
-  isActionReword: 0
-  actionID: 0
+  isActionReword: 1
+  actionID: 1
+  isCompanion: 0
+  conmanionID: 0
   maxHPOffset: -10
+  hpFullHeal: 0
   hPOffset: 0
   mentalOffset: -10
   plusPlayerDamageOffset: 0
-  multiplyPlayerDamageOffset: 0
+  multiplyPlayerDamageOffset: 1.5
   attackDelay: 0
   speedOffset: 0
   physicalOffset: 0
@@ -37,4 +40,6 @@ MonoBehaviour:
   charmOffset: 0
   actionStackOffset: 0
   actionLimitOffset: 0
-  coinMod: 0
+  coinOffset: 0
+  cameraSizeOffset: 0
+  funcID: 0

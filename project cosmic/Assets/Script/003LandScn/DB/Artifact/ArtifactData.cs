@@ -23,10 +23,15 @@ public class ArtifactData : ScriptableObject
     public bool isActionReword;//얻는 액션 있음?
     public int actionID;
 
+    public bool isCompanion;    //얻는 추종자 있음?
+    public int conmanionID;
+
 
 
     //Hp
     public int maxHPOffset;
+
+    public bool hpFullHeal;
     public int hPOffset;
 
     //Mentality
@@ -39,7 +44,7 @@ public class ArtifactData : ScriptableObject
 
     //attack delay (speed)
 
-    public int attackDelay;
+    public float attackDelay;
 
     //Move speed
     public float speedOffset;
@@ -57,6 +62,12 @@ public class ArtifactData : ScriptableObject
 
 
     //coin
-    public int coinMod;
+    public int coinOffset;
+
+    //
+    public int cameraSizeOffset;
+
+    //
+    public int funcID;
 
 }
