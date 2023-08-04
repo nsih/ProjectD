@@ -7,16 +7,14 @@ using UnityEngine;
 public class TestData : ScriptableObject
 {
     public int testID;
+
     public string testName;
-
-    public Sprite testSprite;
-
     [TextArea(3, 10)]
     public string testText;
+    public Sprite testSprite;
 
     public TestType testType;
-
-    int collectionValue;
+    public int testOffset;
 
 
 
@@ -26,19 +24,33 @@ public class TestData : ScriptableObject
 [System.Serializable]
 public class ResultsData
 {
-    public string resultName;
+    public string testResultName;
     [TextArea(2, 5)]
     public string resultText;
 
     public Sprite resultSprite;
-    
-    public int rArtifactID;
-    public int rRitualID;
 
 
+    //Hp
+    public int maxHPOffset;
+
+    public bool hpFullHeal;
+    public int hPOffset;
+
+    //Mentality
+    public int mentalOffset;
 
 
+    //attack damage
+    public int plusPlayerDamageOffset;
+    public float multiplyPlayerDamageOffset;
 
+    //attack delay (speed)
+
+    public float attackDelay;
+
+    //Move speed
+    public float speedOffset;
 
     //status
     public int physicalOffset;
@@ -47,14 +59,12 @@ public class ResultsData
     public int charmOffset;
 
 
-    //system
-    public int doomCountOffset;
+    //system    액션스택, 최대 액션스택
     public int actionStackOffset;
-    public int maxActionStackOffset;
+    public int actionLimitOffset;
 
-    public int maxHpOffset;
-    public int hpOffset;
 
+    //coin
     public int coinOffset;
 }
 

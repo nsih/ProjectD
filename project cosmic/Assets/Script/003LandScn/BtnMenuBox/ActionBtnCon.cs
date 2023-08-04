@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class RitualBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject gameManager;
     GameObject landUiCanvas;
     GameObject pnlBackGround;
-    GameObject ritualPopup;
+    GameObject actionPopup;
 
 
     Button btnClose;
@@ -28,8 +28,8 @@ public class RitualBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         gameManager = GameObject.Find("GameManager");
         landUiCanvas = GameObject.Find("LandUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        ritualPopup = pnlBackGround.transform.Find("RitualPopup").gameObject;
-        btnClose = ritualPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
+        actionPopup = pnlBackGround.transform.Find("ActionPopup").gameObject;
+        btnClose = actionPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
 
         ButtonText = this.gameObject.transform.GetChild(0).gameObject;
         ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
@@ -82,14 +82,14 @@ public class RitualBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void OpenPopup()
     {
-        ritualPopup.SetActive(true);
+        actionPopup.SetActive(true);
 
         btnClose.onClick.AddListener(ClosePopup);
     }
 
     void ClosePopup()
     {
-        ritualPopup.SetActive(false);
+        actionPopup.SetActive(false);
 
         btnClose.onClick.RemoveAllListeners();
     }
