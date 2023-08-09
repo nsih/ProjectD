@@ -2,33 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "NewTestData", menuName = "TestData")]
-public class TestData : ScriptableObject
+[CreateAssetMenu(fileName = "NewAlterData", menuName = "AlterData")]
+public class AlterData : ScriptableObject
 {
-    public int testID;
+    public int alterID;
 
-    public string testName;
+    public string alternName;
     [TextArea(3, 10)]
-    public string testText;
-    public Sprite testSprite;
+    public string actionText;
 
-    public TestType testType;
-    public int testOffset;
-
-
-
-    public ResultsData[] results;
+    public AlterResultsData result;
 }
 
-[System.Serializable]
-public class ResultsData
-{
-    public string testResultName;
-    [TextArea(2, 5)]
-    public string resultText;
 
-    public Sprite resultSprite;
+[System.Serializable]
+public class AlterResultsData
+{
+    public string Text;
 
 
     //Hp
@@ -73,15 +63,6 @@ public class ResultsData
     public int cameraSizeOffset;
 
     //
+    public int artifactID;
     public int funcID;
 }
-
-
-public enum TestType  //~~test!
-{
-    physical,
-    willPower,
-    knowledge,
-    charm
-}
-
