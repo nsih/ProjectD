@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  actionID: 0
-  actionName: 
-  actionText: 
+  actionID: 1
+  actionName: "\uCC28\uC6D0 \uCC22\uAE30"
+  actionText: "\uB2F9\uC2E0\uC740 \uCC28\uC6D0\uC5D0 \uB300\uD55C \uC774\uD574\uB97C
+    \uAE30\uBC18\uC73C\uB85C \uCC28\uC6D0\uC744 \uCC22\uC73C\uB824 \uD569\uB2C8\uB2E4."
   artifactSprite: {fileID: 0}
-  actionTestType: 0
-  testOffset: 0
+  actionTestType: 2
+  testOffset: -1
   results: []

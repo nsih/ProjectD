@@ -66,6 +66,12 @@ public class ResultsData
 
     //coin
     public int coinOffset;
+
+    //
+    public int cameraSizeOffset;
+
+    //
+    public int funcID;
 }
 
 
