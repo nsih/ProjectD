@@ -12,10 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
   m_Name: 5
   m_EditorClassIdentifier: 
-  actionID: 0
-  actionName: 
-  actionText: 
+  actionID: 5
+  actionName: "\uB3C8 \uB0C4\uC0C8 \uB9E1\uAE30"
+  actionText: "\uB0A9\uC791 \uC5C5\uB4DC\uB9BD\uB2C8\uB2E4.\n\uC628 \uC2E0\uACBD\uC744
+    \uC9D1\uC911\uD569\uB2C8\uB2E4"
   artifactSprite: {fileID: 0}
   actionTestType: 0
   testOffset: 0
-  results: []
+  results:
+  - testResultName: "\uB09C \uB3C8\uC774 \uC88B\uC544"
+    resultText: "\uCF54\uC778 +"
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: 0
+    mentalOffset: 0
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 0
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 30
+    cameraSizeOffset: 0
+    funcID: 0
+  - testResultName: "\uB09C \uB3C8\uC774 \uC88B\uC740\uB370.."
+    resultText: "\uC5CE\uB4DC\uB9B0 \uACF3\uC5D0 \uC788\uB358 \uBA3C\uC9C0+"
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: 0
+    mentalOffset: 0
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 0
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 0
+    cameraSizeOffset: 0
+    funcID: 0

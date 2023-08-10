@@ -12,10 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  actionID: 0
-  actionName: 
-  actionText: 
+  actionID: 2
+  actionName: "\uAE30\uB3C4"
+  actionText: "\uC5B4\uB824\uC6B4 \uC0C1\uD669\uC785\uB2C8\uB2E4.\n\uB2F9\uC2E0\uC740
+    \uC54C\uACE0 \uC788\uB294 \uBAA8\uB4E0 \uC2E0\uC5D0\uAC8C \uAE30\uB3C4\uB97C
+    \uD569\uB2C8\uB2E4."
   artifactSprite: {fileID: 0}
-  actionTestType: 0
-  testOffset: 0
-  results: []
+  actionTestType: 1
+  testOffset: 2
+  results:
+  - testResultName: "\uC774\uC131\uC744 \uB418\uCC3E\uB2E4."
+    resultText: "\uB9C8\uC74C\uC758 \uC548\uC815+"
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: 0
+    mentalOffset: 3
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 0
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 0
+    cameraSizeOffset: 0
+    funcID: 0
+  - testResultName: "\uBBFF\uC74C\uC774 \uBD80\uC871\uD588\uB2E4"
+    resultText: "\uB0C9\uB2F4\uC790+"
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: 0
+    mentalOffset: 0
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 0
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 0
+    cameraSizeOffset: 0
+    funcID: 0

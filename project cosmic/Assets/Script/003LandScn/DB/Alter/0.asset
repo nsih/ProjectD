@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   alterID: 0
-  alternName: 
-  actionText: 
+  alternName: "\uD53C\uC758 \uC81C\uB2E8"
+  actionText: "\uC81C\uB2E8\uC774 \uB2F9\uC2E0\uC758 \uD53C\uB97C \uC6D0\uD558\uACE0
+    \uC788\uB294\uB4EF \uD569\uB2C8\uB2E4."
   result:
-    resultText: 
+    Text: "\uD798\uC744 \uC5BB\uC744\uC9C0\uC5B4\uB2E4"
     maxHPOffset: 0
     hpFullHeal: 0
-    hPOffset: 0
+    hPOffset: -10
     mentalOffset: 0
-    plusPlayerDamageOffset: 0
+    plusPlayerDamageOffset: 2
     multiplyPlayerDamageOffset: 0
     attackDelay: 0
     speedOffset: 0
@@ -34,4 +35,5 @@ MonoBehaviour:
     actionLimitOffset: 0
     coinOffset: 0
     cameraSizeOffset: 0
+    artifactID: 0
     funcID: 0

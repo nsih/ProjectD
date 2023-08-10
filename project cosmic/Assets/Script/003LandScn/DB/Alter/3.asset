@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7064074ad23ecf443a792a8f16768574, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  alterID: 0
-  alternName: 
-  actionText: 
+  alterID: 3
+  alternName: "\uC9E7\uAC8C \uBCF4\uB294 \uC7AC\uB2E8"
+  actionText: "\uC774 \uC81C\uB2E8\uC740 \uAE38\uAC8C \uAC08 \uC0DD\uAC01\uC774 \uC5C6\uC5B4
+    \uBCF4\uC785\uB2C8\uB2E4.\n"
   result:
-    Text: 
-    maxHPOffset: 0
-    hpFullHeal: 0
+    Text: "\uC720\uC6A9\uD560\uAE4C\uC694?"
+    maxHPOffset: -10
+    hpFullHeal: 1
     hPOffset: 0
     mentalOffset: 0
     plusPlayerDamageOffset: 0
@@ -34,4 +35,5 @@ MonoBehaviour:
     actionLimitOffset: 0
     coinOffset: 0
     cameraSizeOffset: 0
+    artifactID: 0
     funcID: 0

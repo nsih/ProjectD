@@ -21,8 +21,7 @@ MonoBehaviour:
   testOffset: -1
   results:
   - testResultName: "\uC2A4\uD2B8\uB9AC\uBA38\uB294 \uCC28\uC6D0\uC744 \uCC22\uC5B4"
-    resultText: "\uB2F9\uC2E0\uC740 \uCC28\uC6D0\uC744 \uCC22\uC5B4\uBC84\uB9AC\uACE0
-      \uBBF8\uC9C0\uC758 \uC138\uACC4\uB97C \uAC70\uB2D0 \uC900\uBE44\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    resultText: "\uC790\uC720 \uC774\uB3D9+"
     resultSprite: {fileID: 0}
     maxHPOffset: 0
     hpFullHeal: 0
@@ -36,17 +35,15 @@ MonoBehaviour:
     willPowerOffset: 0
     knowledgeOffset: 0
     charmOffset: 0
+    randomOffset: 0
     actionStackOffset: 0
     actionLimitOffset: 0
     coinOffset: 0
     cameraSizeOffset: 0
-    funcID: 0
+    funcID: 4
   - testResultName: "\uC2A4\uD2B8\uB9AC\uBA38\uAC00 \uC5B4\uB5BB\uAC8C \uCC28\uC6D0\uC744
       \uCC22\uC5B4"
-    resultText: "\uCC28\uC6D0\uC758 \uBE44\uBC00\uC744 \uD30C\uD574\uCE58\uB294\uAC83\uC740
-      \uD070 \uC704\uD5D8\uC744 \uB3D9\uBC18\uD569\uB2C8\uB2E4.\n\uC774\uC81C \uBD88\uC30D\uD55C
-      \uC2A4\uD2B8\uB9AC\uBA38\uB294 \uADF8 \uB300\uAC00\uB97C \uCE58\uB904\uC57C
-      \uD560 \uC2DC\uAC04\uC774 \uC654\uC2B5\u3134\uB2E4."
+    resultText: "\uCC28\uC6D0\uC5D0 \uCC22\uACA8\uC9C0\uB294 \uC721\uCCB4+"
     resultSprite: {fileID: 0}
     maxHPOffset: 0
     hpFullHeal: 0
@@ -60,6 +57,7 @@ MonoBehaviour:
     willPowerOffset: 0
     knowledgeOffset: 0
     charmOffset: 0
+    randomOffset: 0
     actionStackOffset: 0
     actionLimitOffset: 0
     coinOffset: 0

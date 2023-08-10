@@ -1953,6 +1953,8 @@ GameObject:
   - component: {fileID: 933891963}
   - component: {fileID: 933891964}
   - component: {fileID: 933891965}
+  - component: {fileID: 933891967}
+  - component: {fileID: 933891966}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2042,6 +2044,30 @@ MonoBehaviour:
   battleRoomList: []
   enemyDataList:
   - {fileID: 11400000, guid: 22070380e06c5c342ae81d4d94ab8bbf, type: 2}
+--- !u!114 &933891966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933891959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f708cb3c0d9b94547b9f2bb941532a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &933891967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933891959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff0647b81916384c9c24301c874c4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1017698825
 GameObject:
   m_ObjectHideFlags: 0

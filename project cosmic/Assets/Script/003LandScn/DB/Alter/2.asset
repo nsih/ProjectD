@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7064074ad23ecf443a792a8f16768574, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  alterID: 0
-  alternName: 
-  actionText: 
+  alterID: 2
+  alternName: "\uC6B0\uC0C1 \uC81C\uB2E8"
+  actionText: "\uC81C\uB2E8\uC740 \uB2F9\uC2E0\uC774 \uC6B0\uC0C1\uC774 \uB418\uAE30\uB97C
+    \uBC14\uB78D\uB2C8\uB2E4."
   result:
-    Text: 
+    Text: "\uC644\uBCBD\uD55C \uBB34\uC801\uC758 \uC6B0\uC0C1"
     maxHPOffset: 0
     hpFullHeal: 0
     hPOffset: 0
-    mentalOffset: 0
+    mentalOffset: -5
     plusPlayerDamageOffset: 0
     multiplyPlayerDamageOffset: 0
     attackDelay: 0
@@ -28,10 +29,11 @@ MonoBehaviour:
     physicalOffset: 0
     willPowerOffset: 0
     knowledgeOffset: 0
-    charmOffset: 0
+    charmOffset: 1
     randomOffset: 0
     actionStackOffset: 0
     actionLimitOffset: 0
     coinOffset: 0
     cameraSizeOffset: 0
+    artifactID: 0
     funcID: 0
