@@ -29,8 +29,6 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         gameManager = GameObject.Find("GameManager");
         landUiCanvas = GameObject.Find("LandUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        artifactPopup = pnlBackGround.transform.Find("ArtifactPopup").gameObject;
-        btnClose = artifactPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
 
         ButtonText = this.gameObject.transform.GetChild(0).gameObject;
         ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
@@ -73,7 +71,7 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void ShowButtonImage()
     {
         ButtonImage.GetComponent<Image>().color = Color.white;
-        ButtonText.GetComponent<TextMeshProUGUI>().text = "유물";
+        ButtonText.GetComponent<TextMeshProUGUI>().text = "아티팩트";
     }
 
     void OpenPopup()

@@ -34,11 +34,14 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         ButtonText = this.gameObject.transform.GetChild(0).gameObject;
         ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
 
+        Debug.Log("asd");
+        Debug.Log(ButtonImage);
+
         normalColor = GetComponent<Image>().color;
         float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
         float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
         float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a); 
+        hoverColor = new Color(r, g, b, normalColor.a);
     }
 
     void Update ()
@@ -57,7 +60,7 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
 
 
-    public void OnClickRitual()
+    public void OnClickAction()
     {
         if(!GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
         {
@@ -71,12 +74,12 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if(GameManager.isActionPhase && GameManager.actionStack > 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
-            ButtonText.GetComponent<TextMeshProUGUI>().text = "의식";
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "행동";
         }
         else
         {
             ButtonImage.GetComponent<Image>().color = Color.clear;
-            ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>의식</color>";
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>행동</color>";
         }
     }
 

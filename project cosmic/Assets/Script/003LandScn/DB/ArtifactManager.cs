@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class ArtifactManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public List<ArtifactData> artifactList = new List<ArtifactData>();
+
+
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+
 }
