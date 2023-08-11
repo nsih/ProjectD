@@ -40,7 +40,6 @@ public class PlayerCon : MonoBehaviour
 
     //for con
     float attackTimer;
-    float attackTerm;
 
 
     void Start()
@@ -67,7 +66,6 @@ public class PlayerCon : MonoBehaviour
         isDash = false;
 
         canAttack = true;
-        attackTerm = 0.5f;
         
         isAttack = false;
     }
@@ -463,7 +461,7 @@ public class PlayerCon : MonoBehaviour
     void AttackTimerStart()
     {
         canAttack = false;
-        attackTimer = attackTerm;
+        attackTimer = PlayerInfo.attackDelay;
     }    
     
     #endregion

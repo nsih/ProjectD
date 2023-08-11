@@ -3085,7 +3085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 453.23}
+  m_AnchoredPosition: {x: 0, y: 453.22998}
   m_SizeDelta: {x: 984.41, y: 173.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519924803
@@ -4044,7 +4044,7 @@ GameObject:
   - component: {fileID: 653131423}
   - component: {fileID: 653131422}
   m_Layer: 5
-  m_Name: RewardPanel0
+  m_Name: RewardArtifact0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5977,7 +5977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1084458376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10580,7 +10580,7 @@ GameObject:
   - component: {fileID: 2011535118}
   - component: {fileID: 2011535117}
   m_Layer: 5
-  m_Name: RewardPanel1
+  m_Name: RewardArtifact1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

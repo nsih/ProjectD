@@ -27,7 +27,11 @@ public class PlayerInfo : MonoBehaviour
     public static int charm;       //매력      주사위 가중치
 
     //attack
-    public static float basicAttackDamage;
+    public static float attackDelay;
+
+    public static float plusAttackDamageOffset;
+    public static float multiplyAttackDamageOffset;
+
     public static float attackDamage;
     
 
@@ -37,6 +41,8 @@ public class PlayerInfo : MonoBehaviour
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
+
+    public static int coin;
     
     void Start()
     {
@@ -49,9 +55,9 @@ public class PlayerInfo : MonoBehaviour
 
     }
 
-    void DamageCal()
+    public void DamageCal()
     {
-        basicAttackDamage = physical * 2;
+        attackDamage = ( physical + plusAttackDamageOffset )   * multiplyAttackDamageOffset;
     }
 
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
@@ -61,13 +67,23 @@ public class PlayerInfo : MonoBehaviour
         dashCooldown = 0.75f;
         lastDashTime = 0;
 
+        coin = 1;
+
 
 
 
         //hp
         maxHp = 20;
         hp = maxHp;
-        //Spell
+        //attack
+
+        plusAttackDamageOffset = 0;
+        multiplyAttackDamageOffset = 0;
+        DamageCal();
+
+        attackDelay = 0.75f;
+
+
         //action Stack
         actionStackLimit = 1;
 
@@ -83,7 +99,7 @@ public class PlayerInfo : MonoBehaviour
 
 
     //hp, maxhp
-    void MaxHpPlus(int offset)//최대 hp 변경 (+-)
+    public void MaxHpPlus(int offset)//최대 hp 변경 (+-)
     {
         float changedMaxHp = maxHp + offset;
         if(changedMaxHp <= 0)
@@ -100,7 +116,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    void MaxHpMultiply(float offset)//최대체력이 최대체력 퍼센트 오르락내리락
+    public void MaxHpMultiply(float offset)//최대체력이 최대체력 퍼센트 오르락내리락
     {
         float changedMaxHp = maxHp*offset;
 
@@ -117,7 +133,7 @@ public class PlayerInfo : MonoBehaviour
         maxHp = changedMaxHp;
     }
     
-    void HpPlus(float offset)//hp 변경시 호출 (+-)
+    public void HpPlus(int offset)//hp 변경시 호출 (+-)
     {
         float changedHp = hp+offset;
 
@@ -135,37 +151,9 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    void HpMultiplyPlus(float offset)  //체력이 퍼센트 오르락내리락
+    public void HpModify(bool live)    //풀회복or끝
     {
-        float changedHp = hp + (maxHp*offset);
-
-        if(changedHp >= maxHp)
-        {
-            hp = maxHp;
-        }
-        else
-        {
-            hp = changedHp;
-        }
-    }
-
-    void HpMultiplyMinus(float offset)  //체력이 퍼센트 오르락내리락
-    {
-        float changedHp = hp - (hp*offset);
-
-        if(changedHp <= 0)
-        {
-            Debug.Log("겜 오버");
-        }
-        else
-        {
-            hp = changedHp;
-        }
-    }
-
-    void HpModify(bool life)    //풀회복or끝
-    {
-        if(life)
+        if(live)
         {
             hp = maxHp;
         }
@@ -180,7 +168,7 @@ public class PlayerInfo : MonoBehaviour
 
 
     //status
-    void PhysicalModify(int modifier)
+    public void PhysicalModify(int modifier)
     {
         int changedPhisical = physical + modifier;
 
@@ -193,7 +181,7 @@ public class PlayerInfo : MonoBehaviour
             physical = changedPhisical;
         }
     }
-    void WillPowerModify(int modifier)
+    public void WillPowerModify(int modifier)
     {
         int changedWillPower = willPower + modifier;
 
@@ -207,7 +195,7 @@ public class PlayerInfo : MonoBehaviour
             willPower = changedWillPower;
         }
     }
-    void KnowledgeModify(int modifier)
+    public void KnowledgeModify(int modifier)
     {
         int changedKnowledge = knowledge + modifier;
 
@@ -221,7 +209,7 @@ public class PlayerInfo : MonoBehaviour
             knowledge = changedKnowledge;
         }
     }
-    void CharmModify(int modifier)
+    public void CharmModify(int modifier)
     {
         int changedCharm = charm + modifier;
 

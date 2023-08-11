@@ -24,7 +24,7 @@ public class ArtifactData : ScriptableObject
     public int actionID;
 
     public bool isCompanion;    //얻는 추종자 있음?
-    public int conmanionID;
+    public int companionID;
 
 
 

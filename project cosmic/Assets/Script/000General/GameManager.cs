@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public static int actionStack;
     public static int mentality;
 
+    public static int coin;
+
 
     public static bool isActionPhase;
 
