@@ -71,20 +71,11 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void ShowButtonImage()
     {
         ButtonImage.GetComponent<Image>().color = Color.white;
-        ButtonText.GetComponent<TextMeshProUGUI>().text = "아티팩트";
+        ButtonText.GetComponent<TextMeshProUGUI>().text = "유물";
     }
 
     void OpenPopup()
     {
-        artifactPopup.SetActive(true);
-
-        btnClose.onClick.AddListener(ClosePopup);
-    }
-
-    void ClosePopup()
-    {
-        artifactPopup.SetActive(false);
-
-        btnClose.onClick.RemoveAllListeners();
+        gameManager.GetComponent<ArtifactManager>().OpenArtifactListPopup();
     }
 }

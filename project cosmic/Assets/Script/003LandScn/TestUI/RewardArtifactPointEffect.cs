@@ -15,16 +15,10 @@ public class RewardArtifactPointEffect : MonoBehaviour, IPointerEnterHandler, IP
         hoverColor = new Color(1f, 1f, 1f, 0f);
     }
 
-    public void Onclick()
-    {
-        Debug.Log("asd");
-    }
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = normalColor;
-        Debug.Log("asd");
     }
 
     public void OnPointerExit(PointerEventData eventData)

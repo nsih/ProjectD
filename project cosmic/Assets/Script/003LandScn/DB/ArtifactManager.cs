@@ -9,14 +9,25 @@ using System;
 
 public class ArtifactManager : MonoBehaviour
 {
-    GameObject artifactRewardPopup;
-    GameObject artifactListPopup;
+    //보상
+    GameObject artifactRewardPopup;         //전체
     GameObject artifactSum;          //고르고 난뒤 뜨는거
 
     Button btnRewardArtifact0;
     Button btnRewardArtifact1;
 
     Button btnCloseRewardPopup;
+
+
+
+    //가진거 리스트
+    GameObject artifactListPopup;           //내꺼
+    List<GameObject> iconList = new();              //아이콘
+
+    Button btnCloseListPopup;
+
+
+
 
 
 
@@ -32,20 +43,9 @@ public class ArtifactManager : MonoBehaviour
 
 
     //해금된 아티팩트 리스트 (생략)
-
-
     //public List<ArtifactData> ingameArtifactList = new(); //해금된 (인게임에서 쓸 수 있는) 유물리스트 (w)
 
-
-
-    void Start()
-    {
-        //artifactList[0].artifactID
-    }
-
-    #region "Reward Popup"
-
-
+    #region "Reward"
     public void OpenArtifactRewardPopup()
     {
         artifactRewardPopup = GameObject.Find("PnlBackGround").transform.Find("ArtifactRewordPopup").gameObject;
@@ -103,21 +103,6 @@ public class ArtifactManager : MonoBehaviour
     {
         artifactSum.SetActive(false);
     }
-
-
-    public void ShowArtifactSum()
-    {
-
-    }
-
-
-
-
-
-
-
-    #endregion
-
 
 
 
@@ -300,12 +285,83 @@ public class ArtifactManager : MonoBehaviour
 
 
         //플레이어 유물 추가
-        playerArtifactList.Add( allArtifactList[artifactData.artifactID] );
+        playerArtifactList.Add( artifactData );
+    }
+
+    #endregion
+
+    #region "Mine List"
+    public void OpenArtifactListPopup()
+    {
+        artifactListPopup = GameObject.Find("PnlBackGround").transform.Find("ArtifactList").gameObject;
+        btnCloseListPopup = artifactListPopup.transform.GetChild(2).GetComponent<Button>();
+
+        GameObject iconListOBJ = artifactListPopup.transform.GetChild(0).gameObject;
+
+        artifactListPopup.SetActive(true);
+
+
+        for (int i = 0; i < iconListOBJ.transform.childCount; i++)
+        {
+            GameObject childObject = iconListOBJ.transform.GetChild(i).gameObject;
+            if (childObject != null)
+            {
+                iconList.Add(childObject);
+            }
+
+            if (i >= playerArtifactList.Count)
+            {
+                iconList[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log(i);
+                Debug.Log(playerArtifactList[i].artifactName);
+
+                int index = i; // 임시 변수에 i 할당
+                iconList[i].GetComponent<Button>().onClick.AddListener(() => ClickArtifactIcon(playerArtifactList[index]));
+
+                iconList[i].gameObject.SetActive(true);
+            }
+        }
+
+
+        btnCloseListPopup.onClick.AddListener(CloseListPopup);
+    }
+
+    public void ClickArtifactIcon(ArtifactData artifactData) //아이콘 클릭시 상세정보 출력
+    {
+        GameObject artifactInfoOBJ = artifactListPopup.transform.GetChild(1).gameObject;        
+
+        artifactInfoOBJ.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = artifactData.artifactSprite;
+        artifactInfoOBJ.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = artifactData.artifactName;
+        artifactInfoOBJ.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = artifactData.commentText;
+        artifactInfoOBJ.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = 
+                                                        "<color=#24ED50>" + artifactData.benefitText + "</color>"
+                                                        + "\n\n" + 
+                                                        "<color=#ED4524>" + artifactData.penaltyText + "</color>";
+    }
+
+
+    public void CloseListPopup()
+    {
+        artifactListPopup.SetActive(false);
+
+        for (int i = 0; i < iconList.Count; i++)
+        {
+            iconList[i].GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+
+
+        iconList.Clear();
+
+
+
+        btnCloseListPopup.onClick.RemoveAllListeners();
     }
 
 
 
-
-
+    #endregion
 
 }
