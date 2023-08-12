@@ -57,7 +57,7 @@ public class PlayerInfo : MonoBehaviour
 
     public void DamageCal()
     {
-        attackDamage = ( physical + plusAttackDamageOffset )   * multiplyAttackDamageOffset;
+        attackDamage = 1000;//( physical + plusAttackDamageOffset )   * multiplyAttackDamageOffset;
     }
 
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출

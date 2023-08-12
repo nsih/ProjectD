@@ -71,9 +71,10 @@ public class EnemyCon : MonoBehaviour
 
     void OnDisable() 
     {
-        if(gameManager.GetComponent<BattleEventManager>().isPoolAllDone() == true)
+        if(gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
         {
             gameManager.GetComponent<StageManager>().EndRoomEventPhase(StageManager.map[ GameManager.currentRoom ].roomType);
+            Debug.Log(gameManager.GetComponent<BattleEventManager>().isPoolAllDone());
         }
     }
 
@@ -90,8 +91,8 @@ public class EnemyCon : MonoBehaviour
     {
         if(other == playerStrike.GetComponent<Collider2D>() )
         {
+            //player.GetComponent<PlayerCon>().StrikeCon();
             HandlePlayerStrike();
-            player.GetComponent<PlayerCon>().StrikeCon();
         }
     }
 
@@ -163,6 +164,7 @@ public class EnemyCon : MonoBehaviour
         {
             hp = 0;
             this.gameObject.SetActive(false);
+            Debug.Log(this.gameObject.name);
         }
     }
 

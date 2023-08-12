@@ -309,9 +309,9 @@ public class StageManager : MonoBehaviour
         else if(roomType == RoomType.Battle)
         {
             GameManager.isActionPhase = true;
-            
-            
-            //gameObject.GetComponent<ArtifactManager>().
+
+            gameObject.GetComponent<ArtifactManager>().OpenArtifactRewardPopup();
+            gameObject.GetComponent<ArtifactManager>().SuggestArtifacts();  
 
 
             Debug.Log("End"+roomType);

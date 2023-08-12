@@ -9,16 +9,26 @@ using System;
 
 public class ArtifactManager : MonoBehaviour
 {
-    public GameObject artifactRewardPopup;
-    public GameObject artifactListPopup;
+    GameObject artifactRewardPopup;
+    GameObject artifactListPopup;
+    GameObject artifactSum;          //고르고 난뒤 뜨는거
+
+    Button btnRewardArtifact0;
+    Button btnRewardArtifact1;
+
+    Button btnCloseRewardPopup;
 
 
 
 
 
-    public static List<ArtifactData> allArtifactList = new();  //전체 아티팩트 리스트
+    public List<ArtifactData> allArtifactList;  //전체 아티팩트 리스트
 
     public static List<ArtifactData> playerArtifactList = new();   //이번 게임에서 얻은 유물 리스트
+
+
+
+    public static List<ArtifactData> rewardArtifactList = new();
 
 
     //해금된 아티팩트 리스트 (생략)
@@ -33,23 +43,69 @@ public class ArtifactManager : MonoBehaviour
         //artifactList[0].artifactID
     }
 
-    void Update()
-    {
-        
-    }
-
     #region "Reward Popup"
 
 
-    void OpenArtifactRewardPopup()
+    public void OpenArtifactRewardPopup()
     {
-        artifactRewardPopup = GameObject.Find("LandUICanvas").transform.Find("ArtifactRewordPopup").gameObject;
-        
-        Button btnClose = artifactListPopup.transform.GetChild(3).GetComponent<Button>();
-        btnClose.onClick.AddListener(ClosePopup);
+        artifactRewardPopup = GameObject.Find("PnlBackGround").transform.Find("ArtifactRewordPopup").gameObject;
+        btnRewardArtifact0 = artifactRewardPopup.transform.GetChild(1).GetComponent<Button>();
+        btnRewardArtifact1 = artifactRewardPopup.transform.GetChild(2).GetComponent<Button>();
+        btnCloseRewardPopup = artifactRewardPopup.transform.GetChild(3).GetComponent<Button>();
+        artifactSum = GameObject.Find("PnlBackGround").transform.Find("ArtifactSumPanel").gameObject;
+
+
+
+        artifactRewardPopup.SetActive(true);
+
+        btnRewardArtifact0.onClick.AddListener(() => ClickRewardArtifact(btnRewardArtifact0));
+        btnRewardArtifact1.onClick.AddListener(() => ClickRewardArtifact(btnRewardArtifact1));
+        btnCloseRewardPopup.onClick.AddListener(ClosePopup);
     }
 
-    void ClosePopup()
+    public void ClickRewardArtifact(Button clickedButton)
+    {
+        ArtifactData clickedArtifact;
+        if( clickedButton.name [^1 ] == '0')
+            clickedArtifact = rewardArtifactList[0];
+
+        else
+            clickedArtifact = rewardArtifactList[1];
+
+        ApplayArtifact(clickedArtifact);
+        ShowArtifactSum(clickedArtifact);
+
+        ClosePopup();
+    }
+
+    public void ClosePopup()
+    {
+        artifactRewardPopup.SetActive(false);
+
+        btnRewardArtifact0.onClick.RemoveAllListeners();
+        btnRewardArtifact1.onClick.RemoveAllListeners();
+        btnCloseRewardPopup.onClick.RemoveAllListeners();
+    }
+
+
+    private void ShowArtifactSum(ArtifactData artifactData)
+    {
+        artifactSum.SetActive(true);
+        artifactSum.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = artifactData.artifactSprite;
+        artifactSum.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = artifactData.commentText;
+
+
+
+        Invoke("DeactivateArtifactSum", 1.5f);
+    }
+
+    private void DeactivateArtifactSum()
+    {
+        artifactSum.SetActive(false);
+    }
+
+
+    public void ShowArtifactSum()
     {
 
     }
@@ -65,43 +121,38 @@ public class ArtifactManager : MonoBehaviour
 
 
 
-    public void SuggestArtifacts() //얻을 유물 고르기
+    public void SuggestArtifacts() //리워드 보여주기기기기기
     {
-        List<ArtifactData> artifactList = GetRandomArtifacts(allArtifactList,playerArtifactList);
+        rewardArtifactList = GetRandomArtifacts(allArtifactList,playerArtifactList);
 
         //1 - sprite, 2 - Name, 3 - bp
 
 
-        //0
-        GameObject artifactPanel0 = GameObject.Find("RewardArtifact0");
+        GameObject sprite0 = btnRewardArtifact0.gameObject.transform.GetChild(1).gameObject;
+        sprite0.GetComponent<Image>().sprite = rewardArtifactList[0].artifactSprite;
 
-        GameObject sprite0 = artifactPanel0.gameObject.transform.GetChild(1).gameObject;
-        sprite0.GetComponent<Image>().sprite = artifactList[0].artifactSprite;
+        GameObject name0 = btnRewardArtifact0.gameObject.transform.GetChild(2).gameObject;
+        name0.GetComponent<TextMeshProUGUI>().text = rewardArtifactList[0].artifactName;
 
-        GameObject name0 = artifactPanel0.gameObject.transform.GetChild(2).gameObject;
-        name0.GetComponent<TextMeshProUGUI>().text = artifactList[0].artifactName;
-
-        GameObject text0 = artifactPanel0.gameObject.transform.GetChild(3).gameObject;
-        text0.GetComponent<TextMeshProUGUI>().text = 
-                                                        "<color=#ED4524>" + artifactList[0].benefitText + "</color>"
-                                                        + "\n" + 
-                                                        "<color=#24ED50>" + artifactList[0].penaltyText + "</color>";
+        GameObject text0 = btnRewardArtifact0.gameObject.transform.GetChild(3).gameObject;
+        text0.GetComponent<TextMeshProUGUI>().text =    
+                                                        "<color=#24ED50>" + rewardArtifactList[0].benefitText + "</color>"
+                                                        + "\n\n" + 
+                                                        "<color=#ED4524>" + rewardArtifactList[0].penaltyText + "</color>";
 
 
-        //1
-        GameObject artifactPanel1 = GameObject.Find("RewardArtifact1");
 
-        GameObject sprite1 = artifactPanel1.gameObject.transform.GetChild(1).gameObject;
-        sprite0.GetComponent<Image>().sprite = artifactList[1].artifactSprite;
+        GameObject sprite1 = btnRewardArtifact1.gameObject.transform.GetChild(1).gameObject;
+        sprite1.GetComponent<Image>().sprite = rewardArtifactList[1].artifactSprite;
 
-        GameObject name1 = artifactPanel1.gameObject.transform.GetChild(2).gameObject;
-        name0.GetComponent<TextMeshProUGUI>().text = artifactList[1].artifactName;
+        GameObject name1 = btnRewardArtifact1.gameObject.transform.GetChild(2).gameObject;
+        name1.GetComponent<TextMeshProUGUI>().text = rewardArtifactList[1].artifactName;
 
-        GameObject text1 = artifactPanel1.gameObject.transform.GetChild(3).gameObject;
-        text0.GetComponent<TextMeshProUGUI>().text = 
-                                                        "<color=#ED4524>" + artifactList[1].benefitText + "</color>"
-                                                        + "\n" + 
-                                                        "<color=#24ED50>" + artifactList[1].penaltyText + "</color>";
+        GameObject text1 = btnRewardArtifact1.gameObject.transform.GetChild(3).gameObject;
+        text1.GetComponent<TextMeshProUGUI>().text = 
+                                                        "<color=#24ED50>" + rewardArtifactList[1].benefitText + "</color>"
+                                                        + "\n\n" + 
+                                                        "<color=#ED4524>" + rewardArtifactList[1].penaltyText + "</color>";
 
 
 
@@ -251,5 +302,10 @@ public class ArtifactManager : MonoBehaviour
         //플레이어 유물 추가
         playerArtifactList.Add( allArtifactList[artifactData.artifactID] );
     }
+
+
+
+
+
 
 }
