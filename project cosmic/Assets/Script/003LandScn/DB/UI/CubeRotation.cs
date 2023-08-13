@@ -13,7 +13,7 @@ public class CubeRotation : MonoBehaviour
 
     public float throwForce = 1000;
     public float throwDamping = 0.99f; // 회전 감속 계수
-    public float stopThreshold = 50.0f; // 회전 멈춤 기준값
+    public float stopThreshold = 30.0f; // 회전 멈춤 기준값
 
     private bool isThrowing = false;
     private Vector3 throwDirection;
@@ -40,9 +40,9 @@ public class CubeRotation : MonoBehaviour
         isThrowing = true;
 
         // 랜덤한 회전 방향 생성
-        float throwX = Random.Range(-360f, 360f);
-        float throwY = Random.Range(-360f, 360f);
-        float throwZ = Random.Range(-360f, 360f);
+        float throwX = (Random.value < 0.5f) ? -360f : 360f;
+        float throwY = (Random.value < 0.5f) ? -360f : 360f;
+        float throwZ = (Random.value < 0.5f) ? -360f : 360f;
 
         throwDirection = new Vector3(throwX, throwY, throwZ).normalized;
 
@@ -71,7 +71,6 @@ public class CubeRotation : MonoBehaviour
 
 
                 //눈 보여주기
-                //if 숫자가 5,6이면 색도 다르게 할수 잊지 아늘까??????
                 eye.GetComponent<TextMeshProUGUI>().text = "0"; //
             }
 
