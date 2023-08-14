@@ -16,6 +16,8 @@ public class TestData : ScriptableObject
     public TestType testType;
     public int testOffset;
 
+    public bool isTest = true;
+
 
 
     public ResultsData[] results;

@@ -40,6 +40,23 @@ public class SpecialFuncManager : MonoBehaviour
             Debug.Log(funcID);
         }
 
+        else if(funcID == 6)    //무작위 적 리스폰
+        {
+            Debug.Log(funcID);
+        }
+
+        else if(funcID == 7)    //무작위 유물 얻기
+        {
+            Debug.Log(funcID);
+        }
+
+        else if(funcID == 8)    //무작위 유물 잃기
+        {
+            Debug.Log(funcID);
+        }
+
+
+
         else
         {
             Debug.Log(funcID);

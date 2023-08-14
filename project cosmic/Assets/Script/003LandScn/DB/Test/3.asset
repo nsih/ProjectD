@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc90ca7b0538b144a6ca917c416daad, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  testID: 3
+  testName: "\uBD80\uC815\uD615\uC758 \uB545"
+  testText: "\uB4DC\uB9BC\uB79C\uB4DC\uC758 \uC9C0\uD615\uC740 \uC778\uC9C0\uB97C
+    \uAC00\uBCCD\uAC8C \uCD08\uC6D4\uD558\uB294 \uB4EF \uD569\uB2C8\uB2E4.\n\n\uAC11\uC790\uAE30
+    \uB05D\uC5C6\uB294 \uC2EC\uC5F0\uC73C\uB85C \uAEBC\uC9C0\uB294 \uB545\uC5D0 \uB2F9\uC2E0\uC740
+    \uB180\uB78D\uB2C8\uB2E4.\n\n\uBC29\uAE08\uAE4C\uC9C0 \uB545\uC774\uC5C8\uB358
+    \uBCBD\uC758 \uAC08\uB77C\uC9C4 \uD2C8\uC744 \uC7A1\uC544 \uB5A8\uC5B4\uC9C0\uC9C0
+    \uC54A\uC73C\uB824 \uC560\uC501\uB2C8\uB2E4."
+  testSprite: {fileID: 0}
+  testType: 0
+  testOffset: 0
+  isTest: 1
+  results:
+  - testResultName: "\uB098\uB97C \uC8FD\uC774\uC9C0 \uBABB\uD558\uB294 \uAC83"
+    resultText: "\uBC84\uD168 \uB0C8\uC2B5\uB2C8\uB2E4.\n\n\uACB0\uAD6D \uBBFF\uC744\uAC74
+      \uAC15\uD55C \uC790\uC2E0\uC758 \uC721\uCCB4 \uBFD0.\n\n\uACE0\uB09C\uC744
+      \uBC84\uD168\uB0B8 \uC721\uCCB4\uB294 \uB2E4\uC2DC \uD55C\uBC88 \uAC15\uD574\uC9D1\uB2C8\uB2E4.
+      (\uD798 +1)"
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: 0
+    mentalOffset: 0
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 1
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 0
+    cameraSizeOffset: 0
+    artifactID: 0
+    actionID: 0
+    funcID: 0
+  - testResultName: "\uB098 \uC548\uC8FD\uC5C8\uB124?"
+    resultText: "\uB2F9\uC2E0\uC740 \uBC84\uD2F0\uC9C0 \uBABB\uD558\uACE0 \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4.\n\n\uC8FD\uC5B4\uB3C4
+      \uC774\uC0C1\uD558\uC9C0 \uC54A\uC744 \uB192\uC774\uC600\uC9C0\uB9CC \uC774
+      \uBAB8\uC740 \uAF64 \uD2BC\uD2BC\uD55C \uB4EF \uD569\uB2C8\uB2E4.\n\n\"\uC774\uAC78
+      \uC0AC\uB124..\"\n\n\uADF8\uB798\uB3C4 \uC544\uD504\uAE34 \uD569\uB2C8\uB2E4."
+    resultSprite: {fileID: 0}
+    maxHPOffset: 0
+    hpFullHeal: 0
+    hPOffset: -10
+    mentalOffset: 0
+    plusPlayerDamageOffset: 0
+    multiplyPlayerDamageOffset: 0
+    attackDelay: 0
+    speedOffset: 0
+    physicalOffset: 0
+    willPowerOffset: 0
+    knowledgeOffset: 0
+    charmOffset: 0
+    randomOffset: 0
+    actionStackOffset: 0
+    actionLimitOffset: 0
+    coinOffset: 0
+    cameraSizeOffset: 0
+    artifactID: 0
+    actionID: 0
+    funcID: 0
