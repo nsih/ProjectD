@@ -73,6 +73,11 @@ public class ResultsData
     public int cameraSizeOffset;
 
     //
+    public int artifactID;
+
+    public int actionID;
+
+    //
     public int funcID;
 }
 
