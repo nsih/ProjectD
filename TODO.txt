@@ -3,6 +3,9 @@ HomeEvent Action Moving Phase
 -> Movie UI
 
 
+액션스택 방마다 n개 채워주고 써야함 -> 방마다 스택 1개씩 채워줌
+
+
 ------------------------
 
 *title scn
