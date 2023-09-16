@@ -2,55 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerate : MonoBehaviour
+public class MapGenerator : MonoBehaviour
 {
-    
-    void Start()
+    public void GenerateMap()
     {
-        
+        MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
+
+        Room<RoomType> startRoom = new Room<RoomType>(RoomType.Start, 0, 0);
+        mapGraph.AddNode(startRoom); // 시작 방을 그래프에 추가
+
+        for (int i = 1; i < 16; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Room<RoomType> room = new Room<RoomType>(RoomType.Start, i, j);
+                mapGraph.AddNode(room); // 생성된 방을 그래프에 추가
+            }
+        }
+
+        Room<RoomType> bossRoom = new Room<RoomType>(RoomType.Boss, 16, 0);
+        mapGraph.AddNode(bossRoom);
     }
 
-    void Update()
-    {
-        
-    }
+    
 }
 
 
-public class Node<T>
+public class Room<T>
 {
+    public int X { get; set; } // x 좌표 정보
+    public int Y { get; set; } // y 좌표 정보
     public T Data { get; private set; }
-    public List<Node<T>> Neighbors { get; private set; }
+    public List<Room<T>> Neighbors { get; private set; }
 
-    public Node(T data)
+    public Room(T data, int x, int y)
     {
         Data = data;
-        Neighbors = new List<Node<T>>();
+
+        X = x;
+        Y = y;
+
+        Neighbors = new List<Room<T>>();
     }
 
-    public void AddPath(Node<T> neighbor)
+    public void AddPath(Room<T> neighbor)
     {
         Neighbors.Add(neighbor);
     }
 }
 
-public class DirectedGraph<T>
+public class MapGraph<T>
 {
-    public List<Node<T>> Nodes { get; private set; }
+    public List<Room<T>> Nodes { get; private set; }
 
-    public DirectedGraph()
+    public MapGraph()
     {
-        Nodes = new List<Node<T>>();
+        Nodes = new List<Room<T>>();
     }
 
-    public void AddNode(Node<T> node)
+    public void AddNode(Room<T> node)
     {
         Nodes.Add(node);
     }
 
-    public void AddEdge(Node<T> fromNode, Node<T> toNode)
+    public void AddEdge(Room<T> fromNode, Room<T> toRoom)
     {
-        fromNode.AddPath(toNode);
+        fromNode.AddPath(toRoom);
     }
 }
 

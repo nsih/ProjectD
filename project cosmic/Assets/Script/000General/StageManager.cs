@@ -80,11 +80,6 @@ public class StageManager : MonoBehaviour
         {
             GenateStage0();
         }
-
-        else if(GameManager.currentStage == 1)
-        {
-            GenateStage1();
-        }
     }
 
     void GenateStage0()
@@ -410,12 +405,13 @@ public class RoomData
 public enum RoomType : int
 {
     Start = 0,
+    Boss = 1,
 
-    Battle = 0,
-    FixedEvent = 1,
-    RamdomEvent = 2,
-    Alter = 3,
-    Shop = 4,
-    NPC = 5,
-    Boss = 6
+    
+    Battle = 2,
+    FixedEvent = 3,
+    RamdomEvent = 4,
+    Alter = 5,
+    Shop = 6,
+    NPC = 7
 }
