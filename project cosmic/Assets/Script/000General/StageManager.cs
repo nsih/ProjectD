@@ -89,6 +89,7 @@ public class StageManager : MonoBehaviour
 
     void GenateStage0()
     {
+        /*
         //add nodes to dictionary(roomNode)
         for(int i = 0 ; i < 8 ; i++)
         {
@@ -170,6 +171,7 @@ public class StageManager : MonoBehaviour
                 node.AddConnectedNode(map[6]);
             }
         }
+        */
     }
     void GenateStage1()
     {
@@ -222,6 +224,7 @@ public class StageManager : MonoBehaviour
     //방 움직이면 방 이벤트 시작(시작안하면 안하는)
     public void StartRoomEventPhase(RoomType roomType)
     {
+        /*
         //땅 로드 없음.
         //일단 다 actionphase로 고정해뒀음
 
@@ -293,11 +296,13 @@ public class StageManager : MonoBehaviour
 
             Debug.Log(roomType);
         }
+        */
     }
 
 
     public void EndRoomEventPhase(RoomType roomType)    //보상도 주고 마 다했어.
     {
+        /*
         if(roomType == RoomType.Null)
         {
             map[GameManager.currentRoom].isClear = true;
@@ -365,6 +370,7 @@ public class StageManager : MonoBehaviour
             
             Debug.Log("End Error : "+roomType);
         }
+        */
     }
 
 }
@@ -403,12 +409,13 @@ public class RoomData
 }
 public enum RoomType : int
 {
-    Null = 0,
-    Altar = 1,
-    Battle = 2,
-    Shop = 3,
-    Test = 4,
-    Event = 5,
-    Boss = 6
+    Start = 0,
 
+    Battle = 0,
+    FixedEvent = 1,
+    RamdomEvent = 2,
+    Alter = 3,
+    Shop = 4,
+    NPC = 5,
+    Boss = 6
 }
