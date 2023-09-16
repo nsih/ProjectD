@@ -250,12 +250,12 @@ public class LandUICon : MonoBehaviour
     { 
         roomIntroPanel.SetActive(true);
 
-        if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Null)
+        if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Start)
         {
             roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[0];
         }
 
-        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Altar)
+        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Alter)
         {
             roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[1];
         }
@@ -268,11 +268,6 @@ public class LandUICon : MonoBehaviour
         else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Shop)
         {
             roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[3];
-        }
-
-        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Test)
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[4];
         }
 
         else

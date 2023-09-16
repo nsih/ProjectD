@@ -76,7 +76,7 @@ public class MoveDBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         
         gameManager.GetComponent<GameManager>().OpenNewStage();
 
-        gameManager.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
+        //gameManager.GetComponent<StageManager>().StartRoomEventPhase(RoomType.Null);
     }
 
     void OnClickNo()

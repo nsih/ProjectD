@@ -73,6 +73,7 @@ public class MiniMapCon : MonoBehaviour
             
             if(node.isRevealed)
             {
+                /*
                 if(node.roomType == RoomType.Null)
                 {
                     tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[0];
@@ -101,6 +102,7 @@ public class MiniMapCon : MonoBehaviour
                 {
                     tempRoomObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = roomTypeSprite[6];
                 }
+                */
 
 
 
