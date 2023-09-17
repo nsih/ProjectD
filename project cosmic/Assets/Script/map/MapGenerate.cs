@@ -11,14 +11,21 @@ public class MapGenerator : MonoBehaviour
     static MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
 
 
+    public void Start() 
+    {
+        GenerateMap(6,18);
+    }
+
+
     public void GenerateMap(int x,int y)
     {
-        Room<RoomType> startRoom = new Room<RoomType>(RoomType.Start, 0, 0);
+        RemoveAllNodes(mapGraph);
+
+        Room<RoomType> startRoom = new Room<RoomType>(true,RoomType.Start, 0, 0);
         mapGraph.AddNode(startRoom);
 
-        // System.Random의 인스턴스 생성
-        System.Random random = new System.Random();
 
+        System.Random random = new System.Random();
         for (int i = 1; i < y; i++)
         {
             for (int j = 0; j < x; j++)
@@ -32,7 +39,7 @@ public class MapGenerator : MonoBehaviour
                 else
                     roomType = GetRandomRoomType(random);
 
-                Room<RoomType> room = new Room<RoomType>(roomType, i, j);
+                Room<RoomType> room = new Room<RoomType>(false, roomType, i, j);
                 mapGraph.AddNode(room);
 
 
@@ -40,8 +47,11 @@ public class MapGenerator : MonoBehaviour
                     return;
             }
         }
-    }
 
+        AddMapPath();
+    }
+    
+    //랜덤 룸타입 반환 (전투, 이벤트, 재단, 상점)
     public RoomType GetRandomRoomType(System.Random random)
     {
         // 각 RoomType에 대한 확률을 정의
@@ -68,8 +78,8 @@ public class MapGenerator : MonoBehaviour
         return RoomType.Battle;
     }
 
-    //그래프 받아서 간선 넣고 리턴
-    public MapGraph<RoomType> AddMapPath(MapGraph<RoomType> mapGraph)
+    //그래프 간선 넣고 리턴
+    public void AddMapPath()
     {
         int maxX = mapGraph.Nodes.Max(node => node.X);
         int maxY = mapGraph.Nodes.Max(node => node.Y);
@@ -88,17 +98,12 @@ public class MapGenerator : MonoBehaviour
         }
 
 
-        for(int i = 1; i <=maxY ; i++)
+        for(int i = 0 ; i <= maxX ; i++)
         {
-            for(int j = 0 ; j <= maxX ; j++)
-            {
-                Room<RoomType> node = mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i);
+            Room<RoomType> node = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == 1);
 
-                GoDFS(mapGraph,node,maxX,maxY);
-            }
+            GoDFS(mapGraph,node,maxX,maxY);
         }
-
-        return mapGraph;
     }
 
     static void GoDFS(MapGraph<RoomType> mapGraph, Room<RoomType> startNode, int maxX,int maxY)
@@ -129,15 +134,13 @@ public class MapGenerator : MonoBehaviour
 
         // return
         if (toY == maxY)
-        {
             return;
-        }
 
         // 재귀호출
         GoDFS(mapGraph, toNode, maxX,maxY);
     }
 
-    void RemoveAllNodes(MapGraph<RoomType> mapGraph)
+    void RemoveAllNodes(MapGraph<RoomType> mapGraph)    //노드 클리어
     {
         foreach (var node in mapGraph.Nodes.ToList())
         {
@@ -145,6 +148,19 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    void RemoveIsolatedNodes(MapGraph<RoomType> mapGraph)   //고립된 노드제거
+    {
+        List<Room<RoomType>> isolatedNodes = new List<Room<RoomType>>();
+
+        foreach (var node in mapGraph.Nodes.ToList())
+        {
+            if (node.Neighbors.Count == 0)
+            {
+                isolatedNodes.Add(node);
+                mapGraph.RemoveNode(node);
+            }
+        }
+    }
 }
 
 
@@ -155,15 +171,17 @@ public class MapGenerator : MonoBehaviour
 
 public class Room<T>
 {
-    public bool pl; //player location
-    public T Data { get; private set; }
+    public bool Player; //player location
+    public T RoomType { get; private set; }
     public List<Room<T>> Neighbors { get; private set; }
     public int X { get; set; } // x 좌표 정보
     public int Y { get; set; } // y 좌표 정보
 
-    public Room(T data, int x, int y)
+    public Room(bool player, T roomType, int x, int y)
     {
-        Data = data;
+        Player = player;
+
+        RoomType = roomType;
 
         X = x;
         Y = y;
