@@ -409,9 +409,12 @@ public enum RoomType : int
 
     
     Battle = 2,
-    FixedEvent = 3,
-    RandomEvent = 4,
-    Alter = 5,
-    Shop = 6,
-    NPC = 7
+    EliteBattle = 3,
+
+    FixedEvent = 4,
+    RandomEvent = 5,
+    
+    Alter = 6,
+    Shop = 7,
+    NPC = 8
 }

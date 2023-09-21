@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using System;
 
 
-public class MapGenerator : MonoBehaviour
+public class mapGenerator : MonoBehaviour
 {
-    static MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
+    public static MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
 
 
     public void Start() 
@@ -102,6 +102,8 @@ public class MapGenerator : MonoBehaviour
 
             GoDFS(mapGraph,node,maxX,maxY);
         }
+
+        RemoveIsolatedNodes(mapGraph);
     }
 
     static void GoDFS(MapGraph<RoomType> mapGraph, Room<RoomType> startNode, int maxX,int maxY)
@@ -207,7 +209,9 @@ public class MapGenerator : MonoBehaviour
 
         // return
         if (toY == maxY)
+        {
             return;
+        }
 
         // recursion
         GoDFS(mapGraph, toNode, maxX,maxY);
@@ -261,6 +265,8 @@ public class Room<T>
     public int X { get; set; } // x 좌표 정보
     public int Y { get; set; } // y 좌표 정보
 
+    public GameObject roomPin;
+
     public Room(bool player, T roomType, int x, int y)
     {
         Player = player;
@@ -271,6 +277,8 @@ public class Room<T>
         Y = y;
 
         Neighbors = new List<Room<T>>();
+
+        roomPin = null;
     }
 
     public void AddPath(Room<T> neighbor)
