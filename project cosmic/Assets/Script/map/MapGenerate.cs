@@ -26,27 +26,21 @@ public class MapGenerator : MonoBehaviour
 
 
         System.Random random = new System.Random();
-        for (int i = 1; i < y; i++)
+        for (int i = 1; i <= y; i++)
         {
             for (int j = 0; j < x; j++)
             {
                 RoomType roomType;
 
-                if(i == System.Math.Round(  (double)(y/3)*1   ) 
-                || i == System.Math.Round(  (double)(y/3)*2   )
-                || i == y-2   )
-                    roomType = RoomType.FixedEvent;
-                else
-                    roomType = GetRandomRoomType(random);
+                roomType = GetRandomRoomType(random);
 
-                Room<RoomType> room = new Room<RoomType>(false, roomType, i, j);
-                mapGraph.AddNode(room);
-
-
-                if(i == y-1)
-                    return;
+                Room<RoomType> randomRoom = new Room<RoomType>(false, roomType, j, i);
+                mapGraph.AddNode(randomRoom);
             }
         }
+        
+        Room<RoomType> bossRoom = new Room<RoomType>(true,RoomType.Boss, 0, y+1);
+        mapGraph.AddNode(bossRoom);
 
         AddMapPath();
     }
@@ -87,9 +81,11 @@ public class MapGenerator : MonoBehaviour
 
         Room<RoomType> startNode = mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == 0);
 
-        for(int i = 0; i <= maxX; i++)
+
+        //y = 0층과 1층의 6개 노드 모두 연결
+        for(int i = 0; i < maxX; i++)
         {
-            Room<RoomType> x1node = mapGraph.Nodes.FirstOrDefault(node => node.X == 1 && node.Y == i);
+            Room<RoomType> x1node = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == 1);
 
             if(startNode != null && x1node != null)
             {
@@ -97,10 +93,12 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-
+        //1층 전부를 dfs로 y = 19까지 연결
         for(int i = 0 ; i <= maxX ; i++)
         {
             Room<RoomType> node = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == 1);
+
+            Debug.Log("node x : " + node.X + "\n    node y : " + node.Y);
 
             GoDFS(mapGraph,node,maxX,maxY);
         }
@@ -114,30 +112,116 @@ public class MapGenerator : MonoBehaviour
         int toX = startNode.X;
         int toY = startNode.Y+1;
 
-        if (direction == 1)
+        if(toY == maxY)
+            toX = 0;
+
+        else
         {
-            if(toX + 1 <= maxX)
+            if (direction == 1 && toX != maxX && CanMoveRight(mapGraph, startNode))
             {
                 toX++;
             }
-        }
-        else if (direction == 2)
-        {
-            if(toX - 1 >= 0)
+            else if (direction == 2 && toX != 0 && CanMoveLeft(mapGraph, startNode))
             {
                 toX--;
             }
+            /*
+            if (direction == 1)
+            {
+                if(startNode.X != maxX)
+                {
+                    if(!mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X+1 && node.Y == startNode.Y).Neighbors.Contains
+                    (mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)) )
+                    {
+                        toX++;
+                    }
+
+                    else
+                    {
+                        direction = random.Next(3);
+
+                        if(direction == 2 && startNode.X != 0 &&
+                        !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X-1 && node.Y == startNode.Y).Neighbors.
+                        Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
+                        {
+                            toX--;
+                        }
+                    }
+                }
+
+                else
+                {
+                    direction = random.Next(3);
+
+                    if(direction == 2 && startNode.X != 0)
+                    {
+                        toX--;
+                    }
+                }
+            }
+
+
+
+
+            else if (direction == 2)
+            {
+                if(startNode.X != 0)
+                {
+                    if(!mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X-1 && node.Y == startNode.Y).Neighbors.
+                    Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
+                    {
+                        toX--;
+                    }
+
+                    else
+                    {
+                        direction = random.Next(3);
+
+                        if(direction == 1 && startNode.X != maxX &&
+                        !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X+1 && node.Y == startNode.Y).Neighbors.Contains
+                    (mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
+                        {
+                            toX++;
+                        }
+                    }
+                }
+
+                else
+                {
+                    direction = random.Next(3);
+
+                    if(direction == 1)
+                    {
+                        toX++;
+                    }
+                }
+            }
+            */
         }
+
 
         Room<RoomType> toNode = mapGraph.Nodes.FirstOrDefault(node => node.X == toX && node.Y == toY);
         mapGraph.AddEdge(startNode, toNode);
+
+        Debug.Log("node x : " + toX + "\n    node y : " + toY);
 
         // return
         if (toY == maxY)
             return;
 
-        // 재귀호출
+        // recursion
         GoDFS(mapGraph, toNode, maxX,maxY);
+    }
+
+    static bool CanMoveRight(MapGraph<RoomType> mapGraph, Room<RoomType> startNode)
+    {
+        return !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X + 1 && node.Y == startNode.Y).Neighbors
+            .Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y + 1));
+    } 
+    static bool CanMoveLeft(MapGraph<RoomType> mapGraph, Room<RoomType> startNode)
+    {
+        return !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X - 1 && node.Y == startNode.Y).Neighbors
+            .Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y + 1));
     }
 
     void RemoveAllNodes(MapGraph<RoomType> mapGraph)    //노드 클리어
