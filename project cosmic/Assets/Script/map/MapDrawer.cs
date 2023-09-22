@@ -95,6 +95,36 @@ public class MapDrawer : MonoBehaviour
 
             }
         }
+
+
+        //StartRoom Draw
+        Image startRoomPin = map.transform.GetChild(1).gameObject.GetComponent<Image>();
+        Room<RoomType> startRoomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == 0);
+
+        if( startRoomNode != null )
+        {
+            //mapping
+            startRoomNode.roomPin = startRoomPin;
+            
+            //sprite 변경
+            startRoomPin.GetComponent<Image>().sprite = GetRoomImage(startRoomNode.RoomType);
+        }
+
+        /*
+        //BossRoom Draw
+        Image bossRoomPin = map.transform.GetChild(maxY+2).gameObject.GetComponent<Image>();
+        Room<RoomType> endRoomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == maxY);
+
+        if( endRoomNode != null )
+        {
+            //mapping
+            endRoomNode.roomPin = bossRoomPin;
+            
+            //sprite 변경
+            bossRoomPin.GetComponent<Image>().sprite = GetRoomImage(endRoomNode.RoomType);
+        }
+        */
+
     }
 
     public Sprite GetRoomImage(RoomType roomType)
@@ -136,7 +166,7 @@ public class MapDrawer : MonoBehaviour
         int maxY = mapGenerator.mapGraph.Nodes.Max(node => node.Y);
 
 
-        for (int i = 1; i < maxY ; i++)
+        for (int i = 0; i < maxY ; i++)            //<=
         {
             for (int j = 0; j <= maxX; j++)
             {
@@ -147,7 +177,7 @@ public class MapDrawer : MonoBehaviour
                     foreach (var room in startNode.Neighbors)
                     {
                         Vector3 startPos = startNode.roomPin.transform.position;
-                        Vector3 endPos = room.roomPin.transform.position;
+                        Vector3 endPos = room.roomPin.transform.position;           //
 
                         Vector3 middlePos = (startPos + endPos) / 2.0f;
                         GameObject newObj = Instantiate(line.gameObject, middlePos, Quaternion.identity);

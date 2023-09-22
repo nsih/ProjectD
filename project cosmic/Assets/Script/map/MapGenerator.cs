@@ -16,6 +16,11 @@ public class mapGenerator : MonoBehaviour
         GenerateMap(6,18);
     }
 
+    void GenerateBossRoom(int y)
+    {
+        
+    }
+
 
     public void GenerateMap(int x,int y)
     {
@@ -83,7 +88,7 @@ public class mapGenerator : MonoBehaviour
 
 
         //y = 0층과 1층의 6개 노드 모두 연결
-        for(int i = 0; i < maxX; i++)
+        for(int i = 0; i <= maxX; i++)
         {
             Room<RoomType> x1node = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == 1);
 
