@@ -16,11 +16,6 @@ public class mapGenerator : MonoBehaviour
         GenerateMap(6,18);
     }
 
-    void GenerateBossRoom(int y)
-    {
-        
-    }
-
 
     public void GenerateMap(int x,int y)
     {
@@ -43,9 +38,6 @@ public class mapGenerator : MonoBehaviour
                 mapGraph.AddNode(randomRoom);
             }
         }
-        
-        Room<RoomType> bossRoom = new Room<RoomType>(true,RoomType.Boss, 0, y+1);
-        mapGraph.AddNode(bossRoom);
 
         AddMapPath();
     }
@@ -85,8 +77,6 @@ public class mapGenerator : MonoBehaviour
 
 
         Room<RoomType> startNode = mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == 0);
-
-
         //y = 0층과 1층의 6개 노드 모두 연결
         for(int i = 0; i <= maxX; i++)
         {
@@ -98,17 +88,32 @@ public class mapGenerator : MonoBehaviour
             }
         }
 
-        //1층 전부를 dfs로 y = 19까지 연결
+        Room<RoomType> bossRoom = new Room<RoomType>(true,RoomType.Boss, 0, maxY+1);
+        mapGraph.AddNode(bossRoom);
+
+        //1층 전부를 dfs로 맨끝 (보스방) 까지 연결
         for(int i = 0 ; i <= maxX ; i++)
         {
             Room<RoomType> node = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == 1);
 
-            Debug.Log("node x : " + node.X + "\n    node y : " + node.Y);
-
-            GoDFS(mapGraph,node,maxX,maxY);
+            GoDFS(mapGraph,node,maxX,  mapGraph.Nodes.Max(node => node.Y)  );
         }
 
         RemoveIsolatedNodes(mapGraph);
+
+
+        /*
+        //y = maxY-1층과 maxY층의 6개 노드 모두 연결
+        for(int i = 0; i <= maxX; i++)
+        {
+            Room<RoomType> roomNode = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == maxY-1);
+
+            if(startNode != null && roomNode != null)
+            {
+                mapGraph.AddEdge(startNode, roomNode);
+            }
+        }
+        */
     }
 
     static void GoDFS(MapGraph<RoomType> mapGraph, Room<RoomType> startNode, int maxX,int maxY)
@@ -120,7 +125,9 @@ public class mapGenerator : MonoBehaviour
         int toY = startNode.Y+1;
 
         if(toY == maxY)
+        {
             toX = 0;
+        }
 
         else
         {
@@ -132,85 +139,13 @@ public class mapGenerator : MonoBehaviour
             {
                 toX--;
             }
-            /*
-            if (direction == 1)
-            {
-                if(startNode.X != maxX)
-                {
-                    if(!mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X+1 && node.Y == startNode.Y).Neighbors.Contains
-                    (mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)) )
-                    {
-                        toX++;
-                    }
-
-                    else
-                    {
-                        direction = random.Next(3);
-
-                        if(direction == 2 && startNode.X != 0 &&
-                        !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X-1 && node.Y == startNode.Y).Neighbors.
-                        Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
-                        {
-                            toX--;
-                        }
-                    }
-                }
-
-                else
-                {
-                    direction = random.Next(3);
-
-                    if(direction == 2 && startNode.X != 0)
-                    {
-                        toX--;
-                    }
-                }
-            }
-
-
-
-
-            else if (direction == 2)
-            {
-                if(startNode.X != 0)
-                {
-                    if(!mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X-1 && node.Y == startNode.Y).Neighbors.
-                    Contains(mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
-                    {
-                        toX--;
-                    }
-
-                    else
-                    {
-                        direction = random.Next(3);
-
-                        if(direction == 1 && startNode.X != maxX &&
-                        !mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X+1 && node.Y == startNode.Y).Neighbors.Contains
-                    (mapGraph.Nodes.FirstOrDefault(node => node.X == startNode.X && node.Y == startNode.Y+1)))
-                        {
-                            toX++;
-                        }
-                    }
-                }
-
-                else
-                {
-                    direction = random.Next(3);
-
-                    if(direction == 1)
-                    {
-                        toX++;
-                    }
-                }
-            }
-            */
         }
 
 
         Room<RoomType> toNode = mapGraph.Nodes.FirstOrDefault(node => node.X == toX && node.Y == toY);
         mapGraph.AddEdge(startNode, toNode);
 
-        //Debug.Log("node x : " + toX + "\n    node y : " + toY);
+        Debug.Log("node x : " + toX + "\n    node y : " + toY);
 
         // return
         if (toY == maxY)
@@ -247,7 +182,7 @@ public class mapGenerator : MonoBehaviour
 
         foreach (var node in mapGraph.Nodes.ToList())
         {
-            if (node.Neighbors.Count == 0)
+            if (node.Neighbors.Count == 0 && node.Y != mapGraph.Nodes.Max(node => node.Y) )
             {
                 isolatedNodes.Add(node);
                 mapGraph.RemoveNode(node);
