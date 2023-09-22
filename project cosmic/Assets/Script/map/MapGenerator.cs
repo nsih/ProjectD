@@ -205,7 +205,7 @@ public class mapGenerator : MonoBehaviour
         Room<RoomType> toNode = mapGraph.Nodes.FirstOrDefault(node => node.X == toX && node.Y == toY);
         mapGraph.AddEdge(startNode, toNode);
 
-        Debug.Log("node x : " + toX + "\n    node y : " + toY);
+        //Debug.Log("node x : " + toX + "\n    node y : " + toY);
 
         // return
         if (toY == maxY)
@@ -265,7 +265,7 @@ public class Room<T>
     public int X { get; set; } // x 좌표 정보
     public int Y { get; set; } // y 좌표 정보
 
-    public GameObject roomPin;
+    public Image roomPin;
 
     public Room(bool player, T roomType, int x, int y)
     {

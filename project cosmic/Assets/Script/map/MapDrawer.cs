@@ -12,6 +12,10 @@ public class MapDrawer : MonoBehaviour
 
     public GameObject map;
 
+    public GameObject linePool;
+    public Image line;
+    public List<Image> lines;
+
 
     public Sprite roomTypeStart;
     public Sprite roomTypeBoss;
@@ -22,17 +26,26 @@ public class MapDrawer : MonoBehaviour
     public Sprite roomTypeShop;
     public Sprite roomTypeAlter;
 
+    
+
     public void Start()
     {
         map = GameObject.Find("MapContent");
+
+        linePool = GameObject.Find("LinePool");
     }
+
+    private bool hasClicked = false;
 
     public void Update()
     {
-         if (Input.GetMouseButtonDown(0))
-         {
+        if (Input.GetMouseButtonDown(0) && !hasClicked)
+        {
             MappingRoom();
-         }
+            GenerateLinePool();
+
+            hasClicked = true;
+        }
     }
 
 
@@ -40,13 +53,14 @@ public class MapDrawer : MonoBehaviour
     {
         int maxX = mapGenerator.mapGraph.Nodes.Max(node => node.X);
         int maxY = mapGenerator.mapGraph.Nodes.Max(node => node.Y);
+        
 
-
+        //middle
         for (int i = 1; i <= maxY ; i++)
         {
-            for (int j = 0; j < maxX; j++)
+            for (int j = 0; j <= maxX; j++)
             {
-                GameObject roomPin = map.transform.GetChild(i).gameObject.transform.GetChild(j).gameObject;
+                Image roomPin = map.transform.GetChild(i+1).gameObject.transform.GetChild(j).gameObject.GetComponent<Image>();
                 Room<RoomType> roomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i);
 
                 if( roomNode != null )
@@ -54,31 +68,29 @@ public class MapDrawer : MonoBehaviour
                     //mapping
                     roomNode.roomPin = roomPin;
                     
-                    roomPin.SetActive(true);
+                    //map.transform.GetChild(i).gameObject.transform.GetChild(j).gameObject.SetActive(true);
                     
                     //sprite 변경
                     roomPin.GetComponent<Image>().sprite = GetRoomImage(roomNode.RoomType);
-
                     //Debug.Log(GetRoomImage(mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i).RoomType));
 
 
                     //위치 조정
-                    Vector3 roomPinPos = roomPin.transform.position;
+                    UnityEngine.Vector3 roomPinPos = roomPin.transform.position;
 
-                    float randomX = Random.Range(-50, 50);
-                    float randomY = Random.Range(-20, 20);
+                    float randomX = Random.Range(-45, 45);
+                    float randomY = Random.Range(-15, 15);
 
                     roomPinPos.x += randomX;
                     roomPinPos.y += randomY;
 
                     roomPin.transform.position = roomPinPos;
-
-
                 }
 
                 else
                 {
-                    map.transform.GetChild(i).gameObject.transform.GetChild(j).gameObject.SetActive(false);
+                    roomPin.gameObject.SetActive(false);
+                    //map.transform.GetChild(i).gameObject.transform.GetChild(j).gameObject.SetActive(false);
                 }
 
             }
@@ -118,11 +130,40 @@ public class MapDrawer : MonoBehaviour
         return roomTypeStart;
     }
 
-    
-
-    public void DrawPath()
+    public void GenerateLinePool()
     {
+        int maxX = mapGenerator.mapGraph.Nodes.Max(node => node.X);
+        int maxY = mapGenerator.mapGraph.Nodes.Max(node => node.Y);
 
+
+        for (int i = 1; i < maxY ; i++)
+        {
+            for (int j = 0; j <= maxX; j++)
+            {
+                Room<RoomType> startNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i);
+                
+                if( startNode != null )
+                {
+                    foreach (var room in startNode.Neighbors)
+                    {
+                        Vector3 startPos = startNode.roomPin.transform.position;
+                        Vector3 endPos = room.roomPin.transform.position;
+
+                        Vector3 middlePos = (startPos + endPos) / 2.0f;
+                        GameObject newObj = Instantiate(line.gameObject, middlePos, Quaternion.identity);
+
+                        Vector3 direction = endPos - startPos;
+                        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+                        newObj.transform.rotation = rotation;
+
+                        float distance = Vector3.Distance(startPos, endPos);
+                        newObj.transform.localScale = new Vector3(7, distance, newObj.transform.localScale.z);
+                        
+
+                        newObj.transform.SetParent(linePool.transform);
+                    }
+                }
+            }
+        }
     }
-
 }
