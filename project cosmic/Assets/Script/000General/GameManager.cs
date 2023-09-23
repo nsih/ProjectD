@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;    //돌릴 인스턴스
+    private static GameManager instance;
 
-    GameObject managerCanvas;
+
     GameObject loadingScreen;
     
     private float previousTimeScale;

@@ -13,7 +13,7 @@ public class mapGenerator : MonoBehaviour
 
     public void Start() 
     {
-        GenerateMap(6,18);
+        //GenerateMap(6,18);
     }
 
     public void Update()
