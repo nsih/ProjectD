@@ -16,6 +16,14 @@ public class mapGenerator : MonoBehaviour
         GenerateMap(6,18);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GenerateMap(6,18);
+        }
+    }
+
 
     public void GenerateMap(int x,int y)
     {
@@ -100,20 +108,6 @@ public class mapGenerator : MonoBehaviour
         }
 
         RemoveIsolatedNodes(mapGraph);
-
-
-        /*
-        //y = maxY-1층과 maxY층의 6개 노드 모두 연결
-        for(int i = 0; i <= maxX; i++)
-        {
-            Room<RoomType> roomNode = mapGraph.Nodes.FirstOrDefault(node => node.X == i && node.Y == maxY-1);
-
-            if(startNode != null && roomNode != null)
-            {
-                mapGraph.AddEdge(startNode, roomNode);
-            }
-        }
-        */
     }
 
     static void GoDFS(MapGraph<RoomType> mapGraph, Room<RoomType> startNode, int maxX,int maxY)
@@ -145,7 +139,7 @@ public class mapGenerator : MonoBehaviour
         Room<RoomType> toNode = mapGraph.Nodes.FirstOrDefault(node => node.X == toX && node.Y == toY);
         mapGraph.AddEdge(startNode, toNode);
 
-        Debug.Log("node x : " + toX + "\n    node y : " + toY);
+        //Debug.Log("node x : " + toX + "\n    node y : " + toY);
 
         // return
         if (toY == maxY)

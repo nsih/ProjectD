@@ -10,7 +10,9 @@ public class MapDrawer : MonoBehaviour
 {
     //public GameObject mapGenerator;
 
+    public GameObject canvas;
     public GameObject map;
+    public GameObject mapContent;
 
     public GameObject linePool;
     public Image line;
@@ -30,21 +32,39 @@ public class MapDrawer : MonoBehaviour
 
     public void Start()
     {
-        map = GameObject.Find("MapContent");
+        canvas = GameObject.Find("Canvas");
+        map = canvas.transform.Find("Map").gameObject;
+        mapContent = map.transform.Find("Viewport").gameObject.transform.Find("MapContent").gameObject;
 
-        linePool = GameObject.Find("LinePool");
+        linePool = mapContent.transform.Find("LinePool").gameObject;
     }
 
     private bool hasClicked = false;
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !hasClicked)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            MappingRoom();
-            GenerateLinePool();
+            if(!map.activeSelf)
+            {
+                map.SetActive(true);
 
-            hasClicked = true;
+                MappingRoom();
+                GenerateLinePool();
+
+                if(!hasClicked)
+                {
+                    MappingRoom();
+                    GenerateLinePool();
+
+                    hasClicked = true;
+                }
+            }
+
+            else
+            {
+                map.SetActive(false);
+            }
         }
     }
 
@@ -56,7 +76,7 @@ public class MapDrawer : MonoBehaviour
         
 
         //StartRoom Draw
-        Image startRoomPin = map.transform.GetChild(1).gameObject.GetComponent<Image>();
+        Image startRoomPin = mapContent.transform.GetChild(1).gameObject.GetComponent<Image>();
         Room<RoomType> startRoomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == 0);
 
         if( startRoomNode != null )
@@ -76,15 +96,16 @@ public class MapDrawer : MonoBehaviour
                 Image roomPin;
                 if(i != maxY)
                 {
-                    roomPin = map.transform.GetChild(i+1).gameObject.transform.GetChild(j).gameObject.GetComponent<Image>();
+                    mapContent.transform.GetChild(i+1).gameObject.transform.GetChild(j).gameObject.SetActive(true);
+
+                    roomPin = mapContent.transform.GetChild(i+1).gameObject.transform.GetChild(j).gameObject.GetComponent<Image>();
                     //Debug.Log(map.transform.GetChild(i+1).gameObject);
                     Room<RoomType> roomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i);
 
                     if( roomNode != null )
                     {
                         //mapping
-                        roomNode.roomPin = roomPin;
-                        
+                        roomNode.roomPin = roomPin;                        
                         //map.transform.GetChild(i).gameObject.transform.GetChild(j).gameObject.SetActive(true);
                         
                         //sprite 변경
@@ -95,8 +116,8 @@ public class MapDrawer : MonoBehaviour
                         //위치 조정
                         UnityEngine.Vector3 roomPinPos = roomPin.transform.position;
 
-                        float randomX = Random.Range(-45, 45);
-                        float randomY = Random.Range(-15, 15);
+                        float randomX = Random.Range(-20, 20);
+                        float randomY = Random.Range(-10, 10);
 
                         roomPinPos.x += randomX;
                         roomPinPos.y += randomY;
@@ -113,11 +134,13 @@ public class MapDrawer : MonoBehaviour
 
                 else
                 {
-                    roomPin = map.transform.GetChild(i+1).gameObject.GetComponent<Image>();
+                    mapContent.transform.GetChild(i+1).gameObject.SetActive(true);
+
+                    roomPin = mapContent.transform.GetChild(i+1).gameObject.GetComponent<Image>();
                     Room<RoomType> roomNode = mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == j && node.Y == i);
 
-                    Debug.Log(roomPin);
-                    Debug.Log(j+","+i);
+                    //Debug.Log(roomPin);
+                    //Debug.Log(j+","+i);
 
                     if( roomNode != null )
                     {
@@ -177,10 +200,14 @@ public class MapDrawer : MonoBehaviour
         int maxX = mapGenerator.mapGraph.Nodes.Max(node => node.X);
         int maxY = mapGenerator.mapGraph.Nodes.Max(node => node.Y);
 
-        Debug.Log(maxY);
-        Debug.Log(mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == maxY+1)  );    ////이거 boss로 나오면 위에 매핑
+        //Debug.Log(maxY);
+        //Debug.Log(mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == 0 && node.Y == maxY+1)  );    ////이거 boss로 나오면 위에 매핑
 
-
+        foreach (Transform child in linePool.transform)
+        {
+            // 하위 오브젝트를 삭제
+            Destroy(child.gameObject);
+        }
 
         for(int i = 0 ; i <= maxX ; i++)
         {
