@@ -52,7 +52,7 @@ public class LandDialogueManager : MonoBehaviour
 
         playerCG = dialogueBox.transform.Find("PlayerCG").gameObject;
         opponentCG = dialogueBox.transform.Find("OpponentCG").gameObject;
-        speaker = dialogueBox.transform.Find("Speaker").gameObject;
+        
         text = dialogueBox.transform.Find("DialogueText").gameObject;
 
         currentIndex = 0;

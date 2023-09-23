@@ -54,53 +54,19 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnClickMove()
     {
-        if(!GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
+        if(!GameManager.isLoading)
         {
-            if(GameManager.isQuestDone)
-            {
-                Debug.Log("보스 씬으로 이동 했다 칩시다.");
-                //SceneManager.LoadScene("ScnLand");
-            }
-            else
-            {
-                if(GameManager.mentality > 0 )
-                {
-                    landUiCanvas.GetComponent<LandUICon>().MiniMapCon();
-                }
-
-                else if(GameManager.mentality == 0)
-                {
-                    Debug.Log("아 게임오바에요.");
-                }
-            } 
+            landUiCanvas.GetComponent<LandUICon>().ShowStageMap();
         } 
     }
 
 
     void ShowButtonImage()
     {
-        if(GameManager.isActionPhase)
+        if(GameManager.isEventEnd)
         {
-            if(GameManager.isQuestDone)
-            {
-                ButtonImage.GetComponent<Image>().color = Color.white;
-                ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=##8258FA>운명</color>";
-            }
-
-            else
-            {
-                if(GameManager.mentality > 0 )
-                {
-                    ButtonImage.GetComponent<Image>().color = Color.white;
-                    ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
-                }
-
-                else if(GameManager.mentality == 0)
-                {
-                    ButtonImage.GetComponent<Image>().color = Color.white;
-                    ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FA5858>운명</color>";  //벌건 운명
-                }
-            }
+            ButtonImage.GetComponent<Image>().color = Color.white;
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "이동";
         }
         else
         {
@@ -109,6 +75,4 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
 
     }
-
-    //textComponent.text = "Action Phase ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";
 }

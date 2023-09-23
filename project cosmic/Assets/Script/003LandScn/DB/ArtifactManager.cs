@@ -201,13 +201,13 @@ public class ArtifactManager : MonoBehaviour
         //HP 조정
         if(artifactData.hPOffset!=0)
         {
-            gameObject.GetComponent<PlayerInfo>().HpPlus(artifactData.hPOffset);
+            gameObject.GetComponent<PlayerInfo>().HpModify(artifactData.hPOffset);
         }
 
         //이성수치 조정
         if(artifactData.mentalOffset!=0)
         {
-            gameObject.GetComponent<GameManager>().mentalityModify(artifactData.mentalOffset);
+            gameObject.GetComponent<PlayerInfo>().sanityModify(artifactData.mentalOffset);
         }
 
         //데미지 +

@@ -10,25 +10,26 @@ public class LandUICon : MonoBehaviour
     GameObject pnlBackGround;
     GameObject phaseType;
 
-
     GameObject cameraCanvas;
-    GameObject roomType;
-    GameObject mentalityCounter;
-    GameObject questTitle;
-    GameObject questContent;
-    GameObject questDetail;
-
-    GameObject roomIntroPanel;
 
 
-
-    public GameObject statusPhysical;
-    public GameObject statusWillPower;
-    public GameObject statusKnowledge;
-    public GameObject statusCharm;
+    GameObject stageMap;
 
 
-    public Sprite[] roomTypePanelImg = new Sprite[7];
+    //status UI
+    GameObject HPPoolUI;
+    GameObject HPPoolPlusUI;
+    GameObject actionPointText;
+    GameObject sanityBar;
+    GameObject coinText;
+
+    GameObject physicalText;
+    GameObject willPowerText;
+    GameObject knowledgeText;
+    GameObject charmText;
+
+
+    //
 
 
     bool isMapOpen;
@@ -36,27 +37,21 @@ public class LandUICon : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+
         pnlBackGround = GameObject.Find("PnlBackGround");
-        phaseType = GameObject.Find("PhaseType");
-        mentalityCounter = GameObject.Find("MentalityCounter");
+
+
 
         cameraCanvas = GameObject.Find("CameraCanvas");
-        roomType = GameObject.Find("RoomType");
 
-        questTitle = GameObject.Find("QuestTitle");
-        questContent = GameObject.Find("QuestContent");
-        questDetail = GameObject.Find("QuestDetail");
+        stageMap = pnlBackGround.transform.Find("StageMap").gameObject;
 
 
 
-        statusPhysical = GameObject.Find("Physical");
-        statusWillPower = GameObject.Find("WillPower");
-        statusKnowledge = GameObject.Find("Knowledge");
-        statusCharm = GameObject.Find("Charm");
-
-
-
-        roomIntroPanel  = pnlBackGround.transform.Find("RoomIntroPanel").gameObject;
+        physicalText = GameObject.Find("Physical");
+        willPowerText = GameObject.Find("WillPower");
+        knowledgeText = GameObject.Find("Knowledge");
+        charmText = GameObject.Find("Charm");
 
         isMapOpen = false;
     }
@@ -64,238 +59,99 @@ public class LandUICon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameManager.isLoading && !isRoomIntroPanel())
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
-            if(Input.GetKeyDown(KeyCode.Tab))
-            {
-                MiniMapCon();
-            }
-
-
-            UpdateMentalCounterUI();
-            UpdateStatusValueUI();
-
-            ShowQuestName();
-            ShowQuestValue();
+            //StageMapCon();
         }
     }
 
 
-    void UpdateStatusValueUI()
+    //update UI data
+    void UpdateHPUI()
     {
-        statusPhysical.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.physical.ToString();
-        statusWillPower.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.willPower.ToString();
-        statusKnowledge.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.knowledge.ToString();
-        statusCharm.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.charm.ToString();
+
     }
 
-
-    void UpdateMentalCounterUI()
+    void UpdateAPText()
     {
-        mentalityCounter.GetComponent<TextMeshProUGUI>().text = GameManager.mentality.ToString();
+
     }
 
-
-    public void UpdateRoomTypeUI()
+    void UpdateCoinText()
     {
-        roomType.GetComponent<TextMeshProUGUI>().text = StageManager.map[GameManager.currentRoom].roomType.ToString();
+
     }
 
-    void ShowPhaseType()
+    void UpdateSanityBar()
     {
-        if(!GameManager.isActionPhase)
-        {
-            phaseType.GetComponent<TextMeshProUGUI>().text = "행동단계가 아닙니다.";
-        }
-        else if(GameManager.isActionPhase)
-        {
-            TextMeshProUGUI textComponent = phaseType.GetComponent<TextMeshProUGUI>();
-            if(GameManager.actionStack == 0)
-            {
-                textComponent.text = "행동단계! ( <color=#FF0000>" + GameManager.actionStack + "</color> )";
-            }
-            else
-            {
-                textComponent.text = "행동단계! ( <color=#00e5ff>" + GameManager.actionStack + "</color> )";
-            }
-            
-            phaseType.GetComponent<TextMeshProUGUI>().text = textComponent.text;
-        }
+        //sanityBar.GetComponent<TextMeshProUGUI>().text = PlayerInfo.sanity.ToString();
     }
 
-    void ShowQuestName()
+    void UpdateStatusText()
     {
-        questTitle.GetComponent<TextMeshProUGUI>().text = "Stage "+GameManager.currentStage;
-        if(GameManager.currentStage == 0)
-        {
-            questContent.GetComponent<TextMeshProUGUI>().text = "모든 방을 탐험하기!";
-        }
-
-        else if(GameManager.currentStage == 1)
-        {
-            questContent.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
-        }
-
-        else
-        {
-            Debug.Log("Stage : "+ GameManager.currentStage);
-        }
+        physicalText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.physical.ToString();
+        willPowerText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.willPower.ToString();
+        knowledgeText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.knowledge.ToString();
+        charmText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.charm.ToString();
     }
 
-    void ShowQuestValue()
+
+    void UpdateBtnMoveText()
     {
-        if(GameManager.currentStage == 0)
-        {
-            if(GameManager.isQuestDone)
-            {
-                questDetail.GetComponent<TextMeshProUGUI>().text = 
-                "탐험한 방\n("+
-                gameManager.GetComponent<StageManager>().CheckisRevealed()+
-                " / "+
-                StageManager.map.Count+
-                ")    "+  
-                "<color=#5882FA>완료!</color>";
-            }
-            else
-            {
-                questDetail.GetComponent<TextMeshProUGUI>().text = 
-                "탐험한 방\n(" +
-                gameManager.GetComponent<StageManager>().CheckisRevealed() +
-                " / " +
-                StageManager.map.Count +
-                ")    " + 
-                "<color=#FA5858>진행중</color>";
-            }
-        }
 
-        else if(GameManager.currentStage == 1)
-        {
-            questDetail.GetComponent<TextMeshProUGUI>().text = "파멸 카운터를 0으로 만들기";
-        }
+    }
 
-        else
-        {
-            Debug.Log("Stage : "+ GameManager.currentStage);
-        }
+    void UpdateBtnRecoverText()
+    {
+        
+    }
+
+    void UpdateBtnActionText()
+    {
+        
+    }
+
+    void UpdateBtnArtifactText()
+    {
+        
     }
 
 
 
-    public void MiniMapCon()
+    /// <summary>
+    /// map control
+    /// </summary>
+
+
+    public void StageMapCon()
     {
         if(isMapOpen)
         {
-            CloseMiniMap();
+            CloseStageMap();
         }
         else
         {
-            ShowMiniMap();
+            ShowStageMap();
         }
     }
-    public void ShowMiniMap() 
+    public void ShowStageMap() 
     {
-        GameObject miniMap;
-
         Button closeMapBtn;
 
-        if(GameManager.currentStage == 0)
-        {
-            miniMap = pnlBackGround.transform.Find("Stage0MiniMap").gameObject;
+        closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
+        closeMapBtn.onClick.AddListener( CloseStageMap );
 
-            closeMapBtn = miniMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
-            closeMapBtn.onClick.AddListener( CloseMiniMap );
-
-            if(miniMap != null && !GameManager.isLoading)
-            {
-                isMapOpen = true;
-                miniMap.SetActive(true);
-            }
-        }
-
-        else
-        {
-            Debug.Log(GameManager.currentStage);
-        }      
+        isMapOpen = true;
+        stageMap.SetActive(true);      
     }
-    public void CloseMiniMap()
+    public void CloseStageMap()
     {
-        GameObject miniMap;
-
         Button closeMapBtn;
 
-        if(GameManager.currentStage == 0)
-        {
-            miniMap = GameObject.Find("Stage0MiniMap");
+        closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
+        closeMapBtn.onClick.RemoveAllListeners();
 
-            closeMapBtn = miniMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
-            closeMapBtn.onClick.RemoveAllListeners();
-
-
-            isMapOpen = false;
-            miniMap.SetActive(false);
-        }
-
-        else
-        {
-            Debug.Log(GameManager.currentStage);
-        }
-    }
-
-    public void StartShowRoomIntroPanel()
-    {
-        StartCoroutine("ShowRoomIntroPanel");
-    }
-
-    IEnumerator ShowRoomIntroPanel()
-    { 
-        roomIntroPanel.SetActive(true);
-
-        if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Start)
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[0];
-        }
-
-        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Alter)
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[1];
-        }
-
-        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Battle)
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[2];
-        }
-
-        else if(StageManager.map[ GameManager.currentRoom ].roomType == RoomType.Shop)
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[3];
-        }
-
-        else
-        {
-            roomIntroPanel.GetComponent<Image>().sprite = roomTypePanelImg[5];
-        }
-
-        gameManager.GetComponent<GameManager>().PauseGame();
-
-
-
-
-
-        while (!Input.GetMouseButtonDown(0))
-        {
-            gameManager.GetComponent<GameManager>().ResumeGame();
-            yield return null; // 다음 프레임까지 기다림
-        }
-
-        roomIntroPanel.SetActive(false);        
-    }
-
-    public bool isRoomIntroPanel()
-    {
-        if(roomIntroPanel != null)
-        {
-            return roomIntroPanel.activeSelf;
-        }
-        return roomIntroPanel.activeSelf;
+        isMapOpen = false;
+        stageMap.SetActive(false);
     }
 }

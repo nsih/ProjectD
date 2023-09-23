@@ -73,8 +73,7 @@ public class EnemyCon : MonoBehaviour
     {
         if(gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
         {
-            gameManager.GetComponent<StageManager>().EndRoomEventPhase(StageManager.map[ GameManager.currentRoom ].roomType);
-            Debug.Log(gameManager.GetComponent<BattleEventManager>().isPoolAllDone());
+            GameManager.isEventEnd = true;
         }
     }
 

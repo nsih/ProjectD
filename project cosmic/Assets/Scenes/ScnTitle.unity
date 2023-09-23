@@ -837,8 +837,8 @@ GameObject:
   - component: {fileID: 933891965}
   - component: {fileID: 933891966}
   - component: {fileID: 933891969}
-  - component: {fileID: 933891967}
   - component: {fileID: 933891968}
+  - component: {fileID: 933891967}
   - component: {fileID: 933891970}
   m_Layer: 0
   m_Name: GameManager

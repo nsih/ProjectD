@@ -65,10 +65,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //
     public void OnclickRecover()
     {
-        gameManager.GetComponent<StageManager>().CheckStageQuest(); //퀘스트 체크
-
-
-        if(GameManager.isActionPhase && GameManager.actionStack != 0 && !GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
+        if(GameManager.isEventEnd && PlayerInfo.actionPoint != 0)
         {
             OpenPopup();
         
@@ -78,7 +75,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void ShowButtonImage()
     {
-        if(GameManager.isActionPhase && GameManager.actionStack != 0)
+        if(GameManager.isEventEnd && PlayerInfo.actionPoint != 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "회복";
@@ -94,7 +91,9 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /////////////////
     public void OnClickYes()
     {
-        gameManager.GetComponent<GameManager>().ActionStackModify(-1);
+        gameManager.GetComponent<PlayerInfo>().ActionPointModify(-1);
+
+        gameManager.GetComponent<PlayerInfo>().HpModify(1);
 
         ClosePopup();
     }

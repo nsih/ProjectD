@@ -5,11 +5,20 @@ using System;
 
 public class PlayerInfo : MonoBehaviour
 {
-    //HP
+    //HP (Health Point)
     public static float maxHp;
     public static float hp;
 
-    public int actionStackLimit; //최대 액션스택
+
+    //AP (Action Point)
+    public static int MaxActionPoint;
+    public static int actionPoint;
+
+    //Sanity
+    public static int sanity;       //이성
+
+    //Money
+    public static int coin;         //돈
 
 
     //이동
@@ -21,10 +30,10 @@ public class PlayerInfo : MonoBehaviour
 
 
     //status
-    public static int physical;    //육체      공격력
-    public static int willPower;   //의지      HP
-    public static int knowledge;   //지식      의식 사용
-    public static int charm;       //매력      주사위 가중치
+    public static int physical;    //육체
+    public static int willPower;   //의지
+    public static int knowledge;   //지식
+    public static int charm;       //매력
 
     //attack
     public static float attackDelay;
@@ -41,8 +50,6 @@ public class PlayerInfo : MonoBehaviour
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
-
-    public static int coin;
     
     void Start()
     {
@@ -70,8 +77,6 @@ public class PlayerInfo : MonoBehaviour
         coin = 1;
 
 
-
-
         //hp
         maxHp = 20;
         hp = maxHp;
@@ -85,7 +90,7 @@ public class PlayerInfo : MonoBehaviour
 
 
         //action Stack
-        actionStackLimit = 1;
+        MaxActionPoint = 1;
 
         //stat
         physical = 1;
@@ -133,7 +138,7 @@ public class PlayerInfo : MonoBehaviour
         maxHp = changedMaxHp;
     }
     
-    public void HpPlus(int offset)//hp 변경시 호출 (+-)
+    public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
         float changedHp = hp+offset;
 
@@ -161,6 +166,35 @@ public class PlayerInfo : MonoBehaviour
         else
         {
             hp = 0;
+        }
+    }
+
+    public void ActionPointModify(int modifier)
+    {
+        int changedActionPoint = actionPoint+modifier;
+
+        if (changedActionPoint <= 0)
+        {
+            actionPoint = 0;
+        }
+        else
+        {
+            actionPoint = changedActionPoint;
+        }
+    }
+
+
+    public void sanityModify(int modifier)
+    {
+        int changedsanity = sanity+modifier;
+
+        if (changedsanity < -10)
+        {
+            //게임 오바
+        }
+        else
+        {
+            sanity = changedsanity;
         }
     }
     
@@ -223,9 +257,4 @@ public class PlayerInfo : MonoBehaviour
             charm = changedCharm;
         }
     }
-
-
-    //dice
-
-    //battle cal
 }

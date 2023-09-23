@@ -10,12 +10,6 @@ public class mapGenerator : MonoBehaviour
 {
     public static MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
 
-
-    public void Start() 
-    {
-        //GenerateMap(6,18);
-    }
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -248,4 +242,22 @@ public class MapGraph<T>
             otherNode.Neighbors.Remove(node);
         }
     }
+}
+
+
+public enum RoomType : int
+{
+    Start = 0,
+    Boss = 1,
+
+    
+    Battle = 2,
+    EliteBattle = 3,
+
+    FixedEvent = 4,
+    RandomEvent = 5,
+    
+    Alter = 6,
+    Shop = 7,
+    NPC = 8
 }

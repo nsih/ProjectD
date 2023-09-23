@@ -59,16 +59,13 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnClickAction()
     {
-        if(!GameManager.isLoading&& !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel())
-        {
-            OpenPopup();
-        }
+        OpenPopup();
     }
 
 
     void ShowButtonImage()
     {
-        if(GameManager.isActionPhase && GameManager.actionStack > 0)
+        if(GameManager.isEventEnd && PlayerInfo.actionPoint > 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "행동";

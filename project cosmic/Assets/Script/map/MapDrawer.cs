@@ -10,7 +10,7 @@ public class MapDrawer : MonoBehaviour
 {
     //public GameObject mapGenerator;
 
-    public GameObject canvas;
+    public GameObject pnlBackGround;
     public GameObject map;
     public GameObject mapContent;
 
@@ -32,8 +32,8 @@ public class MapDrawer : MonoBehaviour
 
     public void Start()
     {
-        canvas = GameObject.Find("Canvas");
-        map = canvas.transform.Find("Map").gameObject;
+        pnlBackGround = GameObject.Find("PnlBackGround");
+        map = pnlBackGround.transform.Find("StageMap").gameObject;
         mapContent = map.transform.Find("Viewport").gameObject.transform.Find("MapContent").gameObject;
 
         linePool = mapContent.transform.Find("LinePool").gameObject;

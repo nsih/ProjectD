@@ -60,7 +60,7 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnClickArtifact()
     {
-        if(!GameManager.isLoading && !landUiCanvas.GetComponent<LandUICon>().isRoomIntroPanel() )
+        if(!GameManager.isLoading)
         {
             OpenPopup();
         }
