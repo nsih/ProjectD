@@ -10,7 +10,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     GameObject gameManager;
     GameObject LandCanvus;
 
-    Room<RoomType> thisNode;
+    private Room<RoomType> thisNode;
 
 
     void Awake ()
@@ -29,11 +29,12 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
 
 
     //////////
+    ////*
     public void OnPointerClick(PointerEventData eventData)
     {
         if( CheckRoomConnect() && GameManager.isEventEnd)
         {
-            StartCoroutine("MovingRoom");
+            //StartCoroutine("MovingRoom");
         }
     }
 
@@ -56,7 +57,15 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     //여기가 현재 위치인가
     bool CheckRoomCurrent()
     {
-        return true;
+        if(thisNode == mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == GameManager.playerLocationX && node.Y == GameManager.playerLocationY))
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 
 
@@ -64,7 +73,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     bool CheckRoomConnect()
     {
         return mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == GameManager.playerLocationX && node.Y == GameManager.playerLocationY).
-        Neighbors.Contains(mapGenerator.mapGraph.Nodes.FirstOrDefault(node => node.X == thisNode.X && node.Y == thisNode.Y));
+        Neighbors.Contains(thisNode);
     }
 
     //visualization
