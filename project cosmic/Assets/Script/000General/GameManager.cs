@@ -16,12 +16,7 @@ public class GameManager : MonoBehaviour
 
 
     public static bool isEventEnd;
-
-    
     public static bool isLoading;
-
-
-    public static bool isQuestDone;
 
 
     private void Awake()
@@ -37,11 +32,27 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        currentStage = 0;
+        playerLocationX = 0;
+        playerLocationY = 0;
+
+        isEventEnd = false;
+        isLoading = false;
+    }
+
 
     public static GameManager Instance
     {
         get { return instance; }
     }
+
+
+
+    /// <summary>
+    /// //////////////////////
+    /// </summary>
 
 
     public void PauseGame()
@@ -65,7 +76,7 @@ public class GameManager : MonoBehaviour
         playerLocationX = 0;
         playerLocationY = 0;
 
-        GetComponent<mapGenerator>().GenerateMap(6,18);
+        //GetComponent<mapGenerator>().GenerateMap(6,18);
         PlayerLocationReset();
     }
 

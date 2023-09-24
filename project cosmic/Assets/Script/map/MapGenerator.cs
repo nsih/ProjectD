@@ -28,13 +28,49 @@ public class mapGenerator : MonoBehaviour
 
 
         System.Random random = new System.Random();
+
+        List<int> FixedRowList = new List<int>();
+
+
+        //고정층 정의
+        int BattleRow0 = 1;
+        FixedRowList.Add(1);
+
+        int FixedEventRow0 = GenerateRandomRow( random, FixedRowList, 4, 9);
+        int FixedEventRow1 = GenerateRandomRow( random, FixedRowList, 10, 15);
+        int FixedEventRow2 = 18;
+        FixedRowList.Add(18);
+
+        int eliteBattleRow0 = GenerateRandomRow( random, FixedRowList, 4, 10);
+        int eliteBattleRow1 = GenerateRandomRow( random, FixedRowList, 12, 18);
+
+
+        
         for (int i = 1; i <= y; i++)
         {
             for (int j = 0; j < x; j++)
             {
                 RoomType roomType;
 
-                roomType = GetRandomRoomType(random);
+                if(i == BattleRow0)
+                {
+                    roomType = RoomType.Battle;
+                }
+
+                else if(i == eliteBattleRow0 || i == eliteBattleRow1)
+                {
+                    roomType = RoomType.EliteBattle;
+                }
+
+                else if(i == FixedEventRow0 || i == FixedEventRow1 || i == FixedEventRow2)
+                {
+                    roomType = RoomType.FixedEvent;
+                }
+
+                else
+                {
+                    roomType = GetRandomRoomType(random);
+                }
 
                 Room<RoomType> randomRoom = new Room<RoomType>(false, roomType, j, i);
                 mapGraph.AddNode(randomRoom);
@@ -43,6 +79,18 @@ public class mapGenerator : MonoBehaviour
 
         AddMapPath();
     }
+
+    int GenerateRandomRow (System.Random random, List<int> FixedRowList, int minValue, int maxValue)
+    {
+        int randomNumber;
+        do
+        {
+            randomNumber = random.Next(minValue, maxValue + 1);
+        } while (FixedRowList.Contains(randomNumber));
+
+        FixedRowList.Add(randomNumber);
+        return randomNumber;
+    }
     
     //랜덤 룸타입 반환 (전투, 이벤트, 재단, 상점)
     public RoomType GetRandomRoomType(System.Random random)
@@ -50,9 +98,10 @@ public class mapGenerator : MonoBehaviour
         // 각 RoomType에 대한 확률을 정의
         Dictionary<RoomType, int> roomTypeProbabilities = new Dictionary<RoomType, int>
         {
-            { RoomType.Battle, 70 }, // 전투 확률 70%
-            { RoomType.RandomEvent, 25 }, // 랜덤 이벤트 확률 25%
+            { RoomType.Battle, 70 }, // 전투 확률 60%
+            { RoomType.RandomEvent, 25 }, // 랜덤 이벤트 확률 30%
             { RoomType.Alter, 5 }, // 재단 확률 5%
+            { RoomType.Shop, 5 }, // 재단 확률 5%
             { RoomType.NPC, 0 }, // NPC 확률 0%
         };
 
@@ -70,6 +119,14 @@ public class mapGenerator : MonoBehaviour
         Debug.Log("roomtype didnt choosed");
         return RoomType.Battle;
     }
+
+
+
+
+
+    /// <summary>
+    /// ////path
+    /// </summary>
 
     //그래프 간선 넣고 리턴
     public void AddMapPath()
