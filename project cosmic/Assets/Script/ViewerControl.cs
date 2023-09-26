@@ -37,6 +37,7 @@ public class ViewerControl : MonoBehaviour
         if(changed == viwerCount)
         {
             isCoroutineRunning = false;
+            
             yield break;
         }
         
