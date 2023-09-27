@@ -39,7 +39,7 @@ public class MapDrawer : MonoBehaviour
         linePool = mapContent.transform.Find("LinePool").gameObject;
     }
 
-    private bool hasClicked = false;
+    private bool hasClicked = false;    //스테이지 넘어갈떄마다 False
 
     public void Update()
     {
@@ -47,11 +47,6 @@ public class MapDrawer : MonoBehaviour
         {
             if(!map.activeSelf)
             {
-                map.SetActive(true);
-
-                MappingRoom();
-                GenerateLinePool();
-
                 if(!hasClicked)
                 {
                     MappingRoom();
@@ -59,6 +54,8 @@ public class MapDrawer : MonoBehaviour
 
                     hasClicked = true;
                 }
+
+                map.SetActive(true);
             }
 
             else
