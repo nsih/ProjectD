@@ -34,6 +34,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     {
         if( CheckRoomConnect() && GameManager.isEventEnd)
         {
+            Debug.Log("X" + thisNode.X + "Y : "+ thisNode.Y );
             //StartCoroutine("MovingRoom");
         }
     }
