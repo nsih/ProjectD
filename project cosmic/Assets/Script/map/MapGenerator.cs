@@ -98,7 +98,7 @@ public class mapGenerator : MonoBehaviour
         // 각 RoomType에 대한 확률을 정의
         Dictionary<RoomType, int> roomTypeProbabilities = new Dictionary<RoomType, int>
         {
-            { RoomType.Battle, 70 }, // 전투 확률 60%
+            { RoomType.Battle, 65 }, // 전투 확률 60%
             { RoomType.RandomEvent, 25 }, // 랜덤 이벤트 확률 30%
             { RoomType.Alter, 5 }, // 재단 확률 5%
             { RoomType.Shop, 5 }, // 재단 확률 5%
