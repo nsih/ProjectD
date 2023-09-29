@@ -256,7 +256,7 @@ public class PlayerCon : MonoBehaviour
 
 
 
-    
+    //Stick swing
     IEnumerator BasicAttack()
     {
         Quaternion startRotation = handPivot.transform.rotation;
@@ -306,49 +306,7 @@ public class PlayerCon : MonoBehaviour
 
 
             
-            /*
-            float elapsedTime = 0f;
-            float rotationTime = Quaternion.Angle(startRotation, targetRotation1) / (attackSpeed/2);
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation1, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            //
-            elapsedTime = 0f;
-            rotationTime = Quaternion.Angle(targetRotation1, targetRotation0) / attackSpeed;
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(targetRotation1, targetRotation0, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            //
-            elapsedTime = 0f;
-            rotationTime = Quaternion.Angle(targetRotation0, startRotation) / attackSpeed;
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(targetRotation0, startRotation, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            isAttack = false;
-            */
+           
             
         }
         
@@ -382,79 +340,7 @@ public class PlayerCon : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
             isAttack = false;
             StrikeCon();
-            /*
-            isAttack = true;
-            
-            handPivot.transform.rotation = targetRotation3;
-            yield return new WaitForSeconds(0.1f);
-
-            handPivot.transform.rotation = targetRotation4;
-
-            float elapsedTime = 0f;
-            float rotationTime = Quaternion.Angle(targetRotation4, targetRotation5) / (attackSpeed/2);
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation4, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-
-            yield return new WaitForSeconds(0.15f);
-
-            isAttack = false;
-            */
-
-
-
-            /*
-            float elapsedTime = 0f;
-            float rotationTime = Quaternion.Angle(startRotation, targetRotation0) / (attackSpeed/2);
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(startRotation, targetRotation0, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            //
-            elapsedTime = 0f;
-            rotationTime = Quaternion.Angle(targetRotation0, targetRotation1) / attackSpeed;
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(targetRotation0, targetRotation1, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            //
-            elapsedTime = 0f;
-            rotationTime = Quaternion.Angle(targetRotation1, startRotation) / attackSpeed;
-            while (elapsedTime < rotationTime)
-            {
-                isAttack = true;
-
-                float t = elapsedTime / rotationTime;
-                handPivot.transform.rotation = Quaternion.Lerp(targetRotation1, startRotation, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            
-            isAttack = false;
-            */
+        
         }
     }
 
