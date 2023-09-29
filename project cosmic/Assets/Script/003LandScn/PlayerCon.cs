@@ -78,7 +78,9 @@ public class PlayerCon : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !isAttack && canAttack)
         {
             AttackTimerStart();
-            StartCoroutine(BasicAttack());
+
+            
+            //StartCoroutine(StickAttack());
         }
 
         if(Input.GetMouseButtonDown(1) && !isAttack && !isDash)
@@ -254,10 +256,11 @@ public class PlayerCon : MonoBehaviour
     }
 
 
+    //IEnumerator 
 
 
     //Stick swing
-    IEnumerator BasicAttack()
+    IEnumerator StickAttack()
     {
         Quaternion startRotation = handPivot.transform.rotation;
         
