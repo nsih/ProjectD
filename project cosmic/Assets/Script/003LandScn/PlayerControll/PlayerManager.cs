@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerCon : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     GameObject gameManager; //키정보
     GameObject playerInfo;  //player status
@@ -20,15 +20,6 @@ public class PlayerCon : MonoBehaviour
 
     public Sprite sword0;
     public Sprite sword1;
-
-
-    
-
-
-    KeyCode playerUpKey;
-    KeyCode playerDownKey;
-    KeyCode playerLeftKey;
-    KeyCode playerRightKey;
 
 
     bool isWalk;
@@ -51,16 +42,11 @@ public class PlayerCon : MonoBehaviour
 
         playerHit = GameObject.Find("PlayerHit");
         handPivot = GameObject.Find("HandPivot");
-        sword = GameObject.Find("sword");
 
+
+        sword = GameObject.Find("sword");
         strikePivot = GameObject.Find("StrikePivot");
         strike = strikePivot.transform.GetChild(0).gameObject;
-
-        //나중에 gameGanager에서 설정된 키 설정을 가져오란 말입니다.
-        playerUpKey = KeyCode.W;
-        playerLeftKey = KeyCode.A;
-        playerDownKey = KeyCode.S;
-        playerRightKey = KeyCode.D;
 
 
         isDash = false;
@@ -73,9 +59,10 @@ public class PlayerCon : MonoBehaviour
 
     void Update()
     {
+        CheckMousePosition();
         attackTimer -= Time.deltaTime;
 
-        if(Input.GetMouseButtonDown(0) && !isAttack && canAttack)
+        if(Input.GetKeyDown(InputData.attackKey) && !isAttack && canAttack)
         {
             AttackTimerStart();
 
@@ -83,15 +70,17 @@ public class PlayerCon : MonoBehaviour
             //StartCoroutine(StickAttack());
         }
 
-        if(Input.GetMouseButtonDown(1) && !isAttack && !isDash)
+        if(Input.GetKeyDown(InputData.dashKey) && !isAttack && !isDash)
         {
             Dash();
         }
 
 
         //animating
-        
         CheckWalk();
+        //
+
+
     
     }
     void FixedUpdate()
@@ -113,68 +102,64 @@ public class PlayerCon : MonoBehaviour
     {
         if(!isDash)
         {
-
-
-        if (Input.GetKey(playerUpKey) || Input.GetKey(playerLeftKey) || Input.GetKey(playerDownKey) || Input.GetKey(playerRightKey))
-        {
-            isWalk = true;
-
-            if (Input.GetKey(playerUpKey))
+            if (Input.GetKey(InputData.moveDownKey) || Input.GetKey(InputData.moveLeftKey) || Input.GetKey(InputData.moveRightKey) || Input.GetKey(InputData.moveUpKey))
             {
-                player.transform.Translate(Vector2.up * Time.deltaTime * PlayerInfo.speed);
-            }
+                isWalk = true;
 
-            if (Input.GetKey(playerLeftKey))
+                if (Input.GetKey(InputData.moveUpKey))
+                {
+                    player.transform.Translate(Vector2.up * Time.deltaTime * PlayerInfo.speed);
+                }
+
+                if (Input.GetKey(InputData.moveLeftKey))
+                {
+                    player.transform.Translate(Vector2.left * Time.deltaTime * PlayerInfo.speed);
+                }
+
+                if (Input.GetKey(InputData.moveDownKey))
+                {
+                    player.transform.Translate(Vector2.down * Time.deltaTime * PlayerInfo.speed);
+                }
+
+                if (Input.GetKey(InputData.moveRightKey))
+                {
+                    player.transform.Translate(Vector2.right * Time.deltaTime * PlayerInfo.speed);
+                }
+            }
+            else
             {
-                player.transform.Translate(Vector2.left * Time.deltaTime * PlayerInfo.speed);
+                isWalk = false;
             }
-
-            if (Input.GetKey(playerDownKey))
-            {
-                player.transform.Translate(Vector2.down * Time.deltaTime * PlayerInfo.speed);
-            }
-
-            if (Input.GetKey(playerRightKey))
-            {
-                player.transform.Translate(Vector2.right * Time.deltaTime * PlayerInfo.speed);
-            }
-        }
-        else
-        {
-            isWalk = false;
-        }
-
-
         }
     }
 
     void Dash()
-{
-    if (!isDash && Time.time - PlayerInfo.lastDashTime >= PlayerInfo.dashCooldown)
     {
-        Vector3 direction = Vector3.zero;
-
-        // WASD 키 입력을 확인하여 대시 방향을 설정합니다.
-        if (Input.GetKey(KeyCode.W))
-            direction += Vector3.up;
-        if (Input.GetKey(KeyCode.S))
-            direction += Vector3.down;
-        if (Input.GetKey(KeyCode.A))
-            direction += Vector3.left;
-        if (Input.GetKey(KeyCode.D))
-            direction += Vector3.right;
-
-        // 대각선 방향일 경우, 정규화된 벡터를 사용합니다.
-        if (direction.magnitude > 1f)
-            direction = direction.normalized;
-
-        // 대시 방향이 설정되었을 때에만 대시를 수행합니다.
-        if (direction != Vector3.zero)
+        if (!isDash && Time.time - PlayerInfo.lastDashTime >= PlayerInfo.dashCooldown)
         {
-            StartCoroutine(DoDash(direction.normalized));
+            Vector3 direction = Vector3.zero;
+
+            // WASD 키 입력을 확인하여 대시 방향을 설정합니다.
+            if (Input.GetKey(KeyCode.W))
+                direction += Vector3.up;
+            if (Input.GetKey(KeyCode.S))
+                direction += Vector3.down;
+            if (Input.GetKey(KeyCode.A))
+                direction += Vector3.left;
+            if (Input.GetKey(KeyCode.D))
+                direction += Vector3.right;
+
+            // 대각선 방향일 경우, 정규화된 벡터를 사용합니다.
+            if (direction.magnitude > 1f)
+                direction = direction.normalized;
+
+            // 대시 방향이 설정되었을 때에만 대시를 수행합니다.
+            if (direction != Vector3.zero)
+            {
+                StartCoroutine(DoDash(direction.normalized));
+            }
         }
     }
-}
 
     IEnumerator DoDash(Vector3 Direction)
     {
@@ -199,6 +184,18 @@ public class PlayerCon : MonoBehaviour
 
     void HandPivotCon()    //
     {
+
+        if(isMouseLeft)
+        {
+            handPivot.transform.position = new Vector3(-0.25f,-0.25f,0);
+        }
+
+        else
+        {
+            handPivot.transform.position = new Vector3(0.25f,-0.25f,0);
+        }
+
+
         if(!isAttack)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -227,6 +224,30 @@ public class PlayerCon : MonoBehaviour
         }
     }
 
+
+
+    void CheckMousePosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(player.transform.position);
+
+        if (mousePosition.x < playerPosition.x)
+            isMouseLeft = true;
+        else
+            isMouseLeft = false;
+    }
+
+    void AttackTimerStart()
+    {
+        canAttack = false;
+        attackTimer = PlayerInfo.attackDelay;
+    }    
+
+
+    //IEnumerator 
+
+
+    //Stick swing
     public void StrikeCon()
     {
         
@@ -243,23 +264,6 @@ public class PlayerCon : MonoBehaviour
     }
 
 
-
-    void CheckMousePosition()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 playerPosition = Camera.main.WorldToScreenPoint(player.transform.position);
-
-        if (mousePosition.x < playerPosition.x)
-            isMouseLeft = true;
-        else
-            isMouseLeft = false;
-    }
-
-
-    //IEnumerator 
-
-
-    //Stick swing
     IEnumerator StickAttack()
     {
         Quaternion startRotation = handPivot.transform.rotation;
@@ -346,12 +350,6 @@ public class PlayerCon : MonoBehaviour
         
         }
     }
-
-    void AttackTimerStart()
-    {
-        canAttack = false;
-        attackTimer = PlayerInfo.attackDelay;
-    }    
     
     #endregion
 

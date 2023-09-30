@@ -37,15 +37,6 @@ public class ArtifactData : ScriptableObject
     //Mentality
     public int mentalOffset;
 
-
-    //attack damage
-    public int plusPlayerDamageOffset;
-    public float multiplyPlayerDamageOffset;
-
-    //attack delay (speed)
-
-    public float attackDelay;
-
     //Move speed
     public float speedOffset;
 
@@ -66,8 +57,5 @@ public class ArtifactData : ScriptableObject
 
     //
     public int cameraSizeOffset;
-
-    //
-    public int funcID;
 
 }
