@@ -5,46 +5,38 @@ using System;
 
 public class PlayerInfo : MonoBehaviour
 {
-    //HP (Health Point)
-    public static float maxHp;
-    public static float hp;
-
-
-    //AP (Action Point)
-    public static int MaxActionPoint;
-    public static int actionPoint;
-
-    //Sanity
-    public static int sanity;       //이성
-
-    //Money
-    public static int coin;         //돈
-
-
-    //이동
-    public static float speed;
-
-    public static float dashCooldown;
-    public static float lastDashTime;
-
-
-
     //status
     public static int physical;    //육체
     public static int willPower;   //의지
     public static int knowledge;   //지식
     public static int charm;       //매력
 
+    //HP (Health Point)
+    public static float maxHp;
+    public static float hp;
+
+    //Sanity
+    public static int maxSanity;
+    public static int sanity;
+
+    //AP (Action Point)
+    public static int MaxActionPoint;
+    public static int actionPoint;
+
+    //Money
+    public static int coin;         //돈
+
+    /*
+    //이동
+    public static float speed;
+
+    public static float dashCooldown;
+    public static float lastDashTime;
+
     //attack
-    public static float attackDelay;
-
-    public static float plusAttackDamageOffset;
-    public static float multiplyAttackDamageOffset;
-
-    public static float attackDamage;
-    
-
-    public static int attackID;
+    public static float playerAttackDelay;
+    public static float playerDMG;
+    */
 
 
 
@@ -54,52 +46,107 @@ public class PlayerInfo : MonoBehaviour
     void Start()
     {
         PlayerStatusInitialize();
-        DamageCal();
-    }
-
-    void Update ()
-    {
-
-    }
-
-    public void DamageCal()
-    {
-        attackDamage = 1000;//( physical + plusAttackDamageOffset )   * multiplyAttackDamageOffset;
     }
 
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
     {
-        //move
-        speed = 15;
-        dashCooldown = 0.75f;
-        lastDashTime = 0;
-
-        coin = 1;
-
-
-        //hp
-        maxHp = 20;
-        hp = maxHp;
-        //attack
-
-        plusAttackDamageOffset = 0;
-        multiplyAttackDamageOffset = 0;
-        DamageCal();
-
-        attackDelay = 0.75f;
-
-
-        //action Stack
-        MaxActionPoint = 1;
-
         //stat
         physical = 1;
         willPower = 1;
         knowledge = 1;
         charm = 1;
 
+        //hp
+        maxHp = 100;
+        hp = maxHp;
+
+        //sanity
+        maxSanity = knowledge * 2;
+        sanity = maxSanity;
+
+        //action point
+        MaxActionPoint = willPower;
+        actionPoint = MaxActionPoint;
+
+        //coin
+        coin = 0;
+
+        //action Point
+        MaxActionPoint = 1;
+
+
+        /*
+        //speed
+        speed = 5;
+
+        //dash
+        dashCooldown = 0.75f;
+        lastDashTime = 0;
+
+        //attack
+        playerAttackDelay = 0.75f;
+        playerDMG = physical*2.5f;
+        */
     }
 
+
+
+    //status
+    public void PhysicalModify(int modifier)
+    {
+        int changedPhisical = physical + modifier;
+
+        if(changedPhisical <= 0)
+        {
+            physical = 1;
+        }
+        else
+        {
+            physical = changedPhisical;
+        }
+    }
+    public void WillPowerModify(int modifier)
+    {
+        int changedWillPower = willPower + modifier;
+
+        if(changedWillPower <= 0)
+        {
+            willPower = 1;
+        }
+
+        else
+        {
+            willPower = changedWillPower;
+        }
+    }
+    public void KnowledgeModify(int modifier)
+    {
+        int changedKnowledge = knowledge + modifier;
+
+        if(changedKnowledge <= 0)
+        {
+            knowledge = 1;
+        }
+
+        else
+        {
+            knowledge = changedKnowledge;
+        }
+    }
+    public void CharmModify(int modifier)
+    {
+        int changedCharm = charm + modifier;
+
+        if(changedCharm <= 0)
+        {
+            charm = 1;
+        }
+
+        else
+        {
+            charm = changedCharm;
+        }
+    }
 
 
 
@@ -195,66 +242,6 @@ public class PlayerInfo : MonoBehaviour
         else
         {
             sanity = changedsanity;
-        }
-    }
-    
-
-
-
-    //status
-    public void PhysicalModify(int modifier)
-    {
-        int changedPhisical = physical + modifier;
-
-        if(changedPhisical <= 0)
-        {
-            physical = 1;
-        }
-        else
-        {
-            physical = changedPhisical;
-        }
-    }
-    public void WillPowerModify(int modifier)
-    {
-        int changedWillPower = willPower + modifier;
-
-        if(changedWillPower <= 0)
-        {
-            willPower = 1;
-        }
-
-        else
-        {
-            willPower = changedWillPower;
-        }
-    }
-    public void KnowledgeModify(int modifier)
-    {
-        int changedKnowledge = knowledge + modifier;
-
-        if(changedKnowledge <= 0)
-        {
-            knowledge = 1;
-        }
-
-        else
-        {
-            knowledge = changedKnowledge;
-        }
-    }
-    public void CharmModify(int modifier)
-    {
-        int changedCharm = charm + modifier;
-
-        if(changedCharm <= 0)
-        {
-            charm = 1;
-        }
-
-        else
-        {
-            charm = changedCharm;
         }
     }
 }

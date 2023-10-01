@@ -76,6 +76,6 @@ public class ArtifactBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void OpenPopup()
     {
-        gameManager.GetComponent<ArtifactManager>().OpenArtifactListPopup();
+        //gameManager.GetComponent<ArtifactManager>().OpenArtifactListPopup();
     }
 }

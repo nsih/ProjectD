@@ -32,6 +32,10 @@ public class PlayerManager : MonoBehaviour
     //for con
     float attackTimer;
 
+    public static float speed;
+    public static float dashCooldown;
+    public static float lastDashTime;
+
 
     void Start()
     {
@@ -108,22 +112,22 @@ public class PlayerManager : MonoBehaviour
 
                 if (Input.GetKey(InputData.moveUpKey))
                 {
-                    player.transform.Translate(Vector2.up * Time.deltaTime * PlayerInfo.speed);
+                    player.transform.Translate(Vector2.up * Time.deltaTime * speed);
                 }
 
                 if (Input.GetKey(InputData.moveLeftKey))
                 {
-                    player.transform.Translate(Vector2.left * Time.deltaTime * PlayerInfo.speed);
+                    player.transform.Translate(Vector2.left * Time.deltaTime * speed);
                 }
 
                 if (Input.GetKey(InputData.moveDownKey))
                 {
-                    player.transform.Translate(Vector2.down * Time.deltaTime * PlayerInfo.speed);
+                    player.transform.Translate(Vector2.down * Time.deltaTime * speed);
                 }
 
                 if (Input.GetKey(InputData.moveRightKey))
                 {
-                    player.transform.Translate(Vector2.right * Time.deltaTime * PlayerInfo.speed);
+                    player.transform.Translate(Vector2.right * Time.deltaTime * speed);
                 }
             }
             else
@@ -135,7 +139,7 @@ public class PlayerManager : MonoBehaviour
 
     void Dash()
     {
-        if (!isDash && Time.time - PlayerInfo.lastDashTime >= PlayerInfo.dashCooldown)
+        if (!isDash && Time.time - lastDashTime >= dashCooldown)
         {
             Vector3 direction = Vector3.zero;
 
@@ -170,12 +174,12 @@ public class PlayerManager : MonoBehaviour
         {
             isDash = true;
             timer += Time.deltaTime;
-            transform.position += Direction * PlayerInfo.speed * 5.0f * Time.deltaTime;
+            transform.position += Direction * speed * 5.0f * Time.deltaTime;
             yield return null;
         }
         isDash = false;
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
-        PlayerInfo.lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
+        lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }
 
 
@@ -187,12 +191,12 @@ public class PlayerManager : MonoBehaviour
 
         if(isMouseLeft)
         {
-            handPivot.transform.position = new Vector3(-0.25f,-0.25f,0);
+            handPivot.transform.localPosition  = new Vector3(-0.25f,-0.25f,0);
         }
 
         else
         {
-            handPivot.transform.position = new Vector3(0.25f,-0.25f,0);
+            handPivot.transform.localPosition = new Vector3(0.25f,-0.25f,0);
         }
 
 
@@ -208,6 +212,10 @@ public class PlayerManager : MonoBehaviour
             handPivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
+
+
+
+
 
     void StrikePivotCon()
     {
@@ -240,7 +248,7 @@ public class PlayerManager : MonoBehaviour
     void AttackTimerStart()
     {
         canAttack = false;
-        attackTimer = PlayerInfo.attackDelay;
+        attackTimer = PlayerAttackManager.playerAttackDelay;
     }    
 
 

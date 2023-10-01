@@ -154,9 +154,9 @@ public class EnemyCon : MonoBehaviour
     void HandlePlayerStrike()   //공격받았을때
     {
         KnockBack();
-        if( (hp - PlayerInfo.attackDamage) > 0)
+        if( (hp - PlayerAttackManager.playerDMG) > 0)
         {
-            hp = hp - PlayerInfo.attackDamage;
+            hp = hp - PlayerAttackManager.playerDMG;
         }
         
         else
