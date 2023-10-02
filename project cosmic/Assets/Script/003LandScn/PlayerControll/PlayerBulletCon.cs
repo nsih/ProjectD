@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class PlayerBulletCon : MonoBehaviour
 {
-    public float bulletSpeed = 25;
-    public bool normalMoving = true;
+    public float bulletSpeed;
+    public bool normalMoving;
+
+    void Start() 
+    {
+        bulletSpeed = 25;
+        normalMoving = true;
+    }
 
 
     void OnEnable()
     {
-        Invoke("DisablePooledObject", 3f);
+        GameObject gunHead = GameObject.Find("GunHead");
+        gameObject.transform.position = gunHead.transform.position;
+        gameObject.transform.rotation = gunHead.transform.rotation;
+
+        StartCoroutine(DeactivateAfterTime(3f));
     }
 
-    void DisablePooledBullet()
+    IEnumerator DeactivateAfterTime(float time)
     {
+        yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
     
-    void Update()
+    void FixedUpdate()
     {
         if(normalMoving)
         {
@@ -29,6 +40,6 @@ public class PlayerBulletCon : MonoBehaviour
 
     void NormalMoving()
     {
-        this.gameObject.transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        this.gameObject.transform.Translate(Vector2.up * bulletSpeed * Time.deltaTime);
     }
 }
