@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -12,37 +12,38 @@ public class PlayerInfo : MonoBehaviour
     public static int charm;       //매력
 
     //HP (Health Point)
-    public static float maxHp;
-    public static float hp;
+    public static int maxHp;
+    public static int maxHpOffset;
+    public static int hp;
 
     //Sanity
     public static int maxSanity;
+    public static int maxSanityOffset;
     public static int sanity;
 
     //AP (Action Point)
-    public static int MaxActionPoint;
+    public static int maxActionPoint;
+    public static int maxActionPointOffset;
     public static int actionPoint;
 
     //Money
     public static int coin;         //돈
 
-    /*
-    //이동
-    public static float speed;
-
-    public static float dashCooldown;
-    public static float lastDashTime;
-
-    //attack
-    public static float playerAttackDelay;
+    //데미지
     public static float playerDMG;
-    */
+    public static float dmgOffset;
+    public static float dmgMultifly;
+
+    //공속
+    public static float playerAttackDelay;
+    public static float delayMultifly;
+    public static float attackSpeed;    //0~5
 
 
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
-    
+
     void Start()
     {
         PlayerStatusInitialize();
@@ -57,36 +58,34 @@ public class PlayerInfo : MonoBehaviour
         charm = 1;
 
         //hp
-        maxHp = 100;
+        MaxHpCalc();
         hp = maxHp;
 
         //sanity
-        maxSanity = knowledge * 2;
+        maxSanity = knowledge + maxSanityOffset;
         sanity = maxSanity;
 
         //action point
-        MaxActionPoint = willPower;
-        actionPoint = MaxActionPoint;
+        maxActionPoint = willPower;
+        actionPoint = maxActionPoint;
+
+        //action Point
+        maxActionPoint = 1;
 
         //coin
         coin = 0;
 
-        //action Point
-        MaxActionPoint = 1;
+        //DMG
+        dmgOffset = 0;
+        dmgMultifly = 1;
+        DmgCal();
 
+        playerAttackDelay = 1;
+        delayMultifly = 1;
+        AttackDelayCalc();
 
-        /*
-        //speed
-        speed = 5;
+        //attack speed
 
-        //dash
-        dashCooldown = 0.75f;
-        lastDashTime = 0;
-
-        //attack
-        playerAttackDelay = 0.75f;
-        playerDMG = physical*2.5f;
-        */
     }
 
 
@@ -96,7 +95,7 @@ public class PlayerInfo : MonoBehaviour
     {
         int changedPhisical = physical + modifier;
 
-        if(changedPhisical <= 0)
+        if (changedPhisical <= 0)
         {
             physical = 1;
         }
@@ -109,7 +108,7 @@ public class PlayerInfo : MonoBehaviour
     {
         int changedWillPower = willPower + modifier;
 
-        if(changedWillPower <= 0)
+        if (changedWillPower <= 0)
         {
             willPower = 1;
         }
@@ -123,7 +122,7 @@ public class PlayerInfo : MonoBehaviour
     {
         int changedKnowledge = knowledge + modifier;
 
-        if(changedKnowledge <= 0)
+        if (changedKnowledge <= 0)
         {
             knowledge = 1;
         }
@@ -137,7 +136,7 @@ public class PlayerInfo : MonoBehaviour
     {
         int changedCharm = charm + modifier;
 
-        if(changedCharm <= 0)
+        if (changedCharm <= 0)
         {
             charm = 1;
         }
@@ -150,50 +149,20 @@ public class PlayerInfo : MonoBehaviour
 
 
 
-    //hp, maxhp
-    public void MaxHpPlus(int offset)//최대 hp 변경 (+-)
+    //hp
+    public void MaxHpCalc()//최대 hp 변경 (+-)
     {
-        float changedMaxHp = maxHp + offset;
-        if(changedMaxHp <= 0)
-        {
-            changedMaxHp = 1;
-            maxHp = changedMaxHp;
-            hp = changedMaxHp;
-        }
-
-        else
-        {
-            maxHp = changedMaxHp;
-            hp = hp + offset;
-        }
+        maxHp = (physical * 10) + maxHpOffset;
     }
-
-    public void MaxHpMultiply(float offset)//최대체력이 최대체력 퍼센트 오르락내리락
-    {
-        float changedMaxHp = maxHp*offset;
-
-        if(changedMaxHp <= 0)
-        {
-            changedMaxHp = 1;
-        }
-
-        else
-        {
-            changedMaxHp = offset;
-        }
-
-        maxHp = changedMaxHp;
-    }
-    
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
-        float changedHp = hp+offset;
+        int changedHp = hp + offset;
 
-        if(changedHp <= 0)
+        if (changedHp <= 0)
         {
             Debug.Log("겜 오버");
         }
-        else if(changedHp >= maxHp)
+        else if (changedHp >= maxHp)
         {
             hp = maxHp;
         }
@@ -203,22 +172,33 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    public void HpModify(bool live)    //풀회복or끝
+    //Sanity
+    public void MaxSanityCalc()
     {
-        if(live)
-        {
-            hp = maxHp;
-        }
+        maxSanity = (knowledge * 2) + maxSanityOffset;
+    }
+    public void SanityModify(int modifier)
+    {
+        int changedsanity = sanity + modifier;
 
+        if (changedsanity < -maxSanity)
+        {
+            //게임 오바
+        }
         else
         {
-            hp = 0;
+            sanity = changedsanity;
         }
     }
 
+    //action point
+    public void MaxActionPointCalc()
+    {
+        maxActionPoint = willPower + maxActionPointOffset;
+    }
     public void ActionPointModify(int modifier)
     {
-        int changedActionPoint = actionPoint+modifier;
+        int changedActionPoint = actionPoint + modifier;
 
         if (changedActionPoint <= 0)
         {
@@ -230,18 +210,53 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-
-    public void sanityModify(int modifier)
+    //Damage
+    void DmgCal()
     {
-        int changedsanity = sanity+modifier;
+        if (dmgOffset <= 0)
+            dmgOffset = 0;
 
-        if (changedsanity < -10)
+        float calculatedDMG = (2 * Mathf.Sqrt((float)((dmgOffset * 1.2) + 1))) * dmgMultifly;
+
+        playerDMG = MathF.Round(calculatedDMG, 2);
+    }
+    /*
+    void DmgDebug()
+    {
+        for (int i = 0; i < 100; i = i + 1)
         {
-            //게임 오바
-        }
-        else
-        {
-            sanity = changedsanity;
+            float result = 2 * Mathf.Sqrt((float)((i * 1.2) + 1));
+            Debug.Log("i : " + i + "   dmg : " + MathF.Round(result,2));
         }
     }
+    */
+
+
+    //attack delay
+    void AttackDelayCalc()
+    {
+        //limit
+        if (attackSpeed < 0)
+            attackSpeed = 0;
+        else if (attackSpeed >= 5)
+            attackSpeed = 5;
+
+
+        float result = (float) (16 - (5 * Mathf.Sqrt((float)(attackSpeed * 1.3) + 1))  ) / 10;
+
+        playerAttackDelay = result * delayMultifly;
+    }
+    /*
+    void DelayDebug()
+    {
+        for (float i = 1; i <= 5; i = i + 0.1f)
+        {
+            float result = (float) (16 - (5 * Mathf.Sqrt((float)(i * 1.3) + 1)))/10;
+            Debug.Log("i = " + i + "    result = " + result);
+
+            //Mathf.Round((float)damage, 2))
+        }
+    }
+    */
+
 }

@@ -66,7 +66,7 @@ public class ArtifactManager : MonoBehaviour
     public void ClickRewardArtifact(Button clickedButton)
     {
         ArtifactData clickedArtifact;
-        if( clickedButton.name [^1 ] == '0')
+        if (clickedButton.name[^1] == '0')
             clickedArtifact = rewardArtifactList[0];
 
         else
@@ -169,82 +169,98 @@ public class ArtifactManager : MonoBehaviour
 
     void ApplayArtifact(ArtifactData artifactData)
     {
-        //공격 타입 바뀜
-        if(artifactData.isAttackReward)
+        //공격 변경
+        if (artifactData.isAttackReward)
         {
             Debug.Log("공격 달라짐" + artifactData.attackID);
         }
-
         //행동 추가
-        if(artifactData.isActionReward)
+        if (artifactData.isActionReward)
         {
             Debug.Log("행동추가" + artifactData.actionID);
         }
-
         //친구 추가
-        if(artifactData.isCompanionReward)
+        if (artifactData.isCompanionReward)
         {
-            Debug.Log("친구추가"+artifactData.companionID);
+            Debug.Log("친구추가" + artifactData.companionID);
         }
 
-        //최대체력 변경
-        if(artifactData.maxHPOffset != 0)
+
+        //physical
+        if (artifactData.physicalOffset != 0)
         {
-            gameObject.GetComponent<PlayerInfo>().MaxHpPlus(artifactData.maxHPOffset);
+            gameObject.GetComponent<PlayerInfo>().PhysicalModify(artifactData.physicalOffset);
+        }
+        //will power
+        if (artifactData.willPowerOffset != 0)
+        {
+            gameObject.GetComponent<PlayerInfo>().WillPowerModify(artifactData.willPowerOffset);
+        }
+        //knowledge
+        if (artifactData.knowledgeOffset != 0)
+        {
+            gameObject.GetComponent<PlayerInfo>().KnowledgeModify(artifactData.knowledgeOffset);
+        }
+        //charm
+        if (artifactData.charmOffset != 0)
+        {
+            gameObject.GetComponent<PlayerInfo>().CharmModify(artifactData.charmOffset);
         }
 
-        //HP 조정
-        if(artifactData.hPOffset!=0)
+        //max hp
+        if (artifactData.maxHPOffset != 0)
+        {
+            PlayerInfo.maxHpOffset = PlayerInfo.maxHpOffset + artifactData.maxHPOffset;
+            gameObject.GetComponent<PlayerInfo>().MaxHpCalc();
+        }
+        //hp
+        if (artifactData.hPOffset != 0)
         {
             gameObject.GetComponent<PlayerInfo>().HpModify(artifactData.hPOffset);
         }
 
-        //이성수치 조정
-        if(artifactData.mentalOffset!=0)
+        //max sanity
+        if (artifactData.sanityOffset != 0)
         {
-            gameObject.GetComponent<PlayerInfo>().sanityModify(artifactData.mentalOffset);
+            PlayerInfo.maxSanityOffset = PlayerInfo.maxSanityOffset + artifactData.sanityOffset;
+            gameObject.GetComponent<PlayerInfo>().MaxSanityCalc();
+        }
+        //sanity
+        if (artifactData.sanityOffset != 0)
+        {
+            gameObject.GetComponent<PlayerInfo>().SanityModify(artifactData.sanityOffset);
         }
 
+        //max action point
+        if (artifactData.maxActionPointOffset != 0)
+        {
+            PlayerInfo.maxActionPointOffset = PlayerInfo.maxActionPointOffset + artifactData.maxActionPointOffset;
+            gameObject.GetComponent<PlayerInfo>().MaxActionPointCalc();
+        }
+        //action point
+        if (artifactData.sanityOffset != 0)
+        {
+            gameObject.GetComponent<PlayerInfo>().ActionPointModify(artifactData.actionPointOffset);
+        }
+
+        //coin
+        if (artifactData.coinOffset != 0)
+        {
+            PlayerInfo.coin = +artifactData.coinOffset;
+        }
+
+        //DMG
+        
+
         //이속 조정
-        if(artifactData.speedOffset!=0)
+        if (artifactData.speedOffset != 0)
         {
             PlayerManager.speed = PlayerManager.speed * artifactData.speedOffset;
         }
 
 
-
-        //육체
-        if(artifactData.physicalOffset!=0)
-        {
-            gameObject.GetComponent<PlayerInfo>().PhysicalModify(artifactData.physicalOffset);
-        }
-        //의지
-        if(artifactData.willPowerOffset!=0)
-        {
-            gameObject.GetComponent<PlayerInfo>().WillPowerModify(artifactData.willPowerOffset);
-        }
-        //지식
-        if(artifactData.knowledgeOffset!=0)
-        {
-            gameObject.GetComponent<PlayerInfo>().KnowledgeModify(artifactData.knowledgeOffset);
-        }
-        //매력
-        if(artifactData.charmOffset!=0)
-        {
-            gameObject.GetComponent<PlayerInfo>().CharmModify(artifactData.charmOffset);
-        }
-
-        //최대 액션스택 없긴함
-        //액션스택 없긴함
-
-        //돈
-        if(artifactData.coinOffset!=0)
-        {
-            PlayerInfo.coin =+artifactData.coinOffset;
-        }
-
         //시야 (카메라)
-        if(artifactData.charmOffset!=0)
+        if (artifactData.charmOffset != 0)
         {
             GameObject camera = GameObject.Find("Main Camera");
 
@@ -253,7 +269,7 @@ public class ArtifactManager : MonoBehaviour
 
 
         //플레이어 유물 추가
-        playerArtifactList.Add( artifactData );
+        playerArtifactList.Add(artifactData);
     }
 
     #endregion

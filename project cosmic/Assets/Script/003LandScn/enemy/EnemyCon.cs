@@ -35,7 +35,7 @@ public class EnemyCon : MonoBehaviour
     bool isKnockBack;
     float knockBackDuration = 0.05f;
     float knockBackSpeed = 15f;
-    
+
 
 
 
@@ -54,41 +54,41 @@ public class EnemyCon : MonoBehaviour
         isKnockBack = false;
     }
 
-    void Update ()
+    void Update()
     {
 
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         Moving();
     }
 
-    void OnEnable() 
+    void OnEnable()
     {
         InitializeEnemyStatus();
     }
 
-    void OnDisable() 
+    void OnDisable()
     {
-        if(gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
+        if (gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
         {
             GameManager.isEventEnd = true;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider == playerHit.GetComponent<Collider2D>() )
+        if (other.collider == playerHit.GetComponent<Collider2D>())
         {
             Debug.Log("asd");
             HandlePlayerStrike();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other == playerStrike.GetComponent<Collider2D>() )
+        if (other.gameObject == playerStrike)
         {
             //player.GetComponent<PlayerCon>().StrikeCon();
             HandlePlayerStrike();
@@ -108,27 +108,27 @@ public class EnemyCon : MonoBehaviour
         bulletSpeed = enemyData.bulletSpeed;
 
         movingType = enemyData.movingType;
-        attackType = enemyData.attackType;  
+        attackType = enemyData.attackType;
 
         knockBackable = enemyData.knockBackable;
     }
 
 
-    void Moving() 
+    void Moving()
     {
-        if(movingType == MovingType.none)
+        if (movingType == MovingType.none)
         {
 
         }
-        else if(movingType == MovingType.chase)
+        else if (movingType == MovingType.chase)
         {
 
         }
-        else if(movingType == MovingType.rush)
+        else if (movingType == MovingType.rush)
         {
 
         }
-        else if(movingType == MovingType.run)
+        else if (movingType == MovingType.run)
         {
 
         }
@@ -136,12 +136,12 @@ public class EnemyCon : MonoBehaviour
 
     void Attack()
     {
-        if(attackType == AttackType.none)
+        if (attackType == AttackType.none)
         {
 
         }
 
-        else if(attackType == AttackType.aimShot)
+        else if (attackType == AttackType.aimShot)
         {
 
         }
@@ -154,11 +154,11 @@ public class EnemyCon : MonoBehaviour
     void HandlePlayerStrike()   //공격받았을때
     {
         KnockBack();
-        if( (hp - PlayerAttackManager.playerDMG) > 0)
+        if ((hp - PlayerInfo.playerDMG) > 0)
         {
-            hp = hp - PlayerAttackManager.playerDMG;
+            hp = hp - PlayerInfo.playerDMG;
         }
-        
+
         else
         {
             hp = 0;

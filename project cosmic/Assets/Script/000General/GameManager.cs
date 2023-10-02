@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         //플레이어위치, 액션 스택, 정신력 , 퀘스트 확인
 
         PlayerLocationReset();
-        GetComponent<PlayerInfo>().sanityModify(-1);
+        GetComponent<PlayerInfo>().SanityModify(-1);
     }
 
 

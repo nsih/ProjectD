@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     GameObject gameManager; //키정보
-    GameObject playerInfo;  //player status
     GameObject player;
     GameObject playerHit;
     GameObject handPivot;
     GameObject sword;
     GameObject strikePivot;
     GameObject strike;
+
+
+
+    GameObject gun;
+    GameObject gunHead;
 
     Animator playerAnimator;
 
@@ -52,11 +56,14 @@ public class PlayerManager : MonoBehaviour
         strikePivot = GameObject.Find("StrikePivot");
         strike = strikePivot.transform.GetChild(0).gameObject;
 
+        gun = GameObject.Find("Gun");
+        gunHead = GameObject.Find("gunHead");
+
 
         isDash = false;
 
         canAttack = true;
-        
+
         isAttack = false;
     }
 
@@ -66,17 +73,22 @@ public class PlayerManager : MonoBehaviour
         CheckMousePosition();
         attackTimer -= Time.deltaTime;
 
-        if(Input.GetKeyDown(InputData.attackKey) && !isAttack && canAttack)
+        if (Input.GetKeyDown(InputData.attackKey) && !isAttack && canAttack)
         {
             AttackTimerStart();
 
-            
+
             //StartCoroutine(StickAttack());
         }
 
-        if(Input.GetKeyDown(InputData.dashKey) && !isAttack && !isDash)
+        if (Input.GetKeyDown(InputData.dashKey) && !isAttack && !isDash)
         {
             Dash();
+        }
+
+        if(Input.GetKeyDown(InputData.attackKey))
+        {
+            FireGun();
         }
 
 
@@ -85,7 +97,7 @@ public class PlayerManager : MonoBehaviour
         //
 
 
-    
+
     }
     void FixedUpdate()
     {
@@ -101,10 +113,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    
+
+    #region "Move"
     void PlayerMovement()
     {
-        if(!isDash)
+        if (!isDash)
         {
             if (Input.GetKey(InputData.moveDownKey) || Input.GetKey(InputData.moveLeftKey) || Input.GetKey(InputData.moveRightKey) || Input.GetKey(InputData.moveUpKey))
             {
@@ -168,7 +181,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator DoDash(Vector3 Direction)
     {
         playerHit.GetComponent<CircleCollider2D>().enabled = false;
-        
+
         float timer = 0f;
         while (timer < 0.15f)
         {
@@ -181,26 +194,28 @@ public class PlayerManager : MonoBehaviour
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
         lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }
-
+    #endregion
 
 
     #region "attacking"
 
+
+    //hand
     void HandPivotCon()    //
     {
 
-        if(isMouseLeft)
+        if (isMouseLeft)
         {
-            handPivot.transform.localPosition  = new Vector3(-0.25f,-0.25f,0);
+            handPivot.transform.localPosition = new Vector3(-0.25f, -0.25f, 0);
         }
 
         else
         {
-            handPivot.transform.localPosition = new Vector3(0.25f,-0.25f,0);
+            handPivot.transform.localPosition = new Vector3(0.25f, -0.25f, 0);
         }
 
 
-        if(!isAttack)
+        if (!isAttack)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
@@ -212,14 +227,48 @@ public class PlayerManager : MonoBehaviour
             handPivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
+    void CheckMousePosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(player.transform.position);
+
+        if (mousePosition.x < playerPosition.x)
+            isMouseLeft = true;
+        else
+            isMouseLeft = false;
+    }
+    void AttackTimerStart()
+    {
+        canAttack = false;
+        attackTimer = PlayerInfo.playerAttackDelay;
+    }
+
+
+    //총
+    void FireGun()
+    {
+        foreach (GameObject bullet in gameObject.GetComponent<PlayerBulletPoolManager>().playerBulletsPool)
+        {
+            if (!bullet.activeInHierarchy)
+            {
+                bullet.SetActive(true);
+                return;
+            }
+        }
+
+        // 비활성화된 오브젝트가 없으면 새로운 오브젝트를 생성하여 활성화
+        GameObject newBullet = Instantiate(gameObject.GetComponent<PlayerBulletPoolManager>().playerBulletsPool[0]);
+        newBullet.SetActive(true);
+        gameObject.GetComponent<PlayerBulletPoolManager>().playerBulletsPool.Add(newBullet); // 새로운 오브젝트를 풀에 추가
+    }
 
 
 
 
-
+    //막대기 관련
     void StrikePivotCon()
     {
-        if(!isAttack)
+        if (!isAttack)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
@@ -231,51 +280,24 @@ public class PlayerManager : MonoBehaviour
             strikePivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-
-
-
-    void CheckMousePosition()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 playerPosition = Camera.main.WorldToScreenPoint(player.transform.position);
-
-        if (mousePosition.x < playerPosition.x)
-            isMouseLeft = true;
-        else
-            isMouseLeft = false;
-    }
-
-    void AttackTimerStart()
-    {
-        canAttack = false;
-        attackTimer = PlayerAttackManager.playerAttackDelay;
-    }    
-
-
-    //IEnumerator 
-
-
-    //Stick swing
     public void StrikeCon()
     {
-        
-        if(isAttack && !strike.activeSelf)
+
+        if (isAttack && !strike.activeSelf)
         {
             strike.SetActive(true);
         }
 
-        else if(strike.activeSelf)
+        else if (strike.activeSelf)
         {
             strike.SetActive(false);
         }
 
     }
-
-
     IEnumerator StickAttack()
     {
         Quaternion startRotation = handPivot.transform.rotation;
-        
+
 
 
         Quaternion targetRotation0 = startRotation * Quaternion.Euler(0f, 0f, -85);
@@ -289,7 +311,7 @@ public class PlayerManager : MonoBehaviour
 
         CheckMousePosition();
 
-        if(isMouseLeft)
+        if (isMouseLeft)
         {
             isAttack = true;
             StrikeCon();
@@ -300,7 +322,7 @@ public class PlayerManager : MonoBehaviour
             handPivot.transform.rotation = targetRotation1;
 
             float elapsedTime = 0f;
-            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (1000/2);
+            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (1000 / 2);
             while (elapsedTime < rotationTime)
             {
                 isAttack = true;
@@ -320,11 +342,11 @@ public class PlayerManager : MonoBehaviour
             StrikeCon();
 
 
-            
-           
-            
+
+
+
         }
-        
+
 
         else
         {
@@ -337,7 +359,7 @@ public class PlayerManager : MonoBehaviour
             handPivot.transform.rotation = targetRotation1;
 
             float elapsedTime = 0f;
-            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (1000/2);
+            float rotationTime = Quaternion.Angle(targetRotation1, targetRotation2) / (1000 / 2);
             while (elapsedTime < rotationTime)
             {
                 isAttack = true;
@@ -349,26 +371,23 @@ public class PlayerManager : MonoBehaviour
 
                 elapsedTime += Time.deltaTime;
                 yield return null;
-            }   
+            }
 
             sword.GetComponent<SpriteRenderer>().sprite = sword0;
             yield return new WaitForSeconds(0.15f);
             isAttack = false;
             StrikeCon();
-        
+
         }
     }
-    
     #endregion
 
 
     #region "animation"
-
-
     void CheckWalk()
     {
-        
-        if(isWalk == true)
+
+        if (isWalk == true)
             playerAnimator.SetBool("isWalking", true);
 
         else

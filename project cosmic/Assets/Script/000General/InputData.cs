@@ -21,7 +21,7 @@ public class InputData : MonoBehaviour
     void Start()
     {
         pauseKey = KeyCode.Escape;
-        interactionKey =  KeyCode.E;
+        interactionKey = KeyCode.E;
         mapKey = KeyCode.Tab;
 
         attackKey = KeyCode.Mouse0;
