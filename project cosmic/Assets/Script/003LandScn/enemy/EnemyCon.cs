@@ -20,14 +20,14 @@ public class EnemyCon : MonoBehaviour
 
     public int mobNum;
 
-    public float hp;
-    public int damage;
-    public float moveSpeed;
-    public float attackDelay;
-    public float bulletSpeed;
-    public MovingType movingType;
-    public AttackType attackType;
-    public bool knockBackable;
+    float hp;
+    int damage;
+    float moveSpeed;
+    float attackDelay;
+    float bulletSpeed;
+    MovingType movingType;
+    AttackType attackType;
+    bool knockBackable;
 
 
 
@@ -71,32 +71,14 @@ public class EnemyCon : MonoBehaviour
 
     void OnDisable()
     {
+        /*
         if (gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
         {
             GameManager.isEventEnd = true;
         }
+        */
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.collider == playerHit.GetComponent<Collider2D>())
-        {
-            Debug.Log("asd");
-            HandlePlayerStrike();
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject == playerStrike)
-        {
-            //player.GetComponent<PlayerCon>().StrikeCon();
-            HandlePlayerStrike();
-        }
-    }
-
-
-    ///
 
     void InitializeEnemyStatus()
     {
@@ -112,6 +94,73 @@ public class EnemyCon : MonoBehaviour
 
         knockBackable = enemyData.knockBackable;
     }
+
+
+
+    #region "collision (Been attacked)"
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("asd");
+            //HandlePlayerStrike();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PlayerAttack")
+        {
+            Debug.Log("HP : "+hp);
+            HandlePlayerStrike();
+
+            other.gameObject.SetActive(false);
+            //other.gameObject.GetComponent<PlayerBulletCon>().VanishOnCollision();
+        }
+    }
+
+    void HandlePlayerStrike()   //공격받았을때
+    {
+        KnockBack();
+        if ((hp - PlayerInfo.playerDMG) > 0)
+        {
+            hp = hp - PlayerInfo.playerDMG;
+
+            Debug.Log("PlayerInfo.playerDMG : "+PlayerInfo.playerDMG);
+            Debug.Log("Changed HP : "+hp);
+        }
+
+        else
+        {
+            hp = 0;
+            this.gameObject.SetActive(false);
+            Debug.Log(this.gameObject.name);
+        }
+    }
+
+    void KnockBack()
+    {
+        if (knockBackable && !isKnockBack)
+        {
+            isKnockBack = true;
+            Vector3 knockBackDirection = -(player.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
+            StartCoroutine(DoKnockBack(knockBackDirection));
+        }
+    }
+
+    IEnumerator DoKnockBack(Vector3 knockBackDirection)
+    {
+        float timer = 0f;
+        while (timer < knockBackDuration)
+        {
+            timer += Time.deltaTime;
+            transform.position += knockBackDirection * knockBackSpeed * Time.deltaTime;
+            yield return null;
+        }
+        isKnockBack = false;
+    }
+    #endregion
+
 
 
     void Moving()
@@ -145,47 +194,5 @@ public class EnemyCon : MonoBehaviour
         {
 
         }
-    }
-
-
-
-
-    ////
-    void HandlePlayerStrike()   //공격받았을때
-    {
-        KnockBack();
-        if ((hp - PlayerInfo.playerDMG) > 0)
-        {
-            hp = hp - PlayerInfo.playerDMG;
-        }
-
-        else
-        {
-            hp = 0;
-            this.gameObject.SetActive(false);
-            Debug.Log(this.gameObject.name);
-        }
-    }
-
-    void KnockBack()
-    {
-        if (knockBackable && !isKnockBack)
-        {
-            isKnockBack = true;
-            Vector3 knockBackDirection = -(player.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
-            StartCoroutine(DoKnockBack(knockBackDirection));
-        }
-    }
-
-    IEnumerator DoKnockBack(Vector3 knockBackDirection)
-    {
-        float timer = 0f;
-        while (timer < knockBackDuration)
-        {
-            timer += Time.deltaTime;
-            transform.position += knockBackDirection * knockBackSpeed * Time.deltaTime;
-            yield return null;
-        }
-        isKnockBack = false;
     }
 }

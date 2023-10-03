@@ -36,6 +36,11 @@ public class PlayerBulletCon : MonoBehaviour
             NormalMoving();
         }
     }
+
+    public void VanishOnCollision()
+    {
+        StartCoroutine(DeactivateAfterTime(0.01f));
+    }
     
 
     void NormalMoving()
