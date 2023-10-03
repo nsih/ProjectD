@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class PlayerBulletPoolManager : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     public GameObject bullet;
 
 
     public List<GameObject> playerBulletsPool = new List<GameObject>();
     public List<PlayerAttackData> playerAttackList = new List<PlayerAttackData>();
-    public static int playerBulletSpriteID;
+    static int playerBulletSpriteID;
 
     void Start()
     {

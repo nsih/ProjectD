@@ -35,10 +35,7 @@ public class PlayerManager : MonoBehaviour
 
     //for con
     float attackTimer;
-
-    public static float speed;
-    public static float dashCooldown;
-    public static float lastDashTime;
+    static float lastDashTime;
 
 
     void Start()
@@ -66,8 +63,6 @@ public class PlayerManager : MonoBehaviour
 
         isAttack = false;
     }
-
-
     void Update()
     {
         CheckMousePosition();
@@ -81,23 +76,19 @@ public class PlayerManager : MonoBehaviour
             //StartCoroutine(StickAttack());
         }
 
-        if (Input.GetKeyDown(InputData.dashKey) && !isAttack && !isDash)
-        {
-            Dash();
-        }
-
         if(Input.GetKeyDown(InputData.attackKey))
         {
             FireGun();
         }
 
+        if (Input.GetKeyDown(InputData.dashKey) && !isAttack && !isDash)
+        {
+            Dash();
+        }
+
 
         //animating
         CheckWalk();
-        //
-
-
-
     }
     void FixedUpdate()
     {
@@ -125,22 +116,22 @@ public class PlayerManager : MonoBehaviour
 
                 if (Input.GetKey(InputData.moveUpKey))
                 {
-                    player.transform.Translate(Vector2.up * Time.deltaTime * speed);
+                    player.transform.Translate(Vector2.up * Time.deltaTime * PlayerInfo.playerMoveSpeed);
                 }
 
                 if (Input.GetKey(InputData.moveLeftKey))
                 {
-                    player.transform.Translate(Vector2.left * Time.deltaTime * speed);
+                    player.transform.Translate(Vector2.left * Time.deltaTime * PlayerInfo.playerMoveSpeed);
                 }
 
                 if (Input.GetKey(InputData.moveDownKey))
                 {
-                    player.transform.Translate(Vector2.down * Time.deltaTime * speed);
+                    player.transform.Translate(Vector2.down * Time.deltaTime * PlayerInfo.playerMoveSpeed);
                 }
 
                 if (Input.GetKey(InputData.moveRightKey))
                 {
-                    player.transform.Translate(Vector2.right * Time.deltaTime * speed);
+                    player.transform.Translate(Vector2.right * Time.deltaTime * PlayerInfo.playerMoveSpeed);
                 }
             }
             else
@@ -150,20 +141,21 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
     void Dash()
     {
-        if (!isDash && Time.time - lastDashTime >= dashCooldown)
+        if (!isDash && Time.time - lastDashTime >= PlayerInfo.playerCoolTime)
         {
             Vector3 direction = Vector3.zero;
 
             // WASD 키 입력을 확인하여 대시 방향을 설정합니다.
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(InputData.moveUpKey))
                 direction += Vector3.up;
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(InputData.moveDownKey))
                 direction += Vector3.down;
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(InputData.moveLeftKey))
                 direction += Vector3.left;
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(InputData.moveRightKey))
                 direction += Vector3.right;
 
             // 대각선 방향일 경우, 정규화된 벡터를 사용합니다.
@@ -177,22 +169,21 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-
     IEnumerator DoDash(Vector3 Direction)
     {
         playerHit.GetComponent<CircleCollider2D>().enabled = false;
 
         float timer = 0f;
-        while (timer < 0.15f)
+        while (timer < 0.2f)
         {
             isDash = true;
             timer += Time.deltaTime;
-            transform.position += Direction * speed * 5.0f * Time.deltaTime;
+            transform.position += Direction * PlayerInfo.playerMoveSpeed * 5 * Time.deltaTime;
             yield return null;
         }
         isDash = false;
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
-        lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
+        lastDashTime = Time.time; //대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }
     #endregion
 

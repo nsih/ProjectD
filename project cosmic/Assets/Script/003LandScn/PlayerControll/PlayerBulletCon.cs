@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerBulletCon : MonoBehaviour
 {
-    public float bulletSpeed;
-    public bool normalMoving;
+    float bulletSpeed;
+    bool normalMoving;
 
     void Start() 
     {
@@ -13,7 +13,7 @@ public class PlayerBulletCon : MonoBehaviour
         normalMoving = true;
     }
 
-
+    #region  "pooling"
     void OnEnable()
     {
         GameObject gunHead = GameObject.Find("GunHead");
@@ -22,13 +22,13 @@ public class PlayerBulletCon : MonoBehaviour
 
         StartCoroutine(DeactivateAfterTime(3f));
     }
-
     IEnumerator DeactivateAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
-    
+    #endregion
+
     void FixedUpdate()
     {
         if(normalMoving)

@@ -255,7 +255,7 @@ public class ArtifactManager : MonoBehaviour
         //이속 조정
         if (artifactData.speedOffset != 0)
         {
-            PlayerManager.speed = PlayerManager.speed * artifactData.speedOffset;
+            PlayerInfo.playerMoveSpeed = PlayerInfo.playerMoveSpeed * artifactData.speedOffset;
         }
 
 

@@ -40,6 +40,11 @@ public class PlayerInfo : MonoBehaviour
     public static float attackSpeed;    //0~5
 
 
+    //이속
+    public static float playerMoveSpeed;
+    public static float playerCoolTime;
+
+
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
@@ -80,11 +85,14 @@ public class PlayerInfo : MonoBehaviour
         dmgMultifly = 1;
         DmgCal();
 
+        //attack delay
         playerAttackDelay = 1;
         delayMultifly = 1;
         AttackDelayCalc();
 
-        //attack speed
+        //move speed
+        playerMoveSpeed = 5;
+        playerCoolTime = 0.3f;
 
     }
 
