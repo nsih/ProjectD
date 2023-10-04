@@ -26,7 +26,7 @@ public class EnemyData : ScriptableObject
 
     public MovingType movingType;
     public AttackType attackType;
-    public GameObject AttackBullet;
+    public GameObject attackBullet;
 }
 
 

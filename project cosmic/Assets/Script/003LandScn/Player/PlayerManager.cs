@@ -22,8 +22,8 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    public Sprite sword0;
-    public Sprite sword1;
+    Sprite sword0;
+    Sprite sword1;
 
 
     bool isWalk;

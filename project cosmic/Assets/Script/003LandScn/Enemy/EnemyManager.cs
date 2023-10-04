@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCon : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     GameObject gameManager;
 
     GameObject player;
-    GameObject playerHit;
-    GameObject playerStrike;
 
 
     public EnemyData enemyData;
-
-    CircleCollider2D circleCollider;
-
-
-    Animator enemyAnimator;
 
     public int mobNum;
 
@@ -25,10 +18,11 @@ public class EnemyCon : MonoBehaviour
     float moveSpeed;
     float attackDelay;
     float bulletSpeed;
-    MovingType movingType;
-    AttackType attackType;
     bool knockBackable;
 
+    MovingType movingType;
+    AttackType attackType;
+    GameObject attackBullet;
 
 
 
@@ -42,14 +36,6 @@ public class EnemyCon : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-
-        player = GameObject.Find("player");
-        playerHit = GameObject.Find("playerHit");
-        playerStrike = GameObject.Find("StrikePivot").transform.GetChild(0).gameObject;
-
-        mobNum = enemyData.mobNum;
-        enemyAnimator = enemyData.enemyAnimator;
-
 
         isKnockBack = false;
     }
@@ -71,17 +57,19 @@ public class EnemyCon : MonoBehaviour
 
     void OnDisable()
     {
-        /*
         if (gameManager.GetComponent<BattleEventManager>().isPoolAllDone())
         {
             GameManager.isEventEnd = true;
         }
-        */
     }
 
 
     void InitializeEnemyStatus()
     {
+        this.gameObject.tag = "Enemy";
+
+        mobNum = enemyData.mobNum;
+
         hp = enemyData.hp;
         damage = enemyData.damage;
         moveSpeed = enemyData.moveSpeed;
@@ -89,24 +77,16 @@ public class EnemyCon : MonoBehaviour
         attackDelay = enemyData.attackDelay;
         bulletSpeed = enemyData.bulletSpeed;
 
+        knockBackable = enemyData.knockBackable;
+
         movingType = enemyData.movingType;
         attackType = enemyData.attackType;
-
-        knockBackable = enemyData.knockBackable;
+        attackBullet = enemyData.attackBullet;
     }
 
 
 
     #region "collision (Been attacked)"
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("asd");
-            //HandlePlayerStrike();
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PlayerAttack")
@@ -117,9 +97,15 @@ public class EnemyCon : MonoBehaviour
             other.gameObject.SetActive(false);
             //other.gameObject.GetComponent<PlayerBulletCon>().VanishOnCollision();
         }
+
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("asd");
+            //HandlePlayerStrike();
+        }
     }
 
-    void HandlePlayerStrike()   //공격받았을때
+    void HandlePlayerStrike()   //공격받았을때 Hp를 줄이고 맞은 탄을 소거합니다.
     {
         KnockBack();
         if ((hp - PlayerInfo.playerDMG) > 0)
@@ -162,6 +148,7 @@ public class EnemyCon : MonoBehaviour
     #endregion
 
 
+    #region "move"
 
     void Moving()
     {
@@ -182,6 +169,13 @@ public class EnemyCon : MonoBehaviour
 
         }
     }
+
+
+    
+
+
+    #endregion
+    
 
     void Attack()
     {
