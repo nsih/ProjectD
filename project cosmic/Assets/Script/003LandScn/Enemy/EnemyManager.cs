@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
 
     public EnemyData enemyData;
 
-    public int mobNum;
+    public string mobName;
 
     float hp;
     int damage;
@@ -19,10 +19,6 @@ public class EnemyManager : MonoBehaviour
     float attackDelay;
     float bulletSpeed;
     bool knockBackable;
-
-    MovingType movingType;
-    AttackType attackType;
-    GameObject attackBullet;
 
 
 
@@ -38,6 +34,8 @@ public class EnemyManager : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
 
         isKnockBack = false;
+
+        StartCoroutine(RunBehaviorPatterns());
     }
 
     void Update()
@@ -47,7 +45,7 @@ public class EnemyManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        Moving();
+
     }
 
     void OnEnable()
@@ -68,7 +66,7 @@ public class EnemyManager : MonoBehaviour
     {
         this.gameObject.tag = "Enemy";
 
-        mobNum = enemyData.mobNum;
+        mobName = enemyData.mobName;
 
         hp = enemyData.hp;
         damage = enemyData.damage;
@@ -79,9 +77,7 @@ public class EnemyManager : MonoBehaviour
 
         knockBackable = enemyData.knockBackable;
 
-        movingType = enemyData.movingType;
-        attackType = enemyData.attackType;
-        attackBullet = enemyData.attackBullet;
+        //
     }
 
 
@@ -92,7 +88,7 @@ public class EnemyManager : MonoBehaviour
         if (other.gameObject.tag == "PlayerAttack")
         {
             Debug.Log("HP : "+hp);
-            HandlePlayerStrike();
+            HandlePlayerStrike(other.gameObject);
 
             other.gameObject.SetActive(false);
             //other.gameObject.GetComponent<PlayerBulletCon>().VanishOnCollision();
@@ -105,9 +101,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void HandlePlayerStrike()   //공격받았을때 Hp를 줄이고 맞은 탄을 소거합니다.
+    void HandlePlayerStrike(GameObject hit)   //공격받았을때 Hp를 줄이고 맞은 탄을 소거합니다.
     {
-        KnockBack();
+        KnockBack(hit);
         if ((hp - PlayerInfo.playerDMG) > 0)
         {
             hp = hp - PlayerInfo.playerDMG;
@@ -124,12 +120,12 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    void KnockBack()
+    void KnockBack(GameObject hit)
     {
         if (knockBackable && !isKnockBack)
         {
             isKnockBack = true;
-            Vector3 knockBackDirection = -(player.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
+            Vector3 knockBackDirection = -(hit.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
             StartCoroutine(DoKnockBack(knockBackDirection));
         }
     }
@@ -148,45 +144,75 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
 
-    #region "move"
+    #region "Behaivior"
 
-    void Moving()
+    IEnumerator RunBehaviorPatterns()
     {
-        if (movingType == MovingType.none)
+        while (true)
         {
+            foreach (var pattern in enemyData.behaviorPatterns)
+            {
+                switch (pattern.actionType)
+                {
+                    case BehaviorPattern.EnemyActionType.Rest:
+                        yield return StartCoroutine(Rest(pattern.duration));
+                        break;
 
-        }
-        else if (movingType == MovingType.chase)
-        {
+                    case BehaviorPattern.EnemyActionType.Chase:
+                        yield return StartCoroutine(Chase(pattern.duration));
+                        break;
 
-        }
-        else if (movingType == MovingType.rush)
-        {
+                    case BehaviorPattern.EnemyActionType.ShootAtPlayer:
+                        yield return StartCoroutine(ShootAtPlayer(pattern.duration));
+                        break;
 
-        }
-        else if (movingType == MovingType.run)
-        {
+                    // 추가된 행동 패턴에 대한 처리 추가
 
+                    // 기다린 후에 다음 패턴으로 진행
+                    yield return null;
+                }
+            }
         }
     }
 
+    IEnumerator Rest(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            Debug.Log("Rest...");
+            yield return null;
+            timer += Time.deltaTime;
+        }
+    }
+
+    IEnumerator Chase(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            Debug.Log("Chasing..");
+            yield return null;
+            timer += Time.deltaTime;
+        }
+    }
+
+    IEnumerator ShootAtPlayer(float duration)       //이러면 달리면서 중간에 한번 쏘기 가능?
+    {
+        float timer = 0f;
+
+        Debug.Log("Shoot");
+
+        while (timer < duration)
+        {
+            Debug.Log("shoot and waing..");
+            yield return null;
+            timer += Time.deltaTime;
+        }
+    }
 
     
 
 
     #endregion
-    
-
-    void Attack()
-    {
-        if (attackType == AttackType.none)
-        {
-
-        }
-
-        else if (attackType == AttackType.aimShot)
-        {
-
-        }
-    }
 }

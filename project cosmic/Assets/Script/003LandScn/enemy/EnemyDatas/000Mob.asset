@@ -14,13 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGameObject: {fileID: 4309774306996157178, guid: 7d3a2c4603b870040aaeb6f1079c1d06, type: 3}
   enemyAnimator: {fileID: 0}
-  mobNum: 0
+  mobName: 
   hp: 20
   damage: 5
   moveSpeed: 10
   attackDelay: 0
   bulletSpeed: 0
   knockBackable: 1
-  movingType: 0
-  attackType: 0
-  AttackBullet: {fileID: 0}
+  behaviorPatterns:
+  - actionType: 0
+    duration: 2
+  - actionType: 2
+    duration: 0
+  - actionType: 2
+    duration: 0
+  - actionType: 1
+    duration: 2

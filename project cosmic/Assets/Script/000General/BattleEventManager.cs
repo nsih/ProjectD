@@ -33,7 +33,7 @@ public class BattleEventManager : MonoBehaviour
             {
                 GameObject enemy = Instantiate(enemyDataList[i].enemyGameObject,enemyPoolParent.transform);
 
-                enemy.GetComponent<EnemyCon>().enemyData = enemyDataList[i];
+                enemy.GetComponent<EnemyManager>().enemyData = enemyDataList[i];
 
                 enemy.SetActive(false);
                 enemyPool.Add(enemy);
@@ -59,12 +59,12 @@ public class BattleEventManager : MonoBehaviour
     }
 
 
-    public void PickMob(int mobNum,float x,float y)
+    public void PickMob(string mobName,float x,float y)
     {
         Vector2 mobPosition = new Vector2(x,y);
         foreach(GameObject var in enemyPool)
         {
-            if(var.GetComponent<EnemyCon>().mobNum == mobNum && var.activeSelf == false)
+            if(var.GetComponent<EnemyManager>().mobName == mobName && var.activeSelf == false)
             {
                 var.transform.position = mobPosition;
                 var.SetActive(true);
@@ -86,13 +86,6 @@ public class BattleEventManager : MonoBehaviour
             switch (roomFlag)
             {
                 case 0:
-
-                //맵로딩
-                PickMob(0, 10,0);
-                PickMob(0, -10,0);
-                PickMob(0, 0,10);
-                PickMob(0, 0,-10);
-                
                 break;
 
                 case 1:
