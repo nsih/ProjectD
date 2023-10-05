@@ -8,7 +8,6 @@ public class LandUICon : MonoBehaviour
 {
     GameObject gameManager;
     GameObject pnlBackGround;
-    GameObject phaseType;
 
     GameObject cameraCanvas;
 
@@ -52,8 +51,6 @@ public class LandUICon : MonoBehaviour
         willPowerText = GameObject.Find("WillPower");
         knowledgeText = GameObject.Find("Knowledge");
         charmText = GameObject.Find("Charm");
-
-        isMapOpen = false;
     }
 
     // Update is called once per frame
@@ -61,7 +58,7 @@ public class LandUICon : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            //StageMapCon();
+            StageMapSwitch();
         }
     }
 
@@ -123,9 +120,10 @@ public class LandUICon : MonoBehaviour
     /// </summary>
 
 
-    public void StageMapCon()
+    #region "Map"
+    public void StageMapSwitch()
     {
-        if(isMapOpen)
+        if(stageMap.activeSelf)
         {
             CloseStageMap();
         }
@@ -136,22 +134,23 @@ public class LandUICon : MonoBehaviour
     }
     public void ShowStageMap() 
     {
-        Button closeMapBtn;
+        //Button closeMapBtn;
 
-        closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
-        closeMapBtn.onClick.AddListener( CloseStageMap );
+        //closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
+        //closeMapBtn.onClick.AddListener( CloseStageMap );
 
         isMapOpen = true;
         stageMap.SetActive(true);      
     }
     public void CloseStageMap()
     {
-        Button closeMapBtn;
+        //Button closeMapBtn;
 
-        closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
-        closeMapBtn.onClick.RemoveAllListeners();
+        //closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
+        //closeMapBtn.onClick.RemoveAllListeners();
 
         isMapOpen = false;
         stageMap.SetActive(false);
     }
+    #endregion
 }

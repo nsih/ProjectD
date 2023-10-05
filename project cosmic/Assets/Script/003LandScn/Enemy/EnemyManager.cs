@@ -18,7 +18,6 @@ public class EnemyManager : MonoBehaviour
     float moveSpeed;
     float attackDelay;
     float bulletSpeed;
-    bool knockBackable;
 
 
 
@@ -32,20 +31,11 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        player = GameObject.Find("player");
 
         isKnockBack = false;
 
         StartCoroutine(RunBehaviorPatterns());
-    }
-
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-
     }
 
     void OnEnable()
@@ -74,9 +64,6 @@ public class EnemyManager : MonoBehaviour
 
         attackDelay = enemyData.attackDelay;
         bulletSpeed = enemyData.bulletSpeed;
-
-        knockBackable = enemyData.knockBackable;
-
         //
     }
 
@@ -122,10 +109,10 @@ public class EnemyManager : MonoBehaviour
 
     void KnockBack(GameObject hit)
     {
-        if (knockBackable && !isKnockBack)
+        if (enemyData.knockBackable && !isKnockBack)
         {
             isKnockBack = true;
-            Vector3 knockBackDirection = -(hit.transform.position - transform.position).normalized; // 현재 오브젝트가 보는 방향의 반대 방향으로 밀리도록 설정
+            Vector3 knockBackDirection = -(hit.transform.position - transform.position).normalized; //oposit of hit object
             StartCoroutine(DoKnockBack(knockBackDirection));
         }
     }
@@ -144,8 +131,10 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
 
-    #region "Behaivior"
+    #region "Behaivior pattern"
 
+
+    //패턴 관리
     IEnumerator RunBehaviorPatterns()
     {
         while (true)
@@ -158,8 +147,12 @@ public class EnemyManager : MonoBehaviour
                         yield return StartCoroutine(Rest(pattern.duration));
                         break;
 
-                    case BehaviorPattern.EnemyActionType.Chase:
-                        yield return StartCoroutine(Chase(pattern.duration));
+                    case BehaviorPattern.EnemyActionType.ChasePlayer:
+                        yield return StartCoroutine(ChasePlayer(pattern.duration));
+                        break;
+
+                    case BehaviorPattern.EnemyActionType.RushToPlayer:
+                        yield return StartCoroutine(RushToPlayer(pattern.duration));
                         break;
 
                     case BehaviorPattern.EnemyActionType.ShootAtPlayer:
@@ -175,6 +168,8 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+
+    //패턴
     IEnumerator Rest(float duration)
     {
         float timer = 0f;
@@ -186,13 +181,38 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    IEnumerator Chase(float duration)
+    IEnumerator RushToPlayer(float duration)
     {
         float timer = 0f;
+
+        Vector3 chaseDir = ( player.transform.position - gameObject.transform.position).normalized;
+
+
         while (timer < duration)
         {
+            this.gameObject.transform.position = 
+
+            transform.position += chaseDir * moveSpeed * Time.deltaTime;
+
             Debug.Log("Chasing..");
             yield return null;
+            timer += Time.deltaTime;
+        }
+    }
+
+    IEnumerator ChasePlayer(float duration)
+    {
+        float timer = 0f;
+
+
+        while (timer < duration)
+        {
+            this.gameObject.transform.position = 
+
+            transform.position += ( player.transform.position - gameObject.transform.position).normalized * moveSpeed * Time.deltaTime;
+
+            Debug.Log("Chasing..");
+            yield return new WaitForFixedUpdate();
             timer += Time.deltaTime;
         }
     }

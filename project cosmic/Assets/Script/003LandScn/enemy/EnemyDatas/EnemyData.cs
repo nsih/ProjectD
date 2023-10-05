@@ -36,7 +36,8 @@ public class BehaviorPattern
     public enum EnemyActionType
     {
         Rest,
-        Chase,
+        ChasePlayer,
+        RushToPlayer,
         ShootAtPlayer
     }
 
