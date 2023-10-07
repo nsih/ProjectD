@@ -8,34 +8,11 @@ HomeEvent Action Moving Phase
 
 ---
 
-PlayerAttackData		//유물의 공격 관련은 다 이쪽으로 몰고 attack id 만 받아오기.
+2D tile map
 
 
 
-Attack ID		//적용 할 공격
-
-Bullet Sprite	//적용될 투사체 스프라이트
-
-Bullet Priority	//스프라이트 우선순위 (같으면 뒤에 먹은거 적용)
-
-damage+	// 합연산 (*육체)
-
-damage*		// 곱연산 (().1~ 0.9 ~ n) * 육체
-
-attack speed+	// 합연산 (*
-
-bullet speed+	//
-
-bullet branch+	// 몇 줄기
-
-bullet branch*	//
-
-
-bullet func (호밍, 뱅글뱅글, 튕기기, 마우스 따라가기)
-
-
-
-------------------------
+------------------------ 
 
 *title scn
 
