@@ -133,7 +133,6 @@ public class EnemyManager : MonoBehaviour
 
     #region "Behaivior pattern"
 
-
     //패턴 관리
     IEnumerator RunBehaviorPatterns()
     {
@@ -169,7 +168,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    //패턴
+    //패턴s
     IEnumerator Rest(float duration)
     {
         float timer = 0f;
