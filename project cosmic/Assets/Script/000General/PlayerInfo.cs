@@ -91,7 +91,7 @@ public class PlayerInfo : MonoBehaviour
         AttackDelayCalc();
 
         //move speed
-        playerMoveSpeed = 5;
+        playerMoveSpeed = 1000;
         playerCoolTime = 0.3f;
 
     }

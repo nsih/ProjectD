@@ -94,7 +94,7 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerMovement();
         HandPivotCon();
-        StrikePivotCon();
+        //StrikePivotCon();
     }
     void LateUpdate()
     {
@@ -194,15 +194,14 @@ public class PlayerManager : MonoBehaviour
     //hand
     void HandPivotCon()    //
     {
-
         if (isMouseLeft)
         {
-            handPivot.transform.localPosition = new Vector3(-0.25f, -0.25f, 0);
+            handPivot.transform.localPosition = new Vector3(-50f, -50f, 0);
         }
 
         else
         {
-            handPivot.transform.localPosition = new Vector3(0.25f, -0.25f, 0);
+            handPivot.transform.localPosition = new Vector3(50f, -50f, 0);
         }
 
 
@@ -211,11 +210,14 @@ public class PlayerManager : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
 
-            Vector3 direction = mousePosition - handPivot.transform.position;
+            Vector3 direction = mousePosition - player.transform.position;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             handPivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            //Debug.Log(handPivot.transform.position);
+            Debug.Log(handPivot.transform.localPosition);
         }
     }
     void CheckMousePosition()

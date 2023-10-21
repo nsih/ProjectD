@@ -17,12 +17,12 @@ MonoBehaviour:
   mobName: Chase test
   hp: 20
   damage: 5
-  moveSpeed: 10
+  moveSpeed: 500
   attackDelay: 0
   bulletSpeed: 0
   knockBackable: 1
   behaviorPatterns:
   - actionType: 0
-    duration: 3
+    duration: 1
   - actionType: 1
     duration: 3
