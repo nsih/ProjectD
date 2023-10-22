@@ -9,7 +9,7 @@ public class PlayerBulletCon : MonoBehaviour
 
     void Start() 
     {
-        bulletSpeed = 2500;
+        bulletSpeed = 35;
         normalMoving = true;
     }
 
@@ -34,6 +34,15 @@ public class PlayerBulletCon : MonoBehaviour
         if(normalMoving)
         {
             NormalMoving();
+        }
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Wall")
+        {
+            gameObject.SetActive(false);
         }
     }
 

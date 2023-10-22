@@ -17,7 +17,7 @@ MonoBehaviour:
   mobName: Chase test
   hp: 20
   damage: 5
-  moveSpeed: 500
+  moveSpeed: 5
   attackDelay: 0
   bulletSpeed: 0
   knockBackable: 1

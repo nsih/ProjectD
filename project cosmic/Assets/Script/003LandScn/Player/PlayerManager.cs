@@ -196,12 +196,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (isMouseLeft)
         {
-            handPivot.transform.localPosition = new Vector3(-50f, -50f, 0);
+            handPivot.transform.localPosition = new Vector3(-0.25f, -0.25f, 0);
         }
 
         else
         {
-            handPivot.transform.localPosition = new Vector3(50f, -50f, 0);
+            handPivot.transform.localPosition = new Vector3(0.25f, -0.25f, 0);
         }
 
 
@@ -217,7 +217,7 @@ public class PlayerManager : MonoBehaviour
             handPivot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             //Debug.Log(handPivot.transform.position);
-            Debug.Log(handPivot.transform.localPosition);
+            //Debug.Log(handPivot.transform.localPosition);
         }
     }
     void CheckMousePosition()
@@ -238,7 +238,7 @@ public class PlayerManager : MonoBehaviour
 
 
     //총
-    void FireGun()
+    void FireGun()  //공속 미적용
     {
         foreach (GameObject bullet in gameObject.GetComponent<PlayerBulletPoolManager>().playerBulletsPool)
         {

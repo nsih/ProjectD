@@ -78,12 +78,12 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if(GameManager.isEventEnd && PlayerInfo.actionPoint != 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
-            ButtonText.GetComponent<TextMeshProUGUI>().text = "회복";
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "메뉴";
         }
         else
         {
             ButtonImage.GetComponent<Image>().color = Color.clear;
-            ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>회복</color>";
+            ButtonText.GetComponent<TextMeshProUGUI>().text = "<color=#FF0000>메뉴</color>";
         }
     }
 

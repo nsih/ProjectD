@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerBulletPoolManager : MonoBehaviour
 {
+    GameObject gameManager;
     GameObject player;
     public GameObject bullet;
 
@@ -20,11 +21,12 @@ public class PlayerBulletPoolManager : MonoBehaviour
 
     void InitializePlayerBulletsPool()  //초기 생성
     {
+        gameManager =  GameObject.Find("GameManager");
         player = GameObject.Find("player");
 
         for (int i = 0; i <= 30; i++)
         {
-            GameObject var = Instantiate(bullet, player.transform);
+            GameObject var = Instantiate(bullet, gameManager.transform);
 
             var.SetActive(false);
             playerBulletsPool.Add(var);
