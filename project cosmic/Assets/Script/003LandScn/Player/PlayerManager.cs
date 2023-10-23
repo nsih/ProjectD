@@ -174,12 +174,12 @@ public class PlayerManager : MonoBehaviour
         playerHit.GetComponent<CircleCollider2D>().enabled = false;
 
         float timer = 0f;
-        while (timer < 0.2f)
+        while (timer < 0.3f)
         {
             isDash = true;
             timer += Time.deltaTime;
-            transform.position += Direction * PlayerInfo.playerMoveSpeed * 5 * Time.deltaTime;
-            yield return null;
+            transform.position += Direction * PlayerInfo.playerDashSpeed * Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
         isDash = false;
         playerHit.GetComponent<CircleCollider2D>().enabled = true;

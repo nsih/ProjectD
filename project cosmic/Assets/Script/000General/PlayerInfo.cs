@@ -44,6 +44,8 @@ public class PlayerInfo : MonoBehaviour
     public static float playerMoveSpeed;
     public static float playerCoolTime;
 
+    public static float playerDashSpeed;
+
 
 
     //etc
@@ -93,6 +95,7 @@ public class PlayerInfo : MonoBehaviour
         //move speed
         playerMoveSpeed = 10;
         playerCoolTime = 0.3f;
+        playerDashSpeed = 30;
 
     }
 
