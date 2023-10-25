@@ -174,7 +174,7 @@ public class PlayerManager : MonoBehaviour
         playerHit.GetComponent<CircleCollider2D>().enabled = false;
 
         float timer = 0f;
-        while (timer < 0.3f)
+        while (timer < 0.35f)
         {
             isDash = true;
             timer += Time.deltaTime;

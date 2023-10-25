@@ -66,6 +66,7 @@ public class MapDrawer : MonoBehaviour
     }
 
 
+    //로직맵이랑 맵이랑 로고 연결하고 위치조정
     public void MappingRoom()
     {
         int maxX = mapGenerator.mapGraph.Nodes.Max(node => node.X);
@@ -159,6 +160,7 @@ public class MapDrawer : MonoBehaviour
 
     }
 
+    //클릭시 해당 이미지의 타입 반환
     public Sprite GetRoomImage(RoomType roomType)
     {
         if(roomType == RoomType.Start)
@@ -192,6 +194,7 @@ public class MapDrawer : MonoBehaviour
         return roomTypeStart;
     }
 
+    //연결선 생성
     public void GenerateLinePool()
     {
         int maxX = mapGenerator.mapGraph.Nodes.Max(node => node.X);

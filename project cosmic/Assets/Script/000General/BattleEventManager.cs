@@ -24,6 +24,10 @@ public class BattleEventManager : MonoBehaviour
         InitializeEnemyPool();  //스테이지 상관 없.
     }
 
+    #region "room Pool"
+    
+    #endregion
+
     #region "enemy Pool"
     void InitializeEnemyPool()
     {
