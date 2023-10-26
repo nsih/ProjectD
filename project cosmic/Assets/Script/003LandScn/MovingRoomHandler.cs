@@ -38,12 +38,14 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
         Debug.Log(CheckRoomConnect());
 
 
-        if( CheckRoomConnect() /* && GameManager.isEventEnd */)
+        if( CheckRoomConnect() )
         {
+            /*
             Debug.Log("X : " + thisNode.X + "Y : "+ thisNode.Y );
             GameManager.playerLocationX = thisNode.X;
             GameManager.playerLocationY = thisNode.Y;
-            //StartCoroutine("MovingRoom");
+            */
+            StartCoroutine("MovingRoom");
 
             //창닫기
         }

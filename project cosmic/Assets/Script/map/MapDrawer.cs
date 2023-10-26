@@ -30,6 +30,7 @@ public class MapDrawer : MonoBehaviour
 
     
 
+    /*
     public void Start()
     {
         pnlBackGround = GameObject.Find("PnlBackGround");
@@ -38,30 +39,34 @@ public class MapDrawer : MonoBehaviour
 
         linePool = mapContent.transform.Find("LinePool").gameObject;
     }
+    */
 
     private bool hasClicked = false;    //스테이지 넘어갈떄마다 False
 
-    public void Update()
+    public void UpdateDrawMap()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        pnlBackGround = GameObject.Find("PnlBackGround");
+        map = pnlBackGround.transform.Find("StageMap").gameObject;
+        mapContent = map.transform.Find("Viewport").gameObject.transform.Find("MapContent").gameObject;
+        linePool = mapContent.transform.Find("LinePool").gameObject;
+
+
+        if(!map.activeSelf)
         {
-            if(!map.activeSelf)
+            if(!hasClicked)
             {
-                if(!hasClicked)
-                {
-                    MappingRoom();
-                    GenerateLinePool();
+                MappingRoom();
+                GenerateLinePool();
 
-                    hasClicked = true;
-                }
-
-                map.SetActive(true);
+                hasClicked = true;
             }
 
-            else
-            {
-                map.SetActive(false);
-            }
+            map.SetActive(true);
+        }
+
+        else
+        {
+            map.SetActive(false);
         }
     }
 

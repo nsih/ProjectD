@@ -74,7 +74,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerAttack")
         {
-            Debug.Log("HP : "+hp);
+            //Debug.Log("HP : "+hp);
             HandlePlayerStrike(other.gameObject);
 
             other.gameObject.SetActive(false);
@@ -83,7 +83,7 @@ public class EnemyManager : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("asd");
+            //Debug.Log("asd");
             //HandlePlayerStrike();
         }
     }
@@ -95,15 +95,15 @@ public class EnemyManager : MonoBehaviour
         {
             hp = hp - PlayerInfo.playerDMG;
 
-            Debug.Log("PlayerInfo.playerDMG : "+PlayerInfo.playerDMG);
-            Debug.Log("Changed HP : "+hp);
+            //Debug.Log("PlayerInfo.playerDMG : "+PlayerInfo.playerDMG);
+            //Debug.Log("Changed HP : "+hp);
         }
 
         else
         {
             hp = 0;
             this.gameObject.SetActive(false);
-            Debug.Log(this.gameObject.name);
+            //Debug.Log(this.gameObject.name);
         }
     }
 
@@ -174,7 +174,7 @@ public class EnemyManager : MonoBehaviour
         float timer = 0f;
         while (timer < duration)
         {
-            Debug.Log("Rest...");
+            //Debug.Log("Rest...");
             yield return null;
             timer += Time.deltaTime;
         }
@@ -193,7 +193,7 @@ public class EnemyManager : MonoBehaviour
 
             transform.position += chaseDir * moveSpeed * Time.deltaTime;
 
-            Debug.Log("Chasing..");
+            //Debug.Log("Chasing..");
             yield return null;
             timer += Time.deltaTime;
         }
@@ -210,7 +210,7 @@ public class EnemyManager : MonoBehaviour
 
             transform.position += ( player.transform.position - gameObject.transform.position).normalized * moveSpeed * Time.deltaTime;
 
-            Debug.Log("Chasing..");
+            //Debug.Log("Chasing..");
             yield return new WaitForFixedUpdate();
             timer += Time.deltaTime;
         }

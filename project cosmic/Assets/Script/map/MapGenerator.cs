@@ -10,14 +10,6 @@ public class mapGenerator : MonoBehaviour
 {
     public static MapGraph<RoomType> mapGraph = new MapGraph<RoomType>();
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GenerateMap(6,18);
-        }
-    }
-
 
     public void GenerateMap(int x,int y)
     {

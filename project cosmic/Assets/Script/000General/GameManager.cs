@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
+
+    GameObject landUICanvas;
     
     private float previousTimeScale;
 
@@ -40,6 +42,9 @@ public class GameManager : MonoBehaviour
 
         isEventEnd = false;
         isLoading = false;
+
+
+        OpenNewStage();//임시
     }
 
 
@@ -70,20 +75,25 @@ public class GameManager : MonoBehaviour
 
     public void OpenNewStage()
     {
+        landUICanvas = GameObject.Find("LandUICanvas");
+
         //initialize Stage
         currentStage++;
 
         playerLocationX = 0;
         playerLocationY = 0;
 
-        //GetComponent<mapGenerator>().GenerateMap(6,18);
+        GetComponent<mapGenerator>().GenerateMap(6,18);         //생성
+        
+        landUICanvas.GetComponent<MapDrawer>().UpdateDrawMap(); //그림
+
+
+
         PlayerLocationReset();
     }
 
     public void OpenNewRoom()
     {
-        //플레이어위치, 액션 스택, 정신력 , 퀘스트 확인
-
         PlayerLocationReset();
         GetComponent<PlayerInfo>().SanityModify(-1);
     }
