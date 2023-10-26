@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 
@@ -10,6 +9,20 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     GameObject landUICanvas;
+
+
+    //room
+    //준비된 프리팹 리스트
+    public List<GameObject> RoomList1 = new List<GameObject>();
+
+
+
+    //로직에서 쓸거
+    private List<LoadingRoomData> loadBattleRoomData = new List<LoadingRoomData>();
+    //private List<LoadingRoomData> loadEliteBattleRoomData = new List<LoadingRoomData>();
+
+
+
 
     private float previousTimeScale;
 
@@ -86,9 +99,11 @@ public class GameManager : MonoBehaviour
         playerLocationX = 0;
         playerLocationY = 0;
 
-        GetComponent<mapGenerator>().GenerateMap(6, 18);         //생성
-        landUICanvas.GetComponent<MapDrawer>().UpdateDrawMap(); //그림
+        GetComponent<mapGenerator>().GenerateMap(6, 18);         //맵 생성
+        landUICanvas.GetComponent<MapDrawer>().UpdateDrawMap(); //맵 그림
         landUICanvas.GetComponent<MapDrawer>().map.SetActive(false);
+
+        InitializeRoomUsedData();
 
         PlayerLocationReset();
     }
@@ -155,4 +170,53 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(0, 0, 0);
         }
     }
+
+
+    #region "room Pool"
+
+    //스테이지 새로열리면 리스트 비우고 해당 스테이지 방 개수만큼 인스턴스생성
+    //스테이지 갱신마다 호출ㄹㄹ
+    public void InitializeRoomUsedData()
+    {
+        loadBattleRoomData.Clear();
+
+        switch (currentStage)
+        {
+            case 1:
+                for (int i = 0; i < RoomList1.Count; i++)
+                {
+                    loadBattleRoomData[i].roomOBJ = RoomList1[i];
+                    loadBattleRoomData[i].isUsed = false;
+                }
+                break;
+
+
+            default:
+                Debug.Log("stage error : "+currentStage);
+                break;
+        }
+    }
+
+    public void PickupBattleRoom()
+    {
+        //랜덤으로 골라서 roomdata에서 뽑는데 true면 다시뽑기
+    }
+
+    public void PickupEliteBattleRoom()
+    {
+        //랜덤으로 골라서 roomdata에서 뽑는데 true면 다시뽑기
+    }
+
+
+    //기타 등등 룸 불러오기
+
+    #endregion
+}
+
+
+
+public class LoadingRoomData
+{
+    public GameObject roomOBJ;
+    public bool isUsed;
 }

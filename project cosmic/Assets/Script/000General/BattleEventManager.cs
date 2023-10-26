@@ -2,19 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//전투 관련 룸 불러오는 거랑 적 불러오는거 관리.
 public class BattleEventManager : MonoBehaviour
 {
-    GameObject battleRoomPoolParent;
     GameObject enemyPoolParent;
-
-    //room
-
-    //준비된 프리팹 리스트
-    public List<GameObject> RoomList1 = new List<GameObject>();
-
-
-    //로직에서 쓸거
-    public List<RoomData> roomData = new List<RoomData>();
 
 
     //enemy
@@ -23,43 +15,10 @@ public class BattleEventManager : MonoBehaviour
 
     void Start()
     {
-        battleRoomPoolParent = GameObject.Find("BattleRoomPoolParent");
         enemyPoolParent = GameObject.Find("EnemyPoolParent");
 
         InitializeEnemyPool();  //스테이지 무관하게 호출
     }
-
-    #region "room Pool"
-
-    //스테이지 새로열리면 리스트 비우고 해당 스테이지 방 개수만큼 생성
-    //스테이지 갱신마다 호출ㄹㄹ
-    void InitializeRoomUsedData()
-    {
-        roomData.Clear();
-
-        switch (GameManager.currentStage)
-        {
-            case 1:
-                for (int i = 0; i < RoomList1.Count; i++)
-                {
-                    roomData[i].roomOBJ = RoomList1[i];
-                    roomData[i].isUsed = true;
-                }
-                break;
-
-
-            default:
-                Debug.Log("stage error");
-                break;
-        }
-    }
-
-    void InitializeRoomPool() //
-    {
-        //랜덤으로 뽑아서 roomUsed[]에 false면 다시 뽑고 해당 list 데이터 불러오고 시작
-    }
-
-    #endregion
 
     #region "enemy Pool"
     void InitializeEnemyPool() //적데이터당 10마리씩 적 인스턴스 생성
@@ -113,12 +72,4 @@ public class BattleEventManager : MonoBehaviour
     }
 
     #endregion
-
-
-}
-
-public class RoomData
-{
-    public GameObject roomOBJ;
-    public bool isUsed;
 }
