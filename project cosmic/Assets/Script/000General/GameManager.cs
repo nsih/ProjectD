@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//게임흐름과 오브젝트배치 관리
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
     GameObject landUICanvas;
-    
+
     private float previousTimeScale;
 
 
@@ -83,11 +85,9 @@ public class GameManager : MonoBehaviour
         playerLocationX = 0;
         playerLocationY = 0;
 
-        GetComponent<mapGenerator>().GenerateMap(6,18);         //생성
-        
+        GetComponent<mapGenerator>().GenerateMap(6, 18);         //생성
         landUICanvas.GetComponent<MapDrawer>().UpdateDrawMap(); //그림
-
-
+        landUICanvas.GetComponent<MapDrawer>().map.SetActive(false);
 
         PlayerLocationReset();
     }
@@ -104,11 +104,11 @@ public class GameManager : MonoBehaviour
     {
         GameObject player;
 
-        if(GameObject.Find("player") != null)
+        if (GameObject.Find("player") != null)
         {
             player = GameObject.Find("player");
 
-            player.transform.position = new Vector3 (0,0,0);
+            player.transform.position = new Vector3(0, 0, 0);
         }
     }
 }

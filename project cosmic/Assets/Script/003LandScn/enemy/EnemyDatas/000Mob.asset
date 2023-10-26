@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGameObject: {fileID: 4309774306996157178, guid: 7d3a2c4603b870040aaeb6f1079c1d06, type: 3}
   enemyAnimator: {fileID: 0}
-  mobName: Chase test
+  mobName: test
   hp: 20
   damage: 5
   moveSpeed: 5

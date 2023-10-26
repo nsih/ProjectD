@@ -21,7 +21,7 @@ public class BattleEventManager : MonoBehaviour
         battleRoomPoolParent = GameObject.Find("BattleRoomPoolParent");
         enemyPoolParent = GameObject.Find("EnemyPoolParent");
 
-        InitializeEnemyPool();  //스테이지 상관 없.
+        InitializeEnemyPool();  //스테이지 무관하게 호출
     }
 
     #region "room Pool"
@@ -29,7 +29,7 @@ public class BattleEventManager : MonoBehaviour
     #endregion
 
     #region "enemy Pool"
-    void InitializeEnemyPool()
+    void InitializeEnemyPool() //적데이터당 10마리씩 적 인스턴스 생성
     {
         for (int i = 0; i < enemyDataList.Count; i++)
         {
@@ -63,15 +63,16 @@ public class BattleEventManager : MonoBehaviour
     }
 
 
-    public void PickMob(string mobName,float x,float y)
+    public void PickMob(GameObject sCircle)
     {
-        Vector2 mobPosition = new Vector2(x,y);
         foreach(GameObject var in enemyPool)
         {
-            if(var.GetComponent<EnemyManager>().mobName == mobName && var.activeSelf == false)
+            if(var.GetComponent<EnemyManager>().enemyData == sCircle.GetComponent<SummonEnemy>().enemyData && var.activeSelf == false)
             {
-                var.transform.position = mobPosition;
+                var.transform.position = sCircle.transform.position;
                 var.SetActive(true);
+
+                sCircle.SetActive(false);
 
                 break;
             }

@@ -32,19 +32,11 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     ////*
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("X : " + GameManager.playerLocationX + "Y : "+ GameManager.playerLocationY );
-        //Debug.Log("X : " + thisNode.X + "Y : "+ thisNode.Y );
-
-        Debug.Log(CheckRoomConnect());
+        Debug.Log("Connection : "+CheckRoomConnect());
 
 
         if( CheckRoomConnect() )
         {
-            /*
-            Debug.Log("X : " + thisNode.X + "Y : "+ thisNode.Y );
-            GameManager.playerLocationX = thisNode.X;
-            GameManager.playerLocationY = thisNode.Y;
-            */
             StartCoroutine("MovingRoom");
 
             //창닫기
