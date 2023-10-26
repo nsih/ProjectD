@@ -7,16 +7,21 @@ public class BattleEventManager : MonoBehaviour
     GameObject battleRoomPoolParent;
     GameObject enemyPoolParent;
 
+    //room
 
-    public List<GameObject>battleRoomList = new List<GameObject>();
-    private List<GameObject> battleRoomPool = new List<GameObject>(); 
+    //준비된 프리팹 리스트
+    public List<GameObject> RoomList1 = new List<GameObject>();
 
 
+    //로직에서 쓸거
+    public List<RoomData> roomData = new List<RoomData>();
 
+
+    //enemy
     public List<EnemyData> enemyDataList = new List<EnemyData>();
-    private List<GameObject> enemyPool = new List<GameObject>(); 
+    private List<GameObject> enemyPool = new List<GameObject>();
 
-    void Start ()
+    void Start()
     {
         battleRoomPoolParent = GameObject.Find("BattleRoomPoolParent");
         enemyPoolParent = GameObject.Find("EnemyPoolParent");
@@ -25,7 +30,35 @@ public class BattleEventManager : MonoBehaviour
     }
 
     #region "room Pool"
-    
+
+    //스테이지 새로열리면 리스트 비우고 해당 스테이지 방 개수만큼 생성
+    //스테이지 갱신마다 호출ㄹㄹ
+    void InitializeRoomUsedData()
+    {
+        roomData.Clear();
+
+        switch (GameManager.currentStage)
+        {
+            case 1:
+                for (int i = 0; i < RoomList1.Count; i++)
+                {
+                    roomData[i].roomOBJ = RoomList1[i];
+                    roomData[i].isUsed = true;
+                }
+                break;
+
+
+            default:
+                Debug.Log("stage error");
+                break;
+        }
+    }
+
+    void InitializeRoomPool() //
+    {
+        //랜덤으로 뽑아서 roomUsed[]에 false면 다시 뽑고 해당 list 데이터 불러오고 시작
+    }
+
     #endregion
 
     #region "enemy Pool"
@@ -35,7 +68,7 @@ public class BattleEventManager : MonoBehaviour
         {
             for (int j = 0; j < 10; j++)
             {
-                GameObject enemy = Instantiate(enemyDataList[i].enemyGameObject,enemyPoolParent.transform);
+                GameObject enemy = Instantiate(enemyDataList[i].enemyGameObject, enemyPoolParent.transform);
 
                 enemy.GetComponent<EnemyManager>().enemyData = enemyDataList[i];
 
@@ -65,9 +98,9 @@ public class BattleEventManager : MonoBehaviour
 
     public void PickMob(GameObject sCircle)
     {
-        foreach(GameObject var in enemyPool)
+        foreach (GameObject var in enemyPool)
         {
-            if(var.GetComponent<EnemyManager>().enemyData == sCircle.GetComponent<SummonEnemy>().enemyData && var.activeSelf == false)
+            if (var.GetComponent<EnemyManager>().enemyData == sCircle.GetComponent<SummonEnemy>().enemyData && var.activeSelf == false)
             {
                 var.transform.position = sCircle.transform.position;
                 var.SetActive(true);
@@ -79,54 +112,13 @@ public class BattleEventManager : MonoBehaviour
         }
     }
 
-
-    public void GenBattleRoom(int stage)
-    {
-        int roomFlag = Random.Range(0,1);   //0만나옴
-
-        switch (stage)
-        {
-            case 0:
-
-            switch (roomFlag)
-            {
-                case 0:
-                break;
-
-                case 1:
-                break;
-
-                case 2:
-                break;
-
-                case 3:
-                break;
-
-                case 4:
-                break;
-            }
-
-            break;
-
-            case 1:
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
-
-            case 4:
-                break;
-
-            default:
-                Debug.Log(stage);
-                break;
-        }
-    }
-
     #endregion
 
 
+}
+
+public class RoomData
+{
+    public GameObject roomOBJ;
+    public bool isUsed;
 }

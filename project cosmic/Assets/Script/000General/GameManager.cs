@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 
@@ -92,10 +93,53 @@ public class GameManager : MonoBehaviour
         PlayerLocationReset();
     }
 
-    public void OpenNewRoom()
+    public void OpenNewRoom(RoomType roomType)
     {
+        switch(roomType)
+        {
+            case RoomType.Start:
+            //스타트 이벤트
+                break;
+
+            case RoomType.Boss:
+            //맵생성 -> 보스 이벤트 -> 전투
+                break;
+
+            case RoomType.Battle:
+            //맵생성 -> 전투
+                break;
+
+            case RoomType.EliteBattle:
+            //맵생성 -> 전투
+                break;
+
+            case RoomType.FixedEvent:
+            //UI
+                break;
+
+            case RoomType.RandomEvent:
+            //UI
+                break;
+
+            case RoomType.Alter:
+            //맵생성
+                break;
+
+            case RoomType.Shop:
+            //맵생성
+                break;
+
+            case RoomType.NPC:
+            //맵생성 랜덤이벤트에서 나올수도 안나올수도
+                break;
+        }
+
         PlayerLocationReset();
         GetComponent<PlayerInfo>().SanityModify(-1);
+
+
+        //룸타입에 따라서 룸 꺼내오는 함수  -> battle event manager
+        //룸타입에 따라서 이벤트 꺼내오는 함수
     }
 
 
