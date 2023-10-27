@@ -25,7 +25,7 @@ public class LandDialogueManager : MonoBehaviour
     bool isTyping = false;
     public bool isRoomTalking = false;
 
-    private bool isSpeaking = false;
+    //private bool isSpeaking = false;
 
     private void Start() 
     {

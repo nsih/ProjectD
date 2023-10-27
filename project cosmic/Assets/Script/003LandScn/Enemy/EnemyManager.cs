@@ -161,7 +161,7 @@ public class EnemyManager : MonoBehaviour
                     // 추가된 행동 패턴에 대한 처리 추가
 
                     // 기다린 후에 다음 패턴으로 진행
-                    yield return null;
+                    //yield return null;
                 }
             }
         }

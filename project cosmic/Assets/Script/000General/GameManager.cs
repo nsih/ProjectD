@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random=UnityEngine.Random;
 
 
 //게임흐름과 오브젝트배치 관리
@@ -10,18 +12,14 @@ public class GameManager : MonoBehaviour
 
     GameObject landUICanvas;
 
+    GameObject roomParent;
+
 
     //room
     //준비된 프리팹 리스트
-    public List<GameObject> RoomList1 = new List<GameObject>();
+    public List<LoadingRoomData> roomDataList1 = new List<LoadingRoomData>();
 
-
-
-    //로직에서 쓸거
-    private List<LoadingRoomData> loadBattleRoomData = new List<LoadingRoomData>();
-    //private List<LoadingRoomData> loadEliteBattleRoomData = new List<LoadingRoomData>();
-
-
+    List<LoadingRoomData> currentStageRoomDataList = new List<LoadingRoomData>();
 
 
     private float previousTimeScale;
@@ -92,6 +90,7 @@ public class GameManager : MonoBehaviour
     public void OpenNewStage()
     {
         landUICanvas = GameObject.Find("LandUICanvas");
+        roomParent = GameObject.Find("RoomParent");
 
         //initialize Stage
         currentStage++;
@@ -103,9 +102,11 @@ public class GameManager : MonoBehaviour
         landUICanvas.GetComponent<MapDrawer>().UpdateDrawMap(); //맵 그림
         landUICanvas.GetComponent<MapDrawer>().map.SetActive(false);
 
-        InitializeRoomUsedData();
+        InitializeRoomData();
 
         PlayerLocationReset();
+
+        OpenNewRoom(RoomType.Start);
     }
 
     public void OpenNewRoom(RoomType roomType)
@@ -113,39 +114,39 @@ public class GameManager : MonoBehaviour
         switch(roomType)
         {
             case RoomType.Start:
-            //스타트 이벤트
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.Boss:
-            //맵생성 -> 보스 이벤트 -> 전투
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.Battle:
-            //맵생성 -> 전투
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.EliteBattle:
-            //맵생성 -> 전투
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.FixedEvent:
-            //UI
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.RandomEvent:
-            //UI
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.Alter:
-            //맵생성
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.Shop:
-            //맵생성
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.NPC:
-            //맵생성 랜덤이벤트에서 나올수도 안나올수도
+                PickupRoom(RoomType.Battle);
                 break;
         }
 
@@ -156,8 +157,6 @@ public class GameManager : MonoBehaviour
         //룸타입에 따라서 룸 꺼내오는 함수  -> battle event manager
         //룸타입에 따라서 이벤트 꺼내오는 함수
     }
-
-
 
     void PlayerLocationReset()
     {
@@ -172,22 +171,28 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #region "room Pool"
+    #region "room Pool Control"
 
-    //스테이지 새로열리면 리스트 비우고 해당 스테이지 방 개수만큼 인스턴스생성
-    //스테이지 갱신마다 호출ㄹㄹ
-    public void InitializeRoomUsedData()
+    //스테이지마다 Room Data 초기화, 인스턴스 생성
+    public void InitializeRoomData()
     {
-        loadBattleRoomData.Clear();
+        //전 스테이지의 오브젝트 풀 삭제
+        foreach (Transform child in roomParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
+        //스테이지에 따라 데이터의 풀 가져오기
         switch (currentStage)
         {
             case 1:
-                for (int i = 0; i < RoomList1.Count; i++)
+                for (int i = 0; i < roomDataList1.Count; i++)
                 {
-                    loadBattleRoomData[i].roomOBJ = RoomList1[i];
-                    loadBattleRoomData[i].isUsed = false;
+                    GameObject room = Instantiate(roomDataList1[i].roomOBJ, roomParent.transform);
+                    roomDataList1[i].isUsed = false;
                 }
+
+                currentStageRoomDataList = roomDataList1;
                 break;
 
 
@@ -196,27 +201,42 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-    public void PickupBattleRoom()
+    
+    //원하는 타입의 방 뽑기
+    public void PickupRoom(RoomType roomType)
     {
-        //랜덤으로 골라서 roomdata에서 뽑는데 true면 다시뽑기
+        int randomNumber;
+        bool roomPicked = false;
+
+        //DisableAllRooms
+        foreach (Transform child in roomParent.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        
+        //룸타입이 일치하며 사용되지 않은 방을 뽑을때까지 랜덤
+        while (!roomPicked)
+        {
+            randomNumber = Random.Range(0, currentStageRoomDataList.Count);
+            
+            if (!currentStageRoomDataList[randomNumber].isUsed && 
+            currentStageRoomDataList[randomNumber].roomType == roomType)
+            {
+                currentStageRoomDataList[randomNumber].isUsed = true;
+                roomParent.transform.GetChild(randomNumber).gameObject.SetActive(true);
+                roomPicked = true;
+            }
+        }
     }
-
-    public void PickupEliteBattleRoom()
-    {
-        //랜덤으로 골라서 roomdata에서 뽑는데 true면 다시뽑기
-    }
-
-
-    //기타 등등 룸 불러오기
 
     #endregion
 }
 
 
-
+[Serializable]
 public class LoadingRoomData
 {
     public GameObject roomOBJ;
+    public RoomType roomType;
     public bool isUsed;
 }

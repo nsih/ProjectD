@@ -27,12 +27,6 @@ public class LandUICon : MonoBehaviour
     GameObject knowledgeText;
     GameObject charmText;
 
-
-    //
-
-
-    bool isMapOpen;
-
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
@@ -138,8 +132,6 @@ public class LandUICon : MonoBehaviour
 
         //closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
         //closeMapBtn.onClick.AddListener( CloseStageMap );
-
-        isMapOpen = true;
         stageMap.SetActive(true);      
     }
     public void CloseStageMap()
@@ -148,8 +140,6 @@ public class LandUICon : MonoBehaviour
 
         //closeMapBtn = stageMap.transform.Find("CloseBtn").gameObject.GetComponent<Button>();
         //closeMapBtn.onClick.RemoveAllListeners();
-
-        isMapOpen = false;
         stageMap.SetActive(false);
     }
     #endregion
