@@ -32,15 +32,13 @@ public class EnemyManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("player");
-
-        isKnockBack = false;
-
-        StartCoroutine(RunBehaviorPatterns());
     }
 
     void OnEnable()
     {
         InitializeEnemyStatus();
+
+        StartCoroutine(RunBehaviorPatterns());
     }
 
     void OnDisable()
@@ -64,6 +62,8 @@ public class EnemyManager : MonoBehaviour
 
         attackDelay = enemyData.attackDelay;
         bulletSpeed = enemyData.bulletSpeed;
+
+        isKnockBack = false;
         //
     }
 
