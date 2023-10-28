@@ -1,0 +1,35 @@
+﻿title: NewYarnScript
+tags:
+position: 16,-377
+---
+플레이어: mic test 하나둘삼넷오여섯칠팔아홉공 #line:08568ee 
+
+니아: 테스트 한번 오지게 요란하네 #line:0f532e1 
+
+->동의한다. #line:0aba11a 
+    <<jump Agree>>
+
+->동의하지 않는다. #line:012f98d 
+    <<jump Disagree>>
+===
+
+title: Agree
+position: -142,-64
+---
+플레이어: 인정 #line:06e0c2e 
+<<jump Done>>
+===
+
+title: Disagree
+position: 167,-56
+---
+플레이어: 이 씹련아 그럼 테스트 하지마? #line:00855b2 
+<<jump Done>>
+===
+
+title: Done
+position: 10,219
+---
+니아: 어쨌든 3 by 3긴 해 ㅇㅇ #line:0b21dc6 
+플레이어: 그럼 됐지 #line:099ae55 
+===
