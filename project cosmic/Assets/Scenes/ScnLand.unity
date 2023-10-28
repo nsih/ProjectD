@@ -6822,7 +6822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709240235}
   m_Layer: 0
-  m_Name: BattleRoomPoolParent
+  m_Name: RoomParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7573,7 +7573,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5144cd5a40d12741ad4b96fea447bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomList1: []
+  roomDataList1:
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 1490927326}
+    roomType: 2
+    isUsed: 0
 --- !u!4 &753276861
 Transform:
   m_ObjectHideFlags: 0
@@ -7582,7 +7612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753276850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 938.00085, y: 495.76428, z: 2.340431}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13300,6 +13330,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463470038}
   m_CullTransparentMesh: 1
+--- !u!1 &1490927326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+  m_PrefabInstance: {fileID: 6095956249231427911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502175844
 GameObject:
   m_ObjectHideFlags: 0
