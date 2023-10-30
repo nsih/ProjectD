@@ -7454,7 +7454,7 @@ GameObject:
   - component: {fileID: 891082562}
   - component: {fileID: 891082561}
   m_Layer: 0
-  m_Name: DialogueManager
+  m_Name: DialogueRunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7474,7 +7474,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnProject: {fileID: 7545569452688597077, guid: 85f1bef1d8bf3fc45ba154ec99f7e514, type: 3}
   _variableStorage: {fileID: 0}
-  dialogueViews: []
+  dialogueViews:
+  - {fileID: 1464266741}
   startNode: Start
   startAutomatically: 1
   runSelectedOptionAsLine: 0
@@ -8037,7 +8038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931868893
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12078,14 +12079,14 @@ MonoBehaviour:
   useFadeEffect: 1
   fadeInTime: 0.25
   fadeOutTime: 0.05
-  lineText: {fileID: 0}
+  lineText: {fileID: 1111927000}
   showCharacterNameInLineView: 1
   characterNameText: {fileID: 0}
-  useTypewriterEffect: 0
+  useTypewriterEffect: 1
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
-  typewriterEffectSpeed: 0
+  typewriterEffectSpeed: 20
   continueButton: {fileID: 0}
   holdTime: 1
   autoAdvance: 0
@@ -12469,18 +12470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d97b08a5e0a6b4ca9cbef38c62abee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniMapViewPort: {fileID: 0}
-  miniMapContent: {fileID: 0}
-  currentRoom: {fileID: 0}
-  roomTypeSprite:
-  - {fileID: 21300000, guid: acf09ca8d5923fb44ae25e93feaedefa, type: 3}
-  - {fileID: 21300000, guid: bed1969033f95fa42aaa7b8c2f1544fb, type: 3}
-  - {fileID: 21300000, guid: a3b144e1611fac24897c0db9381e77cd, type: 3}
-  - {fileID: 21300000, guid: 755730472d615d046a21a9479be75503, type: 3}
-  - {fileID: 21300000, guid: 27148a8f78592d04a8ab41e010fd220c, type: 3}
-  - {fileID: 21300000, guid: aac4744fe405ed945a0c7ce779f6b1d1, type: 3}
-  - {fileID: 21300000, guid: aa90dd531f8734540aa73c2111e4cd55, type: 3}
-  isTpSprite: {fileID: 21300000, guid: 74aa68c7b1b4bf8438fe558803771f41, type: 3}
 --- !u!114 &1528553257
 MonoBehaviour:
   m_ObjectHideFlags: 0
