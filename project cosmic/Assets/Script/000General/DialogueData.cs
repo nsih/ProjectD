@@ -40,6 +40,17 @@ public class DialogueData : MonoBehaviour
         roomDataParsedData = new List<RoomScriptData>();
         string filePath = Path.Combine(Application.dataPath + csvDir, FileName);
 
+        TextAsset jsonFile = Resources.Load<TextAsset>(FileName);
+        Dictionary<string, List<RoomDialogueNode>> roomDialogueData = JsonUtility.FromJson<Dictionary<string, List<RoomDialogueNode>>>(jsonFile.text);
+    }
+
+    /*
+    //csv 버전 파서
+    void RoomScriptDataParser(string FileName)
+    {
+        rsParsedData = new List<RoomScriptData>();
+        string filePath = Path.Combine(Application.dataPath + csvDir, FileName);
+
         StreamReader reader = new StreamReader(filePath);
 
         string firstLine = reader.ReadLine();
@@ -59,11 +70,12 @@ public class DialogueData : MonoBehaviour
 
             // 파싱된 데이터를 객체로 생성하여 리스트에 추가
             RoomScriptData csvData = new RoomScriptData(flag, index, talker, script, talkSpeed, standImg);
-            roomDataParsedData.Add(csvData);
+            rsParsedData.Add(csvData);
 
         }
         reader.Close();
     }
+    */
     float talkSpeedCheck(string _talkSpeedS)
     {
         float tempSpeed = 0;
@@ -83,23 +95,25 @@ public class DialogueData : MonoBehaviour
 
 }
 
-public class RoomScriptDatas
+public class RoomDialogueNode
 {
-    public int flag;
-    public int index;
+    public int id;
     public string talker;
-    public string script;
-    public float talkSpeed;
-    public string standImg;
+    public string emotion;
+    public string text;
+    public string talkSpeed;
+    public string nextLineId;
+    public bool isEnd;
 
-    public RoomScriptDatas(int flag, int index, string talker, string script, float talkSpeed, string standImg)
+    public DialogueOption[] Options; // 'Option' 클래스의 이름을 'DialogueOption'으로 변경
+
+    [System.Serializable]
+    public class DialogueOption
     {
-        this.flag = flag;
-        this.index = index;
-        this.talker = talker;
-        this.script = script;
-        this.talkSpeed = talkSpeed;
-        this.standImg = standImg;
+        public int id;
+        public string text;
+        public int nextLineId;
+        public bool isEnd;
     }
 }
 
