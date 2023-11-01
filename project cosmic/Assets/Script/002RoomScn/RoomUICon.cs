@@ -19,22 +19,4 @@ public class RoomUICon : MonoBehaviour
         pnlBackGround = GameObject.Find("PnlBackGround");
         phaseType = GameObject.Find("PhaseType");
     }
-
-    void Update()
-    {
-        UpdateRoomPhaseType();
-    }
-
-    void UpdateRoomPhaseType()
-    {
-        if(gameObject.GetComponent<RoomDialogueManager>().isRoomTalking)
-        {
-            phaseType.GetComponent<TextMeshProUGUI>().text = "Just Chatting.";
-        }
-
-        else
-        {
-            phaseType.GetComponent<TextMeshProUGUI>().text = "멍 때리는 중.";
-        }
-    }
 }

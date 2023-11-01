@@ -42,6 +42,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnClickChitchat()
     {
+        /*
         if(!GameManager.isLoading && !roomUICanvas.GetComponent<RoomDialogueManager>().isRoomTalking)
         {
             int dialogueId;
@@ -52,5 +53,6 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             roomUICanvas.GetComponent<RoomDialogueManager>().currentIndex = 0;
             roomUICanvas.GetComponent<RoomDialogueManager>().ShowDialogue(dialogueId);
         }
+        */
     }
 }
