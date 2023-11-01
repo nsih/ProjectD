@@ -7,21 +7,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewRoomDialogueData", menuName = "RoomDialogueData")]
 public class RoomDialogueData : ScriptableObject
 {
-    public int dialogueID;
-    public string dialogueName;
+    public string dialogueTitle;
 
 
 
     [System.Serializable]
     public struct DialogueLine
     {
+        public LineType lineType;
         public Speaker speaker;
         public string speakerName;
         
-        
         //보여줄 Img
-        public Emotion playerEmotion;
-        public Emotion niaEmotion;
+        public Emotion talkerEmotion;
 
         public Volume volume;
         public SpeakSpeed speakSpeed;
@@ -34,21 +32,25 @@ public class RoomDialogueData : ScriptableObject
     public DialogueLine[] dialogues;
 }
 
+public enum LineType
+{
+    Line,
+    Option
+}
+
 public enum Speaker
 {
     Player,
-    Nia,
-
+    Nia
 }
 
 public enum Emotion
 {
-    normal,
-    smile,
-    sad,
-    Anger,
-    Panic,
-    curious
+    Default,
+    Happy,
+    Sad,
+    Angry,
+    Shy
 }
 
 public enum SpeakSpeed

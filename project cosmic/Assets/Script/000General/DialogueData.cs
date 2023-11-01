@@ -10,13 +10,13 @@ public class DialogueData : MonoBehaviour
 
 
     //Room
-    private string csvDir = "/Resource/CSV";
-    private string roomScriptFile = "ScnRoomScript.csv";
-    public static List<RoomScriptData> rsParsedData;   //room script parsed data
+    private string csvDir = "/Resource/Json";
+    private string roomScriptFile = "RoomDialogueData.json";
+    public static List<RoomScriptData> roomDataParsedData;   //room script parsed data
     private static int roomFlag;
 
     
-    //Land
+    //Land (아직 안함)
 
 
     //common
@@ -37,7 +37,7 @@ public class DialogueData : MonoBehaviour
 
     void RoomScriptDataParser(string FileName)
     {
-        rsParsedData = new List<RoomScriptData>();
+        roomDataParsedData = new List<RoomScriptData>();
         string filePath = Path.Combine(Application.dataPath + csvDir, FileName);
 
         StreamReader reader = new StreamReader(filePath);
@@ -59,15 +59,11 @@ public class DialogueData : MonoBehaviour
 
             // 파싱된 데이터를 객체로 생성하여 리스트에 추가
             RoomScriptData csvData = new RoomScriptData(flag, index, talker, script, talkSpeed, standImg);
-            rsParsedData.Add(csvData);
+            roomDataParsedData.Add(csvData);
 
         }
         reader.Close();
     }
-
-
-
-    //common
     float talkSpeedCheck(string _talkSpeedS)
     {
         float tempSpeed = 0;
@@ -86,9 +82,6 @@ public class DialogueData : MonoBehaviour
     #endregion
 
 }
-
-
-
 
 public class RoomScriptDatas
 {
@@ -110,8 +103,6 @@ public class RoomScriptDatas
     }
 }
 
-
-
 public class LandScriptData
 {
     public int flag;
@@ -131,3 +122,5 @@ public class LandScriptData
         this.standImg = standImg;
     }
 }
+
+

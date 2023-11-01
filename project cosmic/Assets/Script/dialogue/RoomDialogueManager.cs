@@ -10,7 +10,7 @@ public class RoomDialogueManager : MonoBehaviour
     public GameObject gameManager;
 
 
-    GameObject speaker;
+    //GameObject speaker;
     GameObject text;
     GameObject playerCG;
     GameObject niaCG;
@@ -29,7 +29,7 @@ public class RoomDialogueManager : MonoBehaviour
         niaCG = GameObject.Find("NiaCG");
 
         gameManager = GameObject.Find("GameManager");
-        speaker = GameObject.Find("Speaker");
+        //speaker = GameObject.Find("Speaker");
         text = GameObject.Find("DialogueText");
 
         currentDialogueID = 0;
@@ -60,8 +60,7 @@ public class RoomDialogueManager : MonoBehaviour
             string speakerName = currentRoomDialogueData.speakerName;
             SpeakSpeed speakSpeed = currentRoomDialogueData.speakSpeed;
             string text = currentRoomDialogueData.text;
-            Emotion playerEmotion = currentRoomDialogueData.playerEmotion;
-            Emotion niaEmotion = currentRoomDialogueData.niaEmotion;
+            Emotion talkerEmotion = currentRoomDialogueData.talkerEmotion;
             
 
             //skipping
@@ -77,7 +76,7 @@ public class RoomDialogueManager : MonoBehaviour
                 StopCoroutine(typingCoroutine); // 다 됐거나 스킵된 이후일것.
             }
 
-            typingCoroutine = StartCoroutine(TypingText(speaker,speakerName,speakSpeed,text,playerEmotion,niaEmotion));
+            typingCoroutine = StartCoroutine(TypingText(speaker,speakerName,speakSpeed,text,talkerEmotion));
         }
 
         else
@@ -108,7 +107,7 @@ public class RoomDialogueManager : MonoBehaviour
 
     void EndDialogue()  //대기화면 시작
     {
-        speaker.GetComponent<TextMeshProUGUI>().text = "";
+        //speaker.GetComponent<TextMeshProUGUI>().text = "";
         text.GetComponent<TextMeshProUGUI>().text = "";
 
         isRoomTalking = false;
@@ -122,17 +121,24 @@ public class RoomDialogueManager : MonoBehaviour
 
     private Coroutine typingCoroutine;
     private IEnumerator TypingText( Speaker _speaker ,string _speakerName, SpeakSpeed _speakSpeed, string _text,
-                                    Emotion _playerEmotion,Emotion _niaEmotion)
+                                    Emotion _talkerEmotion)
     {
         isRoomTalking = true;
         isTyping = true;
 
-        speaker.GetComponent<TextMeshProUGUI>().text = _speakerName;
+        //화자에 따른 스프라이트랑 앞에 이름 바꾸기
+        if(_speaker == Speaker.Player)
+        {
+            text.GetComponent<TextMeshProUGUI>().text = "플레이어 : ";
+            //playerCG.GetComponent<Image>().sprite == 
+        }
+        else if(_speaker == Speaker.Nia)
+        {
+            text.GetComponent<TextMeshProUGUI>().text = "니아 : ";
+            //niaCG.GetComponent<Image>().sprite == 
+        }
 
-        text.GetComponent<TextMeshProUGUI>().text = "";
-
-        //playerCG.GetComponent<Image>().sprite == 
-        //niaCG.GetComponent<Image>().sprite == 
+        //text.GetComponent<TextMeshProUGUI>().text = "";
 
         foreach (char c in _text)
         {

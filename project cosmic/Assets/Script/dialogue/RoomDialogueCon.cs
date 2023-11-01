@@ -8,9 +8,7 @@ using TMPro;
 
 public class RoomDialogueCon : MonoBehaviour
 {
-    public GameObject gameManager;
-
-    //bool isTalking = false;
+    bool isTalking = false;
 
     public static int roomFlag;
     public int currentIndex;
@@ -27,7 +25,6 @@ public class RoomDialogueCon : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager");
         talkerInfo = GameObject.Find("Talker");
         dialogueTxt = GameObject.Find("DialogueText");
         niaTxt = GameObject.Find("NiaText");
@@ -54,7 +51,8 @@ public class RoomDialogueCon : MonoBehaviour
 
     public void ShowDialogue(int currentFlag)
     {
-        List<RoomScriptData> currentDialogueData = DialogueData.rsParsedData.FindAll(data => data.flag == currentFlag);
+        List<RoomScriptData> currentDialogueData 
+        = DialogueData.roomDataParsedData.FindAll(data => data.flag == currentFlag);
         
         
         if (currentIndex < currentDialogueData.Count)
@@ -89,7 +87,7 @@ public class RoomDialogueCon : MonoBehaviour
 
     void ProceedNextLine()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))    //대화중인 조건 추가해야함
         {
             ShowDialogue(roomFlag);
         }
