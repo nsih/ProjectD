@@ -36,8 +36,6 @@ public class RoomDialogueData
 
 public class DialogueDataManager : MonoBehaviour
 {
-    //title
-
     //Room
     //private string csvDir = "/Resource/Json";
     private string roomScriptFile = "JSON/RoomDialogueData";
@@ -96,20 +94,65 @@ public class DialogueDataManager : MonoBehaviour
     }
 
     
-    float talkSpeedCheck(string _talkSpeedS)
+    #region "return dailogue data value"
+    public float TalkSpeed(string _talkSpeed)
     {
-        float tempSpeed = 0;
+        if(_talkSpeed == null)
+            return 0.07f;
 
-        //delay time
-        if(_talkSpeedS == "FAST")
-            tempSpeed = fastTypeSpeed;
-        else if(_talkSpeedS == "NORMAL")
-            tempSpeed = normarTypeSpeed;
-        else if(_talkSpeedS == "SLOW")
-            tempSpeed = slowTypeSpeed;
+        else if(_talkSpeed == "slow")
+            return 0.3f;
 
-        return tempSpeed;
+        else if(_talkSpeed == "normal")
+            return 0.07f;
+
+        else if(_talkSpeed == "fast")
+            return 0.03f;
+
+        else
+            Debug.Log("exeption error : "+_talkSpeed);
+        
+        return 0;
+    } 
+
+    public emotion TalkerEmotion(string _emotion)
+    {
+        if(_emotion == null)
+            return emotion.Default;
+
+        else if(_emotion == "Default")
+            return emotion.Default;
+        
+        else if(_emotion == "Happy")
+            return emotion.Happy;
+
+        else if(_emotion == "Happy")
+            return emotion.Happy;
+
+        else if(_emotion == "Happy")
+            return emotion.Happy;
+
+        else if(_emotion == "Happy")
+            return emotion.Happy;
+
+        else
+            return emotion.Default;
     }
-    
+
+    #endregion
+
+
 
 }
+
+
+
+public enum emotion:int
+{
+    Default = 0,
+    Happy = 1,
+    Sad = 2,
+    Angry = 3,
+    Shy = 4
+}
+

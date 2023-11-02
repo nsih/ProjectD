@@ -13,24 +13,29 @@ public class RoomDialogueManager : MonoBehaviour
     public static int roomFlag;
     public int currentIndex;
 
+    public Sprite [] playerEmotionSprite;
+    public Sprite [] niaEmotionSprite;
+
 
     //
+    GameObject dialogueDataManager;
     GameObject talkerInfo;
     GameObject dialogueTxt;
     GameObject niaTxt;
 
+    Sprite playerSprite;
+    Sprite niaSprite;
+
     private bool isTyping = false;
-
-
-
-    private void Awake()
-    {
-        talkerInfo = GameObject.Find("Talker");
-        dialogueTxt = GameObject.Find("DialogueText");
-    }
 
     private void Start() 
     {
+        dialogueDataManager = GameObject.Find("DialogueDataManager");
+        //talkerInfo = GameObject.Find("Talker");  지금은 안씀
+        dialogueTxt = GameObject.Find("DialogueText"); 
+        playerSprite = GameObject.Find("PlayerIMG").GetComponent<Image>().sprite;
+        niaSprite = GameObject.Find("NiaIMG").GetComponent<Image>().sprite;
+
         StartDialogue();
     }
 
@@ -69,14 +74,16 @@ public class RoomDialogueManager : MonoBehaviour
         {
             RoomDialogueNode currentLine = currentNode[currentIndex];
 
-            string currentTalker = currentLine.talker;
-            string currnetText = currentLine.text;
-            string currentTalkSpeed = currentLine.talkSpeed;
+            string talker = currentLine.talker;
+            string emotion = currentLine.emotion;
+            string text = currentLine.text;
+            float talkSpeed = dialogueDataManager.GetComponent<DialogueDataManager>().TalkSpeed(currentLine.talkSpeed);
+            int nextLineId = int.Parse(currentLine.nextLineId);
 
             //skip
             if(isTyping == true)
             {
-                SkipLine(currentTalker,currnetText);
+                SkipLine(talker,text,nextLineId);
                 return;
             }
 
@@ -87,7 +94,7 @@ public class RoomDialogueManager : MonoBehaviour
             }
 
             // 대사 처리 (부터합시다 11/02)
-            typingCoroutine = StartCoroutine(TypeText(currentTalker,currnetText,1));
+            typingCoroutine = StartCoroutine(TypeText(talker,text,talkSpeed));
         }
         else
         {
@@ -103,25 +110,16 @@ public class RoomDialogueManager : MonoBehaviour
         }
     }
 
-    void SkipLine(string _currentTalker,string _currentDialogue)
+    void SkipLine(string _talker,string _text,int _nextLineId)
     {
         //Debug.Log("skip");
         StopCoroutine(typingCoroutine);
 
-        if(_currentTalker == "player")
-        {
-            talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
-            dialogueTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
-        }
-
-        else if(_currentTalker == "nia")
-        {
-            niaTxt.GetComponent<TextMeshProUGUI>().text = _currentDialogue;
-        }
-
+        talkerInfo.GetComponent<TextMeshProUGUI>().text = _talker;
+        dialogueTxt.GetComponent<TextMeshProUGUI>().text = _text;
         
         isTyping = false;
-        currentIndex++;
+        currentIndex = _nextLineId;
     }
 
     void EndDialogue()  //대기화면 시작
@@ -132,6 +130,7 @@ public class RoomDialogueManager : MonoBehaviour
 
         //roomFlag++;   플레그 자동 조종도 좋지만. 그냥 일일히 이벤트에 따라 플레그 설정하는것도 고려중.
     }
+    #endregion
 
 
     #region "coroutine define"
@@ -172,26 +171,4 @@ public class RoomDialogueManager : MonoBehaviour
         }
     }
     #endregion
-
-    #endregion
-}
-
-public class RoomScriptData
-{
-    public int flag;
-    public int index;
-    public string talker;
-    public string script;
-    public float talkSpeed;
-    public string standImg;
-
-    public RoomScriptData(int flag, int index, string talker, string script, float talkSpeed, string standImg)
-    {
-        this.flag = flag;
-        this.index = index;
-        this.talker = talker;
-        this.script = script;
-        this.talkSpeed = talkSpeed;
-        this.standImg = standImg;
-    }
 }
