@@ -2,46 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Newtonsoft.Json;
 
 [System.Serializable]
-public class RoomDialogueNode
+public class DialogueOption
+{
+    public int id;
+    public string text;
+    public bool isEnd;
+    public int? nextLineId;
+}
+
+[System.Serializable]
+public class DialogueNode
 {
     public int id;
     public string talker;
-    public string emotion;
+    public string? emotion;
     public string text;
-    public string talkSpeed;
-    public string nextLineId;
-    public bool isEnd;
-
-    public DialogueOption[] Options;
-
-    [System.Serializable]
-    public class DialogueOption
-    {
-        public int id;
-        public string text;
-        public int nextLineId;
-        public bool isEnd;
-    }
+    public string? talkSpeed;
+    public bool? isLastLine;
+    public int? nextLineId;
+    public List<DialogueOption>? option;
 }
 
 [System.Serializable]
-public class RoomDialogueData
+public class DialogueGroup
 {
-    public Dictionary<string,List<RoomDialogueNode>> node;
+    public List<DialogueNode> nodes;
 }
 
-
+[System.Serializable]
+public class DialogueData
+{
+    public Dictionary<string, List<DialogueNode>> dialogueData;
+}
 
 public class DialogueDataManager : MonoBehaviour
 {
     //Room
-    //private string csvDir = "/Resource/Json";
     private string roomScriptFile = "JSON/RoomDialogueData";
-
-    public static RoomDialogueData roomDialogueData;
-
+    public static DialogueData roomDialogueData;
 
     //common
     float fastTypeSpeed = 0.03f;
@@ -59,14 +60,18 @@ public class DialogueDataManager : MonoBehaviour
         TextAsset jsonFile = Resources.Load<TextAsset>(fileName);
         if (jsonFile != null)
         {
-            string jsonString = jsonFile.text;
-            roomDialogueData     = JsonUtility.FromJson<RoomDialogueData>(jsonString);  //파싱 - 역직렬화
+            roomDialogueData = JsonConvert.DeserializeObject<DialogueData>(jsonFile.text); //역직렬화
+
+            //Debug.Log(jsonFile.text);
+
+
+            //Debug.Log(JsonConvert.SerializeObject(roomDialogueData));
         }
-        
-        //역직렬화 한거 사용하는 예
-        foreach (KeyValuePair<string, List<RoomDialogueNode>> entry in roomDialogueData.node)
+        /*
+        //역직렬화 한거 사용
+        foreach (KeyValuePair<string, List<RoomDialogueNode>> entry in roomDialogueData.nodes)
         {
-            string nodeId = entry.Key;
+            string nodeTitle = entry.Key;
             List<RoomDialogueNode> dialogueNodes = entry.Value;
 
             foreach (RoomDialogueNode node in dialogueNodes)
@@ -91,49 +96,51 @@ public class DialogueDataManager : MonoBehaviour
                 }
             }
         }
+        */
+
     }
 
-    
+
     #region "return dailogue data value"
     public float TalkSpeed(string _talkSpeed)
     {
-        if(_talkSpeed == null)
+        if (_talkSpeed == null)
             return 0.07f;
 
-        else if(_talkSpeed == "slow")
+        else if (_talkSpeed == "slow")
             return 0.3f;
 
-        else if(_talkSpeed == "normal")
+        else if (_talkSpeed == "normal")
             return 0.07f;
 
-        else if(_talkSpeed == "fast")
+        else if (_talkSpeed == "fast")
             return 0.03f;
 
         else
-            Debug.Log("exeption error : "+_talkSpeed);
-        
+            Debug.Log("exeption error : " + _talkSpeed);
+
         return 0;
-    } 
+    }
 
     public emotion TalkerEmotion(string _emotion)
     {
-        if(_emotion == null)
+        if (_emotion == null)
             return emotion.Default;
 
-        else if(_emotion == "Default")
+        else if (_emotion == "Default")
             return emotion.Default;
-        
-        else if(_emotion == "Happy")
+
+        else if (_emotion == "Happy")
             return emotion.Happy;
 
-        else if(_emotion == "Happy")
-            return emotion.Happy;
+        else if (_emotion == "Sad")
+            return emotion.Sad;
 
-        else if(_emotion == "Happy")
-            return emotion.Happy;
+        else if (_emotion == "Angry")
+            return emotion.Angry;
 
-        else if(_emotion == "Happy")
-            return emotion.Happy;
+        else if (_emotion == "Shy")
+            return emotion.Shy;
 
         else
             return emotion.Default;
@@ -141,13 +148,11 @@ public class DialogueDataManager : MonoBehaviour
 
     #endregion
 
-
-
 }
 
 
 
-public enum emotion:int
+public enum emotion : int
 {
     Default = 0,
     Happy = 1,

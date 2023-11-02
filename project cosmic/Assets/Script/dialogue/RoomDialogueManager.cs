@@ -17,14 +17,16 @@ public class RoomDialogueManager : MonoBehaviour
     public Sprite [] niaEmotionSprite;
 
 
-    //
     GameObject dialogueDataManager;
     GameObject talkerInfo;
     GameObject dialogueTxt;
     GameObject niaTxt;
 
-    Sprite playerSprite;
-    Sprite niaSprite;
+    Image playerSprite;
+    Image niaSprite;
+
+    Color highLight = new Color(0,0,0,255);
+    Color shadow = new Color(85,85,85,255);
 
     private bool isTyping = false;
 
@@ -33,8 +35,8 @@ public class RoomDialogueManager : MonoBehaviour
         dialogueDataManager = GameObject.Find("DialogueDataManager");
         //talkerInfo = GameObject.Find("Talker");  지금은 안씀
         dialogueTxt = GameObject.Find("DialogueText"); 
-        playerSprite = GameObject.Find("PlayerIMG").GetComponent<Image>().sprite;
-        niaSprite = GameObject.Find("NiaIMG").GetComponent<Image>().sprite;
+        playerSprite = GameObject.Find("PlayerIMG").GetComponent<Image>();
+        niaSprite = GameObject.Find("NiaIMG").GetComponent<Image>();
 
         StartDialogue();
     }
@@ -50,32 +52,29 @@ public class RoomDialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         currentIndex = 0;
-        ShowDialogue("roomFlag");
+        ShowDialogue("Start");
     }
 
-    public void ShowDialogue(string _nodeName)
+    public void ShowDialogue(string _nodeTitle)
     {
-        string nodeName = _nodeName;
-        List<RoomDialogueNode> currentNode;
+        DialogueData currentNode;
 
-        if (DialogueDataManager.roomDialogueData.node.ContainsKey(_nodeName))
+        /*
+        foreach (KeyValuePair<string, List<RoomDialogueNode>> entry in DialogueDataManager.roomDialogueNode)
         {
-            currentNode = DialogueDataManager.roomDialogueData.node[_nodeName];
+            if(entry.Key == _nodeTitle)
+            {
+                currentNode = entry.Value;
+                break;
+            }
         }
-        else
-        {
-            Debug.Log(_nodeName+"이 없습니다.");
 
-            return;
-        }
-        
-        
         if (currentIndex < currentNode.Count)
         {
             RoomDialogueNode currentLine = currentNode[currentIndex];
 
             string talker = currentLine.talker;
-            string emotion = currentLine.emotion;
+            emotion emotion = dialogueDataManager.GetComponent<DialogueDataManager>().TalkerEmotion(currentLine.emotion);
             string text = currentLine.text;
             float talkSpeed = dialogueDataManager.GetComponent<DialogueDataManager>().TalkSpeed(currentLine.talkSpeed);
             int nextLineId = int.Parse(currentLine.nextLineId);
@@ -94,12 +93,14 @@ public class RoomDialogueManager : MonoBehaviour
             }
 
             // 대사 처리 (부터합시다 11/02)
-            typingCoroutine = StartCoroutine(TypeText(talker,text,talkSpeed));
+            typingCoroutine = StartCoroutine(TypeText(talker,emotion,text,talkSpeed,nextLineId));
         }
         else
         {
             EndDialogue();
         }
+        */
+    
     }
 
     void ProceedNextLine()
@@ -135,40 +136,56 @@ public class RoomDialogueManager : MonoBehaviour
 
     #region "coroutine define"
     private Coroutine typingCoroutine;
-    private IEnumerator TypeText(string _currentTalker,string _currentDialogue,float _currentSpeed)
+    private IEnumerator TypeText(string _talker,emotion _emotion,string _text,float _talkSpeed,int _nextLineId)
     {
         isTyping = true;
-        if(_currentTalker == "player")
+
+        TalkerHighlightOn(_talker);
+
+        dialogueTxt.GetComponent<TextMeshProUGUI>().text = _talker+" : ";
+        
+
+        //토커와 emotion에 따른 이미지 사용
+        if(_talker == "player")
+            playerSprite.sprite = playerEmotionSprite[(int)_emotion];
+
+        else if(_talker == "nia")
+            niaSprite.sprite = niaEmotionSprite[(int)_emotion];
+
+        else
+            Debug.Log("talker error : "+_talker);
+
+        foreach (char c in _text)
         {
-            talkerInfo.GetComponent<TextMeshProUGUI>().text = "player";
-            dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
+            dialogueTxt.GetComponent<TextMeshProUGUI>().text += c;
 
-            foreach (char c in _currentDialogue)
-            {
-                dialogueTxt.GetComponent<TextMeshProUGUI>().text += c;
-
-                //Debug.Log(dialogueTxt.GetComponent<TextMeshProUGUI>().text);
-
-                yield return new WaitForSeconds(_currentSpeed);
-            }
-            isTyping = false;
-            currentIndex++;
-            yield break;
+            yield return new WaitForSeconds(_talkSpeed);
         }
-
-        else if(_currentTalker == "nia")
-        {
-            niaTxt.GetComponent<TextMeshProUGUI>().text = "";
-
-            foreach (char c in _currentDialogue)
-            {
-                niaTxt.GetComponent<TextMeshProUGUI>().text += c;
-                yield return new WaitForSeconds(_currentSpeed);
-            }
-            isTyping = false;
-            currentIndex++;
-            yield break;
-        }
+        isTyping = false;
+        currentIndex = _nextLineId;
+        yield break;
     }
     #endregion
+
+
+    void TalkerHighlightOn(string _talker)
+    {
+        if(_talker == "player")
+        {
+            playerSprite.GetComponent<Image>().color = highLight;
+            niaSprite.GetComponent<Image>().color = shadow;
+        }
+
+        else
+        {
+            playerSprite.GetComponent<Image>().color = shadow;
+            niaSprite.GetComponent<Image>().color = highLight;
+        }
+    }
+
+    public void TalkerHighlightOFf()
+    {
+        playerSprite.GetComponent<Image>().color = highLight;
+        niaSprite.GetComponent<Image>().color = highLight;
+    }
 }
