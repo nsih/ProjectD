@@ -5,44 +5,42 @@ using System.IO;
 using Newtonsoft.Json;
 
 [System.Serializable]
-public class DialogueOption
+public class DialogueLineOption
 {
     public int id;
     public string text;
-    public bool isEnd;
+    public bool isLastLine;
     public int? nextLineId;
 }
 
 [System.Serializable]
-public class DialogueNode
+public class DialogueLine
 {
     public int id;
     public string talker;
-    public string? emotion;
+    public string emotion;
     public string text;
-    public string? talkSpeed;
-    public bool? isLastLine;
+    public string talkSpeed;
+    public bool isLastLine;
     public int? nextLineId;
-    public List<DialogueOption>? option;
-}
-
-[System.Serializable]
-public class DialogueGroup
-{
-    public List<DialogueNode> nodes;
+    public DialogueLineOption[]? option;
 }
 
 [System.Serializable]
 public class DialogueData
 {
-    public Dictionary<string, List<DialogueNode>> dialogueData;
+    public string title;
+    public DialogueLine[] lines;
 }
+
 
 public class DialogueDataManager : MonoBehaviour
 {
     //Room
     private string roomScriptFile = "JSON/RoomDialogueData";
-    public static DialogueData roomDialogueData;
+
+    //역직렬화 데이터 담을 DialogueData
+    public static DialogueData[] roomDialogueData;
 
     //common
     float fastTypeSpeed = 0.03f;
@@ -60,43 +58,10 @@ public class DialogueDataManager : MonoBehaviour
         TextAsset jsonFile = Resources.Load<TextAsset>(fileName);
         if (jsonFile != null)
         {
-            roomDialogueData = JsonConvert.DeserializeObject<DialogueData>(jsonFile.text); //역직렬화
+            roomDialogueData = JsonConvert.DeserializeObject<DialogueData[]>(jsonFile.text); //역직렬화
 
-            //Debug.Log(jsonFile.text);
-
-
-            //Debug.Log(JsonConvert.SerializeObject(roomDialogueData));
+            Debug.Log(roomDialogueData);
         }
-        /*
-        //역직렬화 한거 사용
-        foreach (KeyValuePair<string, List<RoomDialogueNode>> entry in roomDialogueData.nodes)
-        {
-            string nodeTitle = entry.Key;
-            List<RoomDialogueNode> dialogueNodes = entry.Value;
-
-            foreach (RoomDialogueNode node in dialogueNodes)
-            {
-                int id = node.id;
-                string talker = node.talker;
-                string emotion = node.emotion;
-                string text = node.text;
-                string talkSpeed = node.talkSpeed;
-                string nextLineId = node.nextLineId;
-                bool isEnd = node.isEnd;
-
-                if (node.Options != null)
-                {
-                    foreach (RoomDialogueNode.DialogueOption option in node.Options)
-                    {
-                        int optionId = option.id;
-                        string optionText = option.text;
-                        int optionNextLineId = option.nextLineId;
-                        bool optionIsEnd = option.isEnd;
-                    }
-                }
-            }
-        }
-        */
 
     }
 

@@ -52,52 +52,19 @@ public class RoomDialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         currentIndex = 0;
-        ShowDialogue("Start");
+        ShowDialogue("a");  //바꿔줘
     }
 
     public void ShowDialogue(string _nodeTitle)
     {
-        DialogueData currentNode;
-
+        //Debug.Log(DialogueDataManager.roomDialogueData.dialogueData);
         /*
-        foreach (KeyValuePair<string, List<RoomDialogueNode>> entry in DialogueDataManager.roomDialogueNode)
+        foreach (var entry in DialogueDataManager.roomDialogueData.dialogueData)
         {
             if(entry.Key == _nodeTitle)
             {
-                currentNode = entry.Value;
-                break;
+                Debug.Log(entry.Key);
             }
-        }
-
-        if (currentIndex < currentNode.Count)
-        {
-            RoomDialogueNode currentLine = currentNode[currentIndex];
-
-            string talker = currentLine.talker;
-            emotion emotion = dialogueDataManager.GetComponent<DialogueDataManager>().TalkerEmotion(currentLine.emotion);
-            string text = currentLine.text;
-            float talkSpeed = dialogueDataManager.GetComponent<DialogueDataManager>().TalkSpeed(currentLine.talkSpeed);
-            int nextLineId = int.Parse(currentLine.nextLineId);
-
-            //skip
-            if(isTyping == true)
-            {
-                SkipLine(talker,text,nextLineId);
-                return;
-            }
-
-            //코루틴 정지
-            if (typingCoroutine != null)
-            {
-                StopCoroutine(typingCoroutine); // 다 됐거나 스킵된 이후일것.
-            }
-
-            // 대사 처리 (부터합시다 11/02)
-            typingCoroutine = StartCoroutine(TypeText(talker,emotion,text,talkSpeed,nextLineId));
-        }
-        else
-        {
-            EndDialogue();
         }
         */
     
