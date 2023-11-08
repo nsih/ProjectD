@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using System.Linq;
+using Unity.VisualScripting;
 
 
 public class RoomDialogueManager : MonoBehaviour
@@ -25,20 +27,25 @@ public class RoomDialogueManager : MonoBehaviour
     Image playerSprite;
     Image niaSprite;
 
-    Color highLight = new Color(0,0,0,255);
+    Color highLight = new Color(255,255,255,255);
     Color shadow = new Color(85,85,85,255);
 
-    private bool isTyping = false;
+    bool isTyping = false;
+
+    string dialogueTitle;
+
 
     private void Start() 
     {
-        dialogueDataManager = GameObject.Find("DialogueDataManager");
-        //talkerInfo = GameObject.Find("Talker");  지금은 안씀
+        dialogueDataManager = GameObject.Find("DialogueManager");
+        //talkerInfo = GameObject.Find("Talker");  안쓰는 UI *Text에 합쳐서 출력하기로함
         dialogueTxt = GameObject.Find("DialogueText"); 
         playerSprite = GameObject.Find("PlayerIMG").GetComponent<Image>();
         niaSprite = GameObject.Find("NiaIMG").GetComponent<Image>();
 
-        StartDialogue();
+
+        dialogueTitle = "start";
+        StartDialogue();    //일단 시작하고 써보기.
     }
 
     private void Update() 
@@ -52,33 +59,64 @@ public class RoomDialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         currentIndex = 0;
-        ShowDialogue("a");  //바꿔줘
+        ShowDialogue(dialogueTitle);
     }
 
     public void ShowDialogue(string _nodeTitle)
     {
-        //Debug.Log(DialogueDataManager.roomDialogueData.dialogueData);
-        /*
-        foreach (var entry in DialogueDataManager.roomDialogueData.dialogueData)
+        DialogueData currentNode = DialogueDataManager.roomDialogueData.FirstOrDefault(entry => entry.title == _nodeTitle);
+        
+        if(currentNode == null)
         {
-            if(entry.Key == _nodeTitle)
-            {
-                Debug.Log(entry.Key);
-            }
+            Debug.Log(_nodeTitle + "is not exist");
+            return;
         }
-        */
+
+        if (currentIndex < currentNode.lines.Length)
+        {
+            DialogueLine currnetLine = currentNode.lines[currentIndex];
+
+            int currentId = currnetLine.id;
+            string currentTalker = currnetLine.talker;
+            emotion currentEmotion = dialogueDataManager.GetComponent<DialogueDataManager>().TalkerEmotion(currnetLine.emotion);
+            string currentText = currnetLine.text;
+            float currentTalkSpeed = dialogueDataManager.GetComponent<DialogueDataManager>().TalkSpeed(currnetLine.talkSpeed);
+            bool currentIsLastLing = currnetLine.isLastLine;
+            int? currentNextLineId = currnetLine.nextLineId;
+            DialogueLineOption[]? currentOption = currnetLine.option;
+
+            //skip
+            if(isTyping == true)
+            {
+                SkipLine(currentTalker,currentText,currentNextLineId);
+                return;
+            }
+
+
+            //코루틴 정지
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine); // 다 됐거나 스킵된 이후일것.
+            }
+
+
+            // 대사 처리 (부터합시다 11/02)
+            typingCoroutine = 
+            StartCoroutine
+            (TypeText(currentTalker,currentEmotion,currentText,currentTalkSpeed,currentNextLineId,currentOption));
+        }
     
     }
 
     void ProceedNextLine()
     {
-        if (Input.GetKeyDown(KeyCode.E))    //대화중인 조건 추가해야함
+        if (Input.GetKeyDown(KeyCode.E))    //isTalking 추가해야함
         {
-            //ShowDialogue(roomFlag);
+            ShowDialogue(dialogueTitle);
         }
     }
 
-    void SkipLine(string _talker,string _text,int _nextLineId)
+    void SkipLine(string _talker,string _text,int? _nextLineId)
     {
         //Debug.Log("skip");
         StopCoroutine(typingCoroutine);
@@ -87,7 +125,11 @@ public class RoomDialogueManager : MonoBehaviour
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = _text;
         
         isTyping = false;
-        currentIndex = _nextLineId;
+
+        if(_nextLineId == null)
+            currentIndex++;
+        else
+            currentIndex = _nextLineId.Value;
     }
 
     void EndDialogue()  //대기화면 시작
@@ -103,7 +145,8 @@ public class RoomDialogueManager : MonoBehaviour
 
     #region "coroutine define"
     private Coroutine typingCoroutine;
-    private IEnumerator TypeText(string _talker,emotion _emotion,string _text,float _talkSpeed,int _nextLineId)
+    
+    private IEnumerator TypeText(string _talker,emotion _emotion,string _text,float _talkSpeed,int? _nextLineId,DialogueLineOption[] _option)
     {
         isTyping = true;
 
@@ -118,7 +161,6 @@ public class RoomDialogueManager : MonoBehaviour
 
         else if(_talker == "nia")
             niaSprite.sprite = niaEmotionSprite[(int)_emotion];
-
         else
             Debug.Log("talker error : "+_talker);
 
@@ -129,7 +171,28 @@ public class RoomDialogueManager : MonoBehaviour
             yield return new WaitForSeconds(_talkSpeed);
         }
         isTyping = false;
-        currentIndex = _nextLineId;
+
+
+        //11.08 여기서 옵션에 따라 UI 표시하고 nextLineId까지 수정해야하는 기능을 넣어야한다 행운을 빈다
+
+        if(_option == null)
+        {
+            if(_nextLineId == null)
+            currentIndex++;
+            
+            else
+                currentIndex = _nextLineId.Value;
+
+
+            isTyping = false;
+        }
+
+        else    //isTyping = false 하지 않는다.
+        {
+            
+        }
+
+
         yield break;
     }
     #endregion

@@ -59,8 +59,6 @@ public class DialogueDataManager : MonoBehaviour
         if (jsonFile != null)
         {
             roomDialogueData = JsonConvert.DeserializeObject<DialogueData[]>(jsonFile.text); //역직렬화
-
-            Debug.Log(roomDialogueData);
         }
 
     }
