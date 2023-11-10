@@ -43,7 +43,7 @@ public class RoomDialogueManager : MonoBehaviour
     private void Start() 
     {
         dialogueDataManager = GameObject.Find("DialogueManager");
-        //talkerInfo = GameObject.Find("Talker");  안쓰는 UI *Text에 합쳐서 출력하기로함
+        //talkerInfo = GameObject.Find("Talker");   현재 안씀
         dialogueTxt = GameObject.Find("DialogueText"); 
         dialogueOption = GameObject.Find("DialogueOption");
         playerSprite = GameObject.Find("PlayerIMG").GetComponent<Image>();
