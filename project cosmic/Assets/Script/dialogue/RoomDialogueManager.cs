@@ -32,8 +32,8 @@ public class RoomDialogueManager : MonoBehaviour
     Image playerSprite;
     Image niaSprite;
 
-    Color highLight = new Color(255,255,255,255);
-    Color shadow = new Color(85,85,85,255);
+    Color highLight = new Color(1,1,1,1);
+    Color shadow = new Color(0.33f,0.33f,0.33f,1);
 
     bool isTyping = false;
 
@@ -157,6 +157,7 @@ public class RoomDialogueManager : MonoBehaviour
     {
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
         isRoomTalking = false;
+        TalkerHighlightOff();
     }
     #endregion
 
@@ -196,7 +197,7 @@ public class RoomDialogueManager : MonoBehaviour
 
         //종료처리 (옵션)
         OptionProcessing(_option,_nextLineId);
-        
+
         //타이핑 완료시 end 체크
         if(!isTyping)
         {
@@ -282,14 +283,22 @@ public class RoomDialogueManager : MonoBehaviour
             niaSprite.GetComponent<Image>().color = shadow;
         }
 
-        else
+        else if(_talker == "nia")
         {
             playerSprite.GetComponent<Image>().color = shadow;
             niaSprite.GetComponent<Image>().color = highLight;
         }
+
+        else
+        {
+            Debug.Log(_talker);
+        }
+
+        // Debug.Log(playerSprite.GetComponent<Image>().color);
+        // Debug.Log(niaSprite.GetComponent<Image>().color);
     }
 
-    public void TalkerHighlightOFf()
+    public void TalkerHighlightOff()
     {
         playerSprite.GetComponent<Image>().color = highLight;
         niaSprite.GetComponent<Image>().color = highLight;
