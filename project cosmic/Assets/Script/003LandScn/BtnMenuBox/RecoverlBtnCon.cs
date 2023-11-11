@@ -10,7 +10,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     GameObject gameManager;
     GameObject pnlBackGround;
-    GameObject landUiCanvas;
+    GameObject roomUiCanvas;
     GameObject doubleCheckPopup;
 
     GameObject doubleCheckText;
@@ -29,7 +29,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-        landUiCanvas = GameObject.Find("LandUICanvas");
+        roomUiCanvas = GameObject.Find("RoomUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
         doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
 

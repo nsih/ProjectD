@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ScnTitle.unity
     guid: 42f9b32b970f88048909f6df7b4e09eb
   - enabled: 1
-    path: Assets/Scenes/ScnLand0.unity
-    guid: 39f615da0c1c6904b906eec039383c4a
-  - enabled: 1
     path: Assets/Scenes/ScnRoom.unity
     guid: 440601ee323a199428ba37eaa750df1d
+  - enabled: 1
+    path: Assets/Scenes/ScnLand.unity
+    guid: 1391218e6e84f9644aab22ae89d86fca
   m_configObjects: {}
