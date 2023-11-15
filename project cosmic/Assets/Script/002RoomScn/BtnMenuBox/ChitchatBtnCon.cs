@@ -8,6 +8,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     GameObject gameManager;
     GameObject roomUICanvas;
+    GameObject pnlBackGround;
 
 
     private Color normalColor;
@@ -18,19 +19,21 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
+        pnlBackGround = GameObject.Find("PnlBackGround");
 
 
         normalColor = GetComponent<Image>().color;
         float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
         float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
         float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a);        
+        hoverColor = new Color(r, g, b, normalColor.a);     
     }
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
+        Debug.Log(hoverColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -54,5 +57,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             roomUICanvas.GetComponent<RoomDialogueManager>().ShowDialogue(dialogueId);
         }
         */
+
+        Debug.Log("asd");
     }
 }

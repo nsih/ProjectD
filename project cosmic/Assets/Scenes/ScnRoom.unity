@@ -4803,14 +4803,14 @@ GameObject:
   - component: {fileID: 557996470}
   - component: {fileID: 557996469}
   - component: {fileID: 557996468}
-  - component: {fileID: 557996467}
+  - component: {fileID: 557996471}
   m_Layer: 5
   m_Name: btnChitChat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &557996466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4832,18 +4832,6 @@ RectTransform:
   m_AnchoredPosition: {x: 86.21794, y: -388.1}
   m_SizeDelta: {x: 171.92, y: 100.185}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &557996467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557996465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5b8c219ba04c04c80812ab546952cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &557996468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4888,9 +4876,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 557996467}
-        m_TargetAssemblyTypeName: ActionBtnCon, Assembly-CSharp
-        m_MethodName: OnClickAction
+      - m_Target: {fileID: 557996471}
+        m_TargetAssemblyTypeName: ChitchatBtnCon, Assembly-CSharp
+        m_MethodName: OnClickChitchat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4938,6 +4926,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557996465}
   m_CullTransparentMesh: 1
+--- !u!114 &557996471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557996465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2391a3c84ce084ab8a9ff1a0b21d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584421472
 GameObject:
   m_ObjectHideFlags: 0
@@ -9020,7 +9020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.453125, y: -50.468018}
+  m_AnchoredPosition: {x: 2.453125, y: -50.467773}
   m_SizeDelta: {x: -0.00009158533, y: -504.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211875357
@@ -17217,7 +17217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -171.06006, y: -393.3119}
+  m_AnchoredPosition: {x: -171.06006, y: -393.31152}
   m_SizeDelta: {x: -397.40002, y: -817.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &475867125188056545

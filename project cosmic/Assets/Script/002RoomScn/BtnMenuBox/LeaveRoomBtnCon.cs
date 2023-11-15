@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-public class LeaveRoomBtnCon : MonoBehaviour
+public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject gameManager;
     GameObject roomUICanvas;
@@ -42,6 +42,7 @@ public class LeaveRoomBtnCon : MonoBehaviour
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
+        Debug.Log(hoverColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)
