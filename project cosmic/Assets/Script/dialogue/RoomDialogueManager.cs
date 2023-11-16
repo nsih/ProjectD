@@ -37,6 +37,8 @@ public class RoomDialogueManager : MonoBehaviour
 
     bool isTyping = false;
 
+
+    
     string dialogueTitle;
 
 
@@ -302,5 +304,12 @@ public class RoomDialogueManager : MonoBehaviour
     {
         playerSprite.GetComponent<Image>().color = highLight;
         niaSprite.GetComponent<Image>().color = highLight;
+    }
+
+
+    //title 변경
+    public void ChangeDialogue(string changeDialogueTitle)
+    {
+        dialogueTitle = changeDialogueTitle;
     }
 }
