@@ -49,15 +49,11 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 
     public void OnClickChitchat()
-    {
-        string chitChat = "chitchat";
-
-        
+    {        
         if(!RoomDialogueManager.isRoomTalking)
         {
-            dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue(chitChat);
+            dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("chitchat");
+            dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();
         }
-
-        Debug.Log("asd");
     }
 }

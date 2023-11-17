@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC138\uD305"
+  m_text: "\uBC29\uC1A1 \uC138\uD305"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
@@ -2599,14 +2599,13 @@ GameObject:
   - component: {fileID: 314914377}
   - component: {fileID: 314914376}
   - component: {fileID: 314914375}
-  - component: {fileID: 314914374}
   m_Layer: 5
   m_Name: btnQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &314914373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2628,18 +2627,6 @@ RectTransform:
   m_AnchoredPosition: {x: 86.21794, y: -488}
   m_SizeDelta: {x: 171.92, y: 100.185}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &314914374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314914372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7249ff6dddb2bc44b98d95cd5f39dc7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &314914375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,7 +2671,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 314914374}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RecoverBtnCon, Assembly-CSharp
         m_MethodName: OnclickRecover
         m_Mode: 1
@@ -7174,7 +7161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBC29\uC885"
+  m_text: "\uBC29\uC885.."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
@@ -13803,14 +13790,13 @@ GameObject:
   - component: {fileID: 1803318824}
   - component: {fileID: 1803318823}
   - component: {fileID: 1803318822}
-  - component: {fileID: 1803318821}
   m_Layer: 5
   m_Name: btnSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1803318820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13832,18 +13818,6 @@ RectTransform:
   m_AnchoredPosition: {x: -85.300064, y: -488.00003}
   m_SizeDelta: {x: 171.92, y: 100.185}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1803318821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803318819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19fcc3a1a0ccc240b93d313ad6024ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1803318822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13888,7 +13862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1803318821}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ArtifactBtnCon, Assembly-CSharp
         m_MethodName: OnClickArtifact
         m_Mode: 1
@@ -15844,7 +15818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD9C\uBC1C"
+  m_text: "\uB098\uAC00\uBCFC\uAE4C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}

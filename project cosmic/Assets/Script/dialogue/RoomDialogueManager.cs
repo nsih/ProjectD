@@ -64,31 +64,39 @@ public class RoomDialogueManager : MonoBehaviour
         roomChitChatNodeList = DialogueDataManager.roomDialogueData.Where(entry => entry.title.Contains("chitchat")).ToList();
 
 
-        dialogueTitle = "start";
-        StartDialogue(dialogueTitle);    //일단 시작하고 써보기.
+        StartDialogue();    //일단 시작하고 써보기.
     }
 
     private void Update() 
     {
-        ProceedNextLine();
+        ProceedNextLine(dialogueTitle);
+
+        Debug.Log(dialogueTitle);
     }
 
 
 
     #region "dialogue control"
-    public void StartDialogue(string _dialogueTitle)
+    public void StartDialogue()
     {
         currentIndex = 0;
-        ShowDialogue(_dialogueTitle);
+        ShowDialogue();
     }
 
-    public void ShowDialogue(string _nodeTitle)
+    public void ShowDialogue()
     {
         isRoomTalking = true;
 
+        //
+        if(dialogueTitle == null)
+        {
+            dialogueTitle = "start";
+            Debug.Log("node Title : "+dialogueTitle);
+        }
+
         //타이틀에 맞는 노드 차출.
         DialogueData currentNode = new DialogueData();
-        if(_nodeTitle == "chitchat")
+        if(dialogueTitle == "chitchat")
         {
             int randomIndex = UnityEngine.Random.Range(0, roomChitChatNodeList.Count);
 
@@ -96,7 +104,7 @@ public class RoomDialogueManager : MonoBehaviour
         }
         else
         {
-            currentNode = DialogueDataManager.roomDialogueData.FirstOrDefault(entry => entry.title == _nodeTitle);
+            currentNode = DialogueDataManager.roomDialogueData.FirstOrDefault(entry => entry.title == dialogueTitle);
         }
 
 
@@ -104,9 +112,11 @@ public class RoomDialogueManager : MonoBehaviour
         
         if(currentNode == null)
         {
-            Debug.Log(_nodeTitle + "is not exist");
+            Debug.Log(dialogueTitle + "is not exist");
             return;
         }
+
+        
 
         //시작라인 이거나, 진행중인 라인이거나, 끝까지 진행한 라인
         if (currentIndex == 0 || isCurrentLineEnd == false)
@@ -155,11 +165,11 @@ public class RoomDialogueManager : MonoBehaviour
     
     }
 
-    void ProceedNextLine()
+    void ProceedNextLine(string _nodeTitle)
     {
         if (Input.GetKeyDown(KeyCode.E) && isRoomTalking)    //토킹중에 e 키 누르면
         {
-            ShowDialogue(dialogueTitle);
+            ShowDialogue();
         }
     }
 
@@ -297,7 +307,7 @@ public class RoomDialogueManager : MonoBehaviour
         {
             currentIndex = dialogueLineOption.nextLineId.Value;
 
-            ShowDialogue(dialogueTitle);
+            ShowDialogue();
         }
         
     }
