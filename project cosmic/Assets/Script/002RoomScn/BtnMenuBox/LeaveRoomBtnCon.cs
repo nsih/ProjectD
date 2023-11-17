@@ -42,7 +42,7 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
-        Debug.Log(hoverColor);
+        //Debug.Log(hoverColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)

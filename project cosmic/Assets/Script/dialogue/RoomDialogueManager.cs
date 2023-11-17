@@ -29,6 +29,14 @@ public class RoomDialogueManager : MonoBehaviour
     GameObject niaTxt;
     GameObject dialogueOption;
 
+
+
+    List<DialogueData> roomChitChatNodeList;
+
+
+
+
+
     Image playerSprite;
     Image niaSprite;
 
@@ -52,8 +60,12 @@ public class RoomDialogueManager : MonoBehaviour
         niaSprite = GameObject.Find("NiaIMG").GetComponent<Image>();
 
 
+        //잡담 대화 노드리스트 초기화
+        roomChitChatNodeList = DialogueDataManager.roomDialogueData.Where(entry => entry.title.Contains("chitchat")).ToList();
+
+
         dialogueTitle = "start";
-        StartDialogue();    //일단 시작하고 써보기.
+        StartDialogue(dialogueTitle);    //일단 시작하고 써보기.
     }
 
     private void Update() 
@@ -64,17 +76,31 @@ public class RoomDialogueManager : MonoBehaviour
 
 
     #region "dialogue control"
-    public void StartDialogue()
+    public void StartDialogue(string _dialogueTitle)
     {
         currentIndex = 0;
-        ShowDialogue(dialogueTitle);
+        ShowDialogue(_dialogueTitle);
     }
 
     public void ShowDialogue(string _nodeTitle)
     {
         isRoomTalking = true;
 
-        DialogueData currentNode = DialogueDataManager.roomDialogueData.FirstOrDefault(entry => entry.title == _nodeTitle);
+        //타이틀에 맞는 노드 차출.
+        DialogueData currentNode = new DialogueData();
+        if(_nodeTitle == "chitchat")
+        {
+            int randomIndex = UnityEngine.Random.Range(0, roomChitChatNodeList.Count);
+
+            currentNode = roomChitChatNodeList[randomIndex];
+        }
+        else
+        {
+            currentNode = DialogueDataManager.roomDialogueData.FirstOrDefault(entry => entry.title == _nodeTitle);
+        }
+
+
+
         
         if(currentNode == null)
         {
@@ -311,5 +337,12 @@ public class RoomDialogueManager : MonoBehaviour
     public void ChangeDialogue(string changeDialogueTitle)
     {
         dialogueTitle = changeDialogueTitle;
+    }
+
+    //타이틀에 맞는 대화 노드 리스트 초기화 (다른 리스트 필요하면 쓰는걸로)
+    public void InitializeDialogueNodeList()
+    {
+        //잡담 리스트
+        roomChitChatNodeList = DialogueDataManager.roomDialogueData.Where(entry => entry.title.Contains("chitchat")).ToList();
     }
 }

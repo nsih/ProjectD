@@ -11,6 +11,9 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     GameObject pnlBackGround;
 
 
+    GameObject dialogueManager;
+
+
     private Color normalColor;
     private Color hoverColor;
 
@@ -20,6 +23,8 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
+
+        dialogueManager = GameObject.Find("DialogueManager");
 
 
         normalColor = GetComponent<Image>().color;
@@ -33,7 +38,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
-        Debug.Log(hoverColor);
+        //Debug.Log(hoverColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -45,18 +50,13 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnClickChitchat()
     {
-        /*
-        if(!GameManager.isLoading && !roomUICanvas.GetComponent<RoomDialogueManager>().isRoomTalking)
+        string chitChat = "chitchat";
+
+        
+        if(!RoomDialogueManager.isRoomTalking)
         {
-            int dialogueId;
-
-            roomUICanvas.GetComponent<RoomDialogueManager>().currentDialogueID = 1;   //잡담중 랜덤 플레그
-            dialogueId = roomUICanvas.GetComponent<RoomDialogueManager>().currentDialogueID;
-
-            roomUICanvas.GetComponent<RoomDialogueManager>().currentIndex = 0;
-            roomUICanvas.GetComponent<RoomDialogueManager>().ShowDialogue(dialogueId);
+            dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue(chitChat);
         }
-        */
 
         Debug.Log("asd");
     }
