@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource sfxAudioSource;
+
+    private void Awake()
     {
-        
+        sfxAudioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySFX(AudioClip sfxClip)
     {
-        
+        sfxAudioSource.PlayOneShot(sfxClip);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxAudioSource.volume = Mathf.Clamp01(volume);
+    }
+
+    public void StopSFX()
+    {
+        sfxAudioSource.Stop();
     }
 }

@@ -8975,34 +8975,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomDataList1:
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 0}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
 --- !u!4 &1189591037

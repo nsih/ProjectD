@@ -54,6 +54,8 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("chitchat");
             dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();
+
+            
         }
     }
 }
