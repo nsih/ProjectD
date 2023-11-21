@@ -72,11 +72,16 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         ClosePopup();
 
-        SceneManager.LoadScene("ScnLand");
-
         //스테이지 0 초기화 및 시작
+        SceneManager.LoadSceneAsync("ScnLand").completed += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(AsyncOperation operation) {
+    if (operation.isDone) {
+        // ScnLand 씬 로드 후 OpenNewStage 함수를 호출
         gameManager.GetComponent<GameManager>().OpenNewStage();
     }
+}
 
     void OnClickNo()
     {

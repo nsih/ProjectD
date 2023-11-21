@@ -14,6 +14,7 @@ public class BGMManager : MonoBehaviour
     {
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         bgmAudioSource.loop = true;
+        //PlayBGM(0);
     }
 
     public void PlayBGM(int bgmIndex)

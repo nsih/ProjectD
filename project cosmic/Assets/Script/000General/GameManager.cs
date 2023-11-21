@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         isLoading = false;
 
 
-        OpenNewStage();//임시
+        //OpenNewStage();//임시
     }
 
 

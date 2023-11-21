@@ -71,7 +71,7 @@ public class RoomDialogueManager : MonoBehaviour
     {
         ProceedNextLine(dialogueTitle);
 
-        Debug.Log(dialogueTitle);
+        //Debug.Log(dialogueTitle);
     }
 
 
@@ -91,7 +91,7 @@ public class RoomDialogueManager : MonoBehaviour
         if(dialogueTitle == null)
         {
             dialogueTitle = "start";
-            Debug.Log("node Title : "+dialogueTitle);
+            //Debug.Log("node Title : "+dialogueTitle);
         }
 
         //타이틀에 맞는 노드 차출.
