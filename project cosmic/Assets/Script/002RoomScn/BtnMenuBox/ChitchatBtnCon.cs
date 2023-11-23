@@ -52,7 +52,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnClickChitchat()
     {
 
-        if(!RoomDialogueManager.isRoomTalking)
+        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
         {
             dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("chitchat");
             dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();

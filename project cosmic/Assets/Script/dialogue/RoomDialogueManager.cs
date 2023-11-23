@@ -175,7 +175,7 @@ public class RoomDialogueManager : MonoBehaviour
 
     void SkipLine(string _talker,string _text,int? _nextLineId,DialogueLineOption[] _option,bool _currentIsLastLine)
     {
-        Debug.Log("skip");
+        //Debug.Log("skip");
         StopCoroutine(typingCoroutine);
 
         //talkerInfo.GetComponent<TextMeshProUGUI>().text = _talker;

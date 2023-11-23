@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SettingBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject gameManager;
     GameObject roomUICanvas;
-    GameObject recordPopup;
+    GameObject pnlBackGround;
+    GameObject settingPopup;
 
     Button btnClose;
 
@@ -22,9 +23,10 @@ public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
-        recordPopup = roomUICanvas.transform.Find("RecordPopup").gameObject;
+        pnlBackGround = GameObject.Find("PnlBackGround");
+        settingPopup = pnlBackGround.transform.Find("SettingPopup").gameObject;
         
-        btnClose = recordPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
+        btnClose = settingPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
 
         normalColor = GetComponent<Image>().color;
         float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
@@ -45,9 +47,9 @@ public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         GetComponent<Image>().color = normalColor;
     }
 
-    public void OnclickRecord()
+    public void OnclickSetting()
     {
-        if(GameManager.isLoading)
+        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
         {
             OpenPopup();
         }
@@ -56,13 +58,13 @@ public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     /////////////// f
     void OpenPopup()
     {
-        recordPopup.SetActive(true);
+        settingPopup.SetActive(true);
         btnClose.onClick.AddListener(ClosePopup);
     }
 
     void ClosePopup()
     {
-        recordPopup.SetActive(false);
+        settingPopup.SetActive(false);
         btnClose.onClick.RemoveAllListeners();
     }
 }

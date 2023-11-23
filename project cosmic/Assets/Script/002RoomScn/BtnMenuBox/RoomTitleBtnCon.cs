@@ -9,6 +9,7 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     GameObject gameManager;
     GameObject roomUICanvas;
+    GameObject pnlBackGround;
     GameObject doubleCheckPopup;
     GameObject doubleCheckText;
     Button btnYes;
@@ -23,7 +24,8 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
-        doubleCheckPopup = roomUICanvas.transform.Find("DoubleCheckPopup").gameObject;
+        pnlBackGround = GameObject.Find("PnlBackGround");
+        doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
 
         doubleCheckText = doubleCheckPopup.transform.GetChild(0).gameObject;
         btnYes = doubleCheckPopup.transform.GetChild(1).GetComponent<Button>();
@@ -52,14 +54,14 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnclickRoomTitle()
     {
-        if(GameManager.isLoading)
+        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
         {
             OpenPopup();
 
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "방송을 끄고 \n타이틀 화면으로 가려고?";
+            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "피곤한데..";
 
-            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "방종할레..";
-            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "지금은 아니";
+            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "뭔 방송이여..";
+            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "할 건 해야지";
         }
     }
 
