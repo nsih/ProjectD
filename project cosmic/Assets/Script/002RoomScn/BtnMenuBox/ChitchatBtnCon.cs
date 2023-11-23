@@ -37,6 +37,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //gameManager.GetComponent<SFXManager>().PlaySFX();
         GetComponent<Image>().color = hoverColor;
         //Debug.Log(hoverColor);
     }
