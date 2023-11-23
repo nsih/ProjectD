@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -35,6 +36,8 @@ public class RecordBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
+
+        gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
     }
 
     public void OnPointerExit(PointerEventData eventData)

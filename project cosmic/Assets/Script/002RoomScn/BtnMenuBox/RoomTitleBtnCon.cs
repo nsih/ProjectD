@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    GameObject gameManager;
     GameObject roomUICanvas;
     GameObject doubleCheckPopup;
     GameObject doubleCheckText;
@@ -20,6 +21,7 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
         doubleCheckPopup = roomUICanvas.transform.Find("DoubleCheckPopup").gameObject;
 
@@ -37,6 +39,8 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hoverColor;
+
+        gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -37,9 +37,9 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //gameManager.GetComponent<SFXManager>().PlaySFX();
         GetComponent<Image>().color = hoverColor;
-        //Debug.Log(hoverColor);
+
+        gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -50,13 +50,12 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 
     public void OnClickChitchat()
-    {        
+    {
+
         if(!RoomDialogueManager.isRoomTalking)
         {
             dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("chitchat");
             dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();
-
-            
         }
     }
 }
