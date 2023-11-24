@@ -2161,7 +2161,6 @@ GameObject:
   - component: {fileID: 796563724}
   - component: {fileID: 796563723}
   - component: {fileID: 796563722}
-  - component: {fileID: 796563721}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Untagged
@@ -2190,18 +2189,6 @@ RectTransform:
   m_AnchoredPosition: {x: 220, y: -77.19}
   m_SizeDelta: {x: 255.99, y: 94.6569}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &796563721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796563719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1772709db9a25a94bbe7b7181f5038f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &796563722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2246,7 +2233,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 796563721}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BtnScnController, Assembly-CSharp
         m_MethodName: DisableTitleScnCheck
         m_Mode: 1

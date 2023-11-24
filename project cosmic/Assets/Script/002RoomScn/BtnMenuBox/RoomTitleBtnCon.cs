@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerDownHandler
 {
     GameObject gameManager;
     GameObject roomUICanvas;
@@ -45,6 +45,15 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
+        }
+    }
+
+
     public void OnPointerExit(PointerEventData eventData)
     {
         GetComponent<Image>().color = normalColor;
@@ -54,6 +63,8 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnclickRoomTitle()
     {
+        //gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
+        
         if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
         {
             OpenPopup();

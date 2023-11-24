@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     GameObject gameManager;
     GameObject roomUICanvas;
@@ -44,6 +44,14 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         GetComponent<Image>().color = hoverColor;
         
         gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

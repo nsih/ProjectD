@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerDownHandler
 {
     GameObject gameManager;
     GameObject roomUICanvas;
@@ -47,10 +47,20 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         GetComponent<Image>().color = normalColor;
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
+        }
+    }
+
+
 
 
     public void OnClickChitchat()
     {
+        //gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
 
         if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
         {

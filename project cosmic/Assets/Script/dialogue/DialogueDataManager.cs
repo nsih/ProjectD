@@ -23,7 +23,10 @@ public class DialogueLine
     public string talkSpeed;
     public bool isLastLine;
     public int? nextLineId;
+
+    #nullable disable
     public DialogueLineOption[]? option;
+    #nullable enable
 }
 
 [System.Serializable]
@@ -43,9 +46,9 @@ public class DialogueDataManager : MonoBehaviour
     public static DialogueData[] roomDialogueData;
 
     //common
-    float fastTypeSpeed = 0.03f;
-    float normarTypeSpeed = 0.07f;
-    float slowTypeSpeed = 0.3f;
+    //float fastTypeSpeed = 0.03f;
+    //float normarTypeSpeed = 0.07f;
+    //float slowTypeSpeed = 0.3f;
 
     void Awake()
     {

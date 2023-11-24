@@ -13,6 +13,11 @@ public class SFXManager : MonoBehaviour
     {
         sfxAudioSource = gameObject.AddComponent<AudioSource>();
 
+        // 여기에서 sfxAudioSource의 설정을 확인 및 조절
+        sfxAudioSource.spatialBlend = 0; // 예시로 spatialBlend를 2D로 설정
+        sfxAudioSource.minDistance = 1; // 예시로 최소 거리 설정
+        sfxAudioSource.maxDistance = 10; // 예시로 최대 거리 설정
+
         InitializeSFXList();
     }
 
@@ -23,7 +28,9 @@ public class SFXManager : MonoBehaviour
 
         if (index >= 0 && index < sfxList.Count)
         {
+            sfxAudioSource.time = 0.05f;
             sfxAudioSource.PlayOneShot(sfxList[index]);
+            Debug.Log("asd");
         }
         else
         {
@@ -49,6 +56,7 @@ public class SFXManager : MonoBehaviour
 
         sfxList.Add(Resources.Load<AudioClip>("Sound/SFX/BtnHover"));
         sfxList.Add(Resources.Load<AudioClip>("Sound/SFX/BtnClick"));
+        sfxList.Add(Resources.Load<AudioClip>("Sound/SFX/DialogueTyping"));
 
         //sfxList.Add(Resources.Load<AudioClip>("Sound/SFX/NAME"));
     }
@@ -57,5 +65,6 @@ public class SFXManager : MonoBehaviour
 public enum SfxType
 {
     BtnHover,
-    BtnClick
+    BtnClick,
+    DialogueTyping
 }

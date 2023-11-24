@@ -23,6 +23,7 @@ public class RoomDialogueManager : MonoBehaviour
     public Sprite [] niaEmotionSprite;
 
 
+    GameObject gameManager;
     GameObject dialogueDataManager;
     GameObject talkerInfo;
     GameObject dialogueTxt;
@@ -52,6 +53,7 @@ public class RoomDialogueManager : MonoBehaviour
 
     private void Start() 
     {
+        gameManager = GameObject.Find("GameManager");
         dialogueDataManager = GameObject.Find("DialogueManager");
         //talkerInfo = GameObject.Find("Talker");   현재 안씀
         dialogueTxt = GameObject.Find("DialogueText"); 
@@ -132,7 +134,7 @@ public class RoomDialogueManager : MonoBehaviour
             float currentTalkSpeed = dialogueDataManager.GetComponent<DialogueDataManager>().TalkSpeed(currnetLine.talkSpeed);
             bool currentIsLastLine = currnetLine.isLastLine;
             int? currentNextLineId = currnetLine.nextLineId;
-            DialogueLineOption[]? currentOption = currnetLine.option;
+            DialogueLineOption[] currentOption = currnetLine.option;
 
             //타이핑중에 한번더 호출하면 타이핑 스킵
             if(isTyping == true )
@@ -227,6 +229,8 @@ public class RoomDialogueManager : MonoBehaviour
         foreach (char c in _text)
         {
             dialogueTxt.GetComponent<TextMeshProUGUI>().text += c;
+
+            gameManager.GetComponent<SFXManager>().PlaySound(SfxType.DialogueTyping);
 
             yield return new WaitForSeconds(_talkSpeed);
         }

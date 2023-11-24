@@ -5,7 +5,9 @@ using UnityEngine;
 public class BGMManager : MonoBehaviour
 {
     private AudioSource bgmAudioSource;
-    public AudioClip[] bgmClips;
+    public List<AudioClip> bgmList;
+
+
     private int currentBGMIndex = -1;
     [Range(0f, 1f)]
     public float bgmVolume = 1f;
@@ -14,18 +16,26 @@ public class BGMManager : MonoBehaviour
     {
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
         bgmAudioSource.loop = true;
-        //PlayBGM(0);
+
+
+        InitializeBGMList();
+        //PlayBGM(BGMType.Legend);
     }
 
-    public void PlayBGM(int bgmIndex)
+    public void PlayBGM(BGMType bgmType)
     {
-        if (bgmIndex >= 0 && bgmIndex < bgmClips.Length)
+        int index = (int)bgmType;
+
+
+        if (index >= 0 && index < bgmList.Count)
         {
-            if (bgmIndex != currentBGMIndex)
+            if (index != currentBGMIndex)
             {
-                currentBGMIndex = bgmIndex;
-                bgmAudioSource.clip = bgmClips[currentBGMIndex];
-                bgmAudioSource.volume = bgmVolume;
+                currentBGMIndex = index;
+                bgmAudioSource.clip = bgmList[currentBGMIndex];
+                bgmAudioSource.volume = 0.1f;
+
+                bgmAudioSource.time = 62;
                 bgmAudioSource.Play();
             }
         }
@@ -46,4 +56,15 @@ public class BGMManager : MonoBehaviour
         bgmVolume = Mathf.Clamp01(volume);
         bgmAudioSource.volume = bgmVolume;
     }
+
+
+    void InitializeBGMList()
+    {
+        bgmList.Add(Resources.Load<AudioClip>("Sound/BGM/Legend"));
+    }
+}
+
+public enum BGMType
+{
+    Legend
 }
