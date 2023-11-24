@@ -24,9 +24,7 @@ public class DialogueLine
     public bool isLastLine;
     public int? nextLineId;
 
-    #nullable disable
-    public DialogueLineOption[]? option;
-    #nullable enable
+    public DialogueLineOption[] option;
 }
 
 [System.Serializable]
@@ -44,11 +42,6 @@ public class DialogueDataManager : MonoBehaviour
 
     //역직렬화 데이터 담을 DialogueData
     public static DialogueData[] roomDialogueData;
-
-    //common
-    //float fastTypeSpeed = 0.03f;
-    //float normarTypeSpeed = 0.07f;
-    //float slowTypeSpeed = 0.3f;
 
     void Awake()
     {
