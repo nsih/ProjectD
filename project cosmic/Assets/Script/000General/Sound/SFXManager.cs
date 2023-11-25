@@ -30,7 +30,7 @@ public class SFXManager : MonoBehaviour
         {
             sfxAudioSource.time = 0.05f;
             sfxAudioSource.PlayOneShot(sfxList[index]);
-            Debug.Log("asd");
+            //Debug.Log("asd");
         }
         else
         {

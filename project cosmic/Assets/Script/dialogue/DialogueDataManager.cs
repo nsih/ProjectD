@@ -40,23 +40,35 @@ public class DialogueDataManager : MonoBehaviour
     //Room
     private string roomScriptFile = "JSON/RoomDialogueData";
 
+    //Land
+    private string landScriptFile = "JSON/LandDialogueData";
+
     //역직렬화 데이터 담을 DialogueData
     public static DialogueData[] roomDialogueData;
+
+    public static DialogueData[] landDialogueData;
 
     void Awake()
     {
         RoomScriptDataParser(roomScriptFile);
+        LandScriptDataParser(landScriptFile);
     }
 
     void RoomScriptDataParser(string fileName)
     {
-        //파일 있으면 파싱해서 데이터 넣기
         TextAsset jsonFile = Resources.Load<TextAsset>(fileName);
         if (jsonFile != null)
         {
             roomDialogueData = JsonConvert.DeserializeObject<DialogueData[]>(jsonFile.text); //역직렬화
         }
-
+    }
+    void LandScriptDataParser(string fileName)
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>(fileName);
+        if (jsonFile != null)
+        {
+            landDialogueData = JsonConvert.DeserializeObject<DialogueData[]>(jsonFile.text); //역직렬화
+        }
     }
 
 
