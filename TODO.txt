@@ -1,4 +1,5 @@
-Todo 순서
+-----------------
+Todo
 
 1. land dialogue sys
 2. Event Sys
@@ -9,7 +10,8 @@ Todo 순서
 n. setting, UI연출
 
 ----------------
-
+Gamma Cassiopeiae (navi)
+---------------
 육체	의지	지식	매력
 
 공격력	이성	공속	운?

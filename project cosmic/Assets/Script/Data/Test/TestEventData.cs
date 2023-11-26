@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewTestData", menuName = "TestData")]
-public class TestData : ScriptableObject
+public class TestEventData : ScriptableObject
 {
     public int testID;
 
