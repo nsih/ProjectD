@@ -12,11 +12,11 @@ public class CubeRotation : MonoBehaviour
 
 
     public float throwForce = 1000;
-    public float throwDamping = 0.99f; // 회전 감속 계수
+    public float throwDamping = 0.9f; // 회전 감속 계수
     public float stopThreshold = 30.0f; // 회전 멈춤 기준값
 
-    private bool isThrowing = false;
-    private Vector3 throwDirection;
+    public bool isThrowing = false;
+    public Vector3 throwDirection;
     private float currentThrowForce;
 
 
@@ -40,9 +40,15 @@ public class CubeRotation : MonoBehaviour
         isThrowing = true;
 
         // 랜덤한 회전 방향 생성
-        float throwX = (Random.value < 0.5f) ? -360f : 360f;
-        float throwY = (Random.value < 0.5f) ? -360f : 360f;
-        float throwZ = (Random.value < 0.5f) ? -360f : 360f;
+        float throwX = new float();//(Random.value < 0.5f) ? -360f : 360f;
+        float throwY = new float();//(Random.value < 0.5f) ? -360f : 360f;
+        float throwZ = new float();//(Random.value < 0.5f) ? -360f : 360f;
+
+        throwX =  Random.Range(-360f, 360f);
+        throwY =  Random.Range(-360f, 360f);
+        throwZ = Random.Range(-360f, 360f);
+
+        int diceEye = Random.Range(1, 7);
 
         throwDirection = new Vector3(throwX, throwY, throwZ).normalized;
 
@@ -52,28 +58,40 @@ public class CubeRotation : MonoBehaviour
         while (isThrowing)
         {
             //눈 ?
+            
             eye.GetComponent<TextMeshProUGUI>().text = "";
 
-
             // 회전 방향으로 힘을 가해 회전
-            transform.Rotate(throwDirection * currentThrowForce * Time.deltaTime);
+            transform.Rotate(throwDirection * 100 * Time.fixedDeltaTime);
 
             // 회전 감속
             currentThrowForce *= throwDamping;
 
             if (currentThrowForce <= stopThreshold) // 회전 힘이 기준값보다 작으면
             {
-                isThrowing = false;
                 currentThrowForce = 0f;
 
-                // 회전을 명확히 0으로 맞춰줌
-                transform.rotation = Quaternion.identity;
+                // 회전을 0, 0, 0으로 수렴시킴
+                StartCoroutine(ConvergeRotation());
+                
+                // 눈 보여주기
+                eye.GetComponent<TextMeshProUGUI>().text = diceEye.ToString();
 
-
-                //눈 보여주기
-                eye.GetComponent<TextMeshProUGUI>().text = "0"; //
+                isThrowing = false;
             }
 
+            yield return null;
+        }
+    }
+
+    IEnumerator ConvergeRotation()
+    {
+        float convergeSpeed = 5f; // 조절 가능한 회전 수렴 속도
+
+        while (transform.rotation != Quaternion.identity)
+        {
+            // 현재 회전 각도를 점진적으로 0, 0, 0으로 수렴시킴
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
             yield return null;
         }
     }
