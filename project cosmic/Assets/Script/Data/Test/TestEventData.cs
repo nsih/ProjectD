@@ -16,9 +16,6 @@ public class TestEventData : ScriptableObject
     public TestType testType;
     public int testOffset;
 
-    public bool isTest = true;
-
-
 
     public ResultsData[] results;
 }
@@ -32,57 +29,16 @@ public class ResultsData
 
     public Sprite resultSprite;
 
-
-    //Hp
-    public int maxHPOffset;
-
-    public bool hpFullHeal;
-    public int hPOffset;
-
-    //Mentality
-    public int mentalOffset;
-
-
-    //attack damage
-    public int plusPlayerDamageOffset;
-    public float multiplyPlayerDamageOffset;
-
-    //attack delay (speed)
-
-    public float attackDelay;
-
-    //Move speed
-    public float speedOffset;
-
-    //status
-    public int physicalOffset;
-    public int willPowerOffset;
-    public int knowledgeOffset;
-    public int charmOffset;
-
-    public int randomOffset;
-
-
-    //system    액션스택, 최대 액션스택
-    public int actionStackOffset;
-    public int actionLimitOffset;
-
-
-    //coin
-    public int coinOffset;
-
-    //
-    public int cameraSizeOffset;
-
-    //
-    public int artifactID;
-
-    public int actionID;
-
-    //
-    public int funcID;
+    public EventOffset[] eventOffset;
 }
 
+[System.Serializable]
+public class EventOffset
+{
+    public OffsetType offsetType;
+
+    public float offset;
+}
 
 public enum TestType  //~~test!
 {
@@ -90,5 +46,49 @@ public enum TestType  //~~test!
     willPower,
     knowledge,
     charm
+}
+
+[System.Serializable]
+public enum OffsetType
+{
+    // HP
+    MaxHPOffset,
+    HpFullHeal,
+
+    // Sanity
+    MaxSanityOffset,
+    SanityOffset,
+
+    // Damage
+    PlusPlayerDamageOffset,
+    MultiplyPlayerDamageOffset,
+
+    // Attack delay (speed)
+    AttackDelay,
+
+    // Move speed
+    SpeedOffset,
+
+    // Status
+    PhysicalOffset,
+    WillPowerOffset,
+    KnowledgeOffset,
+    CharmOffset,
+    RandomStatOffset,
+
+    // System (Action Stack, Maximum Action Stack)
+    ActionStackOffset,
+    ActionLimitOffset,
+
+    // Coin
+    CoinOffset,
+
+    // Vision
+    CameraSizeOffset,
+
+    // Reward
+    ArtifactID,
+    ActionID,
+    FuncID
 }
 
