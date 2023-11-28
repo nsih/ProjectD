@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Random=UnityEngine.Random;
 
@@ -134,7 +135,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case RoomType.RandomEvent:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.RandomEvent);
+                
+                gameObject.GetComponent<TestEventManager>().StartTestEvent(currentStage);
+                //start event
                 break;
 
             case RoomType.Alter:

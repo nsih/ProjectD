@@ -395,8 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b4b5bc182b2444084167c2c365abad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCurrentLineEnd: 1
-  currentIndex: 0
   playerEmotionSprite:
   - {fileID: -1627555787, guid: 2062a62001341944da1797646baba8f9, type: 3}
   - {fileID: -1237096097, guid: 2062a62001341944da1797646baba8f9, type: 3}
@@ -3599,7 +3597,7 @@ GameObject:
   - component: {fileID: 1189591032}
   - component: {fileID: 1189591031}
   - component: {fileID: 1189591030}
-  - component: {fileID: 1189591029}
+  - component: {fileID: 1189591038}
   - component: {fileID: 1189591028}
   - component: {fileID: 1189591027}
   - component: {fileID: 1189591026}
@@ -3721,18 +3719,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f3e6059c7df34634ca5bcdb2fcf18ea3, type: 2}
   - {fileID: 11400000, guid: 6e2c6d2df3b7ee04bb18c3a7efa57dbb, type: 2}
   - {fileID: 11400000, guid: 707df3c8a1b8ce9409a3c819e0b67fb8, type: 2}
---- !u!114 &1189591029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189591023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd972bc676db89e4387cc54a71ec8837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1189591030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3835,8 +3821,8 @@ MonoBehaviour:
   - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
-    roomType: 2
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
     isUsed: 0
 --- !u!4 &1189591037
 Transform:
@@ -3856,6 +3842,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189591038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189591023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0426dca4e61c6d74ba07d193c92bce88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stage1FixedEventList: []
+  Stage1RandomEventList: []
 --- !u!1 &1190442887
 GameObject:
   m_ObjectHideFlags: 0

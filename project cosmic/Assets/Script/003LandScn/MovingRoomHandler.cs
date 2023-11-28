@@ -54,6 +54,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
         //이벤트 시작
         gameManager.GetComponent<GameManager>().OpenNewRoom(thisNode.RoomType);
         
+        //UI Con
         LandCanvus.GetComponent<LandUICon>().StageMapSwitch();
 
         yield return null;
