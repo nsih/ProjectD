@@ -8,12 +8,17 @@ public class TestEventData : ScriptableObject
 {
     public int testID;
 
+    public bool isTested;
+
     public string testName;
     [TextArea(3, 10)]
     public string testText;
     public Sprite testSprite;
 
     public TestType testType;
+
+    public string testTypeS;
+
     public int testOffset;
 
 

@@ -3855,7 +3855,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage1FixedEventList: []
-  Stage1RandomEventList: []
+  Stage1RandomEventList:
+  - {fileID: 11400000, guid: e1085853b3cfcec4db7e3b38aa11bb50, type: 2}
 --- !u!1 &1190442887
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
 
         PlayerLocationReset();
 
+        this.gameObject.GetComponent<TestEventManager>().InitializeRandomEventIsTested(currentStage);
+
         OpenNewRoom(RoomType.Start);
     }
 
@@ -137,7 +139,7 @@ public class GameManager : MonoBehaviour
             case RoomType.RandomEvent:
                 PickupRoom(RoomType.RandomEvent);
                 
-                gameObject.GetComponent<TestEventManager>().StartTestEvent(currentStage);
+                gameObject.GetComponent<TestEventManager>().StartRandomTestEvent(currentStage);
                 //start event
                 break;
 

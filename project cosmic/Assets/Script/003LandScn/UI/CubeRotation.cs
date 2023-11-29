@@ -11,8 +11,8 @@ public class CubeRotation : MonoBehaviour
 
 
 
-    public float throwForce = 1000;
-    public float throwDamping = 0.9f; // 회전 감속 계수
+    public float throwForce = 1;
+    public float throwDamping = 0.5f; // 회전 감속 계수
     public float stopThreshold = 30.0f; // 회전 멈춤 기준값
 
     public bool isThrowing = false;
@@ -28,17 +28,17 @@ public class CubeRotation : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0) && !isThrowing) // 마우스 왼쪽 버튼을 누르면서 회전 중이 아닐 때
         {
             // 회전 코루틴 시작
             StartCoroutine(RotateCube());
         }
+        */
     }
 
-    IEnumerator RotateCube()
+    public IEnumerator RotateCube()
     {
-        isThrowing = true;
-
         // 랜덤한 회전 방향 생성
         float throwX = new float();//(Random.value < 0.5f) ? -360f : 360f;
         float throwY = new float();//(Random.value < 0.5f) ? -360f : 360f;
@@ -55,6 +55,8 @@ public class CubeRotation : MonoBehaviour
         // 초기 회전 힘 설정
         currentThrowForce = throwForce;
         
+        isThrowing = true;
+
         while (isThrowing)
         {
             //눈 ?
@@ -62,7 +64,7 @@ public class CubeRotation : MonoBehaviour
             eye.GetComponent<TextMeshProUGUI>().text = "";
 
             // 회전 방향으로 힘을 가해 회전
-            transform.Rotate(throwDirection * 100 * Time.fixedDeltaTime);
+            this.gameObject.transform.Rotate(throwDirection * currentThrowForce * Time.fixedDeltaTime);
 
             // 회전 감속
             currentThrowForce *= throwDamping;
@@ -73,9 +75,11 @@ public class CubeRotation : MonoBehaviour
 
                 // 회전을 0, 0, 0으로 수렴시킴
                 StartCoroutine(ConvergeRotation());
-                
+
                 // 눈 보여주기
                 eye.GetComponent<TextMeshProUGUI>().text = diceEye.ToString();
+
+                yield return new WaitForSeconds(0.5f);
 
                 isThrowing = false;
             }
@@ -91,7 +95,7 @@ public class CubeRotation : MonoBehaviour
         while (transform.rotation != Quaternion.identity)
         {
             // 현재 회전 각도를 점진적으로 0, 0, 0으로 수렴시킴
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
+            this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
             yield return null;
         }
     }
