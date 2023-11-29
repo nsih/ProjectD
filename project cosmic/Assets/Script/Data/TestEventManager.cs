@@ -50,6 +50,9 @@ public class TestEventManager : MonoBehaviour
 
         currentTestEventData = GetEventData(_currentStage);
 
+
+        //show
+        testPopup.SetActive(true);
         eventIMG.sprite = currentTestEventData.testSprite;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.testText;
         //testBtn
@@ -59,11 +62,12 @@ public class TestEventManager : MonoBehaviour
         GetDicePack();        
     }
 
-    void EndTestEvent() //버튼 주사위 팝업 초기화
+    void EndTestEvent()
     {
         isTesting = false;
         currentTestEventData = null;
-
+        testPopup.SetActive(false);
+        dicePack.SetActive(false);
         dicePack = null;
     }
 
