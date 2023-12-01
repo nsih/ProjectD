@@ -48,8 +48,7 @@ public class EventOffset
 public enum TestType  //~~test!
 {
     physical,
-    willPower,
-    knowledge,
+    mental,
     charm
 }
 

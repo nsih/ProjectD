@@ -59,7 +59,9 @@ public class TestEventManager : MonoBehaviour
         testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.testTypeS;
 
         ////dice pack 골라서 할당하고 활성화
-        GetDicePack();        
+        GetDicePack();
+
+        //dicePack
     }
 
     void EndTestEvent()
@@ -109,18 +111,18 @@ public class TestEventManager : MonoBehaviour
         dicePack = null;
 
         //TestType에 따라 계산
+
+        //physical
         if(currentTestEventData.testType == TestType.physical)
         {
             diceCount = PlayerInfo.physical + currentTestEventData.testOffset;
         }
-        else if(currentTestEventData.testType == TestType.willPower)
+        //mental
+        else if(currentTestEventData.testType == TestType.mental)
         {
-            diceCount = PlayerInfo.willPower + currentTestEventData.testOffset;
+            diceCount = PlayerInfo.mental + currentTestEventData.testOffset;
         }
-        else if(currentTestEventData.testType == TestType.knowledge)
-        {
-            diceCount = PlayerInfo.knowledge + currentTestEventData.testOffset;
-        }
+        //charm
         else if(currentTestEventData.testType == TestType.charm)
         {
             diceCount = PlayerInfo.charm + currentTestEventData.testOffset;
@@ -158,9 +160,12 @@ public class TestEventManager : MonoBehaviour
 
         dicePack.SetActive(true);
     }
-    void RollDice()
+    public void OnClickDiceRoll()
     {
-
+        if(dicePack)
+        {
+            
+        }
     }
 
 

@@ -7,19 +7,13 @@ public class PlayerInfo : MonoBehaviour
 {
     //status
     public static int physical;    //육체
-    public static int willPower;   //의지
-    public static int knowledge;   //지식
+    public static int mental;   //정신력
     public static int charm;       //매력
 
     //HP (Health Point)
     public static int maxHp;
     public static int maxHpOffset;
     public static int hp;
-
-    //Sanity
-    public static int maxSanity;
-    public static int maxSanityOffset;
-    public static int sanity;
 
     //AP (Action Point)
     public static int maxActionPoint;
@@ -59,21 +53,16 @@ public class PlayerInfo : MonoBehaviour
     void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
     {
         //stat
-        physical = 1;
-        willPower = 1;
-        knowledge = 1;
-        charm = 1;
+        physical = 2;
+        mental = 2;
+        charm = 2;
 
         //hp
         MaxHpCalc();
         hp = maxHp;
 
-        //sanity
-        maxSanity = knowledge + maxSanityOffset;
-        sanity = maxSanity;
-
         //action point
-        maxActionPoint = willPower;
+        maxActionPoint = mental;
         actionPoint = maxActionPoint;
 
         //action Point
@@ -115,32 +104,18 @@ public class PlayerInfo : MonoBehaviour
             physical = changedPhisical;
         }
     }
-    public void WillPowerModify(int modifier)
+    public void MentalModify(int modifier)
     {
-        int changedWillPower = willPower + modifier;
+        int changedWillPower = mental + modifier;
 
         if (changedWillPower <= 0)
         {
-            willPower = 1;
+            mental = 1;
         }
 
         else
         {
-            willPower = changedWillPower;
-        }
-    }
-    public void KnowledgeModify(int modifier)
-    {
-        int changedKnowledge = knowledge + modifier;
-
-        if (changedKnowledge <= 0)
-        {
-            knowledge = 1;
-        }
-
-        else
-        {
-            knowledge = changedKnowledge;
+            mental = changedWillPower;
         }
     }
     public void CharmModify(int modifier)
@@ -183,29 +158,10 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    //Sanity
-    public void MaxSanityCalc()
-    {
-        maxSanity = (knowledge * 2) + maxSanityOffset;
-    }
-    public void SanityModify(int modifier)
-    {
-        int changedsanity = sanity + modifier;
-
-        if (changedsanity < -maxSanity)
-        {
-            //게임 오바
-        }
-        else
-        {
-            sanity = changedsanity;
-        }
-    }
-
     //action point
     public void MaxActionPointCalc()
     {
-        maxActionPoint = willPower + maxActionPointOffset;
+        maxActionPoint = mental + maxActionPointOffset;
     }
     public void ActionPointModify(int modifier)
     {
