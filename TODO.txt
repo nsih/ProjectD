@@ -3,9 +3,11 @@ Todo
 
 1. land dialogue sys
 2. Event Sys
-2.1 Dice Roll
-3. reward sys
-4. enemy pattern
+	2.1 Dice Roll
+	2.2 Status kind adjust
+3. UI rearange
+4. reward sys
+5. enemy pattern
 
 
 n. setting, UI연출
