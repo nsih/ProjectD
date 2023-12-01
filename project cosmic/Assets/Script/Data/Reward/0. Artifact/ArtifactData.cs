@@ -29,8 +29,7 @@ public class ArtifactData : ScriptableObject
 
     //status
     public int physicalOffset = 0;
-    public int willPowerOffset = 0;
-    public int knowledgeOffset = 0;
+    public int mentalOffset = 0;
     public int charmOffset = 0;
 
     //Hp

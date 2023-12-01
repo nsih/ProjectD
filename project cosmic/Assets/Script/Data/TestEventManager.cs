@@ -62,6 +62,7 @@ public class TestEventManager : MonoBehaviour
         GetDicePack();
 
         //dicePack
+        
     }
 
     void EndTestEvent()

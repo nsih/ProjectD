@@ -157,7 +157,6 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerLocationReset();
-        GetComponent<PlayerInfo>().SanityModify(-1);
 
 
         //룸타입에 따라서 룸 꺼내오는 함수  -> battle event manager

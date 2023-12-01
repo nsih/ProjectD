@@ -191,15 +191,10 @@ public class ArtifactManager : MonoBehaviour
         {
             gameObject.GetComponent<PlayerInfo>().PhysicalModify(artifactData.physicalOffset);
         }
-        //will power
-        if (artifactData.willPowerOffset != 0)
+        //mental
+        if (artifactData.mentalOffset != 0)
         {
-            gameObject.GetComponent<PlayerInfo>().WillPowerModify(artifactData.willPowerOffset);
-        }
-        //knowledge
-        if (artifactData.knowledgeOffset != 0)
-        {
-            gameObject.GetComponent<PlayerInfo>().KnowledgeModify(artifactData.knowledgeOffset);
+            gameObject.GetComponent<PlayerInfo>().MentalModify(artifactData.mentalOffset);
         }
         //charm
         if (artifactData.charmOffset != 0)
@@ -217,18 +212,6 @@ public class ArtifactManager : MonoBehaviour
         if (artifactData.hPOffset != 0)
         {
             gameObject.GetComponent<PlayerInfo>().HpModify(artifactData.hPOffset);
-        }
-
-        //max sanity
-        if (artifactData.sanityOffset != 0)
-        {
-            PlayerInfo.maxSanityOffset = PlayerInfo.maxSanityOffset + artifactData.sanityOffset;
-            gameObject.GetComponent<PlayerInfo>().MaxSanityCalc();
-        }
-        //sanity
-        if (artifactData.sanityOffset != 0)
-        {
-            gameObject.GetComponent<PlayerInfo>().SanityModify(artifactData.sanityOffset);
         }
 
         //max action point

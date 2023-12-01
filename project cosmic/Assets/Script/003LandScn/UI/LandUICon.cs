@@ -23,8 +23,7 @@ public class LandUICon : MonoBehaviour
     GameObject coinText;
 
     GameObject physicalText;
-    GameObject willPowerText;
-    GameObject knowledgeText;
+    GameObject mentalText;
     GameObject charmText;
 
     void Start()
@@ -42,8 +41,7 @@ public class LandUICon : MonoBehaviour
 
 
         physicalText = GameObject.Find("Physical");
-        willPowerText = GameObject.Find("WillPower");
-        knowledgeText = GameObject.Find("Knowledge");
+        mentalText = GameObject.Find("Mental");
         charmText = GameObject.Find("Charm");
     }
 
@@ -81,8 +79,7 @@ public class LandUICon : MonoBehaviour
     void UpdateStatusText()
     {
         physicalText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.physical.ToString();
-        willPowerText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.willPower.ToString();
-        knowledgeText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.knowledge.ToString();
+        mentalText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.mental.ToString();
         charmText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.charm.ToString();
     }
 
