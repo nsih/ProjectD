@@ -7,10 +7,6 @@ using TMPro;
 
 public class CubeRotation : MonoBehaviour
 {
-    public GameObject eye;
-
-
-
     public float throwForce = 1;
     public float throwDamping = 0.5f; // 회전 감속 계수
     public float stopThreshold = 30.0f; // 회전 멈춤 기준값
@@ -20,25 +16,11 @@ public class CubeRotation : MonoBehaviour
     private float currentThrowForce;
 
 
-    void Start()
-    {
-        eye = gameObject.transform.GetChild(0).gameObject;
-    }
 
-
-    void Update()
+    public IEnumerator RotateCube(GameObject cube)
     {
-        /*
-        if (Input.GetMouseButtonDown(0) && !isThrowing) // 마우스 왼쪽 버튼을 누르면서 회전 중이 아닐 때
-        {
-            // 회전 코루틴 시작
-            StartCoroutine(RotateCube());
-        }
-        */
-    }
+        GameObject eye = cube.transform.GetChild(0).gameObject;
 
-    public IEnumerator RotateCube()
-    {
         // 랜덤한 회전 방향 생성
         float throwX = new float();//(Random.value < 0.5f) ? -360f : 360f;
         float throwY = new float();//(Random.value < 0.5f) ? -360f : 360f;
@@ -59,12 +41,11 @@ public class CubeRotation : MonoBehaviour
 
         while (isThrowing)
         {
-            //눈 ?
-            
+            //눈
             eye.GetComponent<TextMeshProUGUI>().text = "";
 
             // 회전 방향으로 힘을 가해 회전
-            this.gameObject.transform.Rotate(throwDirection * currentThrowForce * Time.fixedDeltaTime);
+            cube.transform.Rotate(throwDirection * currentThrowForce * Time.fixedDeltaTime);
 
             // 회전 감속
             currentThrowForce *= throwDamping;
@@ -82,6 +63,13 @@ public class CubeRotation : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
 
                 isThrowing = false;
+
+
+                //성공실패 결정
+                if(diceEye >= 5)
+                {
+                    TestEventManager.isCurrentResultSuccess = true;
+                }
             }
 
             yield return null;

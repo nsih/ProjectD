@@ -776,7 +776,6 @@ GameObject:
   - component: {fileID: 66342407}
   - component: {fileID: 66342411}
   - component: {fileID: 66342410}
-  - component: {fileID: 66342409}
   - component: {fileID: 66342408}
   m_Layer: 5
   m_Name: Cube3
@@ -833,24 +832,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &66342409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66342406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &66342410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -912,7 +893,6 @@ GameObject:
   - component: {fileID: 70464346}
   - component: {fileID: 70464350}
   - component: {fileID: 70464349}
-  - component: {fileID: 70464347}
   - component: {fileID: 70464351}
   m_Layer: 5
   m_Name: Cube1
@@ -942,24 +922,6 @@ RectTransform:
   m_AnchoredPosition: {x: -180, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &70464347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70464345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &70464349
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1381,7 +1343,7 @@ GameObject:
   - component: {fileID: 140254373}
   - component: {fileID: 140254372}
   m_Layer: 5
-  m_Name: TestInfoText
+  m_Name: TestInfoTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,8 +1360,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1204187907}
+  m_Children: []
   m_Father: {fileID: 2134162120}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1578,7 +1539,6 @@ GameObject:
   - component: {fileID: 169118734}
   - component: {fileID: 169118738}
   - component: {fileID: 169118737}
-  - component: {fileID: 169118735}
   - component: {fileID: 169118739}
   m_Layer: 5
   m_Name: Cube1
@@ -1608,24 +1568,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &169118735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169118733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &169118737
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2111,12 +2053,12 @@ RectTransform:
   m_LocalScale: {x: 1.0000794, y: 1.0000794, z: 1.0000794}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 364330034}
+  m_Father: {fileID: 2134162120}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000025381, y: 379.77}
+  m_AnchoredPosition: {x: 346.17004, y: 379.77246}
   m_SizeDelta: {x: 606.26, y: 151.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221519886
@@ -2228,6 +2170,7 @@ GameObject:
   - component: {fileID: 227488684}
   - component: {fileID: 227488683}
   - component: {fileID: 227488682}
+  - component: {fileID: 227488685}
   m_Layer: 5
   m_Name: TestButton
   m_TagString: Untagged
@@ -2338,6 +2281,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227488680}
   m_CullTransparentMesh: 1
+--- !u!114 &227488685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227488680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0426dca4e61c6d74ba07d193c92bce88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stage1FixedEventList: []
+  Stage1RandomEventList: []
 --- !u!1 &234225839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,7 +3714,6 @@ GameObject:
   - component: {fileID: 359013473}
   - component: {fileID: 359013477}
   - component: {fileID: 359013476}
-  - component: {fileID: 359013474}
   - component: {fileID: 359013478}
   m_Layer: 5
   m_Name: Cube2
@@ -3787,24 +3743,6 @@ RectTransform:
   m_AnchoredPosition: {x: 180, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &359013474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359013472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &359013476
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3911,9 +3849,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 221519885}
-  - {fileID: 848641723}
+  m_Children: []
   m_Father: {fileID: 2134162120}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4787,7 +4723,6 @@ GameObject:
   - component: {fileID: 492891443}
   - component: {fileID: 492891447}
   - component: {fileID: 492891446}
-  - component: {fileID: 492891444}
   - component: {fileID: 492891448}
   m_Layer: 5
   m_Name: Cube4
@@ -4817,24 +4752,6 @@ RectTransform:
   m_AnchoredPosition: {x: -180, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &492891444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492891442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &492891446
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6010,6 +5927,7 @@ GameObject:
   - component: {fileID: 580370822}
   - component: {fileID: 580370821}
   - component: {fileID: 580370820}
+  - component: {fileID: 580370824}
   m_Layer: 5
   m_Name: EventCanvas
   m_TagString: Untagged
@@ -6101,6 +6019,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &580370824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580370819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 1000
+  throwDamping: 0.9
+  stopThreshold: 30
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &586387975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6490,7 +6425,6 @@ GameObject:
   - component: {fileID: 601185555}
   - component: {fileID: 601185559}
   - component: {fileID: 601185558}
-  - component: {fileID: 601185556}
   - component: {fileID: 601185560}
   m_Layer: 5
   m_Name: Cube3
@@ -6520,24 +6454,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &601185556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601185554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &601185558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6626,7 +6542,6 @@ GameObject:
   - component: {fileID: 603444816}
   - component: {fileID: 603444820}
   - component: {fileID: 603444819}
-  - component: {fileID: 603444817}
   - component: {fileID: 603444821}
   m_Layer: 5
   m_Name: Cube3
@@ -6656,24 +6571,6 @@ RectTransform:
   m_AnchoredPosition: {x: 180, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &603444817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603444815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &603444819
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6919,7 +6816,6 @@ GameObject:
   - component: {fileID: 615505927}
   - component: {fileID: 615505931}
   - component: {fileID: 615505930}
-  - component: {fileID: 615505928}
   - component: {fileID: 615505932}
   m_Layer: 5
   m_Name: Cube2
@@ -6949,24 +6845,6 @@ RectTransform:
   m_AnchoredPosition: {x: 160, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &615505928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615505926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &615505930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7819,7 +7697,6 @@ GameObject:
   - component: {fileID: 741320601}
   - component: {fileID: 741320605}
   - component: {fileID: 741320604}
-  - component: {fileID: 741320602}
   - component: {fileID: 741320606}
   m_Layer: 5
   m_Name: Cube5
@@ -7849,24 +7726,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.001739502, y: 0.100097656}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &741320602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741320600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &741320604
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8974,12 +8833,12 @@ RectTransform:
   m_LocalScale: {x: 1.0000794, y: 1.0000794, z: 1.0000794}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 364330034}
+  m_Father: {fileID: 2134162120}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -112}
+  m_AnchoredPosition: {x: 346.16998, y: -111.99753}
   m_SizeDelta: {x: 642.48, y: 709.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &848641724
@@ -9229,7 +9088,6 @@ GameObject:
   - component: {fileID: 853122298}
   - component: {fileID: 853122302}
   - component: {fileID: 853122301}
-  - component: {fileID: 853122300}
   - component: {fileID: 853122299}
   m_Layer: 5
   m_Name: Cube6
@@ -9286,24 +9144,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &853122300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853122297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &853122301
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9548,7 +9388,6 @@ GameObject:
   - component: {fileID: 929321353}
   - component: {fileID: 929321357}
   - component: {fileID: 929321356}
-  - component: {fileID: 929321354}
   - component: {fileID: 929321358}
   m_Layer: 5
   m_Name: Cube3
@@ -9578,24 +9417,6 @@ RectTransform:
   m_AnchoredPosition: {x: 180, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &929321354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929321352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &929321356
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10187,7 +10008,6 @@ GameObject:
   - component: {fileID: 1036639838}
   - component: {fileID: 1036639842}
   - component: {fileID: 1036639841}
-  - component: {fileID: 1036639839}
   - component: {fileID: 1036639843}
   m_Layer: 5
   m_Name: Cube1
@@ -10217,24 +10037,6 @@ RectTransform:
   m_AnchoredPosition: {x: -160, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1036639839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036639837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1036639841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11657,7 +11459,7 @@ GameObject:
   - component: {fileID: 1204187909}
   - component: {fileID: 1204187908}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TestInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11670,17 +11472,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204187906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 140254371}
+  m_Father: {fileID: 2134162120}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: 0}
+  m_AnchoredPosition: {x: -429.55002, y: -46.529995}
   m_SizeDelta: {x: 415.05, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204187908
@@ -12782,7 +12584,6 @@ GameObject:
   - component: {fileID: 1281731284}
   - component: {fileID: 1281731288}
   - component: {fileID: 1281731287}
-  - component: {fileID: 1281731286}
   - component: {fileID: 1281731285}
   m_Layer: 5
   m_Name: Cube4
@@ -12839,24 +12640,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1281731286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281731283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1281731287
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14566,7 +14349,6 @@ GameObject:
   - component: {fileID: 1462968971}
   - component: {fileID: 1462968975}
   - component: {fileID: 1462968974}
-  - component: {fileID: 1462968972}
   - component: {fileID: 1462968976}
   m_Layer: 5
   m_Name: Cube1
@@ -14596,24 +14378,6 @@ RectTransform:
   m_AnchoredPosition: {x: -180, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1462968972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462968970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1462968974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15677,7 +15441,6 @@ GameObject:
   - component: {fileID: 1691985283}
   - component: {fileID: 1691985287}
   - component: {fileID: 1691985286}
-  - component: {fileID: 1691985284}
   - component: {fileID: 1691985288}
   m_Layer: 5
   m_Name: Cube4
@@ -15707,24 +15470,6 @@ RectTransform:
   m_AnchoredPosition: {x: -180, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1691985284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691985282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1691985286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17276,7 +17021,6 @@ GameObject:
   - component: {fileID: 1825397576}
   - component: {fileID: 1825397580}
   - component: {fileID: 1825397579}
-  - component: {fileID: 1825397577}
   - component: {fileID: 1825397581}
   m_Layer: 5
   m_Name: Cube1
@@ -17306,24 +17050,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1825397577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825397575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1825397579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18123,8 +17849,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dice Roll
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 03867ce8c94ff4c458db827c7afe849e, type: 2}
+  m_sharedMaterial: {fileID: -7638748648010308746, guid: 03867ce8c94ff4c458db827c7afe849e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18837,7 +18563,6 @@ GameObject:
   - component: {fileID: 1934056021}
   - component: {fileID: 1934056025}
   - component: {fileID: 1934056024}
-  - component: {fileID: 1934056022}
   - component: {fileID: 1934056026}
   m_Layer: 5
   m_Name: Cube2
@@ -18867,24 +18592,6 @@ RectTransform:
   m_AnchoredPosition: {x: 180, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1934056022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934056020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1934056024
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18973,7 +18680,6 @@ GameObject:
   - component: {fileID: 1940158006}
   - component: {fileID: 1940158010}
   - component: {fileID: 1940158009}
-  - component: {fileID: 1940158008}
   - component: {fileID: 1940158007}
   m_Layer: 5
   m_Name: Cube1
@@ -19030,24 +18736,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1940158008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940158005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &1940158009
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19281,7 +18969,6 @@ GameObject:
   - component: {fileID: 2018448336}
   - component: {fileID: 2018448340}
   - component: {fileID: 2018448339}
-  - component: {fileID: 2018448338}
   - component: {fileID: 2018448337}
   m_Layer: 5
   m_Name: Cube5
@@ -19338,24 +19025,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2018448338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018448335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &2018448339
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19938,7 +19607,6 @@ GameObject:
   - component: {fileID: 2086747644}
   - component: {fileID: 2086747648}
   - component: {fileID: 2086747647}
-  - component: {fileID: 2086747645}
   - component: {fileID: 2086747649}
   m_Layer: 5
   m_Name: Cube2
@@ -19968,24 +19636,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2086747645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086747643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &2086747647
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20209,7 +19859,6 @@ GameObject:
   - component: {fileID: 2125352651}
   - component: {fileID: 2125352655}
   - component: {fileID: 2125352654}
-  - component: {fileID: 2125352653}
   - component: {fileID: 2125352652}
   m_Layer: 5
   m_Name: Cube2
@@ -20266,24 +19915,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2125352653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125352650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eye: {fileID: 0}
-  throwForce: 1000
-  throwDamping: 0.99
-  stopThreshold: 50
-  isThrowing: 0
-  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!23 &2125352654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20366,8 +19997,11 @@ RectTransform:
   m_Children:
   - {fileID: 443957974}
   - {fileID: 364330034}
+  - {fileID: 221519885}
+  - {fileID: 848641723}
   - {fileID: 227488681}
   - {fileID: 140254371}
+  - {fileID: 1204187907}
   - {fileID: 695479074}
   m_Father: {fileID: 580370823}
   m_RootOrder: -1

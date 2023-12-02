@@ -13,6 +13,8 @@ public class TestEventManager : MonoBehaviour
     GameObject eventCanvas;
     GameObject testPopup;
     Image eventIMG;
+
+    GameObject eventTitle;
     GameObject eventText;
 
     GameObject testBtn;
@@ -23,6 +25,8 @@ public class TestEventManager : MonoBehaviour
 
 
     public static bool isTesting;
+
+    public static bool isCurrentResultSuccess;
     
     TestEventData currentTestEventData;
 
@@ -32,49 +36,52 @@ public class TestEventManager : MonoBehaviour
     void Start()
     {
         isTesting = false;
+        isCurrentResultSuccess = false;
     }
 
+    /////////////////////
+    
 
+
+    //랜덤이벤트 시작
     public void StartRandomTestEvent(int _currentStage)
     {
-        //
+        //object initialize
         eventCanvas = GameObject.Find("EventCanvas");
         testPopup = eventCanvas.gameObject.transform.Find("TestPopup").gameObject;
+        
         eventIMG= testPopup.gameObject.transform.Find("EventIMG").gameObject.GetComponent<Image>();
-        eventText = eventCanvas.gameObject.transform.Find("EventText").gameObject;
-        testBtn = eventCanvas.gameObject.transform.Find("TestBtn").gameObject;
-        testInfoText = eventCanvas.gameObject.transform.Find("TestInfoText").gameObject;
-        testDicePopup = eventCanvas.gameObject.transform.Find("TestDicePopup").gameObject;
+        eventTitle = testPopup.gameObject.transform.Find("EventTitle").gameObject;
+        eventText = testPopup.gameObject.transform.Find("EventText").gameObject;
 
+        testInfoText = testPopup.gameObject.transform.Find("TestInfoText").gameObject;
+        testBtn = testPopup.gameObject.transform.Find("TestButton").gameObject;
+
+        testDicePopup = testPopup.gameObject.transform.Find("DicePopUp").gameObject;
+
+
+        //
         isTesting = true;
-
-        currentTestEventData = GetEventData(_currentStage);
+        currentTestEventData = GetRandomEventData(_currentStage);
 
 
         //show
         testPopup.SetActive(true);
         eventIMG.sprite = currentTestEventData.testSprite;
+        eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.testName;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.testText;
-        //testBtn
+        
         testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.testTypeS;
 
         ////dice pack 골라서 할당하고 활성화
         GetDicePack();
 
         //dicePack
-        
+        testBtn.GetComponent<Button>().onClick.AddListener(OnClickDiceRoll);        
     }
 
-    void EndTestEvent()
-    {
-        isTesting = false;
-        currentTestEventData = null;
-        testPopup.SetActive(false);
-        dicePack.SetActive(false);
-        dicePack = null;
-    }
-
-    TestEventData GetEventData(int _currentStage)
+    //랜덤 이벤트 하나 뽑기
+    TestEventData GetRandomEventData(int _currentStage)
     {
         int eventIndex = 0;
         bool eventPicked = false;
@@ -86,24 +93,23 @@ public class TestEventManager : MonoBehaviour
             case 1:
                 while(!eventPicked)
                 {
-                    eventIndex = Random.Range(0, Stage1FixedEventList.Count);
+                    eventIndex = Random.Range(0, Stage1RandomEventList.Count);
 
-                    if(Stage1FixedEventList[eventIndex].isTested == false)
+                    if(Stage1RandomEventList[eventIndex].isTested == false)
                     {
-                        Stage1FixedEventList[eventIndex].isTested = true;
+                        Stage1RandomEventList[eventIndex].isTested = true;
                         eventPicked = true;
                     }
                 }
-                return Stage1FixedEventList[eventIndex];
+                return Stage1RandomEventList[eventIndex];
 
 
             //?
             default:
                 Debug.Log("Stage error : stage"+_currentStage);
-                return Stage1FixedEventList[eventIndex];
+                return Stage1RandomEventList[eventIndex];
         }
     }
-
 
     //dice pack 골라서 할당하고 활성화
     void GetDicePack()
@@ -161,16 +167,82 @@ public class TestEventManager : MonoBehaviour
 
         dicePack.SetActive(true);
     }
+    
+
+    //다이스 롤 버튼
     public void OnClickDiceRoll()
     {
+        Debug.Log("eeeee");
+        
         if(dicePack)
         {
-            
+            //foreach(GameObject var in )
+            for (int i = 0 ; i < dicePack.transform.childCount ; i++ )
+            {
+                StartCoroutine(eventCanvas.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
+            }
+
+            //버튼 바꾸기
+            testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "다음";
+            testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+            testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
+        }
+
+        else
+        {
+            Debug.Log("dicePack Null Error");
         }
     }
 
+    //결과실행 버튼
+    public void OnClickExecuteEventResult()
+    {
+        int resultIndex;
+        //show
+        if(isCurrentResultSuccess)
+            resultIndex = 0;
+        else
+            resultIndex = 1;
 
-    //랜덤 이벤트 사용기록 소거
+        //Show
+        eventIMG.sprite = currentTestEventData.results[resultIndex].resultSprite;
+        eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
+        testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
+
+
+        //버튼 바꾸기
+        testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";
+        testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+        testBtn.GetComponent<Button>().onClick.AddListener(OnClickEndEvent);
+    }
+
+    //이벤트 종료 버튼
+    public void OnClickEndEvent()
+    {
+        //쓴주사위 눈 ?로 돌려놓고 끄기
+        for (int i = 0 ; i < dicePack.transform.childCount ; i++ )
+        {
+            dicePack.transform.GetChild(i).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "?";
+        }
+
+        //
+        isTesting = false;
+        isCurrentResultSuccess = false;
+
+        //
+        currentTestEventData = null;
+        testPopup.SetActive(false);
+        dicePack.SetActive(false);
+        dicePack = null;
+        testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+    }
+
+
+
+    //퍼사드의 제물들
+
+
+    //랜덤 이벤트 사용기록 소거 (스테이지 시작시)
     public void InitializeRandomEventIsTested(int _currentStage)
     {
         switch(_currentStage)
