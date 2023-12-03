@@ -198,6 +198,8 @@ public class TestEventManager : MonoBehaviour
     public void OnClickExecuteEventResult()
     {
         int resultIndex;
+
+        Debug.Log("asd");
         //show
         if(isCurrentResultSuccess)
             resultIndex = 0;

@@ -9,7 +9,6 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     GameObject gameManager;
     GameObject landUiCanvas;
-    GameObject pnlBackGround;
     GameObject actionPopup;
 
 
@@ -27,8 +26,7 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         gameManager = GameObject.Find("GameManager");
         landUiCanvas = GameObject.Find("LandUICanvas");
-        pnlBackGround = GameObject.Find("PnlBackGround");
-        actionPopup = pnlBackGround.transform.Find("ActionPopup").gameObject;
+        actionPopup = landUiCanvas.transform.Find("ActionPopup").gameObject;
         btnClose = actionPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
 
         ButtonText = this.gameObject.transform.GetChild(0).gameObject;

@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject gameManager;
-    GameObject pnlBackGround;
     GameObject roomUiCanvas;
     GameObject doubleCheckPopup;
 
@@ -30,8 +29,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         gameManager = GameObject.Find("GameManager");
         roomUiCanvas = GameObject.Find("RoomUICanvas");
-        pnlBackGround = GameObject.Find("PnlBackGround");
-        doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
+        doubleCheckPopup = roomUiCanvas.transform.Find("DoubleCheckPopup").gameObject;
 
         normalColor = GetComponent<Image>().color;
         float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);

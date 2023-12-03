@@ -7,7 +7,7 @@ using TMPro;
 public class LandUICon : MonoBehaviour
 {
     GameObject gameManager;
-    GameObject pnlBackGround;
+    GameObject landUICanvas;
 
     GameObject cameraCanvas;
 
@@ -30,13 +30,13 @@ public class LandUICon : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
 
-        pnlBackGround = GameObject.Find("PnlBackGround");
+        landUICanvas = GameObject.Find("LandUICanvas");
 
 
 
         cameraCanvas = GameObject.Find("CameraCanvas");
 
-        stageMap = pnlBackGround.transform.Find("StageMap").gameObject;
+        stageMap = landUICanvas.transform.Find("StageMap").gameObject;
 
 
 
