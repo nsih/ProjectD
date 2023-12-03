@@ -7,9 +7,9 @@ using TMPro;
 
 public class CubeRotation : MonoBehaviour
 {
-    public float throwForce = 1;
-    public float throwDamping = 0.5f; // 회전 감속 계수
-    public float stopThreshold = 30.0f; // 회전 멈춤 기준값
+    public float throwForce = 3000;
+    public float throwDamping = 0.99f; // 회전 감속 계수
+    public float stopThreshold = 100.0f; // 회전 멈춤 기준값
 
     public bool isThrowing = false;
     public Vector3 throwDirection;
@@ -41,7 +41,7 @@ public class CubeRotation : MonoBehaviour
 
         while (isThrowing)
         {
-            //눈
+            Debug.Log("isThrowing");
             eye.GetComponent<TextMeshProUGUI>().text = "";
 
             // 회전 방향으로 힘을 가해 회전
@@ -50,19 +50,20 @@ public class CubeRotation : MonoBehaviour
             // 회전 감속
             currentThrowForce *= throwDamping;
 
+            Debug.Log( this.gameObject +"'s TF : "+ currentThrowForce);
+
             if (currentThrowForce <= stopThreshold) // 회전 힘이 기준값보다 작으면
             {
+                Debug.Log("currentThrowForce <= stopThreshold");
                 currentThrowForce = 0f;
 
                 // 회전을 0, 0, 0으로 수렴시킴
-                StartCoroutine(ConvergeRotation());
+                StartCoroutine(ConvergeRotation(cube));
 
                 // 눈 보여주기
                 eye.GetComponent<TextMeshProUGUI>().text = diceEye.ToString();
 
-                yield return new WaitForSeconds(0.5f);
-
-                isThrowing = false;
+                //yield return new WaitForSeconds(5f);
 
 
                 //성공실패 결정
@@ -70,21 +71,22 @@ public class CubeRotation : MonoBehaviour
                 {
                     TestEventManager.isCurrentResultSuccess = true;
                 }
-            }
 
+                isThrowing = false;
+            }
             yield return null;
         }
     }
 
-    IEnumerator ConvergeRotation()
+    IEnumerator ConvergeRotation(GameObject cube)
     {
-        float convergeSpeed = 5f; // 조절 가능한 회전 수렴 속도
+        float convergeSpeed = 3f; // 조절 가능한 회전 수렴 속도
 
-        while (transform.rotation != Quaternion.identity)
+        while (cube.transform.rotation != Quaternion.identity)
         {
             // 현재 회전 각도를 점진적으로 0, 0, 0으로 수렴시킴
-            this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
-            yield return null;
+            cube.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
         }
+        yield return null;
     }
 }

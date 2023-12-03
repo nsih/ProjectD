@@ -777,6 +777,7 @@ GameObject:
   - component: {fileID: 66342411}
   - component: {fileID: 66342410}
   - component: {fileID: 66342408}
+  - component: {fileID: 66342412}
   m_Layer: 5
   m_Name: Cube3
   m_TagString: Untagged
@@ -882,6 +883,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66342406}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &66342412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66342406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &70464345
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +912,7 @@ GameObject:
   - component: {fileID: 70464350}
   - component: {fileID: 70464349}
   - component: {fileID: 70464351}
+  - component: {fileID: 70464352}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -999,6 +1018,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &70464352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70464345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &92885185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1576,7 @@ GameObject:
   - component: {fileID: 169118738}
   - component: {fileID: 169118737}
   - component: {fileID: 169118739}
+  - component: {fileID: 169118740}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -1645,6 +1682,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
+--- !u!114 &169118740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169118733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &200139204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3754,7 @@ GameObject:
   - component: {fileID: 359013477}
   - component: {fileID: 359013476}
   - component: {fileID: 359013478}
+  - component: {fileID: 359013479}
   m_Layer: 5
   m_Name: Cube2
   m_TagString: Untagged
@@ -3805,6 +3860,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &359013479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359013472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &364330033
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,6 +4781,7 @@ GameObject:
   - component: {fileID: 492891447}
   - component: {fileID: 492891446}
   - component: {fileID: 492891448}
+  - component: {fileID: 492891449}
   m_Layer: 5
   m_Name: Cube4
   m_TagString: Untagged
@@ -4814,6 +4887,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &492891449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492891442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &500607645
 GameObject:
   m_ObjectHideFlags: 0
@@ -6016,9 +6106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 1000
-  throwDamping: 0.9
-  stopThreshold: 30
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &586387975
@@ -6411,6 +6501,7 @@ GameObject:
   - component: {fileID: 601185559}
   - component: {fileID: 601185558}
   - component: {fileID: 601185560}
+  - component: {fileID: 601185561}
   m_Layer: 5
   m_Name: Cube3
   m_TagString: Untagged
@@ -6516,6 +6607,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &601185561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601185554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &603444815
 GameObject:
   m_ObjectHideFlags: 0
@@ -6528,6 +6636,7 @@ GameObject:
   - component: {fileID: 603444820}
   - component: {fileID: 603444819}
   - component: {fileID: 603444821}
+  - component: {fileID: 603444822}
   m_Layer: 5
   m_Name: Cube3
   m_TagString: Untagged
@@ -6633,6 +6742,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &603444822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603444815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &607754157
 GameObject:
   m_ObjectHideFlags: 0
@@ -6802,6 +6928,7 @@ GameObject:
   - component: {fileID: 615505931}
   - component: {fileID: 615505930}
   - component: {fileID: 615505932}
+  - component: {fileID: 615505933}
   m_Layer: 5
   m_Name: Cube2
   m_TagString: Untagged
@@ -6907,6 +7034,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &615505933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615505926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &621178752
 GameObject:
   m_ObjectHideFlags: 0
@@ -7683,6 +7827,7 @@ GameObject:
   - component: {fileID: 741320605}
   - component: {fileID: 741320604}
   - component: {fileID: 741320606}
+  - component: {fileID: 741320607}
   m_Layer: 5
   m_Name: Cube5
   m_TagString: Untagged
@@ -7788,6 +7933,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &741320607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741320600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &743198299
 GameObject:
   m_ObjectHideFlags: 0
@@ -9074,6 +9236,7 @@ GameObject:
   - component: {fileID: 853122302}
   - component: {fileID: 853122301}
   - component: {fileID: 853122299}
+  - component: {fileID: 853122303}
   m_Layer: 5
   m_Name: Cube6
   m_TagString: Untagged
@@ -9179,6 +9342,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853122297}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &853122303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853122297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &854922772
 GameObject:
   m_ObjectHideFlags: 0
@@ -9374,6 +9554,7 @@ GameObject:
   - component: {fileID: 929321357}
   - component: {fileID: 929321356}
   - component: {fileID: 929321358}
+  - component: {fileID: 929321359}
   m_Layer: 5
   m_Name: Cube3
   m_TagString: Untagged
@@ -9479,6 +9660,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &929321359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929321352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &960075639
 GameObject:
   m_ObjectHideFlags: 0
@@ -9994,6 +10192,7 @@ GameObject:
   - component: {fileID: 1036639842}
   - component: {fileID: 1036639841}
   - component: {fileID: 1036639843}
+  - component: {fileID: 1036639844}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -10099,6 +10298,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1036639844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036639837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1042935209
 GameObject:
   m_ObjectHideFlags: 0
@@ -12570,6 +12786,7 @@ GameObject:
   - component: {fileID: 1281731288}
   - component: {fileID: 1281731287}
   - component: {fileID: 1281731285}
+  - component: {fileID: 1281731289}
   m_Layer: 5
   m_Name: Cube4
   m_TagString: Untagged
@@ -12675,6 +12892,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281731283}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1281731289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281731283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1308490314
 GameObject:
   m_ObjectHideFlags: 0
@@ -14335,6 +14569,7 @@ GameObject:
   - component: {fileID: 1462968975}
   - component: {fileID: 1462968974}
   - component: {fileID: 1462968976}
+  - component: {fileID: 1462968977}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -14440,6 +14675,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1462968977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462968970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1470643856
 GameObject:
   m_ObjectHideFlags: 0
@@ -15427,6 +15679,7 @@ GameObject:
   - component: {fileID: 1691985287}
   - component: {fileID: 1691985286}
   - component: {fileID: 1691985288}
+  - component: {fileID: 1691985289}
   m_Layer: 5
   m_Name: Cube4
   m_TagString: Untagged
@@ -15532,6 +15785,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1691985289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691985282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1702471479
 GameObject:
   m_ObjectHideFlags: 0
@@ -17007,6 +17277,7 @@ GameObject:
   - component: {fileID: 1825397580}
   - component: {fileID: 1825397579}
   - component: {fileID: 1825397581}
+  - component: {fileID: 1825397582}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -17112,6 +17383,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1825397582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825397575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1827981974
 GameObject:
   m_ObjectHideFlags: 0
@@ -18549,6 +18837,7 @@ GameObject:
   - component: {fileID: 1934056025}
   - component: {fileID: 1934056024}
   - component: {fileID: 1934056026}
+  - component: {fileID: 1934056027}
   m_Layer: 5
   m_Name: Cube2
   m_TagString: Untagged
@@ -18654,6 +18943,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1934056027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934056020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1940158005
 GameObject:
   m_ObjectHideFlags: 0
@@ -18666,6 +18972,7 @@ GameObject:
   - component: {fileID: 1940158010}
   - component: {fileID: 1940158009}
   - component: {fileID: 1940158007}
+  - component: {fileID: 1940158011}
   m_Layer: 5
   m_Name: Cube1
   m_TagString: Untagged
@@ -18771,6 +19078,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940158005}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1940158011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940158005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1976760098
 GameObject:
   m_ObjectHideFlags: 0
@@ -18955,6 +19279,7 @@ GameObject:
   - component: {fileID: 2018448340}
   - component: {fileID: 2018448339}
   - component: {fileID: 2018448337}
+  - component: {fileID: 2018448341}
   m_Layer: 5
   m_Name: Cube5
   m_TagString: Untagged
@@ -19060,6 +19385,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018448335}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2018448341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018448335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2033397739
 GameObject:
   m_ObjectHideFlags: 0
@@ -19593,6 +19935,7 @@ GameObject:
   - component: {fileID: 2086747648}
   - component: {fileID: 2086747647}
   - component: {fileID: 2086747649}
+  - component: {fileID: 2086747650}
   m_Layer: 5
   m_Name: Cube2
   m_TagString: Untagged
@@ -19698,6 +20041,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2086747650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086747643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2088549072
 GameObject:
   m_ObjectHideFlags: 0
@@ -19845,6 +20205,7 @@ GameObject:
   - component: {fileID: 2125352655}
   - component: {fileID: 2125352654}
   - component: {fileID: 2125352652}
+  - component: {fileID: 2125352656}
   m_Layer: 5
   m_Name: Cube2
   m_TagString: Untagged
@@ -19950,6 +20311,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125352650}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2125352656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125352650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 3000
+  throwDamping: 0.99
+  stopThreshold: 100
+  isThrowing: 0
+  throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2134162119
 GameObject:
   m_ObjectHideFlags: 0

@@ -172,20 +172,18 @@ public class TestEventManager : MonoBehaviour
     //다이스 롤 버튼
     public void OnClickDiceRoll()
     {
-        Debug.Log("eeeee");
-        
         if(dicePack)
         {
-            //foreach(GameObject var in )
-            for (int i = 0 ; i < dicePack.transform.childCount ; i++ )
+            for (int i = 0; i < dicePack.transform.childCount; i++)
             {
-                StartCoroutine(eventCanvas.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
+                StartCoroutine(dicePack.transform.GetChild(i).gameObject.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
             }
 
-            //버튼 바꾸기
+            // 버튼 동작 변경
             testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "다음";
             testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
             testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
+            //StartCoroutine(RotateDiceAndEvaluateResults());
         }
 
         else
@@ -193,6 +191,24 @@ public class TestEventManager : MonoBehaviour
             Debug.Log("dicePack Null Error");
         }
     }
+    
+    IEnumerator RotateDiceAndEvaluateResults()
+    {
+        for (int i = 0; i < dicePack.transform.childCount; i++)
+        {
+            yield return StartCoroutine(eventCanvas.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
+        }
+
+        // 버튼 동작 변경
+        testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "다음";
+        testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+        testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
+    }
+
+
+
+
+
 
     //결과실행 버튼
     public void OnClickExecuteEventResult()
@@ -208,9 +224,9 @@ public class TestEventManager : MonoBehaviour
 
         //Show
         eventIMG.sprite = currentTestEventData.results[resultIndex].resultSprite;
-        eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
-        testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
-
+        eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
+        eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
+        testInfoText.GetComponent<TMP_Text>().text = "";
 
         //버튼 바꾸기
         testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";
