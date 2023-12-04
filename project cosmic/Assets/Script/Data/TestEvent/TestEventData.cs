@@ -40,7 +40,7 @@ public class ResultsData
 [System.Serializable]
 public class EventOffset
 {
-    public OffsetType offsetType;
+    public OutcomeOffsetType offsetType;
 
     public float offset;
 }
@@ -53,15 +53,26 @@ public enum TestType  //~~test!
 }
 
 [System.Serializable]
-public enum OffsetType
+public enum OutcomeOffsetType
 {
+    // Status
+    PhysicalOffset,
+    MentalOffset,
+    CharmOffset,
+    RandomStatOffset,
+
+
     // HP
     MaxHPOffset,
-    HpFullHeal,
+    HpOffset,
 
-    // Sanity
-    MaxSanityOffset,
-    SanityOffset,
+    //AP
+    APOffset,
+    MaxAPOffset,
+
+
+    // Coin
+    CoinOffset,
 
     // Damage
     PlusPlayerDamageOffset,
@@ -71,26 +82,12 @@ public enum OffsetType
     AttackDelay,
 
     // Move speed
-    SpeedOffset,
-
-    // Status
-    PhysicalOffset,
-    WillPowerOffset,
-    KnowledgeOffset,
-    CharmOffset,
-    RandomStatOffset,
-
-    // System (Action Stack, Maximum Action Stack)
-    ActionStackOffset,
-    ActionLimitOffset,
-
-    // Coin
-    CoinOffset,
+    MoveSpeedOffset,
 
     // Vision
     CameraSizeOffset,
 
-    // Reward
+    // Reward etc
     ArtifactID,
     ActionID,
     FuncID

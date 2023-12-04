@@ -895,9 +895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &70464345
@@ -1030,9 +1027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &92885185
@@ -1694,9 +1688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &200139204
@@ -3872,9 +3863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &364330033
@@ -4899,9 +4887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &500607645
@@ -6106,9 +6091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &586387975
@@ -6619,9 +6601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &603444815
@@ -6754,9 +6733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &607754157
@@ -7046,9 +7022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &621178752
@@ -7945,9 +7918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &743198299
@@ -9354,9 +9324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &854922772
@@ -9672,9 +9639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &960075639
@@ -10310,9 +10274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1042935209
@@ -11845,7 +11806,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20.13
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12904,9 +12865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1308490314
@@ -14687,9 +14645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1470643856
@@ -15797,9 +15752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1702471479
@@ -17395,9 +17347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1827981974
@@ -18955,9 +18904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1940158005
@@ -19090,9 +19036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1976760098
@@ -19397,9 +19340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2033397739
@@ -20053,9 +19993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2088549072
@@ -20323,9 +20260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dced36fe02dcf394381eef56519a1e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 3000
-  throwDamping: 0.99
-  stopThreshold: 100
   isThrowing: 0
   throwDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2134162119

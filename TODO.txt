@@ -1,16 +1,30 @@
+shift alt f
+
 -----------------
 Todo
 
 1. land dialogue sys
+
 2. Event Sys
-	2.1 Dice Roll
-	2.2 Status kind adjust
-3. UI rearange
+	.1 Dice Roll
+	.2 Status kind adjust
+	.3 actual offset apply
+	.4 add events
+
+3. UI 
+	.1 재배치
+	.2 실제 수치 적용
+	.3 추가 연출
+
 4. reward sys
+	.1 선택창
+	.2 actual offset apply
+	.3 얻은거 표시할 UI
+
+
 5. enemy pattern
 
-
-n. setting, UI연출
+n. setting
 
 ----------------
 

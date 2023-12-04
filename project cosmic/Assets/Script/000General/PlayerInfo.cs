@@ -16,31 +16,30 @@ public class PlayerInfo : MonoBehaviour
     public static int hp;
 
     //AP (Action Point)
-    public static int maxActionPoint;
-    public static int maxActionPointOffset;
-    public static int actionPoint;
+    public static int maxAP;
+    public static int maxAPOffset;
+    public static int ap;
 
     //Money
     public static int coin;         //돈
 
     //데미지
     public static float playerDMG;
-    public static float dmgOffset;
-    public static float dmgMultifly;
+    public static float dmgPlusOffset;
+    public static float dmgMultiflyOffset;
 
-    //공속
-    public static float playerAttackDelay;
-    public static float delayMultifly;
+    //공속 -> 공격 딜레이 계산
     public static float attackSpeed;    //0~5
+    public static float playerAttackDelay;
 
 
     //이속
     public static float playerMoveSpeed;
-    public static float playerCoolTime;
-
+    public static float playerDashCoolTime;
     public static float playerDashSpeed;
 
-
+    //시야
+    public static float playerVisionSize;//20 default
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
@@ -62,29 +61,31 @@ public class PlayerInfo : MonoBehaviour
         hp = maxHp;
 
         //action point
-        maxActionPoint = mental;
-        actionPoint = maxActionPoint;
+        maxAP = mental;
+        ap = maxAP;
 
-        //action Point
-        maxActionPoint = 1;
+        maxAPOffset = 0;
 
         //coin
         coin = 0;
 
         //DMG
-        dmgOffset = 0;
-        dmgMultifly = 1;
+        dmgPlusOffset = 0;
+        dmgMultiflyOffset = 1;
         DmgCal();
 
         //attack delay
+        attackSpeed = 1;
         playerAttackDelay = 1;
-        delayMultifly = 1;
         AttackDelayCalc();
 
         //move speed
         playerMoveSpeed = 10;
-        playerCoolTime = 0.3f;
+        playerDashCoolTime = 0.3f;
         playerDashSpeed = 30;
+
+        //etc
+        playerVisionSize = 20;
 
     }
 
@@ -103,6 +104,8 @@ public class PlayerInfo : MonoBehaviour
         {
             physical = changedPhisical;
         }
+
+        MaxHpCalc();
     }
     public void MentalModify(int modifier)
     {
@@ -117,6 +120,8 @@ public class PlayerInfo : MonoBehaviour
         {
             mental = changedWillPower;
         }
+
+        MaxAPCalc();
     }
     public void CharmModify(int modifier)
     {
@@ -138,7 +143,16 @@ public class PlayerInfo : MonoBehaviour
     //hp
     public void MaxHpCalc()//최대 hp 변경 (+-)
     {
-        maxHp = (physical * 10) + maxHpOffset;
+        maxHp = physical + maxHpOffset;
+    }
+
+    public void MaxHPOffsetModify(int offset)
+    {
+        int changedMaxHPOffset = maxAPOffset + offset;
+        ap = changedMaxHPOffset;
+
+
+        MaxHpCalc();
     }
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
@@ -159,34 +173,81 @@ public class PlayerInfo : MonoBehaviour
     }
 
     //action point
-    public void MaxActionPointCalc()
+    public void MaxAPCalc()
     {
-        maxActionPoint = mental + maxActionPointOffset;
+        maxAP = mental + maxAPOffset;
     }
-    public void ActionPointModify(int modifier)
-    {
-        int changedActionPoint = actionPoint + modifier;
 
-        if (changedActionPoint <= 0)
+    public void MaxAPOffsetModify(int offset)
+    {
+        int changedMaxAPOffset = maxAPOffset + offset;
+
+        if (changedMaxAPOffset <= 0)
         {
-            actionPoint = 0;
+            ap = 0;
         }
         else
         {
-            actionPoint = changedActionPoint;
+            ap = changedMaxAPOffset;
+        }
+        
+
+        MaxAPCalc();
+    }
+
+
+    public void APModify(int offset)
+    {
+        int changedActionPoint = ap + offset;
+
+        if (changedActionPoint <= 0)
+        {
+            ap = 0;
+        }
+        else
+        {
+            ap = changedActionPoint;
         }
     }
 
     //Damage
-    void DmgCal()
+    public void DMGPlusModify(float offset)
     {
-        if (dmgOffset <= 0)
-            dmgOffset = 0;
+        float changedDmgPlusOffset = dmgPlusOffset + offset;
 
-        float calculatedDMG = (2 * Mathf.Sqrt((float)((dmgOffset * 1.2) + 1))) * dmgMultifly;
+        if (changedDmgPlusOffset <= 0)
+        {
+            dmgPlusOffset = 0;
+        }
+        else
+        {
+            dmgPlusOffset = changedDmgPlusOffset;
+        }
+
+
+        DmgCal();
+    }
+    public void DMGMultiflyModify(float offset)
+    {
+        float changedDmgOffset = dmgMultiflyOffset * offset;
+
+        dmgMultiflyOffset = changedDmgOffset;
+
+
+        DmgCal();
+    }
+
+    public void DmgCal()
+    {
+        if (dmgPlusOffset <= 0)
+            dmgPlusOffset = 0;
+
+        float calculatedDMG = (2 * Mathf.Sqrt((float)((dmgPlusOffset * 1.2) + 1))) * dmgMultiflyOffset;
 
         playerDMG = MathF.Round(calculatedDMG, 2);
     }
+
+
     /*
     void DmgDebug()
     {
@@ -200,30 +261,80 @@ public class PlayerInfo : MonoBehaviour
 
 
     //attack delay
-    void AttackDelayCalc()
+    public void AttacSpeedModify(float offset)
     {
-        //limit
-        if (attackSpeed < 0)
-            attackSpeed = 0;
-        else if (attackSpeed >= 5)
-            attackSpeed = 5;
+        float changedAttackSpeed = attackSpeed + offset;
 
-
-        float result = (float) (16 - (5 * Mathf.Sqrt((float)(attackSpeed * 1.3) + 1))  ) / 10;
-
-        playerAttackDelay = result * delayMultifly;
-    }
-    /*
-    void DelayDebug()
-    {
-        for (float i = 1; i <= 5; i = i + 0.1f)
+        if(changedAttackSpeed <= 0)
         {
-            float result = (float) (16 - (5 * Mathf.Sqrt((float)(i * 1.3) + 1)))/10;
-            Debug.Log("i = " + i + "    result = " + result);
+            attackSpeed = 0;
+        }
+        else if(changedAttackSpeed > 5.0f)
+        {
+            attackSpeed = 5;
+        }
+        else
+        {
+            attackSpeed = changedAttackSpeed;
+        }
 
-            //Mathf.Round((float)damage, 2))
+        AttackDelayCalc();
+    }
+
+    public void AttackDelayCalc()
+    {
+        playerAttackDelay = (float)(16 - (5 * Mathf.Sqrt((float)(attackSpeed * 1.3) + 1))) / 10;
+    }
+
+
+    //MoveSpeed
+    public void MoveSpeedModify(float offset)
+    {
+        float changedMoveSpeed = offset + playerMoveSpeed;
+
+        if(changedMoveSpeed < 1)
+        {
+            playerMoveSpeed = 1;
+        }
+        else
+        {
+            playerMoveSpeed = changedMoveSpeed;
         }
     }
-    */
+
+    //money
+    public void CoinModify(int offset)
+    {
+        int changedCoin = coin + offset;
+
+        if(changedCoin <= 0)
+        {
+            coin = 0;
+        }
+
+        else
+        {
+            coin = changedCoin;
+        }
+    }
+
+    public void VisionSizeModify(float offset)
+    {
+        float changedPlayerVsionSize = playerVisionSize + offset;
+
+        if(changedPlayerVsionSize <= 10)
+        {
+            playerVisionSize = 10;
+        }
+
+        else
+        {
+            playerVisionSize = changedPlayerVsionSize;
+        }
+
+
+        //
+        GameObject.Find("MainCamara").GetComponent<Camera>().orthographicSize = playerVisionSize;
+    }
 
 }

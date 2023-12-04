@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using Unity.VisualScripting;
-using Random=UnityEngine.Random;
+using Random = UnityEngine.Random;
 using Unity.PlasticSCM.Editor.WebApi;
 
 public class TestEventManager : MonoBehaviour
 {
+    GameObject gameManager;
     GameObject eventCanvas;
     GameObject testPopup;
     Image eventIMG;
@@ -27,7 +28,7 @@ public class TestEventManager : MonoBehaviour
     public static bool isTesting;
 
     public static bool isCurrentResultSuccess;
-    
+
     TestEventData currentTestEventData;
 
     public List<TestEventData> Stage1FixedEventList = new List<TestEventData>();
@@ -40,7 +41,7 @@ public class TestEventManager : MonoBehaviour
     }
 
     /////////////////////
-    
+
 
 
     //랜덤이벤트 시작
@@ -49,8 +50,8 @@ public class TestEventManager : MonoBehaviour
         //object initialize
         eventCanvas = GameObject.Find("EventCanvas");
         testPopup = eventCanvas.gameObject.transform.Find("TestPopup").gameObject;
-        
-        eventIMG= testPopup.gameObject.transform.Find("EventIMG").gameObject.GetComponent<Image>();
+
+        eventIMG = testPopup.gameObject.transform.Find("EventIMG").gameObject.GetComponent<Image>();
         eventTitle = testPopup.gameObject.transform.Find("EventTitle").gameObject;
         eventText = testPopup.gameObject.transform.Find("EventText").gameObject;
 
@@ -70,14 +71,14 @@ public class TestEventManager : MonoBehaviour
         eventIMG.sprite = currentTestEventData.testSprite;
         eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.testName;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.testText;
-        
+
         testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.testTypeS;
 
         ////dice pack 골라서 할당하고 활성화
         GetDicePack();
 
         //dicePack
-        testBtn.GetComponent<Button>().onClick.AddListener(OnClickDiceRoll);        
+        testBtn.GetComponent<Button>().onClick.AddListener(OnClickDiceRoll);
     }
 
     //랜덤 이벤트 하나 뽑기
@@ -87,15 +88,15 @@ public class TestEventManager : MonoBehaviour
         bool eventPicked = false;
 
 
-        switch(_currentStage)
+        switch (_currentStage)
         {
             //stage 1 Random Event
             case 1:
-                while(!eventPicked)
+                while (!eventPicked)
                 {
                     eventIndex = Random.Range(0, Stage1RandomEventList.Count);
 
-                    if(Stage1RandomEventList[eventIndex].isTested == false)
+                    if (Stage1RandomEventList[eventIndex].isTested == false)
                     {
                         Stage1RandomEventList[eventIndex].isTested = true;
                         eventPicked = true;
@@ -106,7 +107,7 @@ public class TestEventManager : MonoBehaviour
 
             //?
             default:
-                Debug.Log("Stage error : stage"+_currentStage);
+                Debug.Log("Stage error : stage" + _currentStage);
                 return Stage1RandomEventList[eventIndex];
         }
     }
@@ -120,43 +121,43 @@ public class TestEventManager : MonoBehaviour
         //TestType에 따라 계산
 
         //physical
-        if(currentTestEventData.testType == TestType.physical)
+        if (currentTestEventData.testType == TestType.physical)
         {
             diceCount = PlayerInfo.physical + currentTestEventData.testOffset;
         }
         //mental
-        else if(currentTestEventData.testType == TestType.mental)
+        else if (currentTestEventData.testType == TestType.mental)
         {
             diceCount = PlayerInfo.mental + currentTestEventData.testOffset;
         }
         //charm
-        else if(currentTestEventData.testType == TestType.charm)
+        else if (currentTestEventData.testType == TestType.charm)
         {
             diceCount = PlayerInfo.charm + currentTestEventData.testOffset;
         }
 
         //계산된 다이스 개수에 따라 dice pack 활성화
-        if(diceCount == 1)
+        if (diceCount == 1)
         {
             dicePack = testDicePopup.transform.Find("Pack1").gameObject;
         }
-        else if(diceCount == 2)
+        else if (diceCount == 2)
         {
             dicePack = testDicePopup.transform.Find("Pack2").gameObject;
         }
-        else if(diceCount == 3)
+        else if (diceCount == 3)
         {
             dicePack = testDicePopup.transform.Find("Pack3").gameObject;
         }
-        else if(diceCount == 4)
+        else if (diceCount == 4)
         {
             dicePack = testDicePopup.transform.Find("Pack4").gameObject;
         }
-        else if(diceCount == 5)
+        else if (diceCount == 5)
         {
             dicePack = testDicePopup.transform.Find("Pack5").gameObject;
         }
-        else if(diceCount == 6)
+        else if (diceCount == 6)
         {
             dicePack = testDicePopup.transform.Find("Pack6").gameObject;
         }
@@ -167,12 +168,12 @@ public class TestEventManager : MonoBehaviour
 
         dicePack.SetActive(true);
     }
-    
+
 
     //다이스 롤 버튼
     public void OnClickDiceRoll()
     {
-        if(dicePack)
+        if (dicePack)
         {
             for (int i = 0; i < dicePack.transform.childCount; i++)
             {
@@ -200,10 +201,8 @@ public class TestEventManager : MonoBehaviour
     public void OnClickExecuteEventResult()
     {
         int resultIndex;
-
-        Debug.Log("asd");
         //show
-        if(isCurrentResultSuccess)
+        if (isCurrentResultSuccess)
             resultIndex = 0;
         else
             resultIndex = 1;
@@ -213,6 +212,12 @@ public class TestEventManager : MonoBehaviour
         eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
         testInfoText.GetComponent<TMP_Text>().text = "";
+
+
+        //offset apply
+
+
+
 
         //버튼 바꾸기
         testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";
@@ -224,7 +229,7 @@ public class TestEventManager : MonoBehaviour
     public void OnClickEndEvent()
     {
         //쓴주사위 눈 ?로 돌려놓고 끄기
-        for (int i = 0 ; i < dicePack.transform.childCount ; i++ )
+        for (int i = 0; i < dicePack.transform.childCount; i++)
         {
             dicePack.transform.GetChild(i).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "?";
         }
@@ -243,18 +248,133 @@ public class TestEventManager : MonoBehaviour
 
 
 
-    //퍼사드의 제물들
+    //.
+    public void ApplyResultOffsets(int _index)
+    {
+        PlayerInfo playerInfo = this.gameObject.GetComponent<PlayerInfo>();
+        //GameManager gameManagerScript = this.gameManager.GetComponent<GameManager>();
+
+        for (int i = 0; i < currentTestEventData.results[_index].eventOffset.Length; i++)
+        {
+            #region "status modify"
+            //physical status
+            if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.PhysicalOffset)
+            {
+                playerInfo.PhysicalModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            //mental status
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MentalOffset)
+            {
+                playerInfo.MentalModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            //charm status
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CharmOffset)
+            {
+                playerInfo.CharmModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            //random status
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.RandomStatOffset)
+            {
+                //playerInfo.random( (int)currentTestEventData.results[_index].eventOffset[i].offset );
+                Debug.Log("Player Info - randomstatusModify");
+            }
+            #endregion
+
+            #region "HP AP"
+            //hp
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.HpOffset)
+            {
+                playerInfo.HpModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            //max hp
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MaxHPOffset)
+            {
+                playerInfo.MaxHPOffsetModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+
+            //ap
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.APOffset)
+            {
+                playerInfo.APModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            //max ap
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MaxAPOffset)
+            {
+                playerInfo.MaxAPOffsetModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            #endregion
+
+
+            #region "Ingame Control related"
+            // Damage (plus offset)
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.PlusPlayerDamageOffset)
+            {
+                playerInfo.DMGPlusModify(currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            // Damage (multifly offset)
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MultiplyPlayerDamageOffset)
+            {
+                playerInfo.DMGMultiflyModify(currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+
+            // Attack delay (speed)
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.AttackDelay)
+            {
+                playerInfo.AttacSpeedModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+
+            //MoveSpeed
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MoveSpeedOffset)
+            {
+                playerInfo.MoveSpeedModify(currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+            #endregion
+
+
+            //Coin
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CoinOffset)
+            {
+                playerInfo.CoinModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
+            }
+
+            //vision
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CameraSizeOffset)
+            {
+                playerInfo.VisionSizeModify( currentTestEventData.results[_index].eventOffset[i].offset );
+            }
+
+
+
+            //Artifact reward
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.ArtifactID)
+            {
+
+            }
+
+            //Action reward
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.ActionID)
+            {
+
+            }
+
+            //Func reward
+            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.FuncID)
+            {
+
+            }
+        }
+    }
 
 
     //랜덤 이벤트 사용기록 소거 (스테이지 시작시)
     public void InitializeRandomEventIsTested(int _currentStage)
     {
-        switch(_currentStage)
+        switch (_currentStage)
         {
             //stage 1 Random Event
             case 1:
                 //stage 1
-                foreach(var i in Stage1RandomEventList)
+                foreach (var i in Stage1RandomEventList)
                 {
                     i.isTested = false;
                 }
@@ -263,9 +383,15 @@ public class TestEventManager : MonoBehaviour
 
             //?
             default:
-                Debug.Log("Stage error : stage"+_currentStage);
+                Debug.Log("Stage error : stage" + _currentStage);
                 break;
         }
 
+    }
+
+    //보통 랜덤 이벤트 사용 기록 소거 (게임 처음부터 다시 시작시)
+    public void InitializeCommonEventIsTested()
+    {
+        //CommonEventList
     }
 }

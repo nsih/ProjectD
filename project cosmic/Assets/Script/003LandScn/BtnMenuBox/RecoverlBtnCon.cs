@@ -63,7 +63,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //
     public void OnclickRecover()
     {
-        if(GameManager.isEventEnd && PlayerInfo.actionPoint != 0)
+        if(GameManager.isEventEnd && PlayerInfo.ap != 0)
         {
             OpenPopup();
         
@@ -73,7 +73,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void ShowButtonImage()
     {
-        if(GameManager.isEventEnd && PlayerInfo.actionPoint != 0)
+        if(GameManager.isEventEnd && PlayerInfo.ap != 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "메뉴";
@@ -89,7 +89,7 @@ public class RecoverBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /////////////////
     public void OnClickYes()
     {
-        gameManager.GetComponent<PlayerInfo>().ActionPointModify(-1);
+        gameManager.GetComponent<PlayerInfo>().APModify(-1);
 
         gameManager.GetComponent<PlayerInfo>().HpModify(1);
 

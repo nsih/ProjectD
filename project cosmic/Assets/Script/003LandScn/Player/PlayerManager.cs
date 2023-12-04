@@ -144,7 +144,7 @@ public class PlayerManager : MonoBehaviour
 
     void Dash()
     {
-        if (!isDash && Time.time - lastDashTime >= PlayerInfo.playerCoolTime)
+        if (!isDash && Time.time - lastDashTime >= PlayerInfo.playerDashCoolTime)
         {
             Vector3 direction = Vector3.zero;
 

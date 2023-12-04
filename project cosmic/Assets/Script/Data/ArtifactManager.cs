@@ -217,13 +217,13 @@ public class ArtifactManager : MonoBehaviour
         //max action point
         if (artifactData.maxActionPointOffset != 0)
         {
-            PlayerInfo.maxActionPointOffset = PlayerInfo.maxActionPointOffset + artifactData.maxActionPointOffset;
-            gameObject.GetComponent<PlayerInfo>().MaxActionPointCalc();
+            PlayerInfo.maxAPOffset = PlayerInfo.maxAPOffset + artifactData.maxActionPointOffset;
+            gameObject.GetComponent<PlayerInfo>().MaxAPCalc();
         }
         //action point
         if (artifactData.sanityOffset != 0)
         {
-            gameObject.GetComponent<PlayerInfo>().ActionPointModify(artifactData.actionPointOffset);
+            gameObject.GetComponent<PlayerInfo>().APModify(artifactData.actionPointOffset);
         }
 
         //coin
