@@ -7,9 +7,9 @@ using TMPro;
 
 public class CubeRotation : MonoBehaviour
 {
-    public float throwForce = 3000;
-    public float throwDamping = 0.99f; // 회전 감속 계수
-    public float stopThreshold = 100.0f; // 회전 멈춤 기준값
+    float throwForce = 3000;
+    float throwDamping = 0.99f; // 회전 감속 계수
+    float stopThreshold = 100.0f; // 회전 멈춤 기준값
 
     public bool isThrowing = false;
     public Vector3 throwDirection;
@@ -74,19 +74,21 @@ public class CubeRotation : MonoBehaviour
 
                 isThrowing = false;
             }
+
             yield return null;
         }
     }
 
     IEnumerator ConvergeRotation(GameObject cube)
     {
-        float convergeSpeed = 3f; // 조절 가능한 회전 수렴 속도
+        float convergeSpeed = 5f; // 조절 가능한 회전 수렴 속도
 
-        while (cube.transform.rotation != Quaternion.identity)
+        while (Quaternion.Angle(cube.transform.rotation, Quaternion.identity) > 0.01f)
         {
             // 현재 회전 각도를 점진적으로 0, 0, 0으로 수렴시킴
-            cube.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
+            cube.gameObject.transform.rotation = Quaternion.Slerp(cube.transform.rotation, Quaternion.identity, convergeSpeed * Time.deltaTime);
+            yield return null;
         }
-        yield return null;
+        cube.transform.rotation = Quaternion.identity;
     }
 }

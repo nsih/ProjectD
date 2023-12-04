@@ -191,20 +191,6 @@ public class TestEventManager : MonoBehaviour
             Debug.Log("dicePack Null Error");
         }
     }
-    
-    IEnumerator RotateDiceAndEvaluateResults()
-    {
-        for (int i = 0; i < dicePack.transform.childCount; i++)
-        {
-            yield return StartCoroutine(eventCanvas.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
-        }
-
-        // 버튼 동작 변경
-        testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "다음";
-        testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
-        testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
-    }
-
 
 
 
