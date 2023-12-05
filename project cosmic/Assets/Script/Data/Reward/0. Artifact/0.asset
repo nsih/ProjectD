@@ -13,26 +13,9 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   artifactID: 0
+  artifactSprite: {fileID: 0}
   artifactName: "\uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
-  effectText: []
+  eventOffset: []
+  detailText: 
   commentText: "\uBCA0\uC2A4\uD2B8 \uC140\uB7EC\uC5D0\uB294 \uB2E4 \uC774\uC720\uAC00
     \uC788\uB2E4"
-  artifactSprite: {fileID: 0}
-  isAttackReward: 0
-  attackID: 0
-  isActionReward: 0
-  actionID: 1
-  isCompanionReward: 0
-  companionID: 0
-  maxHPOffset: -10
-  hPOffset: 0
-  mentalOffset: -10
-  speedOffset: 0
-  physicalOffset: 0
-  willPowerOffset: 0
-  knowledgeOffset: 0
-  charmOffset: 0
-  actionStackOffset: 0
-  actionLimitOffset: 0
-  coinOffset: 0
-  cameraSizeOffset: 0

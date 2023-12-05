@@ -8,11 +8,14 @@ public class ArtifactData : ScriptableObject
 {
     //
     public int artifactID = 0;
-    public string artifactName = "Artifact Name";
     public Sprite artifactSprite;
+    public string artifactName = "Artifact Name";
 
-    public EffectNode[] effectText;
+    public OutcomeOffset[] eventOffset;
 
+
+    //얻을 유물 코멘트
+    public string detailText;
 
     //얻은 유물 코멘트
     public string commentText = "Comment";
