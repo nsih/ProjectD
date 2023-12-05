@@ -215,7 +215,7 @@ public class TestEventManager : MonoBehaviour
 
 
         //offset apply
-
+        ApplyResultOffsets(resultIndex);
 
 
 
@@ -304,7 +304,6 @@ public class TestEventManager : MonoBehaviour
             }
             #endregion
 
-
             #region "Ingame Control related"
             // Damage (plus offset)
             else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.PlusPlayerDamageOffset)
@@ -342,8 +341,6 @@ public class TestEventManager : MonoBehaviour
             {
                 playerInfo.VisionSizeModify( currentTestEventData.results[_index].eventOffset[i].offset );
             }
-
-
 
             //Artifact reward
             else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.ArtifactID)
