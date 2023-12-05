@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.ComponentModel;
+
+
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -13,12 +16,12 @@ public class PlayerInfo : MonoBehaviour
     //HP (Health Point)
     public static int maxHp;
     public static int maxHpOffset;
-    public static int hp;
+    public static int currentHP;
 
     //AP (Action Point)
     public static int maxAP;
     public static int maxAPOffset;
-    public static int ap;
+    public static int currentAP;
 
     //Money
     public static int coin;         //돈
@@ -44,13 +47,17 @@ public class PlayerInfo : MonoBehaviour
     //etc
     public static float invincibilityTime; //피격시 무적시간
 
-    void Start()
-    {
-        PlayerStatusInitialize();
-    }
 
-    void PlayerStatusInitialize() //처음 게임 시작하거나 뒤지면 호출
+
+    //
+    GameObject landUICanvas;
+
+
+
+    public void PlayerStatusInitialize() //Land SCN 진입시 호출
     {
+        landUICanvas = GameObject.Find("LandUICanvas");
+
         //stat
         physical = 2;
         mental = 2;
@@ -58,11 +65,11 @@ public class PlayerInfo : MonoBehaviour
 
         //hp
         MaxHpCalc();
-        hp = maxHp;
+        currentHP = maxHp;
 
         //action point
         maxAP = mental;
-        ap = maxAP;
+        currentAP = maxAP;
 
         maxAPOffset = 0;
 
@@ -87,6 +94,12 @@ public class PlayerInfo : MonoBehaviour
         //etc
         playerVisionSize = 20;
 
+
+        //UI
+        landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
+        landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
+        landUICanvas.GetComponent<LandUICon>().UpdateCoinText();
     }
 
 
@@ -106,6 +119,7 @@ public class PlayerInfo : MonoBehaviour
         }
 
         MaxHpCalc();
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
     }
     public void MentalModify(int modifier)
     {
@@ -122,6 +136,8 @@ public class PlayerInfo : MonoBehaviour
         }
 
         MaxAPCalc();
+
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
     }
     public void CharmModify(int modifier)
     {
@@ -136,6 +152,9 @@ public class PlayerInfo : MonoBehaviour
         {
             charm = changedCharm;
         }
+
+        
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
     }
 
 
@@ -144,19 +163,23 @@ public class PlayerInfo : MonoBehaviour
     public void MaxHpCalc()//최대 hp 변경 (+-)
     {
         maxHp = physical + maxHpOffset;
+
+        landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
     }
 
     public void MaxHPOffsetModify(int offset)
     {
         int changedMaxHPOffset = maxAPOffset + offset;
-        ap = changedMaxHPOffset;
+        currentAP = changedMaxHPOffset;
 
 
         MaxHpCalc();
+
+        landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
     }
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
-        int changedHp = hp + offset;
+        int changedHp = currentHP + offset;
 
         if (changedHp <= 0)
         {
@@ -164,18 +187,22 @@ public class PlayerInfo : MonoBehaviour
         }
         else if (changedHp >= maxHp)
         {
-            hp = maxHp;
+            currentHP = maxHp;
         }
         else
         {
-            hp = changedHp;
+            currentHP = changedHp;
         }
+
+        landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
     }
 
     //action point
     public void MaxAPCalc()
     {
         maxAP = mental + maxAPOffset;
+
+        landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
     }
 
     public void MaxAPOffsetModify(int offset)
@@ -184,30 +211,33 @@ public class PlayerInfo : MonoBehaviour
 
         if (changedMaxAPOffset <= 0)
         {
-            ap = 0;
+            currentAP = 0;
         }
         else
         {
-            ap = changedMaxAPOffset;
+            currentAP = changedMaxAPOffset;
         }
         
 
         MaxAPCalc();
+        landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
     }
 
 
     public void APModify(int offset)
     {
-        int changedActionPoint = ap + offset;
+        int changedActionPoint = currentAP + offset;
 
         if (changedActionPoint <= 0)
         {
-            ap = 0;
+            currentAP = 0;
         }
         else
         {
-            ap = changedActionPoint;
+            currentAP = changedActionPoint;
         }
+
+        landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
     }
 
     //Damage
@@ -316,6 +346,8 @@ public class PlayerInfo : MonoBehaviour
         {
             coin = changedCoin;
         }
+
+        landUICanvas.GetComponent<LandUICon>().UpdateCoinText();
     }
 
     public void VisionSizeModify(float offset)

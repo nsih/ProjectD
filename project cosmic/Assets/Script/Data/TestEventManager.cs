@@ -212,12 +212,9 @@ public class TestEventManager : MonoBehaviour
         eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
         testInfoText.GetComponent<TMP_Text>().text = "";
-
-
+        
         //offset apply
         ApplyResultOffsets(resultIndex);
-
-
 
         //버튼 바꾸기
         testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";

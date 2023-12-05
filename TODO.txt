@@ -3,18 +3,42 @@ shift alt f
 -----------------
 Todo
 
+
+2. Event Sys
+	.4 add events
+
+3. UI
+	.3 추가 연출
+
+4. reward sys
+	.0 ArtifactData 수정 (event 참고)
+	.1 UI
+	.2 actual offset apply
+	.3 얻은거 보여주는 UI
+
+
+5. enemy pattern
+
+n. setting option, cutscenes
+
+
+
+----------------
+Done
+
+
 1. land dialogue sys
 
 2. Event Sys
 	.1 Dice Roll
 	.2 Status kind adjust
 	.3 actual offset apply
-	.4 add events
 
-3. UI 
+
+3. UI
 	.1 재배치
 	.2 실제 수치 적용
-	.3 추가 연출
+
 
 4. reward sys
 	.1 선택창
@@ -22,9 +46,6 @@ Todo
 	.3 얻은거 표시할 UI
 
 
-5. enemy pattern
-
-n. setting
 
 ----------------
 

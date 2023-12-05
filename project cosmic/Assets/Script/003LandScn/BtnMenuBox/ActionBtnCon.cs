@@ -63,7 +63,7 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void ShowButtonImage()
     {
-        if(GameManager.isEventEnd && PlayerInfo.ap > 0)
+        if(GameManager.isEventEnd && PlayerInfo.currentAP > 0)
         {
             ButtonImage.GetComponent<Image>().color = Color.white;
             ButtonText.GetComponent<TextMeshProUGUI>().text = "행동";

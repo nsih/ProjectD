@@ -34,11 +34,14 @@ public class ResultsData
 
     public Sprite resultSprite;
 
-    public EventOffset[] eventOffset;
+    public OutcomeOffset[] eventOffset;
 }
 
+
+////////////////////////////////////
+
 [System.Serializable]
-public class EventOffset
+public class OutcomeOffset
 {
     public OutcomeOffsetType offsetType;
 
@@ -90,6 +93,8 @@ public enum OutcomeOffsetType
     // Reward etc
     ArtifactID,
     ActionID,
-    FuncID
+    FuncID,
+    AttackID,
+    CompanionID,
 }
 

@@ -83,9 +83,13 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     void OnSceneLoaded(AsyncOperation operation) {
-    if (operation.isDone) {
+    if (operation.isDone) 
+    {
         // ScnLand 씬 로드 후 OpenNewStage 함수를 호출
         gameManager.GetComponent<GameManager>().OpenNewStage();
+
+        gameManager.GetComponent<PlayerInfo>().PlayerStatusInitialize();
+        
     }
 }
 

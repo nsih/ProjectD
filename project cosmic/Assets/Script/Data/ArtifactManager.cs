@@ -72,7 +72,7 @@ public class ArtifactManager : MonoBehaviour
         else
             clickedArtifact = rewardArtifactList[1];
 
-        ApplayArtifact(clickedArtifact);
+        //ApplayArtifact(clickedArtifact);
         ShowArtifactSum(clickedArtifact);
 
         ClosePopup();
@@ -166,7 +166,7 @@ public class ArtifactManager : MonoBehaviour
 
         return missingArtifacts.Take(2).ToList();
     }
-
+    /*
     void ApplayArtifact(ArtifactData artifactData)
     {
         //공격 변경
@@ -254,7 +254,7 @@ public class ArtifactManager : MonoBehaviour
         //플레이어 유물 추가
         playerArtifactList.Add(artifactData);
     }
-
+    */
     #endregion
 
     #region "Mine List"
