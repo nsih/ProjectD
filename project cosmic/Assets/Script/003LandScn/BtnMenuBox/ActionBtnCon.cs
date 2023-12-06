@@ -41,7 +41,7 @@ public class ActionBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void Update ()
     {
-        ShowButtonImage();
+        //ShowButtonImage();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
