@@ -3,18 +3,18 @@ shift alt f
 -----------------
 Todo
 
+1. reward sys
+	.0 ArtifactData 수정 (event 참고)
+	.1 UI
+	.2 actual offset apply
+	.3 얻은거 보여주는 UI
+	.4 데이터 추가
 
 2. Event Sys
 	.4 add events
 
 3. UI
 	.3 추가 연출
-
-4. reward sys
-	.0 ArtifactData 수정 (event 참고)
-	.1 UI
-	.2 actual offset apply
-	.3 얻은거 보여주는 UI
 
 
 5. enemy pattern
