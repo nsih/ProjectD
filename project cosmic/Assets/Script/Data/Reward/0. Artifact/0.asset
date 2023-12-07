@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   artifactID: 0
   artifactSprite: {fileID: 0}
-  artifactName: "\uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
+  artifactName: Artifact Name
   eventOffset: []
   detailText: 
-  commentText: "\uBCA0\uC2A4\uD2B8 \uC140\uB7EC\uC5D0\uB294 \uB2E4 \uC774\uC720\uAC00
-    \uC788\uB2E4"
+  commentText: Comment

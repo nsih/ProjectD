@@ -11,7 +11,8 @@ Todo
 	.4 데이터 추가
 
 2. Event Sys
-	.4 add events
+	.4 use action
+	.5 add events
 
 3. UI
 	.3 추가 연출

@@ -11,7 +11,7 @@ public class ArtifactData : ScriptableObject
     public Sprite artifactSprite;
     public string artifactName = "Artifact Name";
 
-    public OutcomeOffset[] eventOffset;
+    public OutcomeOffset[] outcomeOffset;
 
 
     //얻을 유물 코멘트
