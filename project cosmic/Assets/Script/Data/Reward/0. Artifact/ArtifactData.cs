@@ -15,10 +15,10 @@ public class ArtifactData : ScriptableObject
 
 
     //얻을 유물 코멘트
-    public string beforeComment = "Before Comment";
+    public string detailText;
 
     //얻은 유물 코멘트
-    public string afterComment = "After Comment";
+    public string commentText = "Comment";
 
 }
 
