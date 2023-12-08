@@ -8123,7 +8123,7 @@ GameObject:
   - component: {fileID: 717298391}
   - component: {fileID: 717298390}
   m_Layer: 5
-  m_Name: Reward0 (1)
+  m_Name: Reward1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10843,7 +10843,7 @@ GameObject:
   - component: {fileID: 1013569185}
   - component: {fileID: 1013569184}
   m_Layer: 5
-  m_Name: ArtifactSumPanel
+  m_Name: RewardAfterPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15804,7 +15804,7 @@ GameObject:
   - component: {fileID: 1438333043}
   - component: {fileID: 1438333042}
   m_Layer: 5
-  m_Name: Reward0 (2)
+  m_Name: Reward2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26133,10 +26133,10 @@ RectTransform:
   - {fileID: 3938842474927455137}
   - {fileID: 1118087179}
   - {fileID: 2047702226}
-  - {fileID: 1013569183}
   - {fileID: 2763677030314117093}
   - {fileID: 1822496289}
   - {fileID: 1160143908}
+  - {fileID: 1013569183}
   - {fileID: 432520919}
   - {fileID: 200139205}
   - {fileID: 606122265}

@@ -40,11 +40,6 @@ public class RewardManager : MonoBehaviour
 
         else
             clickedArtifact = rewardArtifactList[1];
-
-        //ApplayArtifact(clickedArtifact);
-        ShowArtifactSum(clickedArtifact);
-
-        ClosePopup();
     }
 }
 
@@ -54,6 +49,8 @@ public class RewardManager : MonoBehaviour
 public class RewardData
 {
     RewardType rewardType;
+
+    public int i;
     public string testResultName;
     [TextArea(2, 5)]
     public string resultText;
