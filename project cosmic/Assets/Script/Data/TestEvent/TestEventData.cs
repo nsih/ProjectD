@@ -26,6 +26,7 @@ public class TestEventData : ScriptableObject
 }
 
 [System.Serializable]
+//test only
 public class ResultsData
 {
     public string testResultName;
@@ -41,6 +42,8 @@ public class ResultsData
 ////////////////////////////////////
 
 [System.Serializable]
+
+//수치
 public class OutcomeOffset
 {
     public OutcomeOffsetType offsetType;

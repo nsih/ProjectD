@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.ComponentModel;
+using UnityEngine.UIElements;
 
 
 
@@ -35,7 +36,6 @@ public class PlayerInfo : MonoBehaviour
     public static float attackSpeed;    //0~5
     public static float playerAttackDelay;
 
-
     //이속
     public static float playerMoveSpeed;
     public static float playerDashCoolTime;
@@ -46,6 +46,14 @@ public class PlayerInfo : MonoBehaviour
 
     //etc
     public static float invincibilityTime; //피격시 무적시간
+
+
+
+    //얻은 Item List
+    public static List<ItemData> playerItemList = new List<ItemData>();
+
+    //얻은 action List
+    public static List<ActionData> playerActionList = new List<ActionData>();
 
 
 

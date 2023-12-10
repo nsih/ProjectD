@@ -17,48 +17,72 @@ public class RewardManager : MonoBehaviour
     GameObject rewardAfterPopup;
 
 
-    public static List<ArtifactData> rewardArtifactList = new();
-    public static List<ArtifactData> rewardActionList = new();
+    public static List<ItemData> rewardItemList = new();
+    public static List<ActionData> rewardActionList = new();
 
 
-    public void OpenArtifactRewardPopup()
+    public void OpenItemRewardPopup()
     {
         rewardPopup = GameObject.Find("LandUICanvas").transform.Find("RewardPopup").gameObject;
         btnReward0 = rewardPopup.transform.Find("Reward0").gameObject.GetComponent<Button>();
-        btnReward1 = rewardPopup.transform.GetChild(2).GetComponent<Button>();
-        btnReward2 = rewardPopup.transform.GetChild(3).GetComponent<Button>();
+        btnReward1 = rewardPopup.transform.Find("Reward1").gameObject.GetComponent<Button>();
+        btnReward2 = rewardPopup.transform.Find("Reward2").gameObject.GetComponent<Button>();
 
         rewardAfterPopup = GameObject.Find("LandUICanvas").transform.Find("RewardAfterPopup").gameObject;
     }
 
-    public void OnClickRewardBtn(Button clickedButton)
+
+
+    ///////
+    
+
+    void SuggestReward()
     {
-        ArtifactData clickedArtifact;
+        List<ActionData> suggestableActionList = rewardActionList.Except(PlayerInfo.playerActionList).ToList();
+        List<ItemData> suggestableItemList = rewardItemList.Except(PlayerInfo.playerItemList).ToList();
 
-        if (clickedButton.name[^1] == '0')
-            clickedArtifact = rewardArtifactList[0];
+        for (int i = 0; i < 3; i++) // 3번 반복
+        {
+            List<object> selectedList;
+            int selectedIndex;
 
-        else
-            clickedArtifact = rewardArtifactList[1];
+            GameObject btnReward = gameObject;
+
+            if(i == 0)
+                btnReward = btnReward0.gameObject;
+            else if(i == 1)
+                btnReward = btnReward1.gameObject;
+            else if(i == 2)
+                btnReward = btnReward2.gameObject;
+            else
+                Debug.Log("index error");
+
+            // 두 리스트 중 랜덤으로 하나 선택
+            if (UnityEngine.Random.Range(0, 2) == 0)
+            {
+                selectedList = suggestableActionList.ConvertAll(x => (object)x);
+                selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
+                Debug.Log($"Selected Action List: {selectedList[selectedIndex]}, Index: {selectedIndex}");
+
+                btnReward.gameObject.transform.Find("ItemIMG").gameObject.GetComponent<Image>().sprite = 
+                    suggestableActionList[selectedIndex].sprite;
+
+                btnReward.gameObject.transform.Find("Name").gameObject.GetComponent<TMP_Text>().text =
+                    suggestableActionList[selectedIndex].name;
+
+                btnReward.gameObject.transform.Find("Type").gameObject.GetComponent<TMP_Text>().text = "Action";
+
+                btnReward.gameObject.transform.Find("Comment").gameObject.GetComponent<TMP_Text>().text =
+                    suggestableActionList[selectedIndex].beforeComment;
+
+
+            }
+            else
+            {
+                selectedList = suggestableItemList.ConvertAll(x => (object)x);
+                selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
+                Debug.Log($"Selected Item List: {selectedList[selectedIndex]}, Index: {selectedIndex}");
+            }
+        }
     }
-}
-
-
-
-
-public class RewardData
-{
-    RewardType rewardType;
-
-    public int i;
-    public string testResultName;
-    [TextArea(2, 5)]
-    public string resultText;
-}
-
-
-enum RewardType
-{
-    Artifact,
-    Action
 }

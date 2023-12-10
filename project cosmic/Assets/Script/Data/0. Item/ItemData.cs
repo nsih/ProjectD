@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewArtifactData", menuName = "ArtifactData")]
-public class ArtifactData : ScriptableObject
+[CreateAssetMenu(fileName = "NewItemData", menuName = "ItemData")]
+public class ItemData : ScriptableObject
 {
     //
-    public int artifactID = 0;
-    public Sprite artifactSprite;
-    public string artifactName = "Artifact Name";
+    public int itemID = 0;
+    public Sprite sprite;
+    public string name = "Item Name";
 
     public OutcomeOffset[] outcomeOffset;
 

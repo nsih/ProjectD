@@ -8,13 +8,22 @@ public class ActionData : ScriptableObject
 {
     public int actionID;
 
-    public string actionName;
+    public string name;
     [TextArea(3, 10)]
     public string actionText;
-    public Sprite artifactSprite;
+    public Sprite sprite;
 
-    public TestType actionTestType;
+    public TestType testType;
+    public string testTypeS;
+
+
     public int testOffset;
 
     public ResultsData[] results;
+
+    //얻을 행동 코멘트
+    public string beforeComment = "Before Comment";
+
+    //얻은 행동 코멘트
+    public string afterComment = "After Comment";
 }
