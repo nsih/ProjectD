@@ -21,10 +21,3 @@ public class ArtifactData : ScriptableObject
     public string afterComment = "After Comment";
 
 }
-
-[System.Serializable]
-public class EffectNode
-{
-    bool reward;
-    string text;
-}
