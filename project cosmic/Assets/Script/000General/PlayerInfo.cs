@@ -111,6 +111,117 @@ public class PlayerInfo : MonoBehaviour
     }
 
 
+    public void OutcomeOffsetApply(OutcomeOffset[] outcomeOffsets)
+    {
+        for (int i = 0; i < outcomeOffsets.Length; i++)
+        {
+            #region "status modify"
+            //physical status
+            if (outcomeOffsets[i].offsetType == OutcomeOffsetType.PhysicalOffset)
+            {
+                PhysicalModify((int)outcomeOffsets[i].offset);
+            }
+            //mental status
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.MentalOffset)
+            {
+                MentalModify((int)outcomeOffsets[i].offset);
+            }
+            //charm status
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.CharmOffset)
+            {
+                CharmModify((int)outcomeOffsets[i].offset);
+            }
+            //random status
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.RandomStatOffset)
+            {
+                //random( (int)outcomeOffsets[i].offset );
+                Debug.Log("Player Info - randomstatusModify");
+            }
+            #endregion
+
+            #region "HP AP"
+            //hp
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.HpOffset)
+            {
+                HpModify((int)outcomeOffsets[i].offset);
+            }
+            //max hp
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.MaxHPOffset)
+            {
+                MaxHPOffsetModify((int)outcomeOffsets[i].offset);
+            }
+
+            //ap
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.APOffset)
+            {
+                APModify((int)outcomeOffsets[i].offset);
+            }
+            //max ap
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.MaxAPOffset)
+            {
+                MaxAPOffsetModify((int)outcomeOffsets[i].offset);
+            }
+            #endregion
+
+            #region "Ingame Control related"
+            // Damage (plus offset)
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.PlusPlayerDamageOffset)
+            {
+                DMGPlusModify(outcomeOffsets[i].offset);
+            }
+            // Damage (multifly offset)
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.MultiplyPlayerDamageOffset)
+            {
+                DMGMultiflyModify(outcomeOffsets[i].offset);
+            }
+
+            // Attack delay (speed)
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.AttackDelay)
+            {
+                AttacSpeedModify((int)outcomeOffsets[i].offset);
+            }
+
+            //MoveSpeed
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.MoveSpeedOffset)
+            {
+                MoveSpeedModify(outcomeOffsets[i].offset);
+            }
+            #endregion
+
+
+            //Coin
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.CoinOffset)
+            {
+                CoinModify((int)outcomeOffsets[i].offset);
+            }
+
+            //vision
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.CameraSizeOffset)
+            {
+                VisionSizeModify( outcomeOffsets[i].offset );
+            }
+
+            //Artifact reward
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.ArtifactID)
+            {
+                Debug.Log("offsetType == OutcomeOffsetType.ArtifactID");
+            }
+
+            //Action reward
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.ActionID)
+            {
+                Debug.Log("offsetType == OutcomeOffsetType.ActionID");
+            }
+
+            //Func reward
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.FuncID)
+            {
+                Debug.Log("offsetType == OutcomeOffsetType.FuncID");
+            }
+        }
+    }
+
+
 
     //status
     public void PhysicalModify(int modifier)
@@ -177,13 +288,16 @@ public class PlayerInfo : MonoBehaviour
 
     public void MaxHPOffsetModify(int offset)
     {
-        int changedMaxHPOffset = maxAPOffset + offset;
-        currentAP = changedMaxHPOffset;
+        int changedMaxHPOffset = maxHpOffset + offset;
+        
+        maxHpOffset = changedMaxHPOffset;
 
 
         MaxHpCalc();
 
         landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
+
+        Debug.Log("MAX HP +"+offset);
     }
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {

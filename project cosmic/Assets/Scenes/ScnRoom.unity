@@ -3370,10 +3370,10 @@ GameObject:
   - component: {fileID: 1189591035}
   - component: {fileID: 1189591034}
   - component: {fileID: 1189591032}
+  - component: {fileID: 1189591038}
+  - component: {fileID: 1189591039}
   - component: {fileID: 1189591031}
   - component: {fileID: 1189591030}
-  - component: {fileID: 1189591038}
-  - component: {fileID: 1189591028}
   - component: {fileID: 1189591027}
   - component: {fileID: 1189591026}
   - component: {fileID: 1189591025}
@@ -3436,21 +3436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb455cea0b8f2b54fa2c9ff3f2fccb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1189591028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189591023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff0647b81916384c9c24301c874c4d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allArtifactList:
-  - {fileID: 11400000, guid: 306aae2ab9400294ebe2364672827ed1, type: 2}
-  - {fileID: 11400000, guid: 6649d15e53518ff4fb7d49ba84a4f159, type: 2}
 --- !u!114 &1189591030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3589,6 +3574,30 @@ MonoBehaviour:
   Stage1FixedEventList: []
   Stage1RandomEventList:
   - {fileID: 11400000, guid: e1085853b3cfcec4db7e3b38aa11bb50, type: 2}
+--- !u!114 &1189591039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189591023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76e3bba04a7e8e4fb43f9b4bf5339ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardItemList:
+  - {fileID: 11400000, guid: 306aae2ab9400294ebe2364672827ed1, type: 2}
+  - {fileID: 11400000, guid: 07b31ff78212ac34fb5d23214ba5fac6, type: 2}
+  - {fileID: 11400000, guid: f71ff3c78a2dbad47ab41e74659aeee7, type: 2}
+  - {fileID: 11400000, guid: c47f849df147b9442b4e198bcc304257, type: 2}
+  - {fileID: 11400000, guid: 8c775fb286b41c74a8ad907556da7369, type: 2}
+  rewardActionList:
+  - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
+  - {fileID: 11400000, guid: 9aeb3dd3cdae14848921fc3d1b85683b, type: 2}
+  - {fileID: 11400000, guid: 8692d8df61a248f43b568f0591fae456, type: 2}
+  - {fileID: 11400000, guid: c9e3eede9a06b914abdeff073a3596dc, type: 2}
+  - {fileID: 11400000, guid: 9cdc0b4fc32768046b3496a9ffe905ff, type: 2}
 --- !u!1 &1199321311
 GameObject:
   m_ObjectHideFlags: 0

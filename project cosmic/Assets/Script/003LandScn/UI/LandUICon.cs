@@ -14,8 +14,8 @@ public class LandUICon : MonoBehaviour
 
 
     //status UI
-    public GameObject[] maxHPUI = new GameObject[10];
-    public GameObject[] currentHPUI = new GameObject[10];
+    public GameObject[] maxHPUI = new GameObject[15];
+    public GameObject[] currentHPUI = new GameObject[15];
 
     GameObject apUI;
     GameObject coinUI;
@@ -33,7 +33,7 @@ public class LandUICon : MonoBehaviour
         stageMap = landUICanvas.transform.Find("StageMap").gameObject;
 
         //HP
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             maxHPUI[i] = GameObject.Find("MaxHP").transform.GetChild(i).gameObject;
             currentHPUI[i] = GameObject.Find("CurrentHP").transform.GetChild(i).gameObject;

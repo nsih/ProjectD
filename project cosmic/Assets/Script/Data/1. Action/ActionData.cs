@@ -9,7 +9,7 @@ public class ActionData : ScriptableObject
     public int actionID;
 
     public string name;
-    [TextArea(3, 10)]
+    public int cost;
     public string actionText;
     public Sprite sprite;
 
@@ -22,8 +22,10 @@ public class ActionData : ScriptableObject
     public ResultsData[] results;
 
     //얻을 행동 코멘트
+    [TextArea(3, 10)]
     public string beforeComment = "Before Comment";
 
     //얻은 행동 코멘트
+    [TextArea(3, 10)]
     public string afterComment = "After Comment";
 }

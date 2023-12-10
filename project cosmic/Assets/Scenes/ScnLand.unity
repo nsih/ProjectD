@@ -8770,6 +8770,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff0647b81916384c9c24301c874c4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artifactRewardPopup: {fileID: 0}
+  artifactSum: {fileID: 0}
+  btnRewardArtifact0: {fileID: 0}
+  btnRewardArtifact1: {fileID: 0}
+  btnCloseRewardPopup: {fileID: 0}
+  artifactListPopup: {fileID: 0}
+  iconList: []
+  btnCloseListPopup: {fileID: 0}
   allArtifactList:
   - {fileID: 0}
   - {fileID: 11400000, guid: 6649d15e53518ff4fb7d49ba84a4f159, type: 2}
@@ -11994,7 +12002,7 @@ GameObject:
   - component: {fileID: 1124409044}
   - component: {fileID: 1124409043}
   m_Layer: 5
-  m_Name: ArtifactIMG
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18749,7 +18757,7 @@ GameObject:
   - component: {fileID: 1762090120}
   - component: {fileID: 1762090119}
   m_Layer: 5
-  m_Name: ArtifactIMG
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19081,7 +19089,7 @@ GameObject:
   - component: {fileID: 1811086319}
   - component: {fileID: 1811086318}
   m_Layer: 5
-  m_Name: ArtifactIMG
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21694,7 +21702,7 @@ GameObject:
   - component: {fileID: 2047702228}
   - component: {fileID: 2047702227}
   m_Layer: 5
-  m_Name: ArtifactList
+  m_Name: ItemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25273,7 +25281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2853534703927733441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8338623356038626465}
+        m_TargetAssemblyTypeName: RewardTestBtn, Assembly-CSharp
+        m_MethodName: OnClickReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1785518361840129284
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31142,7 +31162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5473672749083166056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b19fcc3a1a0ccc240b93d313ad6024ee, type: 3}
   m_Name: 
@@ -34859,7 +34879,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentHPUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -35000,9 +35030,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5765773366946824460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7249ff6dddb2bc44b98d95cd5f39dc7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 85f9e8850b242ea478e1111aa1764132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &8358616878604430748

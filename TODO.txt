@@ -1,5 +1,7 @@
 shift alt f
 
+con shift L
+
 -----------------
 Todo
 
@@ -50,6 +52,21 @@ Done
 
 
 ----------------
+~
+15 	보상, 행동, 재단 (재단 매니지)
+~
+20 	데이터 추가
+~
+25 	맵 추가
+~
+30 	적 패턴 추가
+~
+5	UI연출, 조작 추가
+~
+10	사운드
+~
+20	그래픽
+----------------
 
 *trouble
 
@@ -83,41 +100,3 @@ maxHP	maxAP	공속
 적패턴
 
 --- 
-
-*title scn
-
-*room scn
-
-*land scn
-	playerCon GameManger랑 연동
-
-*common
-
-GameManager
-	게임 시작, 일시 정지, 종료, 게임 데이터 세이브
-
-	게임 규칙 및 로직 (Land Manager)
-
-
-PlayerInfo
-	UI에 쏴주기
-	Land scn에서 쓸 스탯 계산. (육체 - 공격력 ...)
-	스탯등을 PlayerCon과 연동
-
-DialogueData, ScnDialogueManager 3개
-	씬마다 다른 UI로 인한 각각의 Dialogue Manager가 있고, 그에 필요한 Index 정보같은 것들만 GameManager에서 관리.
-	파싱은 DialogueManager에서 다 해놓고 UI로 쏴주고, 불러오기만 각 씬의 Dialogue Manager에서 수행
-	요약)
-	GameManager의 DialogueData 컴포넌트가 파싱해서 모든 data를 가지고 있는다. (index flag등 저장.)
-	각씬의 ScnDialogueManager에서 GameManager의 data 가져와서 쓰기만 하게 분리
-
-		
-
-	이미지 변경기능
-	특수한 상황에 이름과 특수 플레그의 내용을 불러오는 식의 이벤트 (이름과 대사가 정해져있다.)
-
-
-Bgm Manager
-
-Sound Effect Manager
-

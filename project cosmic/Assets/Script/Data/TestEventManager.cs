@@ -121,19 +121,24 @@ public class TestEventManager : MonoBehaviour
         //TestType에 따라 계산
 
         //physical
-        if (currentTestEventData.testType == TestType.physical)
+        if (currentTestEventData.testType == TestType.Physical)
         {
             diceCount = PlayerInfo.physical + currentTestEventData.testOffset;
         }
         //mental
-        else if (currentTestEventData.testType == TestType.mental)
+        else if (currentTestEventData.testType == TestType.Mental)
         {
             diceCount = PlayerInfo.mental + currentTestEventData.testOffset;
         }
         //charm
-        else if (currentTestEventData.testType == TestType.charm)
+        else if (currentTestEventData.testType == TestType.Charm)
         {
             diceCount = PlayerInfo.charm + currentTestEventData.testOffset;
+        }
+        //None
+        else
+        {
+            return;
         }
 
         //계산된 다이스 개수에 따라 dice pack 활성화
@@ -213,8 +218,9 @@ public class TestEventManager : MonoBehaviour
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
         testInfoText.GetComponent<TMP_Text>().text = "";
         
-        //offset apply
-        ApplyResultOffsets(resultIndex);
+        //event result offset apply
+        this.gameObject.GetComponent<PlayerInfo>().
+        OutcomeOffsetApply(currentTestEventData.results[resultIndex].eventOffset);
 
         //버튼 바꾸기
         testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";
@@ -245,11 +251,13 @@ public class TestEventManager : MonoBehaviour
 
 
 
-    //.
+    /*
     public void ApplyResultOffsets(int _index)
     {
         PlayerInfo playerInfo = this.gameObject.GetComponent<PlayerInfo>();
         //GameManager gameManagerScript = this.gameManager.GetComponent<GameManager>();
+
+        playerInfo.OutcomeOffsetApply(currentTestEventData.results[_index].eventOffset);
 
         for (int i = 0; i < currentTestEventData.results[_index].eventOffset.Length; i++)
         {
@@ -358,7 +366,7 @@ public class TestEventManager : MonoBehaviour
             }
         }
     }
-
+    */
 
     //랜덤 이벤트 사용기록 소거 (스테이지 시작시)
     public void InitializeRandomEventIsTested(int _currentStage)

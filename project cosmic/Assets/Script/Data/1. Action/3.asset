@@ -13,53 +13,23 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   actionID: 3
-  actionName: "\uC751\uC2DC"
-  actionText: "\uC800 \uB108\uBA38\uC758 \uD5C8\uACF5\uC744 \uC751\uC2DC\uD569\uB2C8\uB2E4.\n\uC9C0\uAE08
-    \uB2F9\uC2E0\uC758 \uB208\uC73C\uB85C \uB77C\uBA74..\n\uBB34\uC5C7\uC778\uAC00
-    \uCC3E\uC744 \uC218 \uC788\uC744\uC9C0\uB3C4 \uBAA8\uB974\uC8E0."
-  artifactSprite: {fileID: 0}
-  actionTestType: 0
+  name: 
+  cost: 0
+  actionText: "\uC800 \uB108\uBA38\uC758 \uD5C8\uACF5\uC744 \uC751\uC2DC\uD569\uB2C8\uB2E4.\n\uC6B4\uC774
+    \uC88B\uB2E4\uBA74\n\uBB34\uC5C7\uC778\uAC00 \uCC3E\uC744 \uC218 \uC788\uC744\uC9C0\uB3C4
+    \uBAA8\uB974\uC8E0."
+  sprite: {fileID: 0}
+  testType: 0
+  testTypeS: 
   testOffset: 0
   results:
   - testResultName: "\uD5C8\uACF5\uC5D0 \uC788\uB294 \uAC83"
     resultText: "\uD718\uAC10\uB294 \uD5C8\uACF5+"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    funcID: 5
+    eventOffset: []
   - testResultName: "\uD5C8\uACF5"
     resultText: "\uB208 \uC544\uD514+"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: -1
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    funcID: 0
+    eventOffset: []
+  beforeComment: Before Comment
+  afterComment: After Comment

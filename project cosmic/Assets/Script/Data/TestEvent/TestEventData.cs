@@ -53,9 +53,10 @@ public class OutcomeOffset
 
 public enum TestType  //~~test!
 {
-    physical,
-    mental,
-    charm
+    Physical,
+    Mental,
+    Charm,
+    None
 }
 
 [System.Serializable]

@@ -51,6 +51,7 @@ public class BattleEventManager : MonoBehaviour
                 return false;
             }
         }
+
         return true;
     }
 

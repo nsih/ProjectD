@@ -15,9 +15,11 @@ public class ItemData : ScriptableObject
 
 
     //얻을 유물 코멘트
+    [TextArea(2, 15)]
     public string beforeComment = "Before Comment";
 
     //얻은 유물 코멘트
+    [TextArea(2, 10)]
     public string afterComment = "After Comment";
 
 }
