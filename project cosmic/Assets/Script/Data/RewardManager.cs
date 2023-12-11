@@ -22,7 +22,7 @@ public class RewardManager : MonoBehaviour
 
     public List<object> suggestedList = new List<object>();
 
-    public void OpenItemRewardPopup()
+    public void OpenRewardPopup()
     {
         rewardPopup = GameObject.Find("LandUICanvas").transform.Find("RewardPopup").gameObject;
         btnReward0 = rewardPopup.transform.Find("Reward0").gameObject.GetComponent<Button>();
@@ -36,7 +36,47 @@ public class RewardManager : MonoBehaviour
         SuggestReward();
 
         btnReward0.onClick.AddListener(OnClickRewardBtn);
+        btnReward1.onClick.AddListener(OnClickRewardBtn);
+        btnReward2.onClick.AddListener(OnClickRewardBtn);
     }
+
+    public void CloseRewardPopup(object reward)
+    {
+        btnReward0.onClick.RemoveAllListeners();
+        btnReward1.onClick.RemoveAllListeners();
+        btnReward2.onClick.RemoveAllListeners();
+        rewardPopup.SetActive(false);
+
+
+        if(reward is ItemData )
+            {
+                ItemData itemData = (ItemData)reward;
+
+                rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = itemData.sprite;
+                rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = itemData.afterComment;
+            }
+
+            else if(reward is ActionData)
+            {
+                ActionData actionData = (ActionData)reward;
+
+                rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = actionData.sprite;
+                rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = actionData.afterComment;
+            }
+
+        rewardAfterPopup.SetActive(true);
+        Invoke( "CloseAfterRewardPopup" , 5f);
+    }
+
+    public void CloseAfterRewardPopup()
+    {
+        rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = null;
+        rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = null;
+
+        rewardAfterPopup.SetActive(false);
+    }
+
+
 
 
 
@@ -151,5 +191,7 @@ public class RewardManager : MonoBehaviour
         {
             Debug.Log("Invalid rewardIndex : "+rewardIndex);
         }
+
+        CloseRewardPopup(suggestedList[rewardIndex]);
     }
 }

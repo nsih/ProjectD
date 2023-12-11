@@ -40,7 +40,7 @@ public class RewardTestBtn : MonoBehaviour
     {
         if(!GameManager.isLoading && GameManager.isEventEnd)
         {
-            GameObject.Find("GameManager").GetComponent<RewardManager>().OpenItemRewardPopup();
+            GameObject.Find("GameManager").GetComponent<RewardManager>().OpenRewardPopup();
         } 
     }
 }
