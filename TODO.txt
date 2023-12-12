@@ -6,24 +6,25 @@ con shift L
 Todo
 
 
-1. reward sys
-	.0 ArtifactData 수정 (event 참고 - 패시브, 액티브 추가.)
-	.1 UI
-	.2 actual offset apply
-	.3 얻은거 보여주는 UI
-	.4 데이터 추가
+.action
+	.use action
+	.add data
 
-2. Event Sys
-	.4 use action
-	.5 add events
+. Alter
+	.1 Data 
+	.2 Manager
+	.3 데이터 추가
 
-3. UI
-	.3 추가 연출
+. Event Sys
+	. add data
 
+. reward sys
+	. add data
 
-5. enemy pattern
+. enemy
+	. add pattern data
 
-n. setting option, cutscenes
+. UI, setting option, cutscenes
 
 
 
@@ -46,8 +47,10 @@ Done
 
 4. reward sys
 	.1 선택창
+	.0 ArtifactData 수정 (event 참고 - 패시브, 액티브 추가.)
+	.1 UI
 	.2 actual offset apply
-	.3 얻은거 표시할 UI
+	.3 얻은거 보여주는 UI
 
 
 
