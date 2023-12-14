@@ -8,26 +8,31 @@ Todo
 
 .action
 	.use action
-	.add data
 
 . Alter
 	.1 Data 
 	.2 Manager
-	.3 데이터 추가
+	.3 add data
 
 . Event Sys
 	. add data
 
-. reward sys
+. reward (item, action)
 	. add data
 
 . enemy
 	. add pattern data
 
-. UI, setting option, cutscenes
+. UI
+	.setting option
+	.cutscenes
+	.tmp text
 
-
-
+. Art
+	.Animation
+		.asd
+		.asd
+		.asd
 ----------------
 Done
 
@@ -56,50 +61,31 @@ Done
 
 ----------------
 ~
-15 	보상, 행동, 재단 (재단 매니지)
+15 	행동
 ~
-20 	데이터 추가
+20 	재단 시스템, 나머지 데이터 추가
 ~
-25 	맵 추가
+25 	적 패턴 추가
 ~
-30 	적 패턴 추가
-~
-5	UI연출, 조작 추가
-~
-10	사운드
-~
-20	그래픽
+맵 추가, UI연출, 조작 추가,사운드, 그래픽
 ----------------
 
 *trouble
 
-이벤트 선택
-텍스트가 길때 넘기기.
-아무것도 없는 이벤트.
-
-
-----------------
-Gamma Cassiopeiae (navi)
----------------
-육체	의지	매력
-
-maxHP	maxAP	공속
+이벤트 결과 리스트? 단발성?
 
 ---------------
+
+육체	정신	매력
+
+maxHP	maxAP	치명피해
+
+---------------
+
 공격력
-공격범위
 공속
+치명 데미지
+치명 확률
 이속
-운		혼돈의 바다를 밝히는 횃불
 
 ---
-
-2D tile map
-
-맵 - 적
-
-스테이지당 20개 정도
-
-적패턴
-
---- 
