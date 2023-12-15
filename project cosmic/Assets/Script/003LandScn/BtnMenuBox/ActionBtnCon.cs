@@ -7,56 +7,40 @@ using UnityEngine.EventSystems;
 
 public class ActionBtnCon : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject actionContainer;
+
+    public Sprite[] sprites = new Sprite[4];
+
     GameObject gameManager;
     GameObject landUiCanvas;
     GameObject actionPopup;
+    GameObject ScrollView;
+    GameObject ScrollContent;
 
 
-    Button btnClose;
-
-    
     GameObject ButtonText;
     GameObject ButtonImage;
 
-    /*
-    private Color normalColor;
-    private Color hoverColor;
-    */
+
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
         landUiCanvas = GameObject.Find("LandUICanvas");
         actionPopup = landUiCanvas.transform.Find("ActionPopup").gameObject;
-        btnClose = actionPopup.transform.Find("BtnClose").gameObject.GetComponent<Button>();
+        
+        ScrollView = actionPopup.transform.Find("Scroll View").gameObject;
+        ScrollContent = ScrollView.transform.Find("Viewport").gameObject.transform.Find("Content").gameObject;
+
 
         ButtonText = this.gameObject.transform.GetChild(0).gameObject;
         ButtonImage = this.gameObject.transform.GetChild(1).gameObject;
-
-        /*
-        normalColor = GetComponent<Image>().color;
-        float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
-        float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
-        float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a);
-        */
     }
 
     void Update ()
     {
-        //ShowButtonImage();
-    }
-    /*
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        GetComponent<Image>().color = hoverColor;
-    }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        GetComponent<Image>().color = normalColor;
     }
-    */
 
 
     public void OnClickAction()
@@ -68,13 +52,68 @@ public class ActionBtnCon : MonoBehaviour//, IPointerEnterHandler, IPointerExitH
     {
         actionPopup.SetActive(true);
 
-        btnClose.onClick.AddListener(ClosePopup);
+        //btnClose.onClick.AddListener(ClosePopup);
     }
 
     void ClosePopup()
     {
         actionPopup.SetActive(false);
+    }
 
-        btnClose.onClick.RemoveAllListeners();
+
+    //
+
+    void PopulateScrollView()
+    {
+        foreach (var actionData in PlayerInfo.playerActionList)
+        {
+            // UI 프리팹을 인스턴스화하여 content 아래에 배치
+            GameObject _actionContainer = Instantiate(actionContainer, ScrollContent.transform);
+            
+            // 생성된 UI에 데이터를 적용
+            _actionContainer.transform.Find("Icon").GetComponent<Image>().sprite = actionData.icon;
+            _actionContainer.transform.Find("TestTypeIMG").GetComponent<Image>().sprite = GetTestTypeIMG(actionData.testType);
+            _actionContainer.transform.Find("Name").GetComponent<TMP_Text>().text = actionData.name;
+            _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = "COST " + (int)actionData.cost;
+            _actionContainer.transform.Find("Comment").GetComponent<TMP_Text>().text = actionData.afterComment;
+
+            //_actionContainer.GetComponent<Button>().onClick.AddListener();
+            //gameManager.GetComponent<ActionManager>().
+            
+
+
+
+
+        }
+    }
+
+    Sprite GetTestTypeIMG(TestType testType)
+    {
+        if(testType == TestType.Physical)
+        {
+            return sprites[0];
+        }
+        else if(testType == TestType.Mental)
+        {
+            return sprites[1];
+        }
+        else if(testType == TestType.Charm)
+        {
+            return sprites[2];
+        }
+        else if(testType == TestType.Random)
+        {
+            return sprites[3];
+        }
+        else if(testType == TestType.None)
+        {
+            return sprites[4];
+        }
+        else
+        {
+            return sprites[4];
+            Debug.Log("test type error");
+        }
     }
 }
+

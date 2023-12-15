@@ -56,6 +56,7 @@ public enum TestType  //~~test!
     Physical,
     Mental,
     Charm,
+    Random,
     None
 }
 

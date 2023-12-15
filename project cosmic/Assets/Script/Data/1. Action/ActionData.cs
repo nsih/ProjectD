@@ -7,6 +7,7 @@ using UnityEngine;
 public class ActionData : ScriptableObject
 {
     public int actionID;
+    public Sprite icon;
 
     public string name;
     public int cost;

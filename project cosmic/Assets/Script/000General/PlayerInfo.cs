@@ -54,6 +54,7 @@ public class PlayerInfo : MonoBehaviour
 
     //얻은 action List
     public static List<ActionData> playerActionList = new List<ActionData>();
+    public ActionData actionDataRest;
 
 
 
@@ -98,6 +99,13 @@ public class PlayerInfo : MonoBehaviour
         playerMoveSpeed = 10;
         playerDashCoolTime = 0.3f;
         playerDashSpeed = 30;
+
+        //item
+        playerItemList.Clear();
+        
+        //action
+        playerActionList.Clear();
+        playerActionList.Add(gameObject.GetComponent<RewardManager>().rewardActionList[0]);
 
         //etc
         playerVisionSize = 20;
@@ -198,7 +206,7 @@ public class PlayerInfo : MonoBehaviour
             //vision
             else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.CameraSizeOffset)
             {
-                VisionSizeModify( outcomeOffsets[i].offset );
+                VisionSizeModify(outcomeOffsets[i].offset);
             }
 
             //Artifact reward
@@ -272,7 +280,7 @@ public class PlayerInfo : MonoBehaviour
             charm = changedCharm;
         }
 
-        
+
         landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
     }
 
@@ -289,7 +297,7 @@ public class PlayerInfo : MonoBehaviour
     public void MaxHPOffsetModify(int offset)
     {
         int changedMaxHPOffset = maxHpOffset + offset;
-        
+
         maxHpOffset = changedMaxHPOffset;
 
 
@@ -297,7 +305,7 @@ public class PlayerInfo : MonoBehaviour
 
         landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
 
-        Debug.Log("MAX HP +"+offset);
+        Debug.Log("MAX HP +" + offset);
     }
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
@@ -339,7 +347,7 @@ public class PlayerInfo : MonoBehaviour
         {
             currentAP = changedMaxAPOffset;
         }
-        
+
 
         MaxAPCalc();
         landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
@@ -417,11 +425,11 @@ public class PlayerInfo : MonoBehaviour
     {
         float changedAttackSpeed = attackSpeed + offset;
 
-        if(changedAttackSpeed <= 0)
+        if (changedAttackSpeed <= 0)
         {
             attackSpeed = 0;
         }
-        else if(changedAttackSpeed > 5.0f)
+        else if (changedAttackSpeed > 5.0f)
         {
             attackSpeed = 5;
         }
@@ -444,7 +452,7 @@ public class PlayerInfo : MonoBehaviour
     {
         float changedMoveSpeed = offset + playerMoveSpeed;
 
-        if(changedMoveSpeed < 1)
+        if (changedMoveSpeed < 1)
         {
             playerMoveSpeed = 1;
         }
@@ -459,7 +467,7 @@ public class PlayerInfo : MonoBehaviour
     {
         int changedCoin = coin + offset;
 
-        if(changedCoin <= 0)
+        if (changedCoin <= 0)
         {
             coin = 0;
         }
@@ -476,7 +484,7 @@ public class PlayerInfo : MonoBehaviour
     {
         float changedPlayerVsionSize = playerVisionSize + offset;
 
-        if(changedPlayerVsionSize <= 10)
+        if (changedPlayerVsionSize <= 10)
         {
             playerVisionSize = 10;
         }
