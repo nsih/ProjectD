@@ -7,6 +7,9 @@ con shift L
 actionbtncon
 내 액션 리스트 볼수 있는 창 열고 버튼 배치하고 리스너 add
 
+action manager
+버튼 클릭후 이벤트 총괄함수
+
 
 -----------------
 Todo
