@@ -9,7 +9,10 @@ public class ActionBtnCon : MonoBehaviour//, IPointerEnterHandler, IPointerExitH
 {
     public GameObject actionContainer;
 
-    public Sprite[] sprites = new Sprite[4];
+    public Sprite physicalIcon;
+    public Sprite mentalIcon;
+    public Sprite charmIcon;
+    public Sprite RandomIcon;
 
     GameObject gameManager;
     GameObject landUiCanvas;
@@ -91,27 +94,27 @@ public class ActionBtnCon : MonoBehaviour//, IPointerEnterHandler, IPointerExitH
     {
         if(testType == TestType.Physical)
         {
-            return sprites[0];
+            return physicalIcon;
         }
         else if(testType == TestType.Mental)
         {
-            return sprites[1];
+            return mentalIcon;
         }
         else if(testType == TestType.Charm)
         {
-            return sprites[2];
+            return charmIcon;
         }
         else if(testType == TestType.Random)
         {
-            return sprites[3];
+            return RandomIcon;
         }
         else if(testType == TestType.None)
         {
-            return sprites[4];
+            return null;
         }
         else
         {
-            return sprites[4];
+            return null;
             Debug.Log("test type error");
         }
     }
