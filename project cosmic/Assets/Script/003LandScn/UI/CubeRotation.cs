@@ -50,7 +50,7 @@ public class CubeRotation : MonoBehaviour
             // 회전 감속
             currentThrowForce *= throwDamping;
 
-            Debug.Log( this.gameObject +"'s TF : "+ currentThrowForce);
+            //Debug.Log( this.gameObject +"'s TF : "+ currentThrowForce);
 
             if (currentThrowForce <= stopThreshold) // 회전 힘이 기준값보다 작으면
             {
