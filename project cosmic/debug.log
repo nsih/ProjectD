@@ -1,1 +1,2 @@
 [0916/212156.726:ERROR:registration_protocol_win.cc(107)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[1224/151255.462:ERROR:registration_protocol_win.cc(107)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)

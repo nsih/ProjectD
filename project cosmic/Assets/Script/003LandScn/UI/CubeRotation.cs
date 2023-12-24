@@ -63,13 +63,14 @@ public class CubeRotation : MonoBehaviour
                 // 눈 보여주기
                 eye.GetComponent<TextMeshProUGUI>().text = diceEye.ToString();
 
-                //yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(1.0f);
 
 
                 //성공실패 결정
                 if(diceEye >= 5)
                 {
                     TestEventManager.isCurrentResultSuccess = true;
+                    ActionManager.isCurrentResultSuccess = true;
                 }
 
                 isThrowing = false;

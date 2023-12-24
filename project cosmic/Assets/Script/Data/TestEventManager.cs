@@ -24,9 +24,6 @@ public class TestEventManager : MonoBehaviour
     GameObject testDicePopup;
     GameObject dicePack;
 
-
-    public static bool isTesting;
-
     public static bool isCurrentResultSuccess;
 
     TestEventData currentTestEventData;
@@ -36,33 +33,27 @@ public class TestEventManager : MonoBehaviour
 
     void Start()
     {
-        isTesting = false;
+        GameManager.isTesting = false;
         isCurrentResultSuccess = false;
     }
 
-    /////////////////////
-
-
-
+    #region "Random Event"
     //랜덤이벤트 시작
     public void StartRandomTestEvent(int _currentStage)
     {
         //object initialize
         eventCanvas = GameObject.Find("EventCanvas");
         testPopup = eventCanvas.gameObject.transform.Find("TestPopup").gameObject;
-
         eventIMG = testPopup.gameObject.transform.Find("EventIMG").gameObject.GetComponent<Image>();
         eventTitle = testPopup.gameObject.transform.Find("EventTitle").gameObject;
         eventText = testPopup.gameObject.transform.Find("EventText").gameObject;
-
-        testInfoText = testPopup.gameObject.transform.Find("TestInfoText").gameObject;
         testBtn = testPopup.gameObject.transform.Find("TestButton").gameObject;
-
+        testInfoText = testBtn.gameObject.transform.Find("TestInfoText").gameObject;
         testDicePopup = testPopup.gameObject.transform.Find("DicePopUp").gameObject;
 
 
         //
-        isTesting = true;
+        GameManager.isTesting = true;
         currentTestEventData = GetRandomEventData(_currentStage);
 
 
@@ -111,6 +102,10 @@ public class TestEventManager : MonoBehaviour
                 return Stage1RandomEventList[eventIndex];
         }
     }
+    #endregion
+
+
+
 
     //dice pack 골라서 할당하고 활성화
     void GetDicePack()
@@ -176,20 +171,17 @@ public class TestEventManager : MonoBehaviour
 
 
     //다이스 롤 버튼
-    public void OnClickDiceRoll()
+    void OnClickDiceRoll()
     {
         if (dicePack)
         {
+            testBtn.GetComponent<Button>().interactable = false;
             for (int i = 0; i < dicePack.transform.childCount; i++)
             {
                 StartCoroutine(dicePack.transform.GetChild(i).gameObject.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
             }
 
-            // 버튼 동작 변경
-            testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "다음";
-            testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
-            testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
-            //StartCoroutine(RotateDiceAndEvaluateResults());
+            Invoke("CheckSuccess", 3.0f);
         }
 
         else
@@ -198,12 +190,31 @@ public class TestEventManager : MonoBehaviour
         }
     }
 
+    void CheckSuccess()
+    {
+        // 버튼 동작 변경
+        testBtn.GetComponent<Button>().interactable = true;
+
+        if (isCurrentResultSuccess)
+        {
+            testInfoText.GetComponent<TMP_Text>().color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+            testInfoText.GetComponent<TMP_Text>().text = "Success";
+        }
+        else
+        {
+            testInfoText.GetComponent<TMP_Text>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            testInfoText.GetComponent<TMP_Text>().text = "Fail";
+        }
+        testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+        testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
+    }
+
 
 
 
 
     //결과실행 버튼
-    public void OnClickExecuteEventResult()
+    void OnClickExecuteEventResult()
     {
         int resultIndex;
         //show
@@ -217,16 +228,20 @@ public class TestEventManager : MonoBehaviour
         eventTitle.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].testResultName;
         eventText.GetComponent<TMP_Text>().text = currentTestEventData.results[resultIndex].resultText;
         testInfoText.GetComponent<TMP_Text>().text = "";
-        
+
         //event result offset apply
         this.gameObject.GetComponent<PlayerInfo>().
         OutcomeOffsetApply(currentTestEventData.results[resultIndex].eventOffset);
 
         //버튼 바꾸기
-        testBtn.transform.GetChild(0).GetComponent<TMP_Text>().text = "이벤트 종료";
+        testInfoText.GetComponent<TMP_Text>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        testInfoText.GetComponent<TMP_Text>().text = "종료";
         testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
         testBtn.GetComponent<Button>().onClick.AddListener(OnClickEndEvent);
     }
+
+
+    //
 
     //이벤트 종료 버튼
     public void OnClickEndEvent()
@@ -238,7 +253,7 @@ public class TestEventManager : MonoBehaviour
         }
 
         //
-        isTesting = false;
+        GameManager.isTesting = false;
         isCurrentResultSuccess = false;
 
         //
@@ -248,125 +263,6 @@ public class TestEventManager : MonoBehaviour
         dicePack = null;
         testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
     }
-
-
-
-    /*
-    public void ApplyResultOffsets(int _index)
-    {
-        PlayerInfo playerInfo = this.gameObject.GetComponent<PlayerInfo>();
-        //GameManager gameManagerScript = this.gameManager.GetComponent<GameManager>();
-
-        playerInfo.OutcomeOffsetApply(currentTestEventData.results[_index].eventOffset);
-
-        for (int i = 0; i < currentTestEventData.results[_index].eventOffset.Length; i++)
-        {
-            #region "status modify"
-            //physical status
-            if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.PhysicalOffset)
-            {
-                playerInfo.PhysicalModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            //mental status
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MentalOffset)
-            {
-                playerInfo.MentalModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            //charm status
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CharmOffset)
-            {
-                playerInfo.CharmModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            //random status
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.RandomStatOffset)
-            {
-                //playerInfo.random( (int)currentTestEventData.results[_index].eventOffset[i].offset );
-                Debug.Log("Player Info - randomstatusModify");
-            }
-            #endregion
-
-            #region "HP AP"
-            //hp
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.HpOffset)
-            {
-                playerInfo.HpModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            //max hp
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MaxHPOffset)
-            {
-                playerInfo.MaxHPOffsetModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-
-            //ap
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.APOffset)
-            {
-                playerInfo.APModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            //max ap
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MaxAPOffset)
-            {
-                playerInfo.MaxAPOffsetModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            #endregion
-
-            #region "Ingame Control related"
-            // Damage (plus offset)
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.PlusPlayerDamageOffset)
-            {
-                playerInfo.DMGPlusModify(currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            // Damage (multifly offset)
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MultiplyPlayerDamageOffset)
-            {
-                playerInfo.DMGMultiflyModify(currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-
-            // Attack delay (speed)
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.AttackDelay)
-            {
-                playerInfo.AttacSpeedModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-
-            //MoveSpeed
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.MoveSpeedOffset)
-            {
-                playerInfo.MoveSpeedModify(currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-            #endregion
-
-
-            //Coin
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CoinOffset)
-            {
-                playerInfo.CoinModify((int)currentTestEventData.results[_index].eventOffset[i].offset);
-            }
-
-            //vision
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.CameraSizeOffset)
-            {
-                playerInfo.VisionSizeModify( currentTestEventData.results[_index].eventOffset[i].offset );
-            }
-
-            //Artifact reward
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.ArtifactID)
-            {
-
-            }
-
-            //Action reward
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.ActionID)
-            {
-
-            }
-
-            //Func reward
-            else if (currentTestEventData.results[_index].eventOffset[i].offsetType == OutcomeOffsetType.FuncID)
-            {
-
-            }
-        }
-    }
-    */
 
     //랜덤 이벤트 사용기록 소거 (스테이지 시작시)
     public void InitializeRandomEventIsTested(int _currentStage)
@@ -390,6 +286,8 @@ public class TestEventManager : MonoBehaviour
         }
 
     }
+
+
 
     //보통 랜덤 이벤트 사용 기록 소거 (게임 처음부터 다시 시작시)
     public void InitializeCommonEventIsTested()

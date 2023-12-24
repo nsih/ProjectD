@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public static bool isEventEnd;
     public static bool isLoading;
 
+    public static bool isTesting;
+
 
     private void Awake()
     {
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         isEventEnd = false;
         isLoading = false;
+        isTesting = false;
 
 
         //OpenNewStage();//임시
