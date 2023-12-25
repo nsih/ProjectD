@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case RoomType.Battle:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.Alter);
                 break;
 
             case RoomType.EliteBattle:

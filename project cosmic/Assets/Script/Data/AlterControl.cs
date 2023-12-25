@@ -21,21 +21,20 @@ public class AlterControl : MonoBehaviour
 
     void OnDisable()
     {
-        alterData = GameObject.Find("GameManager").GetComponent<AlterManager>().GetAlterData();
+        gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        alterData = null;
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            //상호작용 가능 표시.
-            //gameObject.GetComponent<SpriteRenderer>().color = 
-
-
             //상호작용
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E) && !GameManager.isLandTalking)
             {
+                Debug.Log("inter Action Btn Pressed!!!!");
+
                 GameObject.Find("GameManager").GetComponent<AlterManager>().AlterInteraction(alterData);
             }
         }

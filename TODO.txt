@@ -14,12 +14,6 @@ action manager
 -----------------
 Todo
 
-
-. Alter
-	.1 data
-	.2 Manager ( Get Data, Get Control UI) 
-	.3 add data
-
 . Event Sys
 	. add data
 
@@ -35,10 +29,9 @@ Todo
 	.tmp text prod
 
 . Art
-	.Animation
-		.asd
-		.asd
-		.asd
+	.Animations
+
+
 ----------------
 Done
 
@@ -63,6 +56,11 @@ Done
 	.1 UI
 	.2 actual offset apply
 	.3 얻은거 보여주는 UI
+
+5. Alter
+	.1 data
+	.2 Manager ( Get Data, Get Control UI) 
+	.3 add data
 
 
 

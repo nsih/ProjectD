@@ -28,7 +28,7 @@ public class AlterManager : MonoBehaviour
         do
         {
             selectedIndex = UnityEngine.Random.Range(0, alterDatas.Count);
-        } while (alterDatas[selectedIndex].isUsed == false);
+        } while (alterDatas[selectedIndex].isUsed == true);
 
         alterDatas[selectedIndex].isUsed = true;
 
@@ -38,7 +38,9 @@ public class AlterManager : MonoBehaviour
 
     public void AlterInteraction(AlterData alterData)
     {
-        isTyping = false;
+        GameManager.isLandTalking = true;
+
+
         gameManager = GameObject.Find("GameManager");
 
         landUICanvas = GameObject.Find("LandUICanvas");
@@ -46,7 +48,7 @@ public class AlterManager : MonoBehaviour
         dialogueTxt = dialogueBox.transform.Find("DialogueText").gameObject;
         dialogueOption = GameObject.Find("DialogueOption");
 
-        rewardAfterPopup = GameObject.Find("RewardAfterPopup");
+        rewardAfterPopup = landUICanvas.transform.Find("RewardAfterPopup").gameObject;
 
 
         typingCoroutine = StartCoroutine(TypeText(alterData));
@@ -58,13 +60,16 @@ public class AlterManager : MonoBehaviour
     private IEnumerator TypeText(AlterData alterData)
     {
         isTyping = true;
+        dialogueBox.SetActive(true);
+
+        dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
 
         foreach (char c in alterData.alterText)
         {
             dialogueTxt.GetComponent<TextMeshProUGUI>().text += c;
             gameManager.GetComponent<SFXManager>().PlaySound(SfxType.DialogueTyping);
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         isTyping = false;
@@ -88,6 +93,12 @@ public class AlterManager : MonoBehaviour
         //결과 적용
         this.gameObject.GetComponent<PlayerInfo>().OutcomeOffsetApply(alterData.outcomeOffset);
 
+
+        //afterword
+        rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = alterData.alterSprite;
+        rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = alterData.afterWord;
+        rewardAfterPopup.SetActive(true);
+
         EndAlterInteraction(alterData);
     }
 
@@ -104,11 +115,7 @@ public class AlterManager : MonoBehaviour
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
         dialogueBox.SetActive(false);
 
-
-        //afterword
-        rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = alterData.alterSprite;
-        rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = alterData.afterWord;
-        rewardAfterPopup.SetActive(true);
+        GameManager.isLandTalking = false;
 
 
         Invoke( "CloseAfterRewardPopup" , 3f);
