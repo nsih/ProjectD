@@ -60,7 +60,7 @@ public class SettingBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         //gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
 
-        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
+        if(!GameManager.isLoading && !GameManager.isRoomTalking)
         {
             OpenPopup();
         }

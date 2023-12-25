@@ -15,12 +15,9 @@ action manager
 Todo
 
 
-.action
-	.use action
-
 . Alter
-	.1 Data 
-	.2 Manager
+	.1 data
+	.2 Manager ( Get Data, Get Control UI) 
 	.3 add data
 
 . Event Sys
@@ -32,10 +29,10 @@ Todo
 . enemy
 	. add pattern data
 
-. UI
+. Setting, tech Production
 	.setting option
 	.cutscenes
-	.tmp text
+	.tmp text prod
 
 . Art
 	.Animation
@@ -52,6 +49,7 @@ Done
 	.1 Dice Roll
 	.2 Status kind adjust
 	.3 actual offset apply
+	.4 action
 
 
 3. UI

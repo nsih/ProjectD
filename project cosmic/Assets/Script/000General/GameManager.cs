@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public static bool isEventEnd;
     public static bool isLoading;
 
+    public static bool isRoomTalking;
+    public static bool isLandTalking;
+
     public static bool isTesting;
 
 
@@ -60,6 +63,9 @@ public class GameManager : MonoBehaviour
         isEventEnd = false;
         isLoading = false;
         isTesting = false;
+
+        isRoomTalking = false;
+        isLandTalking = false;
 
 
         //OpenNewStage();//임시
@@ -120,7 +126,7 @@ public class GameManager : MonoBehaviour
         switch(roomType)
         {
             case RoomType.Start:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.Start);
                 break;
 
             case RoomType.Boss:
@@ -147,7 +153,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case RoomType.Alter:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.Alter);
                 break;
 
             case RoomType.Shop:

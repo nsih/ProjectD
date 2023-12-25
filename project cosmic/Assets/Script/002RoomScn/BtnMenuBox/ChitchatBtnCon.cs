@@ -62,7 +62,7 @@ public class ChitchatBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         //gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
 
-        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
+        if(!GameManager.isLoading && !GameManager.isRoomTalking)
         {
             dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("chitchat");
             dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();

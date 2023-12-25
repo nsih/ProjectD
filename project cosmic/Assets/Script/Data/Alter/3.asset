@@ -13,27 +13,12 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   alterID: 3
-  alternName: "\uC9E7\uAC8C \uBCF4\uB294 \uC7AC\uB2E8"
-  actionText: "\uC774 \uC81C\uB2E8\uC740 \uAE38\uAC8C \uAC08 \uC0DD\uAC01\uC774 \uC5C6\uC5B4
-    \uBCF4\uC785\uB2C8\uB2E4.\n"
-  result:
-    Text: "\uC720\uC6A9\uD560\uAE4C\uC694?"
-    maxHPOffset: -10
-    hpFullHeal: 1
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    funcID: 0
+  alternName: "\uCD95\uBCF5\uC758 \uC81C\uB2E8"
+  alterText: "\uB204\uAD70\uAC00\uC758 \uC0C1\uB0E5\uD55C \uC5FC\uC6D0\uC774 \uB2F4\uAE34
+    \uC81C\uB2E8\uC785\uB2C8\uB2E4.\n\uB530\uC2A4\uD568\uC774 \uB290\uAEF4\uC9D1\uB2C8\uB2E4."
+  afterWord: "\uB108\uB294 \uD589\uBCF5\uD574\uC57C \uD55C\uB2E4 \uB0B4 \uC544\uAC00"
+  alterSprite: {fileID: 21300000, guid: 57762104ec0b8d74faed524895e0eaff, type: 3}
+  outcomeOffset:
+  - offsetType: 5
+    offset: 15
+  isUsed: 0

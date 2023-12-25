@@ -11,7 +11,6 @@ using JetBrains.Annotations;
 
 public class RoomDialogueManager : MonoBehaviour
 {
-    public static bool isRoomTalking = false;
     bool isChoosingOption = false;
 
     string dialogueTitle;
@@ -74,7 +73,7 @@ public class RoomDialogueManager : MonoBehaviour
 
     public void ShowDialogue()
     {
-        isRoomTalking = true;
+        GameManager.isRoomTalking = true;
 
         if(dialogueTitle == null)
         {
@@ -152,7 +151,7 @@ public class RoomDialogueManager : MonoBehaviour
 
     void ProceedNextLine(string _nodeTitle)
     {
-        if (Input.GetKeyDown(KeyCode.E) && isRoomTalking)    //토킹중에 e 키 누르면
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.isRoomTalking)    //토킹중에 e 키 누르면
         {
             ShowDialogue();
         }
@@ -179,7 +178,7 @@ public class RoomDialogueManager : MonoBehaviour
     void EndDialogue()  //대기화면 시작
     {
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
-        isRoomTalking = false;
+        GameManager.isRoomTalking = false;
         TalkerHighlightOff();
     }
     #endregion
@@ -276,7 +275,11 @@ public class RoomDialogueManager : MonoBehaviour
         //해당 라인 끝
         isTyping = false;
 
-        //옵션 UI 비활성화
+        //옵션 UI 비활성화, listener 삭제
+        dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+
+
         dialogueOption.transform.GetChild(0).gameObject.SetActive(false);
         dialogueOption.transform.GetChild(1).gameObject.SetActive(false);
 

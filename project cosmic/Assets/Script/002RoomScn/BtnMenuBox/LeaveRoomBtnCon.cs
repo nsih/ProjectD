@@ -61,7 +61,7 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnclickLeaveRoom()
     {
-        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
+        if(!GameManager.isLoading && !GameManager.isRoomTalking)
         {
             OpenPopup();
         

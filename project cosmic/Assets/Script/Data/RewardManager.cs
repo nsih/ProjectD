@@ -65,7 +65,7 @@ public class RewardManager : MonoBehaviour
             }
 
         rewardAfterPopup.SetActive(true);
-        Invoke( "CloseAfterRewardPopup" , 5f);
+        Invoke( "CloseAfterRewardPopup" , 3f);
     }
 
     public void CloseAfterRewardPopup()

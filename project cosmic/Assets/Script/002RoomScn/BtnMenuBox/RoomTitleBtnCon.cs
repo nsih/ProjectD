@@ -65,7 +65,7 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         //gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
         
-        if(!GameManager.isLoading && !RoomDialogueManager.isRoomTalking)
+        if(!GameManager.isLoading && !GameManager.isRoomTalking)
         {
             OpenPopup();
 

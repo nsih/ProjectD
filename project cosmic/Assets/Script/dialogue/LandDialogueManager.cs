@@ -11,7 +11,6 @@ using JetBrains.Annotations;
 
 public class LandDialogueManager : MonoBehaviour
 {
-    public static bool isLandTalking = false;
     bool isChoosingOption = false;
 
     string dialogueTitle;
@@ -26,7 +25,7 @@ public class LandDialogueManager : MonoBehaviour
     GameObject gameManager;
     GameObject dialogueDataManager;
 
-    GameObject pnlBackGround;
+    GameObject landUICanvas;
     GameObject dialogueBox;
     GameObject dialogueTxt;
     GameObject dialogueOption;
@@ -46,8 +45,8 @@ public class LandDialogueManager : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         dialogueDataManager = GameObject.Find("DialogueManager");
         
-        pnlBackGround = GameObject.Find("PnlBackGround");
-        dialogueBox =  pnlBackGround.transform.Find("DialogueBox").gameObject;
+        landUICanvas = GameObject.Find("LandUICanvas");
+        dialogueBox =  landUICanvas.transform.Find("DialogueBox").gameObject;
         dialogueTxt = dialogueBox.transform.Find("DialogueText").gameObject; 
         dialogueOption = GameObject.Find("DialogueOption");
         
@@ -78,7 +77,7 @@ public class LandDialogueManager : MonoBehaviour
 
     public void ShowDialogue()
     {
-        isLandTalking = true;
+        GameManager.isLandTalking = true;
 
         if(dialogueTitle == null)
         {
@@ -151,7 +150,7 @@ public class LandDialogueManager : MonoBehaviour
 
     void ProceedNextLine(string _nodeTitle)
     {
-        if (Input.GetKeyDown(KeyCode.E) && isLandTalking)    //토킹중에 e 키 누르면
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.isLandTalking)    //토킹중에 e 키 누르면
         {
             ShowDialogue();
         }
@@ -181,7 +180,7 @@ public class LandDialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
 
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
-        isLandTalking = false;
+        GameManager.isLandTalking = false;
         TalkerHighlightOff();
     }
     #endregion
@@ -296,7 +295,10 @@ public class LandDialogueManager : MonoBehaviour
         //해당 라인 끝
         isTyping = false;
 
-        //옵션 UI 비활성화
+        //옵션 UI 비활성화, listener 삭제
+        dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+
         dialogueOption.transform.GetChild(0).gameObject.SetActive(false);
         dialogueOption.transform.GetChild(1).gameObject.SetActive(false);
 

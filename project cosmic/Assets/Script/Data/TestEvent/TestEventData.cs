@@ -100,6 +100,6 @@ public enum OutcomeOffsetType
     ActionID,
     FuncID,
     AttackID,
-    CompanionID,
+    CompanionID
 }
 

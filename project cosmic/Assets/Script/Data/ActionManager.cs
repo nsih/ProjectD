@@ -170,7 +170,6 @@ public class ActionManager : MonoBehaviour
         testBtn.GetComponent<Button>().onClick.AddListener(OnClickExecuteEventResult);
     }
 
-    
 
     void OnClickExecuteEventResult()
     {
