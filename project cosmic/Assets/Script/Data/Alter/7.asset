@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alterID: 7
   alternName: "\uD669\uAE08 \uC81C\uB2E8"
-  alterText: mo money
-  afterWord: ' mo problem'
+  alterText: MO MONEY
+  afterWord: MO PROBLEM
   alterSprite: {fileID: 21300000, guid: 57762104ec0b8d74faed524895e0eaff, type: 3}
   outcomeOffset:
   - offsetType: 8

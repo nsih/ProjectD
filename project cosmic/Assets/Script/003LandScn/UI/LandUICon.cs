@@ -12,10 +12,13 @@ public class LandUICon : MonoBehaviour
     //move (map)
     GameObject stageMap;
 
+    //item UI
+    GameObject itemPopup;
 
     //action UI
     GameObject actionPopup;
     GameObject actionScrollView;
+    GameObject actionViewport;
     GameObject actionScrollContent;
 
 
@@ -52,7 +55,8 @@ public class LandUICon : MonoBehaviour
         //actions
         actionPopup = landUICanvas.transform.Find("ActionPopup").gameObject;
         actionScrollView = actionPopup.transform.Find("Scroll View").gameObject;
-        actionScrollContent = actionScrollView.transform.Find("Viewport").gameObject.transform.Find("Content").gameObject;
+        actionViewport = actionScrollView.transform.Find("Viewport").gameObject;
+        actionScrollContent = actionViewport.transform.Find("Content").gameObject;
 
 
         //status
@@ -147,7 +151,26 @@ public class LandUICon : MonoBehaviour
     #endregion
 
 
-    #region "Action UI"
+    #region  "Item List UI"
+    void ShowItemUI()
+    {
+
+    }
+
+    void CloseItemUI()
+    {
+
+    }
+
+    public void ItemListSwitch()
+    {
+
+    }
+
+    
+    #endregion
+
+    #region "Action ScrollView UI"
     void ShowActionScroll()
     {
         actionPopup.SetActive(true);
@@ -156,7 +179,6 @@ public class LandUICon : MonoBehaviour
     {
         actionPopup.SetActive(false);
     }
-
     public void ActionListSwitch()
     {
         if (actionPopup.activeSelf)
@@ -171,7 +193,6 @@ public class LandUICon : MonoBehaviour
         }
     }
 
-
     //action scroll UI 초기화(with open)
     void PopulateActionScroll()
     {
@@ -179,15 +200,23 @@ public class LandUICon : MonoBehaviour
 
         RectTransform containerRectTransform = actionContainer.GetComponent<RectTransform>();
         float containerHeight = containerRectTransform.sizeDelta.y;
-        float currentY = 0f;
+
+        float currentY = 0;
 
 
+        //content size adjust
+        RectTransform contentRectTransform = actionScrollContent.GetComponent<RectTransform>();
+        contentRectTransform.sizeDelta = 
+        new Vector2(contentRectTransform.sizeDelta.x, PlayerInfo.playerActionList.Count * (containerHeight + 50) );
+
+
+        //button instance
         for (int i = 0; i < PlayerInfo.playerActionList.Count; i++)
         {
             int instanceIndex = i;//람다 closure용
             
             // prefap instance 배치
-            GameObject _actionContainer = Instantiate(actionContainer, actionScrollContent.transform);
+            GameObject _actionContainer = Instantiate(actionContainer, actionViewport.transform);
 
             // instance initialize
             _actionContainer.transform.Find("Icon").GetComponent<Image>().sprite = PlayerInfo.playerActionList[i].icon;
@@ -196,7 +225,7 @@ public class LandUICon : MonoBehaviour
             _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = "COST " + (int)PlayerInfo.playerActionList[i].cost;
             _actionContainer.transform.Find("Comment").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].afterComment;
 
-            //test event manager
+            //add listner test event manager
             _actionContainer.GetComponent<Button>().onClick.AddListener(() =>
             {
                 gameManager.GetComponent<ActionManager>().StartActionTestEvent(instanceIndex);
@@ -206,14 +235,15 @@ public class LandUICon : MonoBehaviour
             RectTransform uiRectTransform = _actionContainer.GetComponent<RectTransform>();
             if (uiRectTransform != null)
             {
-                uiRectTransform.anchoredPosition = new Vector2(0f, -currentY);
-                currentY += containerHeight;
+                uiRectTransform.anchoredPosition = new Vector2(0f, -currentY + 365);
+                
+                _actionContainer.transform.SetParent(actionScrollContent.transform, true);
+
+                currentY += containerHeight + 25;
             }
+
         }
 
-        //content size adjust
-        RectTransform contentRectTransform = actionScrollContent.GetComponent<RectTransform>();
-        contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, currentY);
 
         Sprite GetTestTypeIMG(TestType testType)
         {
@@ -260,6 +290,7 @@ public class LandUICon : MonoBehaviour
     }
     #endregion
 
+
     #region "Move(Map) UI"
     public void StageMapSwitch()
     {
@@ -285,4 +316,5 @@ public class LandUICon : MonoBehaviour
         stageMap.SetActive(false);
     }
     #endregion
+    //
 }

@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         switch(roomType)
         {
             case RoomType.Start:
-                PickupRoom(RoomType.Start);
+                PickupRoom(RoomType.Alter);
                 break;
 
             case RoomType.Boss:
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case RoomType.Battle:
-                PickupRoom(RoomType.Alter);
+                PickupRoom(RoomType.Battle);
                 break;
 
             case RoomType.EliteBattle:
