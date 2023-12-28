@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 0
   sprite: {fileID: 0}
-  name: Item Name
+  name: "\uC61B \uAC83\uC758 \uACE0\uAE43\uB369\uC774"
   outcomeOffset:
-  - offsetType: 4
+  - offsetType: 0
     offset: 1
-  beforeComment: 'Before Comment
-
-    increse Max Hp'
-  afterComment: After Comment
+  beforeComment: "\uC721\uCCB4+"
+  afterComment: "\uC9D5\uADF8\uB7EC"

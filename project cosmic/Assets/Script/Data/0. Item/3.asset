@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 3
   sprite: {fileID: 0}
-  name: Item Name
+  name: "\uACE0\uC591\uC774 \uADC0"
   outcomeOffset:
-  - offsetType: 4
+  - offsetType: 2
     offset: 1
-  beforeComment: 'Before Comment
-
-    increse Max Hp'
-  afterComment: After Comment
+  beforeComment: "\uB9E4\uB825+"
+  afterComment: "\uADC0\uAC00 \uB124 \uAC1C\uC9C0\uC694"
