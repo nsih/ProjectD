@@ -15,8 +15,9 @@ MonoBehaviour:
   itemID: 0
   sprite: {fileID: 0}
   name: "\uC61B \uAC83\uC758 \uACE0\uAE43\uB369\uC774"
+  rewardRate: 3
   outcomeOffset:
   - offsetType: 0
     offset: 1
-  beforeComment: "\uC721\uCCB4+"
+  beforeComment: Physical+
   afterComment: "\uC9D5\uADF8\uB7EC"

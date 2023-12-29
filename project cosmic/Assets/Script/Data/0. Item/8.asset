@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
-  m_Name: 3
+  m_Name: 8
   m_EditorClassIdentifier: 
-  itemID: 3
+  itemID: 8
   sprite: {fileID: 0}
-  name: "\uACE0\uC591\uC774 \uADC0"
-  rewardRate: 3
+  name: "\uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
+  rewardRate: 1
   outcomeOffset:
-  - offsetType: 2
-    offset: 1
-  beforeComment: Charm+
-  afterComment: "\uADC0\uAC00 \uB124 \uAC1C\uC9C0\uC694"
+  - offsetType: 15
+    offset: 0
+  beforeComment: "\uD589\uB3D9 : \uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
+  afterComment: "\uBCA0\uC2A4\uD2B8\uC140\uB7EC"

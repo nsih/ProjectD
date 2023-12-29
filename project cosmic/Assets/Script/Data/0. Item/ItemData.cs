@@ -10,6 +10,7 @@ public class ItemData : ScriptableObject
     public int itemID = 0;
     public Sprite sprite;
     public string name = "Item Name";
+    public rewardRate rewardRate = rewardRate.C;
 
     public OutcomeOffset[] outcomeOffset;
 
@@ -21,5 +22,14 @@ public class ItemData : ScriptableObject
     //얻은 유물 코멘트
     [TextArea(2, 10)]
     public string afterComment = "After Comment";
+
+}
+
+public enum rewardRate
+{
+    S,
+    A,
+    B,
+    C
 
 }

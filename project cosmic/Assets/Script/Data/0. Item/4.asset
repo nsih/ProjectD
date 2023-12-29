@@ -15,8 +15,9 @@ MonoBehaviour:
   itemID: 4
   sprite: {fileID: 0}
   name: "8bit \uC120\uAE00\uB77C\uC2A4"
+  rewardRate: 3
   outcomeOffset:
   - offsetType: 2
     offset: 1
-  beforeComment: "\uB9E4\uB825+"
+  beforeComment: Charm+
   afterComment: DEAL WITH IT!

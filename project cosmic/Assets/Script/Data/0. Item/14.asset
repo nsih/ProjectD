@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
-  m_Name: 3
+  m_Name: 14
   m_EditorClassIdentifier: 
-  itemID: 3
+  itemID: 14
   sprite: {fileID: 0}
-  name: "\uACE0\uC591\uC774 \uADC0"
+  name: "\uCF00\uD2C0\uBCA8"
   rewardRate: 3
   outcomeOffset:
-  - offsetType: 2
+  - offsetType: 0
     offset: 1
-  beforeComment: Charm+
-  afterComment: "\uADC0\uAC00 \uB124 \uAC1C\uC9C0\uC694"
+  - offsetType: 12
+    offset: -10
+  beforeComment: 'Move Speed -
+
+    Physical +'
+  afterComment: "\uC544, \uC820\uC7A5 \uBC84\uB9AC\uACE0 \uAC00\uBA74 \uC548\uB420\uAE4C
+    \uC774\uAC70?.."
