@@ -69,6 +69,12 @@ public enum OutcomeOffsetType
     CharmOffset,
     RandomStatOffset,
 
+    //Dice Offset
+
+    DiceP,
+    DiceM,
+    DiceC,
+
 
     // HP
     MaxHPOffset,
@@ -87,7 +93,7 @@ public enum OutcomeOffsetType
     MultiplyPlayerDamageOffset,
 
     // Attack delay (speed)
-    AttackDelay,
+    AttackSpeedOffset,
 
     // Move speed
     MoveSpeedOffset,

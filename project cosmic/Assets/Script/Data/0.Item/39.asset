@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
-  m_Name: 19
+  m_Name: 39
   m_EditorClassIdentifier: 
-  itemID: 19
+  itemID: 39
   sprite: {fileID: 0}
-  name: "\uD3B8\uC790"
-  rewardRate: 3
+  name: "\uACE0\uAE30\uB3CC"
+  rewardRate: 2
   outcomeOffset:
-  - offsetType: 0
+  - offsetType: 21
     offset: 1
-  - offsetType: 12
-    offset: 5
-  beforeComment: 'Physical +
-
-    Speed +'
-  afterComment: "\uB2E4\uADF8\uB2E5 \uB2E4\uADF8\uB2E5"
+  - offsetType: 8
+    offset: 10
+  beforeComment: "\uCD94\uC885\uC790 : \uACE0\uAE30\uB3CC"
+  afterComment: "\uBE44\uC0C1\uC2DD\uB7C9"

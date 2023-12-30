@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
+  m_Name: 46
+  m_EditorClassIdentifier: 
+  itemID: 46
+  sprite: {fileID: 0}
+  name: "\uC0C1\uC790\uC18D\uC758 \uACE0\uC591\uC774"
+  rewardRate: 0
+  outcomeOffset:
+  - offsetType: 19
+    offset: 1
+  beforeComment: "\uD2B9\uC218\uB2A5\uB825 : \uD398\uC774\uC9D5"
+  afterComment: "\uD63C\uB3C8\uC758 \uD48D\uD30C\uB97C \uB9DE\uC740 \uBB34\uC5B8\uAC00\uC758
+    \uC740\uC720"

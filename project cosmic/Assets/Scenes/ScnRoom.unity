@@ -3788,18 +3788,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76e3bba04a7e8e4fb43f9b4bf5339ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardItemList:
-  - {fileID: 11400000, guid: 306aae2ab9400294ebe2364672827ed1, type: 2}
-  - {fileID: 11400000, guid: 07b31ff78212ac34fb5d23214ba5fac6, type: 2}
-  - {fileID: 11400000, guid: f71ff3c78a2dbad47ab41e74659aeee7, type: 2}
-  - {fileID: 11400000, guid: c47f849df147b9442b4e198bcc304257, type: 2}
-  - {fileID: 11400000, guid: 8c775fb286b41c74a8ad907556da7369, type: 2}
+  rewardItemList: []
   rewardActionList:
   - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
-  - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
-  - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
-  - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
-  - {fileID: 11400000, guid: 3771e9896c5aba24f9c0a71e2ed5a87e, type: 2}
+  - {fileID: 11400000, guid: f83f525db719b714ea8431051c741bee, type: 2}
+  - {fileID: 11400000, guid: ca24a0dd6d32e8e45901de75e602bc64, type: 2}
+  - {fileID: 11400000, guid: d59f767766c878c40b93d9ecf18a70df, type: 2}
+  - {fileID: 11400000, guid: c8b477327d89d6b44b6a025e518f7a74, type: 2}
 --- !u!114 &1189591040
 MonoBehaviour:
   m_ObjectHideFlags: 0

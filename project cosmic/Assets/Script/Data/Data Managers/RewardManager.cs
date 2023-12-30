@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System.Linq;
 using System;
+using System.IO;
 
 public class RewardManager : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class RewardManager : MonoBehaviour
     public List<ActionData> rewardActionList = new();
 
     public List<object> suggestedList = new List<object>();
+
+
+    void Awake() 
+    {
+        LoadItemData("Assets/Script/Data/0.Item");
+    }
 
     public void OpenRewardPopup()
     {
@@ -77,7 +84,29 @@ public class RewardManager : MonoBehaviour
     }
 
 
+    ///Item List
+    void LoadItemData(string folderPath)
+    {
+        // 폴더 내의 모든 파일 경로 가져오기
+        string[] filePaths = Directory.GetFiles(folderPath, "*.asset");
 
+        foreach (string filePath in filePaths)
+        {
+            // ScriptableObject 로드
+            ItemData itemData = UnityEditor.AssetDatabase.LoadAssetAtPath<ItemData>(filePath);
+
+            if (itemData != null)
+            {
+                // 리스트에 추가
+                rewardItemList.Add(itemData);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to load ItemData from file: " + filePath);
+            }
+        }
+    }
+             
 
 
     ///////

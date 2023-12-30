@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
+  m_Name: 29
+  m_EditorClassIdentifier: 
+  itemID: 29
+  sprite: {fileID: 0}
+  name: "\uBA74\uB958\uAD00"
+  rewardRate: 2
+  outcomeOffset:
+  - offsetType: 7
+    offset: -1
+  - offsetType: 13
+    offset: 1.4
+  beforeComment: 'Max HP-
+
+    DMG+'
+  afterComment: "\uC8C4\uB97C \uC0AC\uD558\uB178\uB77C"

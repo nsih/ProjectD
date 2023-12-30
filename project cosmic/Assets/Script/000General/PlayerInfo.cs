@@ -184,7 +184,7 @@ public class PlayerInfo : MonoBehaviour
             }
 
             // Attack delay (speed)
-            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.AttackDelay)
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.AttackSpeedOffset)
             {
                 AttacSpeedModify((int)outcomeOffsets[i].offset);
             }

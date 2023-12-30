@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
+  m_Name: 40
+  m_EditorClassIdentifier: 
+  itemID: 40
+  sprite: {fileID: 0}
+  name: "\uC2A4\uCF54\uD504"
+  rewardRate: 2
+  outcomeOffset:
+  - offsetType: 13
+    offset: 2
+  - offsetType: 14
+    offset: -1.5
+  - offsetType: 16
+    offset: 15
+  beforeComment: 'DMG + Vision +
+
+    Attack Speed -'
+  afterComment: "\uC2A4\uB098\uC774\uD37C"
