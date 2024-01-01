@@ -1,0 +1,4 @@
+repository "Cosmic Streamer@sih@cloud"
+  path "/"
+    br "/main"
+    co "/main"
