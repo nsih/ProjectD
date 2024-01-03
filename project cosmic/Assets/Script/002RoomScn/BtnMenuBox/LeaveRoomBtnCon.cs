@@ -65,10 +65,10 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             OpenPopup();
         
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "지금 방을 떠날까?";
+            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "나감?";
 
-            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "나가자";
-            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "좀 더 밍기적 거릴레..";
+            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "ㅇㅇ";
+            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "ㄴㄴ";
         }
     }
 

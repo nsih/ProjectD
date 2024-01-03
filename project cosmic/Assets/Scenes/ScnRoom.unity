@@ -574,11 +574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerEmotionSprite:
-  - {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
-  - {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
-  - {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
-  - {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
-  - {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
+  - {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
+  - {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
+  - {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
+  - {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
+  - {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
   niaEmotionSprite:
   - {fileID: 21300000, guid: 57762104ec0b8d74faed524895e0eaff, type: 3}
   - {fileID: 21300000, guid: 57762104ec0b8d74faed524895e0eaff, type: 3}
@@ -2499,8 +2499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -136.15, y: 105.24}
-  m_SizeDelta: {x: 533.2303, y: 674.4841}
+  m_AnchoredPosition: {x: -97, y: 105.24}
+  m_SizeDelta: {x: 1056.4, y: 674.4841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &903884598
 MonoBehaviour:
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fb7568aac1dcc704c9269c0a814a6519, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c79d4740bbb26be419e8a2f7c15f875f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

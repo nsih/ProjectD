@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   actionID: 3
-  name: 
+  icon: {fileID: 0}
+  name: "\uC751\uC2DC"
   cost: 0
   actionText: "\uC800 \uB108\uBA38\uC758 \uD5C8\uACF5\uC744 \uC751\uC2DC\uD569\uB2C8\uB2E4.\n\uC6B4\uC774
     \uC88B\uB2E4\uBA74\n\uBB34\uC5C7\uC778\uAC00 \uCC3E\uC744 \uC218 \uC788\uC744\uC9C0\uB3C4
