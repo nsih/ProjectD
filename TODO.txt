@@ -7,7 +7,23 @@ memo
 
 
 -----------------
+ProtoType
+
+. enemy
+	. add pattern data
+	. Boss Battle
+
+. system
+	. HP
+
+.bugfix
+	. AP
+
+
+
+----------------
 Todo
+
 
 . Event Sys
 	. add data
@@ -15,9 +31,6 @@ Todo
 . reward (item, action)
 	. add data
 
-. enemy
-	. add pattern data
-	. 
 
 . Setting, tech Production
 	.setting option
