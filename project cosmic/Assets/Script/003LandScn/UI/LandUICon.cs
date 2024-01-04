@@ -144,9 +144,14 @@ public class LandUICon : MonoBehaviour
 
     public void UpdateStatusText()
     {
-        physicalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.physical.ToString();
-        mentalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.mental.ToString();
-        charmUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = PlayerInfo.charm.ToString();
+        physicalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
+        = PlayerInfo.physical.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceP.ToString() + ")" + "</color>" ;
+
+        mentalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
+        = PlayerInfo.mental.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceM.ToString() + ")" + "</color>" ;
+
+        charmUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
+        = PlayerInfo.charm.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceC.ToString() + ")" + "</color>" ;
     }
     #endregion
 
@@ -270,7 +275,7 @@ public class LandUICon : MonoBehaviour
             else
             {
                 return null;
-                Debug.Log("test type error");
+                //Debug.Log("test type error");
             }
         }
     }

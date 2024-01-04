@@ -17,11 +17,11 @@ MonoBehaviour:
   name: "\uB9C8\uC0AC \uB514 \uB808\uD034\uC5E0 \uD398\uB974 \uC288\uAC00\uC774"
   rewardRate: 0
   outcomeOffset:
-  - offsetType: 2
-    offset: 1
-  - offsetType: 14
-    offset: 1.2
-  beforeComment: 'Charm +
+  - offsetType: 1
+    offset: -1
+  - offsetType: 12
+    offset: 3
+  beforeComment: 'Mental-
 
-    Attack Speed +'
+    DMG+'
   afterComment: "\uC624\uB798\uB41C \uD76C\uACE1"

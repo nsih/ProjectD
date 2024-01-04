@@ -188,9 +188,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
 
-    #region "attacking"
-
-
+    #region "Battle"
     //hand
     void HandPivotCon()    //
     {
@@ -236,7 +234,6 @@ public class PlayerManager : MonoBehaviour
         attackTimer = PlayerInfo.playerAttackDelay;
     }
 
-
     //총
     void FireGun()  //공속 미적용
     {
@@ -256,9 +253,26 @@ public class PlayerManager : MonoBehaviour
     }
 
 
+    public void PlayerAttacked()
+    {
+        Debug.Log("PlayerAttacked");
+        StartCoroutine(GetInvincible());
+
+        gameManager.GetComponent<PlayerInfo>().HpModify(-1);
+    }
+
+    //무적시간
+    IEnumerator GetInvincible()
+    {
+        PlayerInfo.isInvincible = true;
+
+        yield return new WaitForSeconds(PlayerInfo.invincibilityTime);
+
+        PlayerInfo.isInvincible = false;
+    }
 
 
-    //막대기 관련
+    //막대기
     void StrikePivotCon()
     {
         if (!isAttack)

@@ -17,11 +17,9 @@ MonoBehaviour:
   name: "\uB974\uB93C\uC5D0 \uC218\uC815"
   rewardRate: 2
   outcomeOffset:
-  - offsetType: 1
-    offset: 1
   - offsetType: 0
     offset: 1
-  beforeComment: 'Physical + Dice Mental +
-
-    Mental -'
+  - offsetType: 1
+    offset: 1
+  beforeComment: "Physical + \nMental +"
   afterComment: "\uBE44\uC0C9\uC758 \uAD11\uAE30"

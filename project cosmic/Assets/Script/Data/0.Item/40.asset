@@ -23,7 +23,5 @@ MonoBehaviour:
     offset: -1.5
   - offsetType: 16
     offset: 15
-  beforeComment: 'DMG + Vision +
-
-    Attack Speed -'
+  beforeComment: "DMG + \nVision +\nAttack Speed -"
   afterComment: "\uC2A4\uB098\uC774\uD37C"

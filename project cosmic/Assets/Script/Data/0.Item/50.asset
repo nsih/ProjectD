@@ -20,9 +20,9 @@ MonoBehaviour:
   - offsetType: 4
     offset: 1
   - offsetType: 5
-    offset: -2
+    offset: 1
   - offsetType: 6
     offset: 1
-  beforeComment: 'Dice Pysical + Dice Mental + Dice Charm + '
+  beforeComment: "Dice Pysical + \nDice Mental + \nDice Charm + "
   afterComment: "\uC808\uB300\uC801 \uC120\uC758 \uAE30\uD638 \n\uADF8 \uC804\uC81C\uC870\uAC74\uC758
     \uBE44\uD638"

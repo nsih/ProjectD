@@ -69,7 +69,18 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    #region "collision (Been attacked)"
+    #region "충돌"
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player" && !PlayerInfo.isInvincible)
+        {
+            Debug.Log(PlayerInfo.isInvincible);
+            player.GetComponent<PlayerManager>().PlayerAttacked();
+        }
+    }
+
+    //(Been attacked)
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PlayerAttack")
@@ -79,12 +90,6 @@ public class EnemyManager : MonoBehaviour
 
             other.gameObject.SetActive(false);
             //other.gameObject.GetComponent<PlayerBulletCon>().VanishOnCollision();
-        }
-
-        if (other.gameObject.tag == "Player")
-        {
-            //Debug.Log("asd");
-            //HandlePlayerStrike();
         }
     }
 

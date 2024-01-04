@@ -14,6 +14,11 @@ public class PlayerInfo : MonoBehaviour
     public static int mental;   //정신력
     public static int charm;       //매력
 
+    //주사위 가중치
+    public static int diceP;    //
+    public static int diceM;    //
+    public static int diceC;    //
+
     //HP (Health Point)
     public static int maxHp;
     public static int maxHpOffset;
@@ -45,6 +50,7 @@ public class PlayerInfo : MonoBehaviour
     public static float playerVisionSize;//20 default
 
     //etc
+    public static bool isInvincible;
     public static float invincibilityTime; //피격시 무적시간
 
 
@@ -71,6 +77,10 @@ public class PlayerInfo : MonoBehaviour
         physical = 2;
         mental = 2;
         charm = 2;
+
+        diceP = 0;
+        diceM = 0;
+        diceC = 0;
 
         //hp
         MaxHpCalc();
@@ -110,6 +120,10 @@ public class PlayerInfo : MonoBehaviour
         //etc
         playerVisionSize = 20;
 
+        //invincible
+        isInvincible = false;
+        invincibilityTime = 1.5f;
+
 
         //UI
         landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
@@ -145,6 +159,25 @@ public class PlayerInfo : MonoBehaviour
                 //random( (int)outcomeOffsets[i].offset );
                 Debug.Log("Player Info - randomstatusModify");
             }
+            #endregion
+
+            #region "dice Status Modify"
+            //diceP
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.DiceP)
+            {
+                DicePhysicalModify((int)outcomeOffsets[i].offset);
+            }
+            //diceP
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.DiceM)
+            {
+                DiceMentalModify((int)outcomeOffsets[i].offset);
+            }
+            //diceP
+            else if (outcomeOffsets[i].offsetType == OutcomeOffsetType.DiceC)
+            {
+                DiceCharmModify((int)outcomeOffsets[i].offset);
+            }
+
             #endregion
 
             #region "HP AP"
@@ -243,6 +276,8 @@ public class PlayerInfo : MonoBehaviour
         else
         {
             physical = changedPhisical;
+            
+            currentHP = currentHP+ modifier;
         }
 
         MaxHpCalc();
@@ -285,27 +320,64 @@ public class PlayerInfo : MonoBehaviour
     }
 
 
+    //dice Status
+    public void DicePhysicalModify(int modifier)
+    {
+        diceP = diceP + modifier;
+
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
+    }
+    public void DiceMentalModify(int modifier)
+    {
+        diceM = diceM + modifier;
+
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
+    }
+    public void DiceCharmModify(int modifier)
+    {
+        diceC = diceC + modifier;
+
+        landUICanvas.GetComponent<LandUICon>().UpdateStatusText();
+    }
+
 
     //hp
     public void MaxHpCalc()//최대 hp 변경 (+-)
     {
-        maxHp = physical + maxHpOffset;
+        if((physical + maxHpOffset) >= 1)
+        {
+            maxHp = physical + maxHpOffset;
+        }
+        else
+        {
+            maxHp = 1;
+        }
+
+
+        if(maxHp < currentHP)
+        {
+            currentHP = maxHp;
+        }
 
         landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
     }
-
     public void MaxHPOffsetModify(int offset)
     {
         int changedMaxHPOffset = maxHpOffset + offset;
 
         maxHpOffset = changedMaxHPOffset;
 
+        if(offset > 0)
+        {
+            currentHP =+ offset;
+        }
+
 
         MaxHpCalc();
 
         landUICanvas.GetComponent<LandUICon>().UpdateHPUI();
 
-        Debug.Log("MAX HP +" + offset);
+        //Debug.Log("MAX HP +" + offset);
     }
     public void HpModify(int offset)//hp 변경시 호출 (+-)
     {
@@ -313,6 +385,7 @@ public class PlayerInfo : MonoBehaviour
 
         if (changedHp <= 0)
         {
+            currentHP = changedHp;
             Debug.Log("겜 오버");
         }
         else if (changedHp >= maxHp)
@@ -330,7 +403,15 @@ public class PlayerInfo : MonoBehaviour
     //action point
     public void MaxAPCalc()
     {
-        maxAP = mental + maxAPOffset;
+        if( (mental + maxAPOffset) >= 1)
+        {
+            maxAP = mental + maxAPOffset;
+        }
+
+        else if((mental + maxAPOffset) < 1)
+        {
+            maxAP = 1;
+        }
 
         landUICanvas.GetComponent<LandUICon>().UpdateAPUI();
     }
@@ -341,11 +422,12 @@ public class PlayerInfo : MonoBehaviour
 
         if (changedMaxAPOffset <= 0)
         {
-            currentAP = 0;
+            //
+            maxAPOffset = changedMaxAPOffset;
         }
         else
         {
-            currentAP = changedMaxAPOffset;
+            maxAPOffset = changedMaxAPOffset;
         }
 
 
@@ -408,17 +490,6 @@ public class PlayerInfo : MonoBehaviour
     }
 
 
-    /*
-    void DmgDebug()
-    {
-        for (int i = 0; i < 100; i = i + 1)
-        {
-            float result = 2 * Mathf.Sqrt((float)((i * 1.2) + 1));
-            Debug.Log("i : " + i + "   dmg : " + MathF.Round(result,2));
-        }
-    }
-    */
-
 
     //attack delay
     public void AttacSpeedModify(float offset)
@@ -440,7 +511,6 @@ public class PlayerInfo : MonoBehaviour
 
         AttackDelayCalc();
     }
-
     public void AttackDelayCalc()
     {
         playerAttackDelay = (float)(16 - (5 * Mathf.Sqrt((float)(attackSpeed * 1.3) + 1))) / 10;
