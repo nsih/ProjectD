@@ -5,15 +5,9 @@ con shift L
 -----------------
 memo
 
-AP 회복?
-
-이벤트 결과 HP 안참
+이벤트 결과 HP 안참 (데이터 추가 필요)
 
 max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
-
-
-
-
 
 -----------------
 ProtoType

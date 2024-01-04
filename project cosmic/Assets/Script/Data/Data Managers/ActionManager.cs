@@ -30,7 +30,9 @@ public class ActionManager : MonoBehaviour
     public static bool isCurrentResultSuccess;
 
     void Start()
-    {        
+    {
+        gameManager = GameObject.Find("GameManager").gameObject;
+
         GameManager.isTesting = false;
         isCurrentResultSuccess = false;
     }
@@ -38,6 +40,19 @@ public class ActionManager : MonoBehaviour
 
     public void StartActionTestEvent(int actionIndex)
     {
+        currentActionData = PlayerInfo.playerActionList[actionIndex];
+
+        if(PlayerInfo.currentAP < currentActionData.cost)
+        {
+            return;
+        }
+        else
+        {
+            gameManager.GetComponent<PlayerInfo>().APModify(currentActionData.cost*-1);
+        }
+
+
+
         GameObject.Find("LandUICanvas").GetComponent<LandUICon>().ActionListSwitch();
 
         //object initialize
@@ -54,7 +69,7 @@ public class ActionManager : MonoBehaviour
         
 
         Debug.Log(actionIndex);
-        currentActionData = PlayerInfo.playerActionList[actionIndex];
+        //currentActionData = PlayerInfo.playerActionList[actionIndex];
 
         //show
         testPopup.SetActive(true);
@@ -142,7 +157,7 @@ public class ActionManager : MonoBehaviour
                 StartCoroutine(dicePack.transform.GetChild(i).gameObject.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
             }
 
-            Invoke("CheckSuccess", 3.0f);
+            Invoke("CheckSuccess", 3.3f);
         }
 
         else

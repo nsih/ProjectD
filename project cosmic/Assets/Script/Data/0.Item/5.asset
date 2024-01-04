@@ -18,6 +18,6 @@ MonoBehaviour:
   rewardRate: 1
   outcomeOffset:
   - offsetType: 16
-    offset: 0
+    offset: 10
   beforeComment: "\uD2B9\uC218\uB2A5\uB825 : \uCD08\uC6D4"
   afterComment: "\uBB34\uAC70\uC6CC\uC11C \uBABB\uC4F8 \uAC83 \uAC19\uC740\uB370"

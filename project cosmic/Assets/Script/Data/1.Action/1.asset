@@ -19,7 +19,7 @@ MonoBehaviour:
   actionText: action1 text
   sprite: {fileID: 0}
   testType: 0
-  testTypeS: 
+  testTypeS: "\uC721\uCCB4 \uD14C\uC2A4\uD2B8"
   testOffset: -1
   results:
   - testResultName: action1

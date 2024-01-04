@@ -17,7 +17,7 @@ MonoBehaviour:
   name: "\uBCF4\uBD80\uC0C1\uC758 \uBCF4\uB530\uB9AC"
   rewardRate: 3
   outcomeOffset:
-  - offsetType: 8
+  - offsetType: 11
     offset: 100
   beforeComment: Coin Coin Coin
   afterComment: "\uB204\uAC00 \uC774\uB7F0\uAC78..."

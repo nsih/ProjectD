@@ -52,6 +52,8 @@ public class BattleEventManager : MonoBehaviour
             }
         }
 
+        gameObject.GetComponent<PlayerInfo>().APModify(1);
+
         return true;
     }
 

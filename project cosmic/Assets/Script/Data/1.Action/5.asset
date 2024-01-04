@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionID: 5
   icon: {fileID: 0}
-  name: "\uC5C5\uB4DC\uB9AC\uAE30"
+  name: "\uC5CE\uB4DC\uB9AC\uAE30"
   cost: 0
-  actionText: "\uB0A9\uC791 \uC5C5\uB4DC\uB9BD\uB2C8\uB2E4.\n\uC628 \uC2E0\uACBD\uC744
-    \uC9D1\uC911\uD569\uB2C8\uB2E4"
+  actionText: "\uD655\uC2E4\uD788 \uBB34\uC5B8\uAC00 \uCC3E\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
   sprite: {fileID: 0}
   testType: 0
-  testTypeS: 
+  testTypeS: "\uC721\uCCB4 \uD14C\uC2A4\uD2B8"
   testOffset: 0
   results:
   - testResultName: "\uB09C \uB3C8\uC774 \uC88B\uC544"

@@ -13,53 +13,24 @@ MonoBehaviour:
   m_Name: 8
   m_EditorClassIdentifier: 
   actionID: 8
-  actionName: "\uB3C4\uC804!"
+  icon: {fileID: 0}
+  name: 8
+  cost: 0
   actionText: "\uAC15\uD574\uC9C0\uAE30 \uC704\uD574\uC120 \uD55C\uACC4\uB97C \uB118\uC5B4\uC57C
     \uD558\uB294 \uBC95"
-  artifactSprite: {fileID: 0}
-  actionTestType: 0
+  sprite: {fileID: 0}
+  testType: 0
+  testTypeS: "\uC721\uCCB4"
   testOffset: -3
   results:
   - testResultName: "\uB540\uC758 \uACB0\uC2E4"
     resultText: "\uC721\uCCB4 +\nHP-"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    funcID: 0
+    eventOffset: []
   - testResultName: "\uC624\uB974\uC9C0 \uBABB\uD560 \uC0B0\uC740 \uCCD0\uB2E4\uBCF4\uC9C0
       \uB9D0\uB77C"
     resultText: HP--
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: -20
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 1
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    funcID: 0
+    eventOffset: []
+  beforeComment: Before Comment
+  afterComment: After Comment
