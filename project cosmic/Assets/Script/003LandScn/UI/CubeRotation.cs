@@ -41,7 +41,7 @@ public class CubeRotation : MonoBehaviour
 
         while (isThrowing)
         {
-            Debug.Log("isThrowing");
+            //Debug.Log("isThrowing");
             eye.GetComponent<TextMeshProUGUI>().text = "";
 
             // 회전 방향으로 힘을 가해 회전
@@ -54,7 +54,7 @@ public class CubeRotation : MonoBehaviour
 
             if (currentThrowForce <= stopThreshold) // 회전 힘이 기준값보다 작으면
             {
-                Debug.Log("currentThrowForce <= stopThreshold");
+                //Debug.Log("currentThrowForce <= stopThreshold");
                 currentThrowForce = 0f;
 
                 // 회전을 0, 0, 0으로 수렴시킴

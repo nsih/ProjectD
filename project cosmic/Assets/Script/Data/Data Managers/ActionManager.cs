@@ -68,7 +68,7 @@ public class ActionManager : MonoBehaviour
         GameManager.isTesting = true;
         
 
-        Debug.Log(actionIndex);
+        Debug.Log("Action Index : "+actionIndex);
         //currentActionData = PlayerInfo.playerActionList[actionIndex];
 
         //show

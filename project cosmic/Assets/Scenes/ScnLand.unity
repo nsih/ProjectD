@@ -10199,8 +10199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -412.8, y: -131}
-  m_SizeDelta: {x: 702.84, y: 709.92}
+  m_AnchoredPosition: {x: -412.8, y: -112}
+  m_SizeDelta: {x: 733.89, y: 757.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &848641724
 MonoBehaviour:
@@ -10226,7 +10226,7 @@ MonoBehaviour:
     AROUND YOU DIE! \n\nTHINK, MARK! \n\nYOULL OUTLAST EVERY FRAGILE INSIGNIFICANT
     BEING ON THIS PLANET!\n\nYOU'LL LIVE TO SEE THIS PLANET CRUMBLE TO DUST AND BLOW
     AWAY! \n\nEVERYONE AND EVERYTHING YOU KNOW WILL BE GONE. \n\nWHAT WILL YOU HAVE
-    AFTER 500 YEARS?!"
+    AFTER 500 YEARS?!\n\n\n\n\nME : Hmm.. How should I Answer that?.."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
   m_sharedMaterial: {fileID: -1357644017102839542, guid: e3380dcc3caae784db031f0e3425e9bd, type: 2}
@@ -10253,8 +10253,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 31.76
+  m_fontSizeBase: 31.76
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
