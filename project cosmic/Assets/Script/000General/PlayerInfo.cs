@@ -60,6 +60,9 @@ public class PlayerInfo : MonoBehaviour
 
     //얻은 action List
     public static List<ActionData> playerActionList = new List<ActionData>();
+
+
+    //뭐하려고 선언했지?..
     public ActionData actionDataRest;
 
 

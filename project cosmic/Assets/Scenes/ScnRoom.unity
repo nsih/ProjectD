@@ -3675,6 +3675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDataList:
   - {fileID: 11400000, guid: 22070380e06c5c342ae81d4d94ab8bbf, type: 2}
+  - {fileID: 11400000, guid: b8afb11ed4fd2ba4eae9ef5d6eb386a6, type: 2}
+  enemyBullet: {fileID: 670972795177340754, guid: f178e192cf5d0914ba0faabbd5be72c3, type: 3}
 --- !u!114 &1189591034
 MonoBehaviour:
   m_ObjectHideFlags: 0

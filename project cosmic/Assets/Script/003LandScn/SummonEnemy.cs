@@ -20,7 +20,7 @@ public class SummonEnemy : MonoBehaviour
 
     IEnumerator GetMob()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         gameManager.GetComponent<BattleEventManager>().PickMob(this.gameObject);
     }

@@ -32,7 +32,7 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
     ////*
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Connection : "+CheckRoomConnect());
+        Debug.Log("Room Connection : " + CheckRoomConnect());
 
 
         if( CheckRoomConnect() )

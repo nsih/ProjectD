@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
     GameObject gameManager;
-
     GameObject player;
-
 
     public EnemyData enemyData;
 
     public string mobName;
+
+
+
+
+
 
     float hp;
     int damage;
@@ -38,6 +42,9 @@ public class EnemyManager : MonoBehaviour
     {
         InitializeEnemyStatus();
 
+        gameObject.GetComponent<EnemyBulletPoolManager>().InitializeEnemyBulletPool(this.gameObject);
+
+
         StartCoroutine(RunBehaviorPatterns());
     }
 
@@ -52,6 +59,10 @@ public class EnemyManager : MonoBehaviour
 
     void InitializeEnemyStatus()
     {
+        player = GameObject.Find("player");
+        gameManager = GameObject.Find("GameManager");
+        
+
         this.gameObject.tag = "Enemy";
 
         mobName = enemyData.mobName;
@@ -67,9 +78,7 @@ public class EnemyManager : MonoBehaviour
         //
     }
 
-
-
-    #region "충돌"
+    #region "충돌관련"
 
     void OnCollisionStay2D(Collision2D other)
     {
@@ -160,7 +169,7 @@ public class EnemyManager : MonoBehaviour
                         break;
 
                     case BehaviorPattern.EnemyActionType.ShootAtPlayer:
-                        yield return StartCoroutine(ShootAtPlayer(pattern.duration));
+                        yield return StartCoroutine(ShootPlayer(pattern.duration));
                         break;
 
                     // 추가된 행동 패턴에 대한 처리 추가
@@ -173,7 +182,8 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    //패턴s
+    #region "움직임 관련 패턴"
+    //암것도 안함
     IEnumerator Rest(float duration)
     {
         float timer = 0f;
@@ -185,6 +195,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    //돌진
     IEnumerator RushToPlayer(float duration)
     {
         float timer = 0f;
@@ -204,6 +215,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    //쫒기
     IEnumerator ChasePlayer(float duration)
     {
         float timer = 0f;
@@ -220,12 +232,37 @@ public class EnemyManager : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+    #endregion
 
-    IEnumerator ShootAtPlayer(float duration)       //이러면 달리면서 중간에 한번 쏘기 가능?
+    #region "슈팅 관련"
+    /*
+    1. 슈팅 디폴트 : 범위에 플레이어가 없으면 쫒아간다.
+    */
+
+    IEnumerator ShootPlayer(float duration)
     {
         float timer = 0f;
 
-        Debug.Log("Shoot");
+        foreach (GameObject bullet in gameObject.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+        {
+            if (!bullet.activeInHierarchy)
+            {
+                //위치, 방향설정
+                bullet.transform.position = this.gameObject.transform.position;
+
+                Vector2 direction = (player.transform.position - bullet.transform.position).normalized;
+                bullet.transform.up = direction;
+
+                //활성화
+                bullet.SetActive(true);
+
+                bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
+
+
+                
+                break;
+            }
+        }
 
         while (timer < duration)
         {
@@ -234,7 +271,7 @@ public class EnemyManager : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
-
+    #endregion
     
 
 

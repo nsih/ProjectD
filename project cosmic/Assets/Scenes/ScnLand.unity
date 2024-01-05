@@ -20772,6 +20772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDataList:
   - {fileID: 11400000, guid: 22070380e06c5c342ae81d4d94ab8bbf, type: 2}
+  enemyBullet: {fileID: 0}
 --- !u!114 &1880935876
 MonoBehaviour:
   m_ObjectHideFlags: 0

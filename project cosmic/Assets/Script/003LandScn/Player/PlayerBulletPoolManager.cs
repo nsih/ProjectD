@@ -7,6 +7,7 @@ public class PlayerBulletPoolManager : MonoBehaviour
 {
     GameObject gameManager;
     GameObject player;
+    
     public GameObject bullet;
 
 

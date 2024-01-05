@@ -11,7 +11,13 @@ public class BattleEventManager : MonoBehaviour
 
     //enemy
     public List<EnemyData> enemyDataList = new List<EnemyData>();
+    public GameObject enemyBullet;
+
+
     private List<GameObject> enemyPool = new List<GameObject>();
+
+
+
 
     void Start()
     {
