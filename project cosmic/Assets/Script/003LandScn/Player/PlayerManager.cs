@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     bool isWalk;
     bool isDash;
     bool canAttack;
-    bool isAttack;
+    bool isAttack;  //막대기 관련
     bool isMouseLeft;
 
 
@@ -66,18 +66,16 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         CheckMousePosition();
-        attackTimer -= Time.deltaTime;
+
+        if(attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
 
         if (Input.GetKeyDown(InputData.attackKey) && !isAttack && canAttack)
         {
             AttackTimerStart();
 
-
-            //StartCoroutine(StickAttack());
-        }
-
-        if(Input.GetKeyDown(InputData.attackKey))
-        {
             FireGun();
         }
 
@@ -177,11 +175,16 @@ public class PlayerManager : MonoBehaviour
         while (timer < 0.35f)
         {
             isDash = true;
+            PlayerInfo.isInvincible = true;
+
+
             timer += Time.deltaTime;
             transform.position += Direction * PlayerInfo.playerDashSpeed * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
         isDash = false;
+        PlayerInfo.isInvincible = false;
+
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
         lastDashTime = Time.time; //대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 9
   m_EditorClassIdentifier: 
   testID: 9
+  isTested: 0
   testName: "\uC704\uB300\uD55C \uC885\uC871 : \uC2DC\uAC04"
   testText: "\uC6B0\uB9B0 \uC2DC\uAC04\uC758 \uBE44\uBC00\uC744 \uD30C\uD574\uCE5C
     \uC704\uB300\uD55C \uC885\uC871\uC774\uB2E4.\n\uC6B0\uB9B0 \uC6B0\uC8FC\uB97C
@@ -20,8 +21,8 @@ MonoBehaviour:
     \uB05D\uB0BC \uB54C\uB2E4."
   testSprite: {fileID: 0}
   testType: 0
+  testTypeS: "\uC721\uCCB4 \uD14C\uC2A4\uD2B8"
   testOffset: 0
-  isTest: 0
   results:
   - testResultName: "\uC815\uC2E0\uC744 \uCC28\uB9AC\uB2E4."
     resultText: "\uC800 \uD3B8\uC5D0\uC11C \uB4E4\uB824\uC624\uB294 \uAE30\uC774\uD55C
@@ -30,23 +31,4 @@ MonoBehaviour:
       \uB290\uB08C\uC744 \uBC1B\uC2B5\uB2C8\uB2E4. (\uBB34\uC791\uC704 \uC720\uBB3C
       -)"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    actionID: 0
-    funcID: 8
+    eventOffset: []

@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
     //
     public int itemID = 0;
     public Sprite sprite;
-    public string name = "Item Name";
+    public string itemName = "Item Name";
     public rewardRate rewardRate = rewardRate.C;
 
     public OutcomeOffset[] outcomeOffset;

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5313455864622639807}
   - component: {fileID: 4066125725017680864}
   - component: {fileID: 6104902785003378537}
-  - component: {fileID: 5103331931033958122}
   m_Layer: 0
   m_Name: mob0
   m_TagString: Untagged
@@ -269,17 +268,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 0}
   mobName: 
---- !u!114 &5103331931033958122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309774306996157178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d25e2cdef1dbe4ba3fd6f61d1c64b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testBullet: {fileID: 0}
-  enemyBulletPool: []

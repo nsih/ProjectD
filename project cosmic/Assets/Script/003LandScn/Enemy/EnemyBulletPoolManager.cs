@@ -12,16 +12,24 @@ public class EnemyBulletPoolManager : MonoBehaviour
 
 
 
-    public void InitializeEnemyBulletPool(GameObject enemy)
+    void Start()
+    {
+        InitializeEnemyBulletPool();
+    }
+
+
+
+    public void InitializeEnemyBulletPool()
     {
         gameManager =  GameObject.Find("GameManager");
         player = GameObject.Find("player");
 
         enemyBulletPool.Clear();
 
-        for (int i = 0; i <= 35; i++)
+        for (int i = 0; i < 250; i++)
         {
-            GameObject var = Instantiate( gameManager.GetComponent<BattleEventManager>().enemyBullet, enemy.transform);
+            GameObject var 
+            = Instantiate( gameManager.GetComponent<BattleEventManager>().enemyBullet, gameObject.transform.Find("EnemyBulletPoolParent").gameObject.transform);
             var.SetActive(false);
             enemyBulletPool.Add(var);
         }
@@ -29,6 +37,12 @@ public class EnemyBulletPoolManager : MonoBehaviour
 
     public void AddEnemyBulletPool()
     {
-
+        for (int i = 0; i <= 100; i++)
+        {
+            GameObject var 
+            = Instantiate( gameManager.GetComponent<BattleEventManager>().enemyBullet, gameObject.transform.Find("EnemyBulletPoolParent").gameObject.transform);
+            var.SetActive(false);
+            enemyBulletPool.Add(var);
+        }
     }
 }

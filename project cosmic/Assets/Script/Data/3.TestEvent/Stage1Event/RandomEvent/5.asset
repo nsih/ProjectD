@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: 
   testID: 5
+  isTested: 0
   testName: "\uAE30\uC774\uD55C \uAC00\uB8E8"
   testText: "\uBE5B\uB098\uB294 \uAC00\uB8E8\uAC00 \uACF5\uC911\uC5D0 \uB5A0 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uBB34\uC2EC\uACB0\uC5D0
     \uD638\uD761\uC73C\uB85C \uADF8\uAC83\uC744 \uB4E4\uC774 \uB9C8\uC2DC\uB2C8 \uBAB8\uC744
@@ -21,35 +22,16 @@ MonoBehaviour:
     \uC704\uB300\uD55C... \uBE44\uBC00...\"\n\n\uBB34\uC2A8 \uC18C\uB9AC\uC778\uC9C0\uB294
     \uBAA8\uB974\uACA0\uC9C0\uB9CC \uC800\uD56D\uD569\uB2C8\uB2E4."
   testSprite: {fileID: 0}
-  testType: 1
+  testType: 0
+  testTypeS: "\uC721\uCCB4 \uD14C\uC2A4\uD2B8"
   testOffset: 0
-  isTest: 1
   results:
   - testResultName: "\uC800\uD56D"
     resultText: "\uB2F9\uC2E0\uC740 \uC800\uD56D\uC5D0 \uC131\uACF5\uD569\uB2C8\uB2E4.\n\uBC14\uB78C\uC5D0
-      \uB0A0\uB824\uC628 \uB4EF\uD55C \uC18C\uB9AC\uAC00 \uADD3\uC804\uC744 \uC2A4\uCE69\uB2C8\uB2E4.\n\n\"\uBCF4\uD1B5\uC774
-      \uC544\uB2C8\uAD70..\"\n\n\uC5B4\uB5BB\uAC8C \uB41C \uC77C\uC77C\uAE4C\uC694?"
+      \uB0A0\uB824\uC628 \uB4EF\uD55C \uC18C\uB9AC\uAC00 \uADD3\uC804\uC744 \uC2A4\uCE69\uB2C8\uB2E4.\n\n\"\uC5B4\uC6B0
+      \uB098\uAC00\uC57C\uACA0\uB2E4..\"\n\n\uC5B4\uB5BB\uAC8C \uB41C \uC77C\uC77C\uAE4C\uC694?"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    actionID: 0
-    funcID: 0
+    eventOffset: []
   - testResultName: "\uC5B4\uCF00 \uC800\uD56D?"
     resultText: "\uB2F9\uC2E0\uC740 \uC800\uD56D\uC5D0 \uC2E4\uD328\uD569\uB2C8\uB2E4.\n\uC628
       \uBAB8\uC774 \uC800\uB9AC\uB294 \uACE0\uD1B5\uC5D0 \uBE60\uC9D1\uB2C8\uB2E4.\n\uC774
@@ -57,26 +39,7 @@ MonoBehaviour:
       \uC758\uC9C0 \uC790\uCCB4\uB97C \uC557\uC544\uAC00\uB294 \uB4EF\uD569\uB2C8\uB2E4.
       (\uC758\uC9C0 -1)\n\n\uD558\uC9C0\uB9CC \uC774\uB0B4 \uC870\uAE08 \uC529 \uBAB8\uC744
       \uC6C0\uC9C1\uC77C \uC218 \uC788\uAC8C \uB429\uB2C8\uB2E4.\n\n\uBC14\uB78C\uC5D0
-      \uB0A0\uB824\uC628 \uB4EF\uD55C \uC18C\uB9AC\uAC00 \uADD3\uC804\uC744 \uC2A4\uCE69\uB2C8\uB2E4.\n\n\"\uBB50\uC57C
-      \uC774\uAC70 \uC65C \uC548\uB3FC..\"\n\n\uC5B4\uB5BB\uAC8C \uB41C \uC77C\uC77C\uAE4C\uC694?"
+      \uB0A0\uB824\uC628 \uB4EF\uD55C \uC18C\uB9AC\uAC00 \uADD3\uC804\uC744 \uC2A4\uCE69\uB2C8\uB2E4.\n\n\"\uC5B4\uC6B0..
+      \uB098\uAC00\uC57C\uACA0\uB2E4\"\n\n\uC5B4\uB5BB\uAC8C \uB41C \uC77C\uC77C\uAE4C\uC694?"
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    actionID: 0
-    funcID: 0
+    eventOffset: []

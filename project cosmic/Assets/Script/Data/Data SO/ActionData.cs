@@ -9,7 +9,7 @@ public class ActionData : ScriptableObject
     public int actionID;
     public Sprite icon;
 
-    public string name;
+    public string actionName;
     public int cost;
     public string actionText;
     public Sprite sprite;

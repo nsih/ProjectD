@@ -42,8 +42,6 @@ public class EnemyManager : MonoBehaviour
     {
         InitializeEnemyStatus();
 
-        gameObject.GetComponent<EnemyBulletPoolManager>().InitializeEnemyBulletPool(this.gameObject);
-
 
         StartCoroutine(RunBehaviorPatterns());
     }
@@ -79,7 +77,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     #region "충돌관련"
-
+    /*
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player" && !PlayerInfo.isInvincible)
@@ -88,10 +86,17 @@ public class EnemyManager : MonoBehaviour
             player.GetComponent<PlayerManager>().PlayerAttacked();
         }
     }
+    */
 
     //(Been attacked)
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Player" && !PlayerInfo.isInvincible)
+        {
+            Debug.Log(PlayerInfo.isInvincible);
+            player.GetComponent<PlayerManager>().PlayerAttacked();
+        }
+
         if (other.gameObject.tag == "PlayerAttack")
         {
             //Debug.Log("HP : "+hp);
@@ -243,7 +248,7 @@ public class EnemyManager : MonoBehaviour
     {
         float timer = 0f;
 
-        foreach (GameObject bullet in gameObject.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+        foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
         {
             if (!bullet.activeInHierarchy)
             {

@@ -1252,6 +1252,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325895814}
   m_CullTransparentMesh: 1
+--- !u!1 &346684956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346684957}
+  m_Layer: 0
+  m_Name: EnemyBulletPoolParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346684957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346684956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1189591037}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348500297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,6 +3614,7 @@ GameObject:
   - component: {fileID: 1189591035}
   - component: {fileID: 1189591034}
   - component: {fileID: 1189591032}
+  - component: {fileID: 1189591041}
   - component: {fileID: 1189591038}
   - component: {fileID: 1189591039}
   - component: {fileID: 1189591031}
@@ -3701,7 +3733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dca1d327e478b45935b4c5e8bd7004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionDataRest: {fileID: 0}
 --- !u!114 &1189591036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3739,11 +3770,77 @@ MonoBehaviour:
   - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
     roomType: 2
     isUsed: 0
-  - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
-    roomType: 6
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 2
     isUsed: 0
   - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
     roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 7547674171379236058, guid: 4fa071338b03ea042bf66b3b66a180ca, type: 3}
+    roomType: 5
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
+    roomType: 6
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
+    roomType: 6
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
+    roomType: 6
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
+    roomType: 6
+    isUsed: 0
+  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+    roomType: 1
     isUsed: 0
 --- !u!4 &1189591037
 Transform:
@@ -3758,6 +3855,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1868965106}
+  - {fileID: 346684957}
   - {fileID: 348500298}
   - {fileID: 1308453691}
   m_Father: {fileID: 0}
@@ -3778,6 +3876,15 @@ MonoBehaviour:
   Stage1FixedEventList: []
   Stage1RandomEventList:
   - {fileID: 11400000, guid: e1085853b3cfcec4db7e3b38aa11bb50, type: 2}
+  - {fileID: 11400000, guid: 256f91e914a28654d8acc60a4327836f, type: 2}
+  - {fileID: 11400000, guid: 784de5d3808a8bb46a3f13fe9dd5a166, type: 2}
+  - {fileID: 11400000, guid: 7c14699ff3d1e1841bac04dc4b1edc91, type: 2}
+  - {fileID: 11400000, guid: 86003f0b5d486d043aef72843bab3a99, type: 2}
+  - {fileID: 11400000, guid: 3152c07dcc303544c914bd34a0fa2755, type: 2}
+  - {fileID: 11400000, guid: d9e863b351a605c47b6c6a5ce15dddf3, type: 2}
+  - {fileID: 11400000, guid: 0d6f26230e76d1e43a9253b72ffb0f83, type: 2}
+  - {fileID: 11400000, guid: ba2b706232a5c8f46be3a17ca8236d6c, type: 2}
+  - {fileID: 11400000, guid: 81918570706ab064098b5d3e98fa0284, type: 2}
 --- !u!114 &1189591039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3819,6 +3926,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61bf6717b75eb74499f2fd60ada549f2, type: 2}
   - {fileID: 11400000, guid: 8f6fbc946cc470245b8e156b0901b8a3, type: 2}
   - {fileID: 11400000, guid: 9daeaf8602aee844592209ebb3a13af9, type: 2}
+--- !u!114 &1189591041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189591023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d25e2cdef1dbe4ba3fd6f61d1c64b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBulletPool: []
 --- !u!1 &1199321311
 GameObject:
   m_ObjectHideFlags: 0

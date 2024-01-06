@@ -38,7 +38,7 @@ public class PlayerInfo : MonoBehaviour
     public static float dmgMultiflyOffset;
 
     //공속 -> 공격 딜레이 계산
-    public static float attackSpeed;    //0~5
+    public static float attackSpeed;    //0~6
     public static float playerAttackDelay;
 
     //이속
@@ -60,10 +60,6 @@ public class PlayerInfo : MonoBehaviour
 
     //얻은 action List
     public static List<ActionData> playerActionList = new List<ActionData>();
-
-
-    //뭐하려고 선언했지?..
-    public ActionData actionDataRest;
 
 
 
@@ -104,8 +100,7 @@ public class PlayerInfo : MonoBehaviour
         DmgCal();
 
         //attack delay
-        attackSpeed = 1;
-        playerAttackDelay = 1;
+        attackSpeed = 6;    //6is max
         AttackDelayCalc();
 
         //move speed
@@ -503,9 +498,9 @@ public class PlayerInfo : MonoBehaviour
         {
             attackSpeed = 0;
         }
-        else if (changedAttackSpeed > 5.0f)
+        else if (changedAttackSpeed > 6.0f)
         {
-            attackSpeed = 5;
+            attackSpeed = 6;
         }
         else
         {

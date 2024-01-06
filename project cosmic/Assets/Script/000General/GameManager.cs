@@ -126,11 +126,11 @@ public class GameManager : MonoBehaviour
         switch(roomType)
         {
             case RoomType.Start:
-                PickupRoom(RoomType.Alter);
+                PickupRoom(RoomType.Start);
                 break;
 
             case RoomType.Boss:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.Boss);
                 break;
 
             case RoomType.Battle:
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case RoomType.FixedEvent:
-                PickupRoom(RoomType.Battle);
+                PickupRoom(RoomType.RandomEvent);
                 break;
 
             case RoomType.RandomEvent:
@@ -154,6 +154,8 @@ public class GameManager : MonoBehaviour
 
             case RoomType.Alter:
                 PickupRoom(RoomType.Alter);
+
+                GameObject.Find("Alter").GetComponent<AlterControl>().BuildAlter();
                 break;
 
             case RoomType.Shop:

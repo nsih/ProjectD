@@ -64,6 +64,11 @@ public class EnemyBulletCon : MonoBehaviour
             Debug.Log("Player Hitting");
         }
 
+        if(other.gameObject.tag == "Wall")
+        {
+            gameObject.SetActive(false);
+        }
+
         
     }
 
@@ -76,8 +81,6 @@ public class EnemyBulletCon : MonoBehaviour
     void NormalMoving()
     {
         this.gameObject.transform.Translate(Vector2.up * bulletSpeed * Time.deltaTime);
-
-        Debug.Log("why?");
     }
 }
 

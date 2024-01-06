@@ -18,7 +18,7 @@ public class AlterManager : MonoBehaviour
 
     GameObject rewardAfterPopup;
 
-    bool isTyping;
+    //bool isTyping;
 
 
     public AlterData GetAlterData()
@@ -28,7 +28,7 @@ public class AlterManager : MonoBehaviour
         do
         {
             selectedIndex = UnityEngine.Random.Range(0, alterDatas.Count);
-        } while (alterDatas[selectedIndex].isUsed == true);
+        } while (alterDatas[selectedIndex].isUsed == true); //true 아니면 ㄱㄱ
 
         alterDatas[selectedIndex].isUsed = true;
 
@@ -59,7 +59,7 @@ public class AlterManager : MonoBehaviour
 
     private IEnumerator TypeText(AlterData alterData)
     {
-        isTyping = true;
+        //isTyping = true;
         dialogueBox.SetActive(true);
 
         dialogueTxt.GetComponent<TextMeshProUGUI>().text = "";
@@ -72,7 +72,7 @@ public class AlterManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        isTyping = false;
+        //isTyping = false;
 
         GameObject option1 = dialogueOption.transform.GetChild(0).gameObject;
         GameObject option2 = dialogueOption.transform.GetChild(1).gameObject;

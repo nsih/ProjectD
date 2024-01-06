@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   testID: 2
+  isTested: 0
   testName: "\uAE30\uC774\uD55C \uBB38\uC790\uB97C \uBC1C\uACAC\uD558\uB2E4"
   testText: "\uC624\uB798\uB41C \uAC74\uCD95\uBB3C\uC758 \uBCBD\uC5D4 \uAE30\uC774\uD55C
     \uBB38\uC790\uAC00 \uC0C8\uACA8\uC838 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uB9C8\uCE58
@@ -21,9 +22,9 @@ MonoBehaviour:
     \uB4ED\uB2C8\uB2E4.\n\n\uC815\uC2E0\uC744 \uC9D1\uC911\uD574 \uADF8 \uC704\uD654\uAC10\uC758
     \uC815\uCCB4\uB97C \uD30C\uC545\uD558\uB824 \uD569\uB2C8\uB2E4."
   testSprite: {fileID: 0}
-  testType: 2
+  testType: 1
+  testTypeS: "\uC815\uC2E0\uB825 \uD14C\uC2A4\uD2B8"
   testOffset: 0
-  isTest: 1
   results:
   - testResultName: "\uADF8\uB798\uC11C \uC774\uC81C \uBB50\uD568?"
     resultText: "\uB2F9\uC2E0\uC758 \uBCC0\uD654\uD55C \uBAB8\uC758 \uBCF8\uB2A5\uC740
@@ -32,48 +33,10 @@ MonoBehaviour:
       \uB180\uB790\uC9C0\uB9CC \uB531\uD788 \uC4F8\uC77C\uC740 \uC5C6\uACA0\uB2E4\uACE0
       \uC0DD\uAC01\uD558\uACE4 \uB2E4\uC2DC \uAE38\uC744 \uB5A0\uB0A9\uB2C8\uB2E4."
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 1
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    actionID: 0
-    funcID: 0
+    eventOffset: []
   - testResultName: "\uC54C\uAC8C \uBB50\uC57C"
     resultText: "\uC815\uC2E0\uC744 \uC9D1\uC911\uD558\uB824 \uD588\uC9C0\uB9CC \uBA38\uB9BF\uC18D\uC740
       \uBA39\uAD6C\uB984\uC774 \uB080\uB4EF \uB2F5\uB2F5\uD558\uAE30\uB9CC \uD569\uB2C8\uB2E4.\n\n\uBB50
       \uC911\uC694\uD55C\uAC70\uBA74 \uB098\uC911\uC5D0 \uC0DD\uAC01 \uB098\uACA0\uC8E0."
     resultSprite: {fileID: 0}
-    maxHPOffset: 0
-    hpFullHeal: 0
-    hPOffset: 0
-    mentalOffset: 0
-    plusPlayerDamageOffset: 0
-    multiplyPlayerDamageOffset: 0
-    attackDelay: 0
-    speedOffset: 0
-    physicalOffset: 0
-    willPowerOffset: 0
-    knowledgeOffset: 0
-    charmOffset: 0
-    randomOffset: 0
-    actionStackOffset: 0
-    actionLimitOffset: 0
-    coinOffset: 0
-    cameraSizeOffset: 0
-    artifactID: 0
-    actionID: 0
-    funcID: 0
+    eventOffset: []

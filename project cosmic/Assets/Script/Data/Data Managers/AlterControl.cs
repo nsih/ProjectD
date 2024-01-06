@@ -12,7 +12,7 @@ public class AlterControl : MonoBehaviour
 {
     AlterData alterData = null;
     
-    void OnEnable()
+    public void BuildAlter()
     {
         alterData = GameObject.Find("GameManager").gameObject.GetComponent<AlterManager>().GetAlterData();
 
@@ -30,11 +30,9 @@ public class AlterControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //상호작용
+            //제단 상호작용
             if(Input.GetKeyDown(KeyCode.E) && !GameManager.isLandTalking)
             {
-                Debug.Log("inter Action Btn Pressed!!!!");
-
                 GameObject.Find("GameManager").GetComponent<AlterManager>().AlterInteraction(alterData);
             }
         }

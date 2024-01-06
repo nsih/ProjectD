@@ -25,4 +25,4 @@ MonoBehaviour:
   - actionType: 1
     duration: 1
   - actionType: 3
-    duration: 1
+    duration: 0

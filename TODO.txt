@@ -5,9 +5,31 @@ con shift L
 -----------------
 memo
 
-이벤트 결과 HP 안참 (데이터 추가 필요)
 
 max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
+
+보스까지 roomDataList1 데이터 추가
+
+보스 배틀
+
+보스 컷씬(대화)
+
+do while을 쓸때는 항상 조심하시오
+
+
+ROOM List
+0	: start
+
+1~15	: Battle
+
+16~26 : Random Event
+
+27~30 : Alter
+
+30~31 : Boss
+
+
+일시제외	: Shop, FE
 
 -----------------
 ProtoType
