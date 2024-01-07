@@ -3708,6 +3708,9 @@ MonoBehaviour:
   enemyDataList:
   - {fileID: 11400000, guid: 22070380e06c5c342ae81d4d94ab8bbf, type: 2}
   - {fileID: 11400000, guid: b8afb11ed4fd2ba4eae9ef5d6eb386a6, type: 2}
+  - {fileID: 11400000, guid: 3f8aaee5809d0ce4fa2fbf5fab5edc11, type: 2}
+  bossDataList:
+  - {fileID: 11400000, guid: 3f8aaee5809d0ce4fa2fbf5fab5edc11, type: 2}
   enemyBullet: {fileID: 670972795177340754, guid: f178e192cf5d0914ba0faabbd5be72c3, type: 3}
 --- !u!114 &1189591034
 MonoBehaviour:
@@ -3839,7 +3842,7 @@ MonoBehaviour:
   - roomOBJ: {fileID: 8642944159758308036, guid: 526afca127aa0bb409a0728194bf96af, type: 3}
     roomType: 6
     isUsed: 0
-  - roomOBJ: {fileID: 8642944159758308036, guid: 0f24aab088c25c34fa0f30096b8c6b07, type: 3}
+  - roomOBJ: {fileID: 8642944159758308036, guid: 80abe676e0126c340b5ed48fd88e6387, type: 3}
     roomType: 1
     isUsed: 0
 --- !u!4 &1189591037

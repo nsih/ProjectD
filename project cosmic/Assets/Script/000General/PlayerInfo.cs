@@ -442,6 +442,10 @@ public class PlayerInfo : MonoBehaviour
         {
             currentAP = 0;
         }
+        else if(changedActionPoint >= maxAP)
+        {
+            currentAP = maxAP;
+        }
         else
         {
             currentAP = changedActionPoint;

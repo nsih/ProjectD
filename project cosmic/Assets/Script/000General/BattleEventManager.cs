@@ -11,6 +11,8 @@ public class BattleEventManager : MonoBehaviour
 
     //enemy
     public List<EnemyData> enemyDataList = new List<EnemyData>();
+    public List<EnemyData> bossDataList = new List<EnemyData>();
+
     public GameObject enemyBullet;
 
 

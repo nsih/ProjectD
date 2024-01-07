@@ -177,6 +177,11 @@ public class EnemyManager : MonoBehaviour
                         yield return StartCoroutine(ShootPlayer(pattern.duration));
                         break;
 
+                    case BehaviorPattern.EnemyActionType.TanmakCircle:
+                        yield return StartCoroutine(TanmakCircle(pattern.duration));
+                        break;
+
+
                     // 추가된 행동 패턴에 대한 처리 추가
 
                     // 기다린 후에 다음 패턴으로 진행
@@ -241,7 +246,7 @@ public class EnemyManager : MonoBehaviour
 
     #region "슈팅 관련"
     /*
-    1. 슈팅 디폴트 : 범위에 플레이어가 없으면 쫒아간다.
+    1. 슈팅 디폴트 : 범위에 플레이어가 없으면 쫒아간다. (아직 안함ㅎ)
     */
 
     IEnumerator ShootPlayer(float duration)
@@ -276,6 +281,45 @@ public class EnemyManager : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+    
+    
+    IEnumerator TanmakCircle(float duration)
+    {
+        float timer = 0f;
+        for(int i = 0 ; i < 10 ; i++)
+        {
+            foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+            {
+                if (!bullet.activeInHierarchy)
+                {
+                    //position
+                    bullet.transform.position = this.gameObject.transform.position;
+
+                    // dir angle calc
+                    float angle = i * (360f / 10f);
+                    Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up;
+                    bullet.transform.up = direction;
+
+                    //활성화
+                    bullet.SetActive(true);
+
+                    bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
+
+                    break;
+                }
+            }
+        }
+
+        while (timer < duration)
+        {
+            Debug.Log("waiting..");
+            yield return null;
+            timer += Time.deltaTime;
+        }
+    }
+    
+    
+    
     #endregion
     
 

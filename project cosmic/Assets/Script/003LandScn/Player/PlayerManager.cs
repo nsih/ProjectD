@@ -84,6 +84,15 @@ public class PlayerManager : MonoBehaviour
             Dash();
         }
 
+        if(PlayerInfo.isInvincible)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,255);
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255,255);
+        }
+
 
         //animating
         CheckWalk();

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784a2d7d13a1b94d8a807e94328a349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 22070380e06c5c342ae81d4d94ab8bbf, type: 2}
+  enemyData: {fileID: 11400000, guid: 3f8aaee5809d0ce4fa2fbf5fab5edc11, type: 2}
 --- !u!1 &3151634576355922914
 GameObject:
   m_ObjectHideFlags: 0

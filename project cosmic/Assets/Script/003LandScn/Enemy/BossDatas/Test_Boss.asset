@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63380b305e04a2747aa0a2b10c1d9ec1, type: 3}
+  m_Name: Test_Boss
+  m_EditorClassIdentifier: 
+  enemyGameObject: {fileID: 4309774306996157178, guid: 7d3a2c4603b870040aaeb6f1079c1d06, type: 3}
+  enemyAnimator: {fileID: 0}
+  mobName: shoot test
+  hp: 2
+  damage: 5
+  moveSpeed: 10
+  attackDelay: 0
+  bulletSpeed: 0
+  knockBackable: 1
+  behaviorPatterns:
+  - actionType: 1
+    duration: 3
+  - actionType: 3
+    duration: 0.3
+  - actionType: 3
+    duration: 0.3
+  - actionType: 3
+    duration: 0.3
+  - actionType: 3
+    duration: 0.3
+  - actionType: 4
+    duration: 1

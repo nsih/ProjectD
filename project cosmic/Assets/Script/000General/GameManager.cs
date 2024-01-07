@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         switch(roomType)
         {
             case RoomType.Start:
-                PickupRoom(RoomType.Start);
+                PickupRoom(RoomType.Boss);
                 break;
 
             case RoomType.Boss:
