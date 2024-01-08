@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 58
   sprite: {fileID: 0}
-  name: "\uC774\uBE10\uAC00\uC9C0\uC758 \uBD84\uB9D0"
+  itemName: "\uC774\uBE10\uAC00\uC9C0\uC758 \uBD84\uB9D0"
   rewardRate: 2
   outcomeOffset:
   - offsetType: 14

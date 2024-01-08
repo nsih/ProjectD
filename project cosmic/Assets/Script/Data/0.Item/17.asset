@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 17
   sprite: {fileID: 0}
-  name: "\uD584\uBC84\uAC70"
+  itemName: "\uD584\uBC84\uAC70"
   rewardRate: 3
   outcomeOffset:
-  - offsetType: 4
-    offset: 1
+  - offsetType: 8
+    offset: 999
   beforeComment: HP+
   afterComment: "\uB0E0\uB0E0"

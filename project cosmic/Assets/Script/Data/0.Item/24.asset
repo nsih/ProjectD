@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 24
   sprite: {fileID: 0}
-  name: "\uC2A4\uD14C\uC774\uD130\uC2A4 \uCC3D"
+  itemName: "\uC2A4\uD14C\uC774\uD130\uC2A4 \uCC3D"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 6
-    offset: 1
-  beforeComment: dice Charm+
+    offset: -1
+  - offsetType: 0
+    offset: -1
+  beforeComment: 'dice Charm-1
+
+    Physical +'
   afterComment: "...? \uC624\uB978\uCABD\uC5D0 \uC788\uC796\uC544"

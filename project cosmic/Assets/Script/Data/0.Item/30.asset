@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 30
   sprite: {fileID: 0}
-  name: "\uC774\uC138\uACC4 \uCC28\uC6D0\uBB38"
+  itemName: "\uAC00\uC9DC \uC774\uC138\uACC4 \uCC28\uC6D0\uBB38"
   rewardRate: 2
   outcomeOffset:
   - offsetType: 0
@@ -25,6 +25,5 @@ MonoBehaviour:
     offset: -1
   beforeComment: 'Mental- Charm-
 
-    Physical ++'
-  afterComment: "\uD574\uD53C\uC5D4\uB529\uC774\uB77C\uB294 \uAC83\uC740 \uC5C6\uB2E4.\n\uADF8\uB0E5
-    \uC5D4\uB529\uC774 \uC788\uC744 \uBFD0"
+    Physical +'
+  afterComment: "\uC7A0\uAE50\uC758 \uBC1C\uBC84\uB465. \n\uC601\uC6D0\uD55C \uC548\uC2DD."

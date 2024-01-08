@@ -42,6 +42,35 @@ public class CameraCon : MonoBehaviour
         
         // Z 축 값을 유지하여 카메라 위치 설정
         smoothPosition.z = transform.position.z;
+        //transform.position = smoothPosition;
         transform.position = smoothPosition;
+    }
+
+    
+    public void ShakeCamera(float duration, float magnitude)
+    {
+        StartCoroutine(Shake(duration, magnitude));
+    }
+
+    IEnumerator Shake(float duration, float magnitude)
+    {
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            // 마우스 방향으로 일정 정도만 이동
+            Vector3 mouseDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            Vector3 targetPosition = transform.position + mouseDirection * magnitude;
+
+            Vector3 targetPosition2 = new Vector3(targetPosition.x, targetPosition.y, -10 );
+
+            // 원래 위치에서 마우스 방향으로 이동한 후 다시 돌아오는 보간
+            float t = elapsed / duration;
+            transform.position = Vector3.Lerp(transform.position, targetPosition2, t);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
     }
 }

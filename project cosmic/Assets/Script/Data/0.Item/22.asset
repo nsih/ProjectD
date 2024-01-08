@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 22
   sprite: {fileID: 0}
-  name: "\uC2A4\uD14C\uB85C\uC774\uB4DC"
+  itemName: "\uC2A4\uD14C\uB85C\uC774\uB4DC"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 4
-    offset: 3
+    offset: 1
   - offsetType: 7
     offset: -1
   beforeComment: 'dice Physical+
 
     Max Hp -'
-  afterComment: "\uC5FC\uC99D \uC5B5\uC81C \uAE30\uB2A5\uC740 \uC5C6\uC5FC\uC99D\uBC18\uC751
-    \uC5B5\uC81C\uAE30\uB2A5\uC740 \uC5C6\uB2E4"
+  afterComment: "\uC5FC\uC99D \uC5B5\uC81C\uAE30\uB2A5\uC740 \uC5C6\uB2E4\uACE0?...\n\uADF8\uB7FC
+    \uC5B4\uB514 \uC4F0\uB294\uB370?"

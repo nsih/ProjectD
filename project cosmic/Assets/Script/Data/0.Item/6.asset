@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067264c0c690a0d46aba6a796e4248f5, type: 3}
   m_Name: 6
   m_EditorClassIdentifier: 
-  itemID: 6
+  itemID: 50
   sprite: {fileID: 0}
-  name: "\uBCF4\uBD80\uC0C1\uC758 \uBCF4\uB530\uB9AC"
+  itemName: "\uBCF4\uBD80\uC0C1\uC758 \uBD07\uC9D0"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 11
-    offset: 100
-  beforeComment: Coin Coin Coin
-  afterComment: "\uB204\uAC00 \uC774\uB7F0\uAC78..."
+    offset: 10
+  beforeComment: Coin +
+  afterComment: "\uC774\uC81C \uC81C \uAECD\uB2C8\uB2E4."

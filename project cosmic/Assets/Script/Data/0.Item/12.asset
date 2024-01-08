@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 12
   sprite: {fileID: 0}
-  name: "\uC0C1\uC628 \uCD08\uC804\uB3C4\uCCB4"
+  itemName: "\uC0C1\uC628 \uC0C1\uC555 \uCD08\uC804\uB3C4\uCCB4"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 12
@@ -24,5 +24,5 @@ MonoBehaviour:
   beforeComment: 'Move Speed+
 
     Coin+'
-  afterComment: "\uC0C1\uC628 \uCD08\uC804\uB3C4\uCCB4 \uB808\uC2DC\uD53C\n1. \uB178\uB987\uB178\uB987\uD558\uAC8C
-    \uAD7D\uAE30 2. \uC774\uD558\uC0DD\uB7B5"
+  afterComment: "1. \uB178\uB987\uB178\uB987\uD558\uAC8C \uAD7D\uB294\uB2E4\n2. ???
+    -> \uC644\uC131"

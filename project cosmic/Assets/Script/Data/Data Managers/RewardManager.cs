@@ -157,7 +157,7 @@ public class RewardManager : MonoBehaviour
                     suggestableActionList[selectedIndex].sprite;
 
                 btnReward.gameObject.transform.Find("Name").gameObject.GetComponent<TMP_Text>().text =
-                    suggestableActionList[selectedIndex].name;
+                    suggestableActionList[selectedIndex].actionName;
 
                 btnReward.gameObject.transform.Find("Type").gameObject.GetComponent<TMP_Text>().text = "Action";
 
@@ -184,7 +184,7 @@ public class RewardManager : MonoBehaviour
                     suggestableItemList[selectedIndex].sprite;
 
                 btnReward.gameObject.transform.Find("Name").gameObject.GetComponent<TMP_Text>().text =
-                    suggestableItemList[selectedIndex].name;
+                    suggestableItemList[selectedIndex].itemName;
 
                 btnReward.gameObject.transform.Find("Type").gameObject.GetComponent<TMP_Text>().text = "Item";
 

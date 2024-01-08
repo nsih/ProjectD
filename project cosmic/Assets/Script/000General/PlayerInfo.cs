@@ -104,9 +104,9 @@ public class PlayerInfo : MonoBehaviour
         AttackDelayCalc();
 
         //move speed
-        playerMoveSpeed = 10;
+        playerMoveSpeed = 20;
         playerDashCoolTime = 0.3f;
-        playerDashSpeed = 30;
+        playerDashSpeed = 40;
 
         //item
         playerItemList.Clear();

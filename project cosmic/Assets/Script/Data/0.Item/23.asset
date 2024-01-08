@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 23
   sprite: {fileID: 0}
-  name: "\uC131\uACBD"
+  itemName: "\uB0A1\uC740 \uC131\uACBD"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 1
     offset: 1
-  beforeComment: 'dice Physical+
-
-    Max Hp -'
+  beforeComment: mental +
   afterComment: Lectio Divina

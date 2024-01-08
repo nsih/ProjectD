@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 33
   sprite: {fileID: 0}
-  name: "\uB9C8\uC791\uD328 : \u767C"
+  itemName: "\uB9C8\uC791\uD328 : \uC3D8\uB2E4"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 14
     offset: 1.5
   beforeComment: Attack Speed+
-  afterComment: "\uC3F4\uB77C\uC544!!"
+  afterComment: "\uC3F4\uB77C\uC544\uC544\u314F\u3163\u314F\u314F!!"
