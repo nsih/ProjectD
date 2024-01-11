@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 8
   sprite: {fileID: 0}
-  name: "\uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
-  rewardRate: 1
+  itemName: "\uCC45 : \uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
+  rewardRate: 0
   outcomeOffset:
-  - offsetType: 15
+  - offsetType: 18
     offset: 0
+  - offsetType: 5
+    offset: -1
   beforeComment: "\uD589\uB3D9 : \uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
-  afterComment: "\uBCA0\uC2A4\uD2B8\uC140\uB7EC"
+  afterComment: "\uC774 \uBC14\uB2E5\uC758 \uBCA0\uC2A4\uD2B8\uC140\uB7EC"

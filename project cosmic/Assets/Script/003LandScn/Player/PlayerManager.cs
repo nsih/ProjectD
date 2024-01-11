@@ -181,21 +181,47 @@ public class PlayerManager : MonoBehaviour
         playerHit.GetComponent<CircleCollider2D>().enabled = false;
 
         float timer = 0f;
-        while (timer < 0.35f)
-        {
-            isDash = true;
-            PlayerInfo.isInvincible = true;
 
+        isDash = true;
+        PlayerInfo.isInvincible = true;
 
+        float currentSpeed = PlayerInfo.playerMoveSpeed;  // 새로운 변수 선언
+
+        float initialDashSpeed = PlayerInfo.playerDashSpeed;
+        float targetDashSpeed = 10f;
+
+        while (timer < 0.25f)
+        {            
             timer += Time.deltaTime;
+
+            // Gradually increase speed from currentSpeed to playerDashSpeed over 0.2 seconds
+            float t = timer / 0.2f;
+            currentSpeed = Mathf.Lerp(currentSpeed, PlayerInfo.playerDashSpeed, t);
+
+            transform.position += Direction * currentSpeed * Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        while (timer < 0.4f)
+        {
+            timer += Time.deltaTime;
+
+            // Gradually decrease dash speed from playerDashSpeed to 0 over 0.2 seconds
+            float tDash = (timer - 0.2f) / 0.2f;
+            PlayerInfo.playerDashSpeed = Mathf.Lerp(initialDashSpeed, targetDashSpeed, tDash);
+
             transform.position += Direction * PlayerInfo.playerDashSpeed * Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
+
+        // Reset dash speed to its original value
+        PlayerInfo.playerDashSpeed = initialDashSpeed;
+
         isDash = false;
         PlayerInfo.isInvincible = false;
 
         playerHit.GetComponent<CircleCollider2D>().enabled = true;
-        lastDashTime = Time.time; //대쉬가 끝났을 때 마지막 대쉬 시간을 기록
+        lastDashTime = Time.time; // 대쉬가 끝났을 때 마지막 대쉬 시간을 기록
     }
     #endregion
 
@@ -247,12 +273,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     //총
-    void FireGun()  //공속 미적용
+    void FireGun()
     {
         foreach (GameObject bullet in gameObject.GetComponent<PlayerBulletPoolManager>().playerBulletsPool)
         {
             if (!bullet.activeInHierarchy)
             {
+                GameObject.Find("Main Camera").GetComponent<CameraCon>().ShakeCamera(0.05f,0.05f);
+
                 bullet.SetActive(true);
                 return;
             }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63380b305e04a2747aa0a2b10c1d9ec1, type: 3}
-  m_Name: Test_Shoting
+  m_Name: 001Mob
   m_EditorClassIdentifier: 
   enemyGameObject: {fileID: 4309774306996157178, guid: 7d3a2c4603b870040aaeb6f1079c1d06, type: 3}
   enemyAnimator: {fileID: 0}
-  mobName: shoot test
+  mobName: mob001
   hp: 2
   damage: 5
   moveSpeed: 5
@@ -22,7 +22,7 @@ MonoBehaviour:
   bulletSpeed: 0
   knockBackable: 1
   behaviorPatterns:
-  - actionType: 1
-    duration: 1
-  - actionType: 3
-    duration: 0
+  - actionType: 4
+    duration: 0.3
+    cycles: 1
+    bulletCount: 0

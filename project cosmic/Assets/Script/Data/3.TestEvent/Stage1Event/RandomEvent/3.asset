@@ -32,7 +32,9 @@ MonoBehaviour:
       \uBC84\uD168\uB0B8 \uC721\uCCB4\uB294 \uB2E4\uC2DC \uD55C\uBC88 \uAC15\uD574\uC9D1\uB2C8\uB2E4.
       (\uD798 +1)"
     resultSprite: {fileID: 0}
-    eventOffset: []
+    eventOffset:
+    - offsetType: 0
+      offset: 1
   - testResultName: "\uB098 \uC548\uC8FD\uC5C8\uB124?"
     resultText: "\uB2F9\uC2E0\uC740 \uBC84\uD2F0\uC9C0 \uBABB\uD558\uACE0 \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4.\n\n\uC8FD\uC5B4\uB3C4
       \uC774\uC0C1\uD558\uC9C0 \uC54A\uC744 \uB192\uC774\uC600\uC9C0\uB9CC \uC774

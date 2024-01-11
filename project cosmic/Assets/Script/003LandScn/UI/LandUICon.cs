@@ -227,8 +227,10 @@ public class LandUICon : MonoBehaviour
             _actionContainer.transform.Find("Icon").GetComponent<Image>().sprite = PlayerInfo.playerActionList[i].icon;
             _actionContainer.transform.Find("TestTypeIMG").GetComponent<Image>().sprite = GetTestTypeIMG(PlayerInfo.playerActionList[i].testType);
             _actionContainer.transform.Find("Name").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].name;
-            _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = "COST " + (int)PlayerInfo.playerActionList[i].cost;
+            _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = "AP COST " + (int)PlayerInfo.playerActionList[i].cost;
             _actionContainer.transform.Find("Comment").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].afterComment;
+
+            //_actionContainer.GetComponent<Button>().interactable = ! PlayerInfo.playerActionList[i].isUsed;
 
             //add listner test event manager
             _actionContainer.GetComponent<Button>().onClick.AddListener(() =>
@@ -247,6 +249,8 @@ public class LandUICon : MonoBehaviour
                 currentY += containerHeight + 25;
             }
 
+            //
+            //PlayerInfo.playerActionList[i].isUsed = true;
         }
 
 

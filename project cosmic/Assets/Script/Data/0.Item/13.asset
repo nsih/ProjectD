@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 13
   sprite: {fileID: 0}
-  name: "\uACE0\uC131\uB2A5 \uACE0\uD504\uB85C"
+  itemName: "\uACE0\uC131\uB2A5 \uACE0\uD504\uB85C"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 13
     offset: 10
   beforeComment: Vision+
-  afterComment: "\uC57C\uBC29 \uC2A4\uD2B8\uB9AC\uBA38\uC758 \uD544\uC218\uD488"
+  afterComment: "\uC57C\uBC29 \uC2A4\uD2B8\uB9AC\uBA38\uC758 \uD544\uC218 \uACE0\uB824\uD488"

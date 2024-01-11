@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 19
   sprite: {fileID: 0}
-  name: "\uD3B8\uC790"
+  itemName: "\uD3B8\uC790"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 0
@@ -22,4 +22,5 @@ MonoBehaviour:
   - offsetType: 12
     offset: 5
   beforeComment: "Physical + \nSpeed +"
-  afterComment: "\uB2E4\uADF8\uB2E5 \uB2E4\uADF8\uB2E5"
+  afterComment: "\uB2E4\uADF8\uB2E5\uB2E5 \uC804\uB825\uC73C\uB85C \uB2EC\uB9AC\uACE0
+    \uC2F6\uC5B4"

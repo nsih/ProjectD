@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 91
   sprite: {fileID: 0}
-  name: M16 A6
+  itemName: M16 A6
   rewardRate: 1
   outcomeOffset:
   - offsetType: 13

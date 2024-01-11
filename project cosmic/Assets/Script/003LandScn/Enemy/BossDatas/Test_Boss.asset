@@ -22,15 +22,23 @@ MonoBehaviour:
   bulletSpeed: 0
   knockBackable: 1
   behaviorPatterns:
-  - actionType: 1
-    duration: 3
-  - actionType: 3
-    duration: 0.3
-  - actionType: 3
-    duration: 0.3
-  - actionType: 3
-    duration: 0.3
-  - actionType: 3
-    duration: 0.3
   - actionType: 4
     duration: 1
+    cycles: 4
+    bulletCount: 0
+  - actionType: 3
+    duration: 0.3
+    cycles: 5
+    bulletCount: 0
+  - actionType: 5
+    duration: 0.3
+    cycles: 5
+    bulletCount: 8
+  - actionType: 5
+    duration: 0.3
+    cycles: 5
+    bulletCount: 14
+  - actionType: 0
+    duration: 1
+    cycles: 0
+    bulletCount: 0

@@ -3,18 +3,20 @@ shift alt f
 con shift L
 
 -----------------
-memo
 
+파편적인 memo
 
-max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
+.패턴 n 회 반복 
 
-보스까지 roomDataList1 데이터 추가
+.max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
 
-보스 배틀
+.보스까지 roomDataList1 데이터 추가
 
-보스 컷씬(대화)
+.보스 배틀
 
-do while을 쓸때는 항상 조심하시오
+.보스 컷씬(대화)
+
+.do while을 쓸때는 항상 조심하시오
 
 
 ROOM List

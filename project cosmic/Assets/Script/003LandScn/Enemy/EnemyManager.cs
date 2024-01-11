@@ -77,7 +77,6 @@ public class EnemyManager : MonoBehaviour
     }
 
     #region "충돌관련"
-    /*
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player" && !PlayerInfo.isInvincible)
@@ -86,7 +85,6 @@ public class EnemyManager : MonoBehaviour
             player.GetComponent<PlayerManager>().PlayerAttacked();
         }
     }
-    */
 
     //(Been attacked)
     void OnTriggerEnter2D(Collider2D other)
@@ -161,6 +159,7 @@ public class EnemyManager : MonoBehaviour
             {
                 switch (pattern.actionType)
                 {
+                    ///적 움직임 관련
                     case BehaviorPattern.EnemyActionType.Rest:
                         yield return StartCoroutine(Rest(pattern.duration));
                         break;
@@ -173,19 +172,19 @@ public class EnemyManager : MonoBehaviour
                         yield return StartCoroutine(RushToPlayer(pattern.duration));
                         break;
 
+
+                    ///슈팅 관련
                     case BehaviorPattern.EnemyActionType.ShootAtPlayer:
-                        yield return StartCoroutine(ShootPlayer(pattern.duration));
+                        yield return StartCoroutine(ShootPlayer(pattern.duration,pattern.cycles));
+                        break;
+
+                    case BehaviorPattern.EnemyActionType.MoveShootPlayer:
+                        yield return StartCoroutine(MoveShootPlayer(pattern.duration,pattern.cycles));
                         break;
 
                     case BehaviorPattern.EnemyActionType.TanmakCircle:
-                        yield return StartCoroutine(TanmakCircle(pattern.duration));
+                        yield return StartCoroutine(TanmakCircle(pattern.duration,pattern.cycles,pattern.bulletCount));
                         break;
-
-
-                    // 추가된 행동 패턴에 대한 처리 추가
-
-                    // 기다린 후에 다음 패턴으로 진행
-                    //yield return null;
                 }
             }
         }
@@ -216,7 +215,6 @@ public class EnemyManager : MonoBehaviour
         while (timer < duration)
         {
             this.gameObject.transform.position = 
-
             transform.position += chaseDir * moveSpeed * Time.deltaTime;
 
             //Debug.Log("Chasing..");
@@ -245,59 +243,22 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     #region "슈팅 관련"
-    /*
-    1. 슈팅 디폴트 : 범위에 플레이어가 없으면 쫒아간다. (아직 안함ㅎ)
-    */
 
-    IEnumerator ShootPlayer(float duration)
+    //
+    IEnumerator ShootPlayer(float duration, int cycles)
     {
-        float timer = 0f;
-
-        foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+        for ( int i = 0 ; i < cycles ; i++)
         {
-            if (!bullet.activeInHierarchy)
-            {
-                //위치, 방향설정
-                bullet.transform.position = this.gameObject.transform.position;
+            float timer = 0f;
 
-                Vector2 direction = (player.transform.position - bullet.transform.position).normalized;
-                bullet.transform.up = direction;
-
-                //활성화
-                bullet.SetActive(true);
-
-                bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
-
-
-                
-                break;
-            }
-        }
-
-        while (timer < duration)
-        {
-            Debug.Log("shoot and waing..");
-            yield return null;
-            timer += Time.deltaTime;
-        }
-    }
-    
-    
-    IEnumerator TanmakCircle(float duration)
-    {
-        float timer = 0f;
-        for(int i = 0 ; i < 10 ; i++)
-        {
             foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
             {
                 if (!bullet.activeInHierarchy)
                 {
-                    //position
+                    //위치, 방향설정
                     bullet.transform.position = this.gameObject.transform.position;
 
-                    // dir angle calc
-                    float angle = i * (360f / 10f);
-                    Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up;
+                    Vector2 direction = (player.transform.position - bullet.transform.position).normalized;
                     bullet.transform.up = direction;
 
                     //활성화
@@ -305,16 +266,99 @@ public class EnemyManager : MonoBehaviour
 
                     bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
 
+
+                    
                     break;
                 }
             }
-        }
 
-        while (timer < duration)
+            while (timer < duration)
+            {
+                Debug.Log("shoot and waing..");
+                yield return null;
+                timer += Time.deltaTime;
+            }
+        }
+    }
+
+    IEnumerator MoveShootPlayer(float duration, int cycles)
+    {
+        for ( int i = 0 ; i < cycles ; i++)
         {
-            Debug.Log("waiting..");
-            yield return null;
-            timer += Time.deltaTime;
+            float timer = 0f;
+
+            foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+            {
+                if (!bullet.activeInHierarchy)
+                {
+                    //위치, 방향설정
+                    bullet.transform.position = this.gameObject.transform.position;
+
+                    Vector2 direction = (player.transform.position - bullet.transform.position).normalized;
+                    bullet.transform.up = direction;
+
+                    //활성화
+                    bullet.SetActive(true);
+
+                    bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
+
+
+                    
+                    break;
+                }
+            }
+
+            while (timer < duration)
+            {
+                this.gameObject.transform.position = 
+
+                transform.position += ( player.transform.position - gameObject.transform.position).normalized * moveSpeed * Time.deltaTime;
+
+                timer += Time.deltaTime;
+
+                yield return null;
+            }
+        }
+    }
+
+    
+    //원형 탄막
+    IEnumerator TanmakCircle(float duration, int cycles, int bulletCount)
+    {
+        for ( int i = 0 ; i < cycles ; i ++)
+        {
+            float timer = 0f;
+
+            for(int j = 0 ; j < bulletCount ; j++)
+            {
+                foreach (GameObject bullet in gameManager.GetComponent<EnemyBulletPoolManager>().enemyBulletPool)
+                {
+                    if (!bullet.activeInHierarchy)
+                    {
+                        //position
+                        bullet.transform.position = this.gameObject.transform.position;
+
+                        // dir angle calc
+                        float angle = j * (360f / bulletCount);
+                        Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up;
+                        bullet.transform.up = direction;
+
+                        //활성화
+                        bullet.SetActive(true);
+
+                        bullet.GetComponent<EnemyBulletCon>().GetEnemyBulletMode(EnemyBulletType.NORMAL);
+
+                        break;
+                    }
+                }
+                
+                while (timer < duration)
+                {
+                    Debug.Log("waiting..");
+                    yield return null;
+                    timer += Time.deltaTime;
+                }
+            }
         }
     }
     

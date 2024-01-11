@@ -39,12 +39,13 @@ public class BehaviorPattern
         ChasePlayer,
         RushToPlayer,
         ShootAtPlayer,
+        MoveShootPlayer,
         TanmakCircle
     }
 
     public EnemyActionType actionType;
     public float duration;
+    public int cycles;
 
-    //n번 반복
-    //public int cycles;
+    public int bulletCount;
 }

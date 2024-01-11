@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 63
   sprite: {fileID: 0}
-  name: Big Red Button
+  itemName: Big Red Button
   rewardRate: 1
   outcomeOffset:
   - offsetType: 20

@@ -22,6 +22,10 @@ public class ActionData : ScriptableObject
 
     public ResultsData[] results;
 
+
+
+    public bool isUsed;
+
     //얻을 행동 코멘트
     [TextArea(3, 10)]
     public string beforeComment = "Before Comment";

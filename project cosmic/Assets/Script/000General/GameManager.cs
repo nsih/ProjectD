@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenNewRoom(RoomType roomType)
     {
+        //방 로드
         switch(roomType)
         {
             case RoomType.Start:
@@ -167,7 +168,14 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+        //위치 리셋
         PlayerLocationReset();
+
+        //액션 리셋
+        for (int i = 0; i < PlayerInfo.playerActionList.Count; i++)
+        {
+            PlayerInfo.playerActionList[i].isUsed = true;
+        }
 
 
         //룸타입에 따라서 룸 꺼내오는 함수  -> battle event manager
@@ -230,19 +238,35 @@ public class GameManager : MonoBehaviour
             child.gameObject.SetActive(false);
         }
         
-        //룸타입이 일치하며 사용되지 않은 방을 뽑을때까지 랜덤
-        while (!roomPicked)
+        //룸타입 일치, 사용되지 않은 방
+
+        int maxAttempts = 100; // 최대 시도 횟수
+
+        while (!roomPicked && maxAttempts > 0)
         {
             randomNumber = Random.Range(0, currentStageRoomDataList.Count);
-            
-            if (!currentStageRoomDataList[randomNumber].isUsed && 
-            currentStageRoomDataList[randomNumber].roomType == roomType)
+
+            if (!currentStageRoomDataList[randomNumber].isUsed &&
+                currentStageRoomDataList[randomNumber].roomType == roomType)
             {
                 currentStageRoomDataList[randomNumber].isUsed = true;
                 roomParent.transform.GetChild(randomNumber).gameObject.SetActive(true);
                 roomPicked = true;
             }
+
+            maxAttempts--;
+
+            //preb
+            if (maxAttempts <= 0)
+            {
+                currentStageRoomDataList[randomNumber].isUsed = true;
+                roomParent.transform.GetChild(randomNumber).gameObject.SetActive(true);
+                roomPicked = true;
+
+                Debug.LogError("Failed to pick a room after maximum attempts.");
+            }
         }
+        //
     }
 
     #endregion
