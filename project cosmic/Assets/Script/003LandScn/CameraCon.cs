@@ -34,7 +34,7 @@ public class CameraCon : MonoBehaviour
         Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - playerPosition;
 
         // Z 축 값을 유지하여 플레이어 중심 위치에 마우스 벡터의 10%를 더함
-        targetPosition += new Vector3(mouseOffset.x * 0.1f, mouseOffset.y * 0.1f, -10f);
+        targetPosition += new Vector3(mouseOffset.x * 0.1f, mouseOffset.y * 0.1f, 0f);
 
 
         // 부드러운 이동을 위한 보간
@@ -43,7 +43,7 @@ public class CameraCon : MonoBehaviour
         // Z 축 값을 유지하여 카메라 위치 설정
         smoothPosition.z = transform.position.z;
         //transform.position = smoothPosition;
-        transform.position = targetPosition;
+        transform.position = smoothPosition;
     }
 
     
