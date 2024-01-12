@@ -5,19 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
-public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class LeaveRoomBtnCon : MonoBehaviour
 {
     GameObject gameManager;
     GameObject roomUICanvas;
     GameObject pnlBackGround;
 
-    GameObject doubleCheckPopup;
-    GameObject doubleCheckText;
-    Button btnYes;
-    Button btnNo;
-
-    private Color normalColor;
-    private Color hoverColor;
+    GameObject dialogueManager;
+    GameObject dialogueOption;
 
 
 
@@ -26,93 +21,42 @@ public class LeaveRoomBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
 
-        doubleCheckText = doubleCheckPopup.transform.GetChild(0).gameObject;
-        btnYes = doubleCheckPopup.transform.GetChild(1).GetComponent<Button>();
-        btnNo = doubleCheckPopup.transform.GetChild(2).GetComponent<Button>();
-
-        normalColor = GetComponent<Image>().color;
-        float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
-        float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
-        float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        GetComponent<Image>().color = hoverColor;
-        
-        gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnHover);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            gameManager.GetComponent<SFXManager>().PlaySound(SfxType.BtnClick);
-        }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        GetComponent<Image>().color = normalColor;
+        dialogueManager = GameObject.Find("DialogueManager");
+        dialogueOption = GameObject.Find("DialogueOption");
     }
 
     public void OnclickLeaveRoom()
     {
-        if(!GameManager.isLoading && !GameManager.isRoomTalking)
+        if (!GameManager.isLoading && !GameManager.isRoomTalking)
         {
-            OpenPopup();
-        
-            doubleCheckText.GetComponent<TextMeshProUGUI>().text = "나감?";
+            dialogueManager.GetComponent<RoomDialogueManager>().ChangeDialogue("LeaveRoomBtnCon");
+            dialogueManager.GetComponent<RoomDialogueManager>().StartDialogue();
 
-            btnYes.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "ㅇㅇ";
-            btnNo.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "ㄴㄴ";
+            dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(OnClickYes);
+            dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(OnClickNo);
         }
     }
 
 
-    ///////////////// YES or NO
+    void OnSceneLoaded(AsyncOperation operation)
+    {
+        if (operation.isDone)
+        {
+            // ScnLand 씬 로드 후 OpenNewStage 함수를 호출
+            gameManager.GetComponent<GameManager>().OpenNewStage();
+            gameManager.GetComponent<PlayerInfo>().PlayerStatusInitialize();
+        }
+    }
     void OnClickYes()
     {
-        ClosePopup();
-
-        //스테이지 0 초기화 및 시작
+        dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
         SceneManager.LoadSceneAsync("ScnLand").completed += OnSceneLoaded;
     }
-
-    void OnSceneLoaded(AsyncOperation operation) {
-    if (operation.isDone) 
-    {
-        // ScnLand 씬 로드 후 OpenNewStage 함수를 호출
-        gameManager.GetComponent<GameManager>().OpenNewStage();
-
-        gameManager.GetComponent<PlayerInfo>().PlayerStatusInitialize();
-        
-    }
-}
-
     void OnClickNo()
     {
-        ClosePopup();
-    }
-
-
-    ///////////////
-    void OpenPopup()
-    {
-        doubleCheckPopup.SetActive(true);
-
-        btnYes.onClick.AddListener(OnClickYes);
-        btnNo.onClick.AddListener(OnClickNo);
-    }
-
-    void ClosePopup()
-    {
-        doubleCheckPopup.SetActive(false);
-
-        btnYes.onClick.RemoveAllListeners();
-        btnNo.onClick.RemoveAllListeners();
+        dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
     }
 }

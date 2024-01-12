@@ -1,22 +1,27 @@
-shift alt f
+정리	: Shift + Alt + F
 
-con shift L
+묶음	: Ctl + Shift + L
 
 -----------------
 
-파편적인 memo
+파편적 memo
 
-.패턴 n 회 반복 
+reward while
+
+적 데이터 추가
+맵 데이터 추가 (넓게 부탁)
+
+적 데이터 추가
+이벤트 데이터 추가
+
+행동 별도 주사위 창 + 기능
+
+주사위 색깔
+주사위 성공표기 버그
 
 .max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
 
-.보스까지 roomDataList1 데이터 추가
-
-.보스 배틀
-
 .보스 컷씬(대화)
-
-.do while을 쓸때는 항상 조심하시오
 
 
 ROOM List
@@ -33,23 +38,10 @@ ROOM List
 
 일시제외	: Shop, FE
 
------------------
-ProtoType
-
-. enemy
-	. add pattern data
-	. Boss Battle
-
-. system
-	. HP
-
-.bugfix
-	. AP
-
-
-
 ----------------
 Todo
+
+.screen size 대응
 
 
 . Event Sys

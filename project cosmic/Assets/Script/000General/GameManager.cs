@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         
         //룸타입 일치, 사용되지 않은 방
 
-        int maxAttempts = 100; // 최대 시도 횟수
+        int maxAttempts = 500; // 최대 시도 횟수
 
         while (!roomPicked && maxAttempts > 0)
         {

@@ -144,14 +144,14 @@ public class LandUICon : MonoBehaviour
 
     public void UpdateStatusText()
     {
-        physicalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
-        = PlayerInfo.physical.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceP.ToString() + ")" + "</color>" ;
+        physicalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text
+        = PlayerInfo.physical.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceP.ToString() + ")" + "</color>";
 
-        mentalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
-        = PlayerInfo.mental.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceM.ToString() + ")" + "</color>" ;
+        mentalUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text
+        = PlayerInfo.mental.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceM.ToString() + ")" + "</color>";
 
-        charmUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text 
-        = PlayerInfo.charm.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceC.ToString() + ")" + "</color>" ;
+        charmUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text
+        = PlayerInfo.charm.ToString() + "<color=black>" + "\n(" + PlayerInfo.diceC.ToString() + ")" + "</color>";
     }
     #endregion
 
@@ -172,7 +172,7 @@ public class LandUICon : MonoBehaviour
 
     }
 
-    
+
     #endregion
 
     #region "Action ScrollView UI"
@@ -211,26 +211,26 @@ public class LandUICon : MonoBehaviour
 
         //content size adjust
         RectTransform contentRectTransform = actionScrollContent.GetComponent<RectTransform>();
-        contentRectTransform.sizeDelta = 
-        new Vector2(contentRectTransform.sizeDelta.x, PlayerInfo.playerActionList.Count * (containerHeight + 50) );
+        contentRectTransform.sizeDelta =
+        new Vector2(contentRectTransform.sizeDelta.x, PlayerInfo.playerActionList.Count * (containerHeight + 50));
 
 
         //button instance
         for (int i = 0; i < PlayerInfo.playerActionList.Count; i++)
         {
             int instanceIndex = i;//람다 closure용
-            
+
             // prefap instance 배치
             GameObject _actionContainer = Instantiate(actionContainer, actionViewport.transform);
 
             // instance initialize
             _actionContainer.transform.Find("Icon").GetComponent<Image>().sprite = PlayerInfo.playerActionList[i].icon;
+            _actionContainer.transform.Find("Name").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].actionName;
             _actionContainer.transform.Find("TestTypeIMG").GetComponent<Image>().sprite = GetTestTypeIMG(PlayerInfo.playerActionList[i].testType);
-            _actionContainer.transform.Find("Name").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].name;
-            _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = "AP COST " + (int)PlayerInfo.playerActionList[i].cost;
-            _actionContainer.transform.Find("Comment").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].afterComment;
+            _actionContainer.transform.Find("TestOffset").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].testOffset.ToString();
+            _actionContainer.transform.Find("Cost").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].cost.ToString();
+            _actionContainer.transform.Find("Comment").GetComponent<TMP_Text>().text = PlayerInfo.playerActionList[i].actionText;
 
-            //_actionContainer.GetComponent<Button>().interactable = ! PlayerInfo.playerActionList[i].isUsed;
 
             //add listner test event manager
             _actionContainer.GetComponent<Button>().onClick.AddListener(() =>
@@ -243,7 +243,7 @@ public class LandUICon : MonoBehaviour
             if (uiRectTransform != null)
             {
                 uiRectTransform.anchoredPosition = new Vector2(0f, -currentY + 365);
-                
+
                 _actionContainer.transform.SetParent(actionScrollContent.transform, true);
 
                 currentY += containerHeight + 25;

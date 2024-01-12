@@ -67,7 +67,7 @@ public class RewardManager : MonoBehaviour
             {
                 ActionData actionData = (ActionData)reward;
 
-                rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = actionData.sprite;
+                rewardAfterPopup.transform.Find("Image").GetComponent<Image>().sprite = actionData.icon;
                 rewardAfterPopup.transform.Find("Text").GetComponent<TMP_Text>().text = actionData.afterComment;
             }
 
@@ -145,16 +145,26 @@ public class RewardManager : MonoBehaviour
                 selectedList = suggestableActionList.ConvertAll(x => (object)x);
                 selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
 
+
+                int maxAttempts = 1000; // 최대 시도 횟수
+
                 do
                 {
                     selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
-                } while (suggestedList.Contains(selectedList[selectedIndex]));
+
+                    maxAttempts--;
+                } while (suggestedList.Contains(selectedList[selectedIndex]) &&  maxAttempts > 0);
+
+                if (maxAttempts <= 0)
+                {
+                    Debug.LogError("Failed to pick a reward after maximum attempts.");
+                }
 
                 suggestedList.Add(selectedList[selectedIndex]);
                 //Debug.Log($"Selected Action List: {selectedList[selectedIndex]}, Index: {selectedIndex}");
 
                 btnReward.gameObject.transform.Find("Image").gameObject.GetComponent<Image>().sprite = 
-                    suggestableActionList[selectedIndex].sprite;
+                    suggestableActionList[selectedIndex].icon;
 
                 btnReward.gameObject.transform.Find("Name").gameObject.GetComponent<TMP_Text>().text =
                     suggestableActionList[selectedIndex].actionName;
@@ -172,10 +182,18 @@ public class RewardManager : MonoBehaviour
                 selectedList = suggestableItemList.ConvertAll(x => (object)x);
                 selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
 
+
+                int maxAttempts = 1000;
                 do
                 {
                     selectedIndex = UnityEngine.Random.Range(0, selectedList.Count);
-                } while (suggestedList.Contains(selectedList[selectedIndex]));
+                    maxAttempts--;
+                } while (suggestedList.Contains(selectedList[selectedIndex]) &&  maxAttempts > 0);
+
+                if (maxAttempts <= 0)
+                {
+                    Debug.LogError("Failed to pick a reward after maximum attempts.");
+                }
 
                 suggestedList.Add(selectedList[selectedIndex]);
                 //Debug.Log($"Selected Item List: {selectedList[selectedIndex]}, Index: {selectedIndex}");

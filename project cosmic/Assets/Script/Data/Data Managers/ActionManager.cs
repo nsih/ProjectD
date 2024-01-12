@@ -73,7 +73,6 @@ public class ActionManager : MonoBehaviour
 
         //show
         testPopup.SetActive(true);
-        eventIMG.sprite = currentActionData.sprite;
         eventTitle.GetComponent<TMP_Text>().text = currentActionData.name;
         eventText.GetComponent<TMP_Text>().text = currentActionData.actionText;
         testInfoText.GetComponent<TMP_Text>().text = currentActionData.testTypeS + "시작";
@@ -196,9 +195,9 @@ public class ActionManager : MonoBehaviour
             resultIndex = 1;
 
         //Show
-        eventIMG.sprite = currentActionData.results[resultIndex].resultSprite;
-        eventTitle.GetComponent<TMP_Text>().text = currentActionData.results[resultIndex].testResultName;
-        eventText.GetComponent<TMP_Text>().text = currentActionData.results[resultIndex].resultText;
+        // eventIMG.sprite = currentActionData.results[resultIndex].resultSprite;
+        // eventTitle.GetComponent<TMP_Text>().text = currentActionData.results[resultIndex].testResultName;
+        // eventText.GetComponent<TMP_Text>().text = currentActionData.results[resultIndex].resultText;
         testInfoText.GetComponent<TMP_Text>().text = "";
 
         //event result offset apply

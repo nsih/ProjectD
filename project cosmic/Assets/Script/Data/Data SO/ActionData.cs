@@ -9,18 +9,20 @@ public class ActionData : ScriptableObject
     public int actionID;
     public Sprite icon;
 
-    public string actionName;
-    public int cost;
-    public string actionText;
-    public Sprite sprite;
+    public string actionName = "Action Name";
+    public int cost = 1;
+
+    [TextArea(2, 15)]
+    public string actionText = "Text";
 
     public TestType testType;
     public string testTypeS;
 
 
-    public int testOffset;
+    public int testOffset = 0;
 
-    public ResultsData[] results;
+
+    public ActionResultsData[] results;
 
 
 
@@ -33,4 +35,12 @@ public class ActionData : ScriptableObject
     //얻은 행동 코멘트
     [TextArea(3, 10)]
     public string afterComment = "After Comment";
+}
+
+
+[System.Serializable]
+//test only
+public class ActionResultsData
+{
+    public OutcomeOffset[] eventOffset;
 }

@@ -25,17 +25,8 @@ public class RoomTitleBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         gameManager = GameObject.Find("GameManager");
         roomUICanvas = GameObject.Find("RoomUICanvas");
         pnlBackGround = GameObject.Find("PnlBackGround");
-        doubleCheckPopup = pnlBackGround.transform.Find("DoubleCheckPopup").gameObject;
 
-        doubleCheckText = doubleCheckPopup.transform.GetChild(0).gameObject;
-        btnYes = doubleCheckPopup.transform.GetChild(1).GetComponent<Button>();
-        btnNo = doubleCheckPopup.transform.GetChild(2).GetComponent<Button>();
-
-        normalColor = GetComponent<Image>().color;
-        float r = Mathf.Clamp(normalColor.r - 0.2f, 0f, 1f);
-        float g = Mathf.Clamp(normalColor.g - 0.2f, 0f, 1f);
-        float b = Mathf.Clamp(normalColor.b - 0.2f, 0f, 1f);
-        hoverColor = new Color(r, g, b, normalColor.a);  
+        //lea btn r
     }
 
     public void OnPointerEnter(PointerEventData eventData)

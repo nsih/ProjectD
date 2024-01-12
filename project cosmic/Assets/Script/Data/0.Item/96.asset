@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 96
   sprite: {fileID: 0}
-  itemName: "\uBC31\uAE08 CD"
+  itemName: "\uD50C\uB85C\uD53C \uB514\uC2A4\uD06C"
   rewardRate: 3
   outcomeOffset:
   - offsetType: 5
     offset: 1
   beforeComment: Dice Charm+
-  afterComment: "\uC5B4\uB5BB\uAC8C \uC791\uB3D9\uD558\uB294\uB370? ...\uC791\uB3D9\uC740
-    \uD558\uC9C0?"
+  afterComment: "\uC544\uC774\uCF58\uC73C\uB85C \uB0A8\uC740 \uACE0\uB300 \uC720\uBB3C"

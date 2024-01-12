@@ -14,32 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionID: 0
   icon: {fileID: 0}
-  actionName: 
+  actionName: "\uD68C\uBCF5"
   cost: 1
-  actionText: "\uB2F9\uC2E0\uC740 \uC774 \uB09C\uB9AC\uD1B5\uC5D0 \uB180\uB78D\uAC8C\uB3C4
-    \uB9C8\uC74C\uACFC \uC721\uCCB4\uC758 \uC548\uC815\uC744 \uC704\uD55C \uBA85\uC0C1\uC744
-    \uC2DC\uC791\uD558\uB824 \uD569\uB2C8\uB2E4.\n\n\n\uC131\uACF5\uD55C\uB2E4\uBA74
-    HP\uB97C 1 \uD68C\uBCF5\uD569\uB2C8\uB2E4.\n\uC2E4\uD328\uD55C\uB2E4\uBA74 \uC544\uBB34\uC77C\uB3C4
-    \uC77C\uC5B4\uB098\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
-  sprite: {fileID: 0}
+  actionText: "\uC131\uACF5 \uC2DC HP \uD68C\uBCF5"
   testType: 1
   testTypeS: "\uC815\uC2E0\uB825 \uD14C\uC2A4\uD2B8"
   testOffset: 6
   results:
-  - testResultName: "\uC644\uBCBD\uD55C \uBAB0\uC785"
-    resultText: "\uC555\uBC15\uAC10\uC5D0 \uC775\uC219\uD574\uC838\uB77C. \n\n\uCE68\uCC29\uD568\uC744
-      \uC720\uC9C0\uD558\uACE0 \uBD88\uD544\uC694\uD55C \uC0DD\uAC01\uC744 \uC815\uB9AC\uD574\uB77C.\n\n'\uAC74\uC804\uD55C
-      \uBAB8\uC740 \uAC74\uC804\uD55C \uC815\uC2E0\uC5D0 \uAE43\uB4E0\uB2E4.'\n\uBC18\uB300\uC600\uB358\uAC00?...
-      \uC544\uBB34\uD2BC \uBB50\n\n\n-\uC544\uBB34\uD2BC HP\uB97C 1 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-    resultSprite: {fileID: 0}
-    eventOffset:
+  - eventOffset:
     - offsetType: 8
       offset: 1
-  - testResultName: "\uBAB0\uC785\uC774 \uB418\uACA0\uB0D0\uACE0"
-    resultText: "...\uC774 \uB09C\uB9AC\uD1B5\uC5D0 \uBB54 \uD734\uC2DD\uC774\uC57C!!\n\n\n-\uAD1C\uD788
-      \uC9DC\uC99D\uB9CC \uB0A9\uB2C8\uB2E4"
-    resultSprite: {fileID: 0}
-    eventOffset: []
+  - eventOffset: []
   isUsed: 1
   beforeComment: "\uD589\uB3D9 : \uD734\uC2DD"
-  afterComment: Basic Action
+  afterComment: "\uBCFC \uC77C \uC5C6\uC744 \uAC70\uB2E4."
