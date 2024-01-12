@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "7 \uB9C8\uC74C\uAC00\uC9D0"
   m_EditorClassIdentifier: 
   actionID: 7
+  rewardRate: 2
   icon: {fileID: 0}
   actionName: "\uB9C8\uC74C\uAC00\uC9D0"
   cost: 6

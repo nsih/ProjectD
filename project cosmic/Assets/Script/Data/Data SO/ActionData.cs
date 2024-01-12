@@ -7,6 +7,8 @@ using UnityEngine;
 public class ActionData : ScriptableObject
 {
     public int actionID;
+    public rewardRate rewardRate = rewardRate.C;
+    
     public Sprite icon;
 
     public string actionName = "Action Name";

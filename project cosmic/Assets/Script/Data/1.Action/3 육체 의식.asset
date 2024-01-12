@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "3 \uC721\uCCB4 \uC758\uC2DD"
   m_EditorClassIdentifier: 
   actionID: 3
+  rewardRate: 2
   icon: {fileID: 0}
   actionName: "\uC721\uCCB4 \uC758\uC2DD"
   cost: 6
