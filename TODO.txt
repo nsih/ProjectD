@@ -2,44 +2,22 @@
 
 묶음	: Ctl + Shift + L
 
------------------
+-------------------------------------
+Todo
 
-파편적 memo
+.등급에 따른 	: 확률, UI
 
+행동 별도 주사위 창 + 로직
 
-.등급별
+테스트 종류에 따른 주사위 색깔
+주사위 성공표기 버그
 
 .적 데이터 추가
 .맵 데이터 추가 (넓게 부탁)
 
 .이벤트 데이터 추가
 
-행동 별도 주사위 창 + 기능
-
-주사위 색깔
-주사위 성공표기 버그
-
-.max HP offset관련 : max HP만 계속 쓰고 offset은 일시적으로 쓰게 변경할것
-
 .보스 컷씬(대화)
-
-
-ROOM List
-0	: start
-
-1~15	: Battle
-
-16~26 : Random Event
-
-27~30 : Alter
-
-30~31 : Boss
-
-
-일시제외	: Shop, FE
-
-----------------
-Todo
 
 .screen size 대응
 
@@ -58,65 +36,24 @@ Todo
 
 . Art
 	.Animations
-----------------
-Done
-
-
-1. land dialogue sys
-
-2. Event Sys
-	.1 Dice Roll
-	.2 Status kind adjust
-	.3 actual offset apply
-	.4 action
-
-
-3. UI
-	.1 재배치
-	.2 실제 수치 적용
-
-
-4. reward sys
-	.1 선택창
-	.0 ArtifactData 수정 (event 참고 - 패시브, 액티브 추가.)
-	.1 UI
-	.2 actual offset apply
-	.3 얻은거 보여주는 UI
-
-5. Alter
-	.1 data
-	.2 Manager ( Get Data, Get Control UI) 
-	.3 add data
-
 
 
 ----------------
-~
-15 	행동
-~
-20 	재단 시스템, 나머지 데이터 추가
-~
-25 	적 패턴 추가
-~
-맵 추가, UI연출, 조작 추가,사운드, 그래픽
+
+파편적 memo
+
+ROOM List
+0	: start
+
+1~15	: Battle
+
+16~26 : Random Event
+
+27~30 : Alter
+
+30~31 : Boss
+
+
+일시제외	: Shop, FE
+
 ----------------
-
-*trouble
-
-이벤트 결과 리스트? 단발성?
-
----------------
-
-육체	정신	매력
-
-maxHP	maxAP	치명피해
-
----------------
-
-공격력
-공속
-치명 데미지
-치명 확률
-이속
-
----
