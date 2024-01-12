@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: 0
+  m_Name: "1 \uAE34\uAE09 \uC218\uD608"
   m_EditorClassIdentifier: 
-  actionID: 0
+  actionID: 1
   icon: {fileID: 0}
-  actionName: "\uD68C\uBCF5"
-  cost: 1
-  actionText: "\uC131\uACF5 \uC2DC HP \uD68C\uBCF5"
-  testType: 1
-  testTypeS: "\uC815\uC2E0\uB825 \uD14C\uC2A4\uD2B8"
-  testOffset: 6
+  actionName: "\uAE34\uAE09 \uC218\uD608"
+  cost: 2
+  actionText: "\uC131\uACF5 : HP +2"
+  testType: 0
+  testTypeS: "\uC721\uCCB4 \uD14C\uC2A4\uD2B8"
+  testOffset: -1
   results:
   - eventOffset:
     - offsetType: 8
-      offset: 1
+      offset: 2
   - eventOffset: []
-  isUsed: 1
-  beforeComment: "\uD589\uB3D9 : \uD734\uC2DD"
-  afterComment: "\uBCFC \uC77C \uC5C6\uC744 \uAC70\uB2E4."
+  isUsed: 0
+  beforeComment: "HP \uD68C\uBCF5"
+  afterComment: "\uBB34\uC2A8 \uD53C\uC778\uC9C0\uB294 \uBAA8\uB974\uACA0\uB124"

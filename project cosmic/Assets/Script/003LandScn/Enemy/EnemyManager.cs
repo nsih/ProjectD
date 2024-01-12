@@ -274,7 +274,7 @@ public class EnemyManager : MonoBehaviour
 
             while (timer < duration)
             {
-                Debug.Log("shoot and waing..");
+                //Debug.Log("shoot and waing..");
                 yield return null;
                 timer += Time.deltaTime;
             }

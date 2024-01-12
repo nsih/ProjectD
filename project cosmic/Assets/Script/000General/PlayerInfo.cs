@@ -100,13 +100,13 @@ public class PlayerInfo : MonoBehaviour
         DmgCal();
 
         //attack delay
-        attackSpeed = 6;    //6is max
+        attackSpeed = 2.75f;    //6is max
         AttackDelayCalc();
 
         //move speed
-        playerMoveSpeed = 20;
-        playerDashCoolTime = 0.3f;
-        playerDashSpeed = 40;
+        playerMoveSpeed = 15;
+        playerDashCoolTime = 0.15f;
+        playerDashSpeed = 35;
 
         //item
         playerItemList.Clear();
@@ -116,7 +116,7 @@ public class PlayerInfo : MonoBehaviour
         playerActionList.Add(gameObject.GetComponent<RewardManager>().rewardActionList[0]);
 
         //etc
-        playerVisionSize = 20;
+        playerVisionSize = 15;
 
         //invincible
         isInvincible = false;
