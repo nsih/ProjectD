@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "3 \uC721\uCCB4 \uC758\uC2DD"
+  m_Name: "12 \uB370\uB4DC \uB9AC\uD504\uD2B8"
   m_EditorClassIdentifier: 
-  actionID: 3
+  actionID: 12
   rewardRate: 2
   icon: {fileID: 0}
-  actionName: "\uC721\uCCB4 \uC758\uC2DD"
-  cost: 6
-  actionText: "\uC131\uACF5 : Max HP +1"
+  actionName: "\uB370\uB4DC \uB9AC\uD504\uD2B8"
+  cost: 4
+  actionText: "\uC131\uACF5 : Dice Physical +3\n\uC2E4\uD328 : Dice Physical -1"
   testType: 0
   testTypeS: "\uC721\uCCB4"
-  testOffset: -1
+  testOffset: -3
   results:
   - eventOffset:
-    - offsetType: 7
-      offset: 1
-  - eventOffset: []
-  isUsed: 0
-  beforeComment: "\uCD5C\uB300 HP"
-  afterComment: "\uC5ED\uACA8\uC6B4 \uC758\uC2DD"
+    - offsetType: 4
+      offset: 3
+  - eventOffset:
+    - offsetType: 4
+      offset: -1
+  isUsed: 1
+  beforeComment: Dice Physical
+  afterComment: "\uADF8\uB140\uC758 \uD5C8\uB9AC\uAC00 \uD65C\uCC98\uB7FC \uB04A\uC5B4\uC84C\uB2E4."

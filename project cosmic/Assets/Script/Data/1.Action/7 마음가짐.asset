@@ -19,7 +19,7 @@ MonoBehaviour:
   cost: 6
   actionText: "\uC131\uACF5 : Max AP +1"
   testType: 1
-  testTypeS: "\uB9E4\uB825 \uD14C\uC2A4\uD2B8"
+  testTypeS: "\uB9E4\uB825"
   testOffset: -1
   results:
   - eventOffset:
@@ -28,4 +28,4 @@ MonoBehaviour:
   - eventOffset: []
   isUsed: 0
   beforeComment: "\uCD5C\uB300 AP"
-  afterComment: "\uC774 \uD589\uB3D9\uC740 \uC808 \uC704\uD55C \uAC81\uB2C8\uB2E4"
+  afterComment: "\uC88B\uC740 \uB9C8\uC74C\uAC00\uC9D0\uC740 \uC131\uC7A5\uC758 \uBC11\uAC70\uB984"

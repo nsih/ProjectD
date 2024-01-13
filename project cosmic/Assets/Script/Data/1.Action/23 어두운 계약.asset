@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "3 \uC721\uCCB4 \uC758\uC2DD"
+  m_Name: "23 \uC5B4\uB450\uC6B4 \uACC4\uC57D"
   m_EditorClassIdentifier: 
-  actionID: 3
-  rewardRate: 2
+  actionID: 23
+  rewardRate: 0
   icon: {fileID: 0}
-  actionName: "\uC721\uCCB4 \uC758\uC2DD"
+  actionName: "\uC5B4\uB450\uC6B4 \uACC4\uC57D"
   cost: 6
-  actionText: "\uC131\uACF5 : Max HP +1"
-  testType: 0
-  testTypeS: "\uC721\uCCB4"
-  testOffset: -1
+  actionText: "\uC131\uACF5 : DMG +?\n\uC2E4\uD328 : Physical -2"
+  testType: 2
+  testTypeS: "\uB9E4\uB825"
+  testOffset: 0
   results:
   - eventOffset:
-    - offsetType: 7
-      offset: 1
-  - eventOffset: []
-  isUsed: 0
-  beforeComment: "\uCD5C\uB300 HP"
-  afterComment: "\uC5ED\uACA8\uC6B4 \uC758\uC2DD"
+    - offsetType: 13
+      offset: 1.5
+  - eventOffset:
+    - offsetType: 0
+      offset: -2
+  isUsed: 1
+  beforeComment: DMG
+  afterComment: "\uBC31\uC9C0 \uACC4\uC57D\uC11C"

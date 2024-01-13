@@ -144,6 +144,9 @@ public class GameManager : MonoBehaviour
 
             case RoomType.FixedEvent:
                 PickupRoom(RoomType.RandomEvent);
+
+                gameObject.GetComponent<RewardManager>().OpenRewardPopup();
+                
                 break;
 
             case RoomType.RandomEvent:

@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "5 \uB77C\uC774\uD2B8 \uB178\uBCA8 \uC77D\uAE30"
+  m_Name: "26 \uADF8\uB9B0 \uCE60\uB9AC"
   m_EditorClassIdentifier: 
-  actionID: 5
+  actionID: 26
+  rewardRate: 3
   icon: {fileID: 0}
-  actionName: "\uB77C\uC774\uD2B8 \uB178\uBCA8 \uC77D\uAE30"
-  cost: 2
-  actionText: "\uC131\uACF5 : AP +2"
+  actionName: "\uADF8\uB9B0 \uCE60\uB9AC"
+  cost: 5
+  actionText: "\uC131\uACF5 : Move Speed +"
   testType: 1
-  testTypeS: "\uC815\uC2E0\uB825 \uD14C\uC2A4\uD2B8"
+  testTypeS: "\uC815\uC2E0\uB825"
   testOffset: 0
   results:
   - eventOffset:
-    - offsetType: 9
-      offset: 2
+    - offsetType: 15
+      offset: 10
   - eventOffset: []
-  isUsed: 0
-  beforeComment: AP
-  afterComment: "\uC81C\uBAA9\uC774 \uB108\uBB34 \uAE38\uC5B4"
+  isUsed: 1
+  beforeComment: Move Speed
+  afterComment: "\uC791\uC740 \uCE60\uB9AC\uAC00 \uB9F5\uB2E4"

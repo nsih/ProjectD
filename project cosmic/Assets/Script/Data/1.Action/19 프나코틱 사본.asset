@@ -10,22 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "4 \uBA85\uC0C1"
+  m_Name: "19 \uD504\uB098\uCF54\uD2F1 \uC0AC\uBCF8"
   m_EditorClassIdentifier: 
-  actionID: 4
-  rewardRate: 3
+  actionID: 19
+  rewardRate: 0
   icon: {fileID: 0}
-  actionName: "\uBA85\uC0C1"
-  cost: 1
-  actionText: "\uC131\uACF5 : AP +1"
+  actionName: "\uCC45 : \uD504\uB098\uCF54\uD2F1 \uC0AC\uBCF8"
+  cost: 6
+  actionText: "\uC131\uACF5 : Charm +2\n\uC2E4\uD328 : Physical -1"
   testType: 1
   testTypeS: "\uC815\uC2E0\uB825"
   testOffset: 0
   results:
   - eventOffset:
-    - offsetType: 9
-      offset: 1
-  - eventOffset: []
-  isUsed: 0
-  beforeComment: AP
-  afterComment: "\uC555\uBC15\uAC10\uC5D0 \uC775\uC219\uD574\uC838\uB77C"
+    - offsetType: 2
+      offset: 2
+  - eventOffset:
+    - offsetType: 0
+      offset: -1
+  isUsed: 1
+  beforeComment: Charm
+  afterComment: "\uC5EE\uC740\uC774\uAC00 \uAF64 \uC608\uC05C \uAE00\uC528\uCCB4\uB97C
+    \uAC00\uC9C0\uACE0 \uC788\uAD6C\uB098"

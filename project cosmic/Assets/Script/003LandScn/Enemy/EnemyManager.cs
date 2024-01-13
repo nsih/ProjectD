@@ -13,10 +13,6 @@ public class EnemyManager : MonoBehaviour
     public string mobName;
 
 
-
-
-
-
     float hp;
     int damage;
     float moveSpeed;
@@ -240,6 +236,8 @@ public class EnemyManager : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+    
+    
     #endregion
 
     #region "슈팅 관련"

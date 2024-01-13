@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "0 \uD68C\uBCF5"
+  m_Name: "13 \uBA85\uC791 \uC560\uB2C8 \uC2DC\uCCAD"
   m_EditorClassIdentifier: 
-  actionID: 0
-  rewardRate: 3
+  actionID: 13
+  rewardRate: 1
   icon: {fileID: 0}
-  actionName: "\uD68C\uBCF5"
-  cost: 1
-  actionText: "\uC131\uACF5 : HP +1"
-  testType: 0
-  testTypeS: "\uC721\uCCB4"
-  testOffset: 0
+  actionName: "\uBA85\uC791 \uC560\uB2C8 \uC2DC\uCCAD"
+  cost: 3
+  actionText: "\uC131\uACF5 : Mental +1\n\uC2E4\uD328 : Max AP -1"
+  testType: 1
+  testTypeS: "\uC815\uC2E0\uB825"
+  testOffset: -2
   results:
   - eventOffset:
-    - offsetType: 8
+    - offsetType: 1
       offset: 1
-  - eventOffset: []
+  - eventOffset:
+    - offsetType: 10
+      offset: -1
   isUsed: 1
-  beforeComment: "HP \uD68C\uBCF5"
-  afterComment: "\uD55C\uC228 \uD479 \uC790\uBA74 \uB098\uC544"
+  beforeComment: Mental
+  afterComment: "\uB9C8\uC74C\uC758 \uC591\uC2DD"

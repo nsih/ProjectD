@@ -10,22 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "6 \uAE30\uB3C4"
+  m_Name: "14\uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
   m_EditorClassIdentifier: 
-  actionID: 6
-  rewardRate: 3
+  actionID: 14
+  rewardRate: 0
   icon: {fileID: 0}
-  actionName: "\uAE30\uB3C4"
-  cost: 3
-  actionText: "\uC131\uACF5 : AP +3"
+  actionName: "\uCC45 : \uB124\uD06C\uB85C\uB178\uBBF8\uCF58"
+  cost: 6
+  actionText: "\uC131\uACF5 : Mental +2\n\uC2E4\uD328 : Charm -1"
   testType: 2
   testTypeS: "\uB9E4\uB825"
   testOffset: 0
   results:
   - eventOffset:
-    - offsetType: 9
+    - offsetType: 1
       offset: 2
-  - eventOffset: []
-  isUsed: 0
-  beforeComment: AP
-  afterComment: "\uBE44\uB098\uC774\uB2E4 \uBE44\uB098\uC774\uB2E4"
+  - eventOffset:
+    - offsetType: 2
+      offset: -1
+  isUsed: 1
+  beforeComment: Mental
+  afterComment: "\uC774 \uBC14\uB2E5\uC758 \uBCA0\uC2A4\uD2B8\uC0D0\uB7EC.\n\uADF8\uB9AC\uACE0
+    \uADF8 \uC774\uC720\uB294 \uD655\uC2E4\uD558\uB2E4."

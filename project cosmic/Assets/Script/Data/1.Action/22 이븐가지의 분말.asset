@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5700187ba33679a4ba4b89c9f5b38a6c, type: 3}
-  m_Name: "2 \uCD95\uBCF5"
+  m_Name: "22 \uC774\uBE10\uAC00\uC9C0\uC758 \uBD84\uB9D0"
   m_EditorClassIdentifier: 
-  actionID: 2
-  rewardRate: 3
+  actionID: 22
+  rewardRate: 2
   icon: {fileID: 0}
-  actionName: "\uCD95\uBCF5"
-  cost: 3
-  actionText: "\uC131\uACF5 : HP +4"
+  actionName: "\uC774\uBE10 \uAC00\uC9C0\uC758 \uBD84\uB9D0"
+  cost: 5
+  actionText: "\uC131\uACF5 : Dice Charm +3\n\uC2E4\uD328 : Dice ChaRM -1"
   testType: 2
   testTypeS: "\uB9E4\uB825"
   testOffset: 0
   results:
   - eventOffset:
-    - offsetType: 8
+    - offsetType: 6
       offset: 3
-  - eventOffset: []
-  isUsed: 0
-  beforeComment: "HP \uD68C\uBCF5"
-  afterComment: "\uAC10\uAE30 \uC870\uC2EC\uD558\uB77C\uAD6C"
+  - eventOffset:
+    - offsetType: 6
+      offset: -1
+  isUsed: 1
+  beforeComment: Dice Charm
+  afterComment: "\uCBD4\uC73C\uC73C\uC73C\uC74D... \uD478\uD558\uC544.."
