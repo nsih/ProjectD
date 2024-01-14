@@ -568,7 +568,7 @@ public class PlayerInfo : MonoBehaviour
 
 
         //
-        GameObject.Find("MainCamara").GetComponent<Camera>().orthographicSize = playerVisionSize;
+        GameObject.Find("Main Camera").GetComponent<Camera>().orthographicSize = playerVisionSize;
     }
 
 }

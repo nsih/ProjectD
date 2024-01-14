@@ -27,6 +27,7 @@ public class RewardManager : MonoBehaviour
     void Awake() 
     {
         LoadItemData("Assets/Script/Data/0.Item");
+        LoadActionData("Assets/Script/Data/1.Action");
     }
 
     public void OpenRewardPopup()
@@ -84,7 +85,7 @@ public class RewardManager : MonoBehaviour
     }
 
 
-    ///Item List
+    ///Reward Item List
     void LoadItemData(string folderPath)
     {
         // 폴더 내의 모든 파일 경로 가져오기
@@ -105,6 +106,29 @@ public class RewardManager : MonoBehaviour
                 Debug.LogWarning("Failed to load ItemData from file: " + filePath);
             }
         }
+    }
+    //Reward Action List
+    void LoadActionData(string folderPath)
+    {
+        // 폴더 내의 모든 파일 경로 가져오기
+        string[] filePaths = Directory.GetFiles(folderPath, "*.asset");
+
+        foreach (string filePath in filePaths)
+        {
+            // ScriptableObject 로드
+            ActionData actionData = UnityEditor.AssetDatabase.LoadAssetAtPath<ActionData>(filePath);
+
+            if (actionData != null)
+            {
+                // 리스트에 추가
+                rewardActionList.Add(actionData);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to load ItemData from file: " + filePath);
+            }
+        }
+
     }
              
 
