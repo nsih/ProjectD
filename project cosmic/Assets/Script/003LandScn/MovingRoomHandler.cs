@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
 
-public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
+public class MovingRoomHandler : MonoBehaviour//, IPointerClickHandler
 {
+    /*
     GameObject gameManager;
     GameObject LandCanvus;
 
@@ -103,4 +104,5 @@ public class MovingRoomHandler : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+    */
 }

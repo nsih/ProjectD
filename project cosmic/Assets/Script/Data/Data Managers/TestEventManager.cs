@@ -66,7 +66,7 @@ public class TestEventManager : MonoBehaviour
         testInfoText.GetComponent<TMP_Text>().text = currentTestEventData.testTypeS;
 
         ////dice pack 골라서 할당하고 활성화
-        GetDicePack();
+        //GetDicePack();
 
         //dicePack
         testBtn.GetComponent<Button>().onClick.AddListener(OnClickDiceRoll);
@@ -106,7 +106,7 @@ public class TestEventManager : MonoBehaviour
 
 
 
-
+    /*
     //dice pack 골라서 할당하고 활성화
     void GetDicePack()
     {
@@ -115,6 +115,7 @@ public class TestEventManager : MonoBehaviour
 
         //TestType에 따라 계산
 
+        
         //physical
         if (currentTestEventData.testType == TestType.Physical)
         {
@@ -130,6 +131,7 @@ public class TestEventManager : MonoBehaviour
         {
             diceCount = PlayerInfo.charm + currentTestEventData.testOffset;
         }
+        
         //None
         else
         {
@@ -168,7 +170,7 @@ public class TestEventManager : MonoBehaviour
 
         dicePack.SetActive(true);
     }
-
+    */
 
     //다이스 롤 버튼
     void OnClickDiceRoll()
@@ -178,7 +180,7 @@ public class TestEventManager : MonoBehaviour
             testBtn.GetComponent<Button>().interactable = false;
             for (int i = 0; i < dicePack.transform.childCount; i++)
             {
-                StartCoroutine(dicePack.transform.GetChild(i).gameObject.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
+                //StartCoroutine(dicePack.transform.GetChild(i).gameObject.GetComponent<CubeRotation>().RotateCube(dicePack.transform.GetChild(i).gameObject));
             }
 
             Invoke("CheckSuccess", 3.0f);

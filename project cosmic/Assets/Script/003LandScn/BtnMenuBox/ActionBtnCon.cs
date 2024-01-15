@@ -23,7 +23,7 @@ public class ActionBtnCon : MonoBehaviour//, IPointerEnterHandler, IPointerExitH
 
     public void OnClickAction()
     {
-        landUICanvas.GetComponent<LandUICon>().ActionListSwitch();
+        //landUICanvas.GetComponent<LandUICon>().ActionListSwitch();
     }
 }
 

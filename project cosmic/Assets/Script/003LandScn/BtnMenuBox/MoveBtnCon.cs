@@ -56,7 +56,7 @@ public class MoveBtnCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if(!GameManager.isLoading)
         {
-            landUiCanvas.GetComponent<LandUICon>().StageMapSwitch();
+            //landUiCanvas.GetComponent<LandUICon>().StageMapSwitch();
         } 
     }
 

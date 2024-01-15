@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 public class LeaveRoomBtnCon : MonoBehaviour
 {
+    /*
     GameObject gameManager;
     GameObject roomUICanvas;
     GameObject pnlBackGround;
@@ -59,4 +60,5 @@ public class LeaveRoomBtnCon : MonoBehaviour
         dialogueOption.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
         dialogueOption.transform.GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
     }
+    */
 }

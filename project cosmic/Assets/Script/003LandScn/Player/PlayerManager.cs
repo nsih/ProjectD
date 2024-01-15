@@ -62,6 +62,8 @@ public class PlayerManager : MonoBehaviour
         canAttack = true;
 
         isAttack = false;
+
+        gameManager.GetComponent<PlayerInfo>().PlayerStatusInitialize();
     }
     void Update()
     {

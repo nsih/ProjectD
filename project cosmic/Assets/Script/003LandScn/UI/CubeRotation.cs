@@ -7,6 +7,7 @@ using TMPro;
 
 public class CubeRotation : MonoBehaviour
 {
+    /*
     float throwForce = 3000;
     float throwDamping = 0.99f; // 회전 감속 계수
     float stopThreshold = 100.0f; // 회전 멈춤 기준값
@@ -92,4 +93,5 @@ public class CubeRotation : MonoBehaviour
         }
         cube.transform.rotation = Quaternion.identity;
     }
+    */
 }

@@ -6,6 +6,7 @@ using TMPro;
 
 public class LandUICon : MonoBehaviour
 {
+    /*
     GameObject gameManager;
     GameObject landUICanvas;
 
@@ -326,4 +327,5 @@ public class LandUICon : MonoBehaviour
     }
     #endregion
     //
+    */
 }

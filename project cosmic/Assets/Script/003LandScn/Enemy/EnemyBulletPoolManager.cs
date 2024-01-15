@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyBulletPoolManager : MonoBehaviour
 {
+    /*
     GameObject gameManager;
     GameObject player;
 
@@ -45,4 +46,5 @@ public class EnemyBulletPoolManager : MonoBehaviour
             enemyBulletPool.Add(var);
         }
     }
+    */
 }

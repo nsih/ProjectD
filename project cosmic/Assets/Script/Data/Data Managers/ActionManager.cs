@@ -10,6 +10,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 
 public class ActionManager : MonoBehaviour
 {
+    /*
     GameObject gameManager;
     GameObject landUICanvas;
     GameObject eventCanvas;
@@ -229,4 +230,5 @@ public class ActionManager : MonoBehaviour
         dicePack = null;
         testBtn.GetComponent<Button>().onClick.RemoveAllListeners();
     }
+    */
 }

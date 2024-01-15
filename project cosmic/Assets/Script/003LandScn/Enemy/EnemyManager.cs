@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    /*
     GameObject gameManager;
     GameObject player;
 
@@ -367,4 +368,5 @@ public class EnemyManager : MonoBehaviour
 
 
     #endregion
+    */
 }

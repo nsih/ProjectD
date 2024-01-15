@@ -9,7 +9,7 @@ public class PlayerBulletCon : MonoBehaviour
 
     void Start() 
     {
-        bulletSpeed = 35;
+        bulletSpeed = 60;
         normalMoving = true;
     }
 

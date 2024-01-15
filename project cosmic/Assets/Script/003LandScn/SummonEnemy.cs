@@ -22,6 +22,6 @@ public class SummonEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        gameManager.GetComponent<BattleEventManager>().PickMob(this.gameObject);
+        //gameManager.GetComponent<BattleEventManager>().PickMob(this.gameObject);
     }
 }

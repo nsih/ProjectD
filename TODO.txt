@@ -5,38 +5,8 @@
 -------------------------------------
 Todo
 
-.등급에 따른 	: 확률, UI
-
-행동 별도 주사위 창 + 로직
-
-테스트 종류에 따른 주사위 색깔
-주사위 성공표기 버그
-
-.적 데이터 추가
-.맵 데이터 추가 (넓게 부탁)
-
-.이벤트 데이터 추가
-
-.보스 컷씬(대화)
-
-.screen size 대응
-
-
-. Event Sys
-	. add data
-
-. reward (item, action)
-	. add data
-
-
-. Setting, tech Production
-	.setting option
-	.cutscenes
-	.tmp text prod
-
-. Art
-	.Animations
-
+적공격
+총알리필
 
 ----------------
 

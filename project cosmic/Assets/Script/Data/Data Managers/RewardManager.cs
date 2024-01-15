@@ -10,6 +10,7 @@ using System.IO;
 
 public class RewardManager : MonoBehaviour
 {
+    /*
     GameObject rewardPopup;
     Button btnReward0;
     Button btnReward1;
@@ -142,12 +143,14 @@ public class RewardManager : MonoBehaviour
         List<object> selectedList;
         suggestedList.Clear();
 
-
+        */
         /*
         리워드를 소모해서 중복 안되는 보상이 부족할때 집어넣을 temp 보상 목록 필요
         근데 보상목록이 애초에 충분하면 과연 다 쓸일이 있을까?
         */
 
+
+/*
         for (int i = 0; i < 3; i++) // 3번 반복
         {
             int selectedIndex;
@@ -265,4 +268,5 @@ public class RewardManager : MonoBehaviour
 
         CloseRewardPopup(suggestedList[rewardIndex]);
     }
+    */
 }
